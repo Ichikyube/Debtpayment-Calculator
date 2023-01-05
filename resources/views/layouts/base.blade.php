@@ -19,12 +19,12 @@
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
         @livewireStyles
         @livewireScripts
-
+        <script src="{{ asset('js/flowbite.min.js') }}"></script>
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
 
-    <body>
+    <body class="font-redHatMono">
         @yield('body')
     </body>
 </html>

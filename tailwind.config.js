@@ -4,13 +4,15 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+                redHatMono: ['Red Hat Mono', 'monospace'],
+            },
+            colors: {
+                dark:'#354446',
             },
         },
     },
     variants: {
         extend: {
-            backgroundColor: ['active'],
         }
     },
     content: [
@@ -25,7 +27,8 @@ module.exports = {
         './resources/**/*.twig',
     ],
     plugins: [
-        require('@tailwindcss/forms'),
         require('@tailwindcss/typography'),
+        require('@tailwindcss/forms'),
+        require('flowbite/plugin')
     ],
 }
