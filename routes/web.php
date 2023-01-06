@@ -58,4 +58,4 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::get('dashboard', [UserController::class, 'index'])->name('dashboard');
+Route::get('user', [UserController::class, 'index'])->name('user');

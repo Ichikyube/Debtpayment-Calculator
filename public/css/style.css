@@ -1,3 +1,7 @@
 body{
     background: linear-gradient(116.82deg, #457081 0%, #EDCCBC 100%);
 }
+
+.poppins{
+    font-family: 'Poppins';
+}
