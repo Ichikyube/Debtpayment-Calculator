@@ -5,7 +5,10 @@
             @include('partials.sidebar')
         </div>
         <div class="flex flex-row flex-wrap items-center justify-center w-full p-5 bg-slate-200">
-            <livewire:debt-calculator />
+            <livewire:maincard>
+                <livewire:modal-result>
+
+
         </div>
     </div>
 </x-app-layout>

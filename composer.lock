@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bc4824d611a5a411f722128a1bab71ec",
+    "content-hash": "fc6acf703c4e46eaf0d9c0269701eea8",
     "packages": [
         {
             "name": "brick/math",
@@ -3353,6 +3353,214 @@
                 "source": "https://github.com/SocialiteProviders/Zoho/tree/4.1.0"
             },
             "time": "2020-12-01T23:10:59+00:00"
+        },
+        {
+            "name": "spatie/laravel-dashboard",
+            "version": "2.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-dashboard.git",
+                "reference": "36014e54b816f4295cc79a25afaef46419c12ac1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-dashboard/zipball/36014e54b816f4295cc79a25afaef46419c12ac1",
+                "reference": "36014e54b816f4295cc79a25afaef46419c12ac1",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^8.0|^9.0",
+                "illuminate/view": "^8.0|^9.0",
+                "livewire/livewire": "^2.0",
+                "php": "^7.4|^8.0",
+                "spatie/sun": "^1.1.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0|^7.0",
+                "phpunit/phpunit": "^9.3",
+                "spatie/phpunit-snapshot-assertions": "^4.2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\Dashboard\\DashboardServiceProvider"
+                    ],
+                    "aliases": {
+                        "Dashboard": "Spatie\\Dashboard\\Facades\\Dashboard"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Dashboard\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A dashboard for Laravel",
+            "homepage": "https://github.com/spatie/laravel-dashboard",
+            "keywords": [
+                "laravel-dashboard",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-dashboard/issues",
+                "source": "https://github.com/spatie/laravel-dashboard/tree/2.1.3"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-05-23T18:21:08+00:00"
+        },
+        {
+            "name": "spatie/laravel-dashboard-time-weather-tile",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-dashboard-time-weather-tile.git",
+                "reference": "af80b2fc258095739f9ddb60ff09aa87eb1a7092"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-dashboard-time-weather-tile/zipball/af80b2fc258095739f9ddb60ff09aa87eb1a7092",
+                "reference": "af80b2fc258095739f9ddb60ff09aa87eb1a7092",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.0|^7.4",
+                "spatie/laravel-dashboard": "^2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\TimeWeatherTile\\TimeWeatherTileServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\TimeWeatherTile\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A tile for Laravel Dashboard that displays the time and the weather",
+            "homepage": "https://github.com/spatie/laravel-dashboard-time-weather-tile",
+            "keywords": [
+                "laravel-dashboard-time-weather-tile",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-dashboard-time-weather-tile/issues",
+                "source": "https://github.com/spatie/laravel-dashboard-time-weather-tile/tree/2.0.2"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-06-03T14:16:06+00:00"
+        },
+        {
+            "name": "spatie/sun",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/sun.git",
+                "reference": "12d195e38adab756c067f04f3a0b07a5d18f018a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/sun/zipball/12d195e38adab756c067f04f3a0b07a5d18f018a",
+                "reference": "12d195e38adab756c067f04f3a0b07a5d18f018a",
+                "shasum": ""
+            },
+            "require": {
+                "nesbot/carbon": "^2.32",
+                "php": "^8.0|^7.4"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "pestphp/pest": "^1.0",
+                "spatie/test-time": "^1.2",
+                "symfony/var-dumper": "^4.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Sun\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Get information on the position of the sun",
+            "homepage": "https://github.com/spatie/sun",
+            "keywords": [
+                "spatie",
+                "sun"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/sun/issues",
+                "source": "https://github.com/spatie/sun/tree/1.1.2"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-07-22T08:48:57+00:00"
         },
         {
             "name": "symfony/console",
