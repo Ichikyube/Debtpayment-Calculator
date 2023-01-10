@@ -5,3 +5,18 @@ body{
 .poppins{
     font-family: 'Poppins';
 }
+
+#hilanginscroll::-webkit-scrollbar{
+    width: 0;
+    display: none;
+    visibility: hidden;
+    background-color: transparent;
+}
+
+#hilanginscroll::-webkit-scrollbar-thumb{
+    width: 0;
+    height: 0;
+    display: none;
+    visibility: hidden;
+    background-color: transparent;
+}
