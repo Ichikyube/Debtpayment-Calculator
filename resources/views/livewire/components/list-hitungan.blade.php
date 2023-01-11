@@ -138,11 +138,13 @@
                     <div class="flex gap-4 items-end">
                         <a href="" class="text-2xl"><i class="fa-solid fa-pen-to-square"></i></a>
 
+                        <!-- Button Delete -->
                         <div x-data="{ modelOpen: false }">
                             <button @click="modelOpen =!modelOpen" class="text-2xl">
                                 <span><i class="fa-solid fa-trash"></i></span>
                             </button>
 
+                            <!-- Modal Delete Confirmation -->
                             <div x-show="modelOpen" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
                                 <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
                                     <div x-cloak @click="modelOpen = false" x-show="modelOpen" 
@@ -166,7 +168,6 @@
                                     >
                                         <div class="flex items-center justify-between space-x-4">
                                             <h1 class="text-xl font-medium text-gray-800 ">Hapus Data</h1>
-
                                             <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -177,7 +178,13 @@
                                         <p class="mt-2 text-sm text-gray-500 ">
                                             Apakah Anda yakin ingin menghapus data ini?
                                         </p>
-
+                                        <div class="flex justify-center gap-8 mt-12">
+                                            <a href="" class="px-5 py-2 rounded-xl bg-red-600 text-white">Ya</a>
+                                            <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
+                                                Tidak
+                                                </svg>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
