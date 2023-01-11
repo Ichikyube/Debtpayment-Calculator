@@ -22,7 +22,7 @@
                     <div class="mt-1 rounded-md">
                         <input wire:model.lazy="email" id="email" name="email" type="email" required autofocus
                         class="form-input appearance-none block w-full px-3 py-2 border-0 border-b border-b-slate-400 border-b-solid outline-none placeholder:!bg-transparent bg-transparent
-                    transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0 @error('email') border-red-300
+                    transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0 @error('email') border-red-300
                           text-red-900  focus:border-red-300 focus:ring-red @enderror" placeholder="you@example.com" />
                           <br/>
                     </div>
@@ -38,7 +38,10 @@
                     </label>
 
                     <div class="mt-1 rounded-md shadow-sm">
-                        <input wire:model.lazy="password" id="password" type="password" required class="appearance-none form-input border-0 border-b border-b-slate-400 border-b-solid outline-none placeholder:!bg-transparent bg-transparent block w-full px-3 py-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('password') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror" />
+                        <input wire:model.lazy="password" id="password" type="password" required class="appearance-none form-input border-0 border-b border-b-slate-400
+                        border-b-solid outline-none placeholder:!bg-transparent bg-transparent block w-full px-3 py-2 transition duration-150 ease-in-out sm:text-sm
+                        sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0 @error('password') border-red-300 text-red-900 placeholder-red-300
+                         focus:border-red-300 focus:ring-red @enderror" />
                     </div>
 
                     @error('password')
@@ -63,7 +66,7 @@
 
                 <div class="mt-6">
                     <span class="block w-full rounded-md shadow-sm bg-main">
-                        <button type="submit" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:ring-indigo active:bg-indigo-700">
+                        <button type="submit" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out border border-transparent rounded-md hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:border-gray-700 focus:ring-indigo active:bg-white">
                             ENTER
                         </button>
                     </span>
