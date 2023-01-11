@@ -20,11 +20,6 @@
                     transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="text" placeholder="500"></div>
     </div>
     <hr class="mt-4 mb-6 border-b-1 border-blueGray-300">
-    <div class="flex flex-row align-middle"><div class="flex justify-center w-12 mr-2"><img src="{{asset('img/1.svg')}}" alt=""></div>
-        <div class="flex justify-between w-full"><p class="text-base text-gray-400 w-max">Pendapatan perbulan</p><input class="form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent
-                    transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="text" placeholder="5000"></div>
-    </div>
-    <hr class="mt-4 mb-6 border-b-1 border-blueGray-300">
     <div class="flex justify-between text-center">
         <button wire:click.prevent="removeProduct({{$index}})"
             class="text-sm p-5 font-bold text-blueGray-700 rounded-[30px]">

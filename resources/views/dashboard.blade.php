@@ -6,7 +6,7 @@
         <div x-data="{ coba: localStorage.getItem('coba') }" class="absolute left-[3%] top-[5%] bottom-0 flex flex-col gap-20 w-[90%]">
             <a href="" class="text-white text-4xl mx-3"><img src="/img/far.png" alt="png" class="w-12"></a>
             <div class="flex flex-col gap-24 px-4">
-                @livewire('components.hasil')
+                @livewire('components.kalkulator')
                 @livewire('components.list-hitungan')
                 @livewire('components.profile')
             </div>
