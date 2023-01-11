@@ -1,5 +1,40 @@
+<script>
+   
+</script>
 <x-app-layout title="Create a new account">
-<div class="bg-transparent">
+<div x-data="{
+    name: '',
+    email:'',
+    password: '',
+    passwordConfirmation:'',
+    validation: [],
+    submited(){
+        const form = {
+            name: this.name,
+            email: this.email,
+            password: this.password,
+            password_confirmation: this.passwordConfirmation,
+        }
+     
+        fetch('http://127.0.0.1:3000/api/register', {
+            method: 'POST',
+            body: JSON.stringify(form),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            }
+        })
+        .then(reponse => reponse.json())
+        .then(data => {
+            if (data.success == true) {
+                console.log(data);
+                window.location.replace('http://127.0.0.1:8000/login')
+            }
+            if (data.success == false) {
+                this.validation = data.error;
+            }
+        });
+    },
+}" class="bg-transparent" >
     <div class="tracking-[4.03px] sm:mx-auto text-dark w-full font-redHatMono">
         <a href="{{ route('home') }}">
             <h2 class="mt-11 mb-4 text-[53px] leading-[70.12px] text-center">
@@ -30,12 +65,12 @@
                     </label>
 
                     <div class="mt-1 rounded-md shadow-sm">
-                        <input wire:model.lazy="name" id="name" type="text" required autofocus class="form-input appearance-none block w-full px-3 py-2 border-0 border-b border-b-slate-400 border-b-solid outline-none placeholder:!bg-transparent bg-transparent
+                        <input x-model="name"  name="name" id="name" type="text" required autofocus class="form-input appearance-none block w-full px-3 py-2 border-0 border-b border-b-slate-400 border-b-solid outline-none placeholder:!bg-transparent bg-transparent
                         transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none  sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0 @error('name') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror" />
                     </div>
 
                     @error('name')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        <p x-text="validation.name" class="mt-2 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
 
@@ -45,12 +80,12 @@
                     </label>
 
                     <div class="mt-1 rounded-md shadow-sm">
-                        <input wire:model.lazy="email" id="email" type="email" required class="form-input appearance-none block w-full px-3 py-2 border-0 border-b border-b-slate-400 border-b-solid outline-none placeholder:!bg-transparent bg-transparent
+                        <input x-model.lazy="email"  name="email" id="email" required class="form-input appearance-none block w-full px-3 py-2 border-0 border-b border-b-slate-400 border-b-solid outline-none placeholder:!bg-transparent bg-transparent
                         transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0 @error('email') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror" />
                     </div>
 
                     @error('email')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        <p x-text="validation.email" class="mt-2 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
 
@@ -60,12 +95,12 @@
                     </label>
 
                     <div class="mt-1 rounded-md shadow-sm">
-                        <input wire:model.lazy="password" id="password" type="password" required class="form-input appearance-none block w-full px-3 py-2 border-0 border-b border-b-slate-400 border-b-solid outline-none placeholder:!bg-transparent bg-transparent
+                        <input x-model="password" type="password" name="password" id="password" required class="form-input appearance-none block w-full px-3 py-2 border-0 border-b border-b-slate-400 border-b-solid outline-none placeholder:!bg-transparent bg-transparent
                         transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0 @error('password') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror" />
                     </div>
 
                     @error('password')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        <p x-text="validation.password" class="mt-2 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
 
@@ -75,14 +110,17 @@
                     </label>
 
                     <div class="mt-1 rounded-md shadow-sm">
-                        <input wire:model.lazy="passwordConfirmation" id="password_confirmation" type="password" required class="form-input appearance-none block w-full px-3 py-2 border-0 border-b border-b-slate-400 border-b-solid outline-none placeholder:!bg-transparent bg-transparent
+                        <input x-model="passwordConfirmation" type="password" name="passwordConfirmation" id="passwordConfirmation" required class="form-input appearance-none block w-full px-3 py-2 border-0 border-b border-b-slate-400 border-b-solid outline-none placeholder:!bg-transparent bg-transparent
                         transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" />
                     </div>
+                    @error('password')
+                        <p x-text="validation.password_confirmation" class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="mt-6">
                     <span class="block w-full rounded-md shadow-sm">
-                        <button type="submit" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-main hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:border-main focus:ring-indigo active:bg-white">
+                        <button x-on:click.prevent="submited()" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-main hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:border-main focus:ring-indigo active:bg-white">
                             Register
                         </button>
                     </span>
