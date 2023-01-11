@@ -1,4 +1,4 @@
-<div style="width: 600px" class="bg-[#F7D3C2] ml-[88px] max-h-fit px-[45px] rounded-[30px] w-[600px] drop-shadow-md">
+<div style="width: 600px" class="bg-[#F7D3C2] ml-[88px] max-h-fit px-[45px] rounded-b-[30px] w-[600px] drop-shadow-md">
     <div class="flex flex-row mt-4 align-middle"><div class="flex justify-center w-12 mr-2"><img src="{{asset('img/1.svg')}}" alt=""></div>
         <div class="flex justify-between w-full"><p class="text-base text-gray-400" class="text-base text-gray-400">Tipe Hutang</p>
             <livewire:dropdown-select>
