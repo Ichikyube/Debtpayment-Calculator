@@ -11,8 +11,8 @@
     <transition-group name="card" tag="div" x-data="{ open: false }">
         <select @click="open = true" type="button" class="appearance-none flex self-center justify-end w-full
         outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5
-        focus:border-none focus:outline-none focus-visible:ring-0" name="city" wire:model="city">
-        <option value=''>Pilih jenis hutang   <svg class="w-4 h-4 ml-2 justify-right" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        focus:border-none focus:outline-none border-none focus-visible:ring-0" name="city" wire:model="city">
+        <option value=''><svg class="w-4 h-4 ml-2 justify-right" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></option>
         <div
             x-show.transition.origin.top.right="open"
