@@ -12,12 +12,11 @@
         after:-scale-x-100  after:rounded-full after:content-['+'] after:align-middle after:text-center">
         Tambahkan Hutang
     </button>
-    <div class="bg-[#F7D3C2] ml-[88px] max-h-min pt-[32px] px-[45px] rounded-[30px] w-[600px] drop-shadow-md">
+    <div class="bg-[#F7D3C2] ml-[88px] max-h-min py-[16px] px-[45px] rounded-[30px] w-[600px] drop-shadow-md">
         <h6 class="text-xl font-bold text-blueGray-700">Mulai dengan mengurutkan hutang Anda.</h6>
-        <hr class="mt-4 border-b-1 border-blueGray-300">
     </div>
     <div class="flex flex-row">
-        <template x-for="post in posts">
+        <template class="w-[600px]" x-for="post in posts">
             <livewire:debt-calc>
         </template>
     </div>
