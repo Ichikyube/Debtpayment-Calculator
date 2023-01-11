@@ -11,9 +11,12 @@
         after:-scale-x-100  after:rounded-full after:content-['+'] after:align-middle after:text-center">
         Tambahkan Hutang
     </button>
-            <template class="flex flex-row" x-for="post in posts">
-                <livewire:debt-calc>
-            </template>
+    <div class="flex flex-row">
+        <template x-for="post in posts">
+            <livewire:debt-calc>
+        </template>
+    </div>
+
 
 </div>
 
