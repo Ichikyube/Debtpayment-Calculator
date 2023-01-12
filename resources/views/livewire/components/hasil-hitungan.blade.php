@@ -61,8 +61,8 @@
             </div>
         </div>
         <!-- Chart Hutang -->
-        <div class="flex flex-col items-center w-1/2 h-60">
-            <canvas class="w-full" id="hasilChart"></canvas>
+        <div class="absolute flex flex-col items-center w-1/2 h-80 right-5">
+            <canvas  width="400" height="400" id="hasilChart"></canvas>
             <div>Total Hutang $4700</div>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <script>
@@ -85,22 +85,21 @@
                         }]
                     },
                     options: {
+                        responsive: true,
                         plugins: {
                                 legend: {
-                                    title: {
-                                        padding: 20,
-                                        text: "tututututu"
-                                    },
                                     display: true,
-                                    maxWidth: 500,
+                                    maxWidth: 700,
                                     align: 'center',
                                     padding: 25,
                                     labels: {
                                         color: 'rgb(56, 57, 64)',
-                                        boxHeight: 5,
-                                        padding: 5,
+                                        boxHeight: 10,
+                                        boxWidth:10,
+                                        padding: 20,
+                                        textAlign:'left',
                                         font: {
-                                                size: 24,
+                                                size: 14,
                                                 weight: 'bolder'
                                             }
                                     }
@@ -108,7 +107,8 @@
                             },
                         layout: {
                             autoPadding: true
-                        }
+                        },
+                        scales: 50
                     }
                 });
             </script>
