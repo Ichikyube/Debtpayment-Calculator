@@ -28,13 +28,16 @@
             class="flex">
 
                 <!-- List Hutang -->
-                <div class="w-1/2">
-                    <div class="flex gap-2 mt-7">
-                        <div class="bg-blue-500 rounded-lg px-3 flex items-center text-white">
-                            5%
+                <div class="w-1/2 my-5">
+                    <div class="flex gap-2 mt-3">
+                        <div>
+                            <div class="bg-blue-500 rounded-lg px-3 py-2 flex items-center text-white">
+                                5%
+                            </div>
+                            <p class="text-center">$50</p>
                         </div>
                         <div class="w-full">
-                            <div class="flex justify-between">
+                            <div class="flex justify-between py-2">
                                 <p class="mb-2">Hutang Pinjaman</p>
                                 <p>$500</p>
                             </div>
@@ -44,13 +47,16 @@
                         </div>
                     </div>
 
-                    <div class="flex gap-2 mt-7">
-                        <div class="bg-blue-500 rounded-lg px-3 flex items-center text-white">
-                            5%
+                    <div class="flex gap-2 mt-3">
+                        <div>
+                            <div class="bg-blue-500 rounded-lg px-3 py-2 flex items-center text-white">
+                                5%
+                            </div>
+                            <p class="text-center">$50</p>
                         </div>
                         <div class="w-full">
-                            <div class="flex justify-between">
-                                <p class="mb-2">Hutang KPR</p>
+                            <div class="flex justify-between py-2">
+                                <p class="mb-2">Hutang Pinjaman</p>
                                 <p>$500</p>
                             </div>
                             <div class="w-full bg-gray-100 rounded-full h-2.5 dark:bg-gray-700">
@@ -58,13 +64,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex gap-2 mt-7">
-                        <div class="bg-blue-500 rounded-lg px-3 flex items-center text-white">
-                            5%
+
+                    <div class="flex gap-2 mt-3">
+                        <div>
+                            <div class="bg-blue-500 rounded-lg px-3 py-2 flex items-center text-white">
+                                5%
+                            </div>
+                            <p class="text-center">$50</p>
                         </div>
                         <div class="w-full">
-                            <div class="flex justify-between">
-                                <p class="mb-2">Hutang Lainnya</p>
+                            <div class="flex justify-between py-2">
+                                <p class="mb-2">Hutang Pinjaman</p>
                                 <p>$500</p>
                             </div>
                             <div class="w-full bg-gray-100 rounded-full h-2.5 dark:bg-gray-700">
