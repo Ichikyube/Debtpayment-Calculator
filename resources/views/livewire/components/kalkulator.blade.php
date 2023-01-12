@@ -1,4 +1,50 @@
-<div x-data="{posts: 0, calculated: false}">
+<div x-data="{
+    posts: 0,
+    debtTitle: [],
+    debtAmount: [],
+    debtInterest: [],
+    monthlyInstallments: [],
+    paymentDate: [],
+    mountlySalary: null,
+    extraSalary: null,
+    create_at: new Date(),
+    update_at: new Date(),
+    async tambahItem() {
+          const data = new FormData()
+          data.append('debtTitle', this.debtTitle)
+          data.append('debtAmount', this.debtAmount)
+          data.append('debtInterest', this.debtInterest)
+          data.append('monthlyInstallments', this.monthlyInstallments)
+          data.append('paymentDate', this.paymentDate)
+          data.append('mountlySalary', this.mountlySalary)
+          data.append('extraSalary', this.extraSalary)
+          data.append('create_at', this.create_at)
+          data.append('update_at', this.update_at)
+          const tambah = fetch('http://127.0.0.1:3000/api/debt', {
+            method: 'POST',
+            body: data,
+          })
+            .then(response => response.json())
+            .then(reponse => reponse.json())
+            .then(data => {
+                if (data.success == true) {
+                    console.log(data);
+                    window.location.replace('http://127.0.0.1:8000/dashboard')
+                }
+                if (data.success == false) {
+                    this.validation = data.error;
+                }
+            });
+        },
+    addNewForm(){
+        this.debtTitle.push(null);
+        this.debtAmount.push(null);
+        this.debtInterest.push(null);
+        this.monthlyInstallments.push(null);
+        this.paymentDate.push(null);
+    }
+        
+}">
     <!-- Button to show form komentar -->
     <button type="button" x-on:click="coba = 'dashboard', localStorage.setItem('coba', 'dashboard')" class="pl-1 text-4xl text-white"><i class="fa-solid fa-qrcode"></i></button>
 
@@ -52,6 +98,9 @@
                                 <p class="text-base text-gray-400">Suku Bunga Hutang</p>
                                 <input class="form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" type="number" placeholder="15%">
                             </div>
+                        <div class="flex justify-between items-center w-full">
+                            <p class="text-base text-gray-400">Jumlah Hutang</p>
+                            <input class="form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" x-model="" type="number" placeholder="5000">
                         </div>
 
                         <div class="flex flex-row items-center px-3 py-2 border-b-2">
@@ -87,6 +136,8 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            </div>
 
                 <!-- Looping Tambahan Form Hutang -->
                 <template x-for="post in posts">
