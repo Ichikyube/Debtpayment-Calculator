@@ -62,7 +62,7 @@
         </div>
         <!-- Chart Hutang -->
         <div class="flex flex-col items-center w-1/2 h-60">
-            <canvas id="hasilChart"></canvas>
+            <canvas class="w-full" id="hasilChart"></canvas>
             <div>Total Hutang $4700</div>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <script>
@@ -83,6 +83,32 @@
                             borderColor: 'rgb(93, 56, 219)',
                             hoverOffset: 7
                         }]
+                    },
+                    options: {
+                        plugins: {
+                                legend: {
+                                    title: {
+                                        padding: 20,
+                                        text: "tututututu"
+                                    },
+                                    display: true,
+                                    maxWidth: 500,
+                                    align: 'center',
+                                    padding: 25,
+                                    labels: {
+                                        color: 'rgb(56, 57, 64)',
+                                        boxHeight: 5,
+                                        padding: 5,
+                                        font: {
+                                                size: 24,
+                                                weight: 'bolder'
+                                            }
+                                    }
+                                }
+                            },
+                        layout: {
+                            autoPadding: true
+                        }
                     }
                 });
             </script>
