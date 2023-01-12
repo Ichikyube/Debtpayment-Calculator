@@ -9,47 +9,39 @@
     error: [],
     validation: [],
     status: '',
-    async getData() {
-        await fetch('http://127.0.0.1:3000/api/me', {
-            method: 'GET',
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-                Authorization: `Bearer ${localStorage.getItem('token')}`
+    checkSession() {
+        const token = localStorage.getItem('token')
+        this.isLogedIn = token ? true : false;
+        if (this.isLogedIn) {
+            // Fetch API Check Token
+            if (token == true) {
+                return window.location.replace(this.baseUrl + 'index.html')
             }
-        })
-        .then(response => response.json())
-        .then(data => {
-            localStorage.setItem('user', data.data);
-        })
+        }
     },
-    async submited() {
-        var data = {
-            email: this.email,
-            password: this.password,
-        };
-        await fetch('http://127.0.0.1:3000/api/login', {
+    fetchLogin() {
+        const login = 'http://127.0.0.1:3000/api/login';
+        email = $wire.email;
+        password = $wire.password;
+        formData = new FormData();
+        formData.append('email',email)
+        formData.append('password',password)
+        fetch(login, {
             method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            }
+            body: formData,
         })
-        .then(response => response.json())
-        .then(async data => {
-            this.status = data.success;
-            // response success == false (gagal Login)
-            if (this.status == false) {
-                this.error = data;
-                this.validation = data.error;
-            }
-            // response seccess = true (Login Berhasil)
-            if (this.status == true) {
-                localStorage.setItem('token', data.access_token)
-                this.getData();
-                window.location.replace('http://127.0.0.1:8000/dashboard')
-            }
-        })
-    },
+        .then( (response) => {
+            data = response.json();
+            localStorage.setItem('token',data.data.auth.token);
+            localStorage.setItem('email', this.email);
+            localStorage.setItem('password', this.password);
+            return response.json(token)
+        }).then(window.location.replace('http://127.0.0.1:8000/'))
+        .catch((err) => {
+            console.log(err);
+        });
+    }
+
 }" class="font-normal font-redHatMono">
     <div class="tracking-[4.03px] sm:mx-auto text-dark w-full">
 
@@ -64,7 +56,7 @@
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div class="px-4 py-8 sm:rounded-lg sm:px-10">
-            <form wire:submit.prevent="authenticate">
+            <form wire:submit.prevent="fetchLogin()">
                 <h1 x-text="error.message"></h1>
                 <div>
                     <label for="email" class="block text-sm font-medium leading-5 text-slate-500">
@@ -72,7 +64,7 @@
                     </label>
 
                     <div class="mt-1 rounded-md">
-                        <input x-model.lazy="email" type="email" name="email" id="email" required autofocus
+                        <input wire:model.lazy="email" type="email" name="email" id="email" required autofocus
                         class="form-input appearance-none block w-full px-3 py-2 border-0 border-b border-b-slate-400 border-b-solid outline-none placeholder:!bg-transparent bg-transparent
                     transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0 @error('email') border-red-300
                           text-red-900  focus:border-red-300 focus:ring-red @enderror" placeholder="you@example.com" />
@@ -90,7 +82,7 @@
                     </label>
 
                     <div class="mt-1 rounded-md shadow-sm">
-                        <input x-model="password" type="password" name="password" id="password" required class="appearance-none form-input border-0 border-b border-b-slate-400
+                        <input wire:model="password" type="password" name="password" id="password" required class="appearance-none form-input border-0 border-b border-b-slate-400
                         border-b-solid outline-none placeholder:!bg-transparent bg-transparent block w-full px-3 py-2 transition duration-150 ease-in-out sm:text-sm
                         sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0 @error('password') border-red-300 text-red-900 placeholder-red-300
                          focus:border-red-300 focus:ring-red @enderror" />
@@ -118,7 +110,7 @@
 
                 <div class="mt-6">
                     <span class="block w-full rounded-md shadow-sm bg-main">
-                        <button  x-on:click.prevent="submited()" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out border border-transparent rounded-md hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:border-gray-700 focus:ring-indigo active:bg-white">
+                        <button type="submit" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out border border-transparent rounded-md hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:border-gray-700 focus:ring-indigo active:bg-white">
                             ENTER
                         </button>
                     </span>
@@ -134,6 +126,10 @@
             </form>
         </div>
     </div>
+
+    <script>
+
+    </script>
 </div>
 
 </x-app-layout>
