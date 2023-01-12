@@ -16,18 +16,23 @@
                         <h6 class="text-xl font-bold text-blueGray-700 ml-5">Hutang 1</h6>
                     </div>
     
-                    <div class="flex flex-row align-middle border-b-2 py-2">
+                    <div class="flex flex-row items-center border-b-2 py-2 px-3">
                         <div class="flex justify-center w-12 mr-2">
-                            <img src="{{asset('img/1.svg')}}" alt="">
+                            <img src="{{asset('img/1.svg')}}" alt="" class="h-5">
                         </div>
                         <div class="flex justify-between items-center w-full"><p class="text-base text-gray-400" class="text-base text-gray-400">Tipe Hutang</p>
-                            <livewire:dropdown-select>
+                            <select class="form-input appearance-none block px-3 border-0 rounded-xl outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" name="type" wire:model="type">
+                                <option class="border-none" value=""></option>
+                                <option class="w-1/2 p-2" wire:key="1" value="1">Hutang KPR</option>
+                                <option class="w-1/2 p-2" wire:key="1" value="1">Hutang Kendaraan</option>
+                                <option class="w-1/2 p-2" wire:key="1" value="1">Hutang Bank</option>
+                            </select>
                         </div>
                     </div>
     
-                    <div class="flex flex-row align-middle border-b-2 py-2">
+                    <div class="flex flex-row items-center border-b-2 py-2 px-3">
                         <div class="flex justify-center w-12 mr-2">
-                            <img src="{{asset('img/moneys.svg')}}" alt="">
+                            <img src="{{asset('img/moneys.svg')}}" alt="" class="h-5">
                         </div>
                         <div class="flex justify-between items-center w-full">
                             <p class="text-base text-gray-400">Jumlah Hutang</p>
@@ -35,9 +40,9 @@
                         </div>
                     </div>
     
-                    <div class="flex flex-row align-middle border-b-2 py-2">
+                    <div class="flex flex-row items-center border-b-2 py-2 px-3">
                         <div class="flex justify-center w-12 mr-2">
-                            <img src="{{asset('img/moneytime.svg')}}" alt="">
+                            <img src="{{asset('img/moneytime.svg')}}" alt="" class="h-5">
                         </div>
                         <div class="flex justify-between items-center w-full">
                             <p class="text-base text-gray-400">Suku Bunga Hutang</p>
@@ -45,9 +50,9 @@
                         </div>
                     </div>
     
-                    <div class="flex flex-row align-middle border-b-2 py-2">
+                    <div class="flex flex-row items-center border-b-2 py-2 px-3">
                         <div class="flex justify-center w-12 mr-2">
-                            <img src="{{asset('img/moneysend.svg')}}" alt="">
+                            <img src="{{asset('img/moneysend.svg')}}" alt="" class="h-5">
                         </div>
                         <div class="flex justify-between items-center w-full">
                             <p class="text-base text-gray-400">Pembayaran minimum perbulan</p>
@@ -55,9 +60,9 @@
                         </div>
                     </div>
     
-                    <div class="flex flex-row align-middle border-b-2 py-2">
+                    <div class="flex flex-row items-center border-b-2 py-2 px-3">
                         <div class="flex justify-center w-12 mr-2">
-                            <img src="{{asset('img/1.svg')}}" alt="">
+                            <img src="{{asset('img/1.svg')}}" alt="" class="h-5">
                         </div>
                         <div class="flex justify-between items-center w-full">
                             <p class="text-base text-gray-400">Pendapatan perbulan</p>
@@ -65,7 +70,7 @@
                         </div>
                     </div>
     
-                    <div class="flex justify-between text-center items-center py-2">
+                    <div class="flex justify-between text-center items-center py-2 px-3">
                         <button @click="posts++" class="button text-sm py-4 px-7 ml-4
                         bg-white text-red-500 font-bold rounded-[30px] drop-shadow-lg cursor-pointer select-none
                         active:translate-y-1  active:[box-shadow:0_0px_0_0_#f2f2f2,0_0px_0_0_#b7b7b7]

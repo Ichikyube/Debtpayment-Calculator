@@ -4,18 +4,18 @@
             <h6 class="text-xl font-bold text-blueGray-700 ml-5" x-text="`Hutang ${post+1}`"></h6>
         </div>
 
-        <div class="flex flex-row align-middle border-b-2 py-3">
+        <div class="flex flex-row items-center border-b-2 py-2 px-3">
             <div class="flex justify-center w-12 mr-2">
-                <img src="{{asset('img/1.svg')}}" alt="">
+                <img src="{{asset('img/1.svg')}}" alt="" class="h-5">
             </div>
             <div class="flex justify-between items-center w-full"><p class="text-base text-gray-400" class="text-base text-gray-400">Tipe Hutang</p>
                 <livewire:dropdown-select>
             </div>
         </div>
-
-        <div class="flex flex-row align-middle border-b-2 py-3">
+    
+        <div class="flex flex-row items-center border-b-2 py-2 px-3">
             <div class="flex justify-center w-12 mr-2">
-                <img src="{{asset('img/moneys.svg')}}" alt="">
+                <img src="{{asset('img/moneys.svg')}}" alt="" class="h-5">
             </div>
             <div class="flex justify-between items-center w-full">
                 <p class="text-base text-gray-400">Jumlah Hutang</p>
@@ -23,9 +23,9 @@
             </div>
         </div>
 
-        <div class="flex flex-row align-middle border-b-2 py-3">
+        <div class="flex flex-row items-center border-b-2 py-2 px-3">
             <div class="flex justify-center w-12 mr-2">
-                <img src="{{asset('img/moneytime.svg')}}" alt="">
+                <img src="{{asset('img/moneytime.svg')}}" alt="" class="h-5">
             </div>
             <div class="flex justify-between items-center w-full">
                 <p class="text-base text-gray-400">Suku Bunga Hutang</p>
@@ -33,9 +33,9 @@
             </div>
         </div>
 
-        <div class="flex flex-row align-middle border-b-2 py-3">
+        <div class="flex flex-row items-center border-b-2 py-2 px-3">
             <div class="flex justify-center w-12 mr-2">
-                <img src="{{asset('img/moneysend.svg')}}" alt="">
+                <img src="{{asset('img/moneysend.svg')}}" alt="" class="h-5">
             </div>
             <div class="flex justify-between items-center w-full">
                 <p class="text-base text-gray-400">Pembayaran minimum perbulan</p>
