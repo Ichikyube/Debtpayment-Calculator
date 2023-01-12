@@ -4,13 +4,14 @@
     <div class="relative h-[100vh] w-full">
         <!-- Sidebar -->
         <div x-data="{ coba: localStorage.getItem('coba') }" class="absolute left-[3%] top-[5%] bottom-0 flex flex-col gap-20 w-[90%]">
-            <a href="" class="text-white text-4xl mx-3"><img src="/img/far.png" alt="png" class="w-12"></a>
+            <a href="" class="mx-3 text-4xl text-white"><img src="/img/far.png" alt="png" class="w-12"></a>
             <div class="flex flex-col gap-24 px-4">
+                @livewire('components.hasil-hitungan')
                 @livewire('components.kalkulator')
                 @livewire('components.list-hitungan')
                 @livewire('components.profile')
             </div>
-            <a href="" class="text-white text-4xl mx-5 mt-12"><i class="fa-solid fa-right-from-bracket"></i></a>
+            <a href="" class="mx-5 mt-12 text-4xl text-white"><i class="fa-solid fa-right-from-bracket"></i></a>
         </div>
 
 

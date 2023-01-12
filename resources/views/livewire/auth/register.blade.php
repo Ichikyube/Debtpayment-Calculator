@@ -1,5 +1,5 @@
 <script>
-   
+
 </script>
 <x-app-layout title="Create a new account">
 <div x-data="{
@@ -15,7 +15,7 @@
             password: this.password,
             password_confirmation: this.passwordConfirmation,
         }
-     
+
         fetch('http://127.0.0.1:3000/api/register', {
             method: 'POST',
             body: JSON.stringify(form),
@@ -31,6 +31,7 @@
             }
             if (data.success == false) {
                 this.validation = data.error;
+                console.log(this.validation);
             }
         });
     },
@@ -58,7 +59,7 @@
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div class="px-4 py-8">
-            <form wire:submit.prevent="register">
+            <div>
                 <div>
                     <label for="name" class="block text-sm font-medium leading-5 text-gray-700">
                         Name
@@ -125,7 +126,7 @@
                         </button>
                     </span>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>

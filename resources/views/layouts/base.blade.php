@@ -30,7 +30,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
 
-    <body class="h-screen overflow-hidden poppins">
+    <body class="h-screen poppins">
         @yield('body')
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
