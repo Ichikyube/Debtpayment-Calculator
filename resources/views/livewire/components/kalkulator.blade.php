@@ -11,7 +11,7 @@
         </template>
 
         <template x-if="!calculated">
-            <div class="flex flex-row gap-5 overflow-x-scroll flex-nowrap hilanginscroll" id="hilanginscroll">
+            <div class="flex flex-row gap-5 overflow-x-scroll scroll-auto touch-auto overscroll-x-contain flex-nowrap hilanginscroll" id="hilanginscroll">
 
                 <!-- Form Kalkulator -->
                 <div>
