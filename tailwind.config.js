@@ -5,6 +5,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 redHatMono: ['Red Hat Mono', 'monospace'],
+                poppins: ['Poppins', 'sans-serif']
             },
             colors: {
                 dark:'#354446',

@@ -1,12 +1,12 @@
 <x-app-layout title="Sign in to your account">
     <div class="tracking-[4.03px] sm:mx-auto text-dark w-full">
     <script src="{{asset('js/auth/auth.js')}}"></script>
-    <div x-data="$store.login" class="font-normal font-redHatMono">
+    <div x-data="$store.login" class="font-normal">
         <div class="tracking-[4.03px] sm:mx-auto text-dark w-full">
 
             <a href="{{ route('home') }}">
                 <div class="flex justify-center mx-auto mt-20 mb-4"><x-logo/></div>
-                <h2 class="mt-[22px] text-[53px] leading-[70.12px] text-center font-redHatMono">
+                <h2 class="mt-[22px] text-[53px] leading-[70.12px] text-center">
                     Debt Repayment
                 </h2>
             </a>
@@ -54,7 +54,7 @@
                         </label>
                     </div>
 
-                    <div class="text-sm leading-5">
+                    <div class="w-32 text-xs leading-5">
                         <a href="{{ route('password.request') }}" class="font-medium text-indigo-600 transition duration-150 ease-in-out hover:text-indigo-500 focus:outline-none focus:underline">
                             Forgot your password?
                         </a>

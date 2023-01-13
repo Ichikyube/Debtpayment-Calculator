@@ -4,7 +4,7 @@
     <script src="{{asset('js/auth/auth.js')}}"></script>
 
     <div x-data="$store.register" class="bg-transparent" >
-        <div class="tracking-[4.03px] sm:mx-auto text-dark w-full font-redHatMono">
+        <div class="tracking-[4.03px] sm:mx-auto text-dark w-full">
             <a href="{{ route('home') }}">
                 <h2 class="mt-11 mb-4 text-[53px] leading-[70.12px] text-center">
                     Debt Repayment
@@ -66,7 +66,7 @@
 
                 <div class="mt-6">
                     <label for="password_confirmation" class="block text-sm font-medium leading-5 text-gray-700">
-                        Confirm Password 
+                        Confirm Password
                     </label>
 
                     <div class="mt-1 rounded-md shadow-sm">
