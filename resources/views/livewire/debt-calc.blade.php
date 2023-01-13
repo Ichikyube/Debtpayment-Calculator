@@ -8,8 +8,8 @@
             <div class="flex justify-center w-12 mr-2">
                 <img src="{{asset('img/1.svg')}}" alt="" class="h-5">
             </div>
-            <div class="flex justify-between items-center w-full"><p class="text-base text-gray-400" class="text-base text-gray-400">Tipe Hutang</p>
-                <livewire:dropdown-select>
+            <div class="flex items-center justify-between w-full"><p class="text-base text-gray-400" class="text-base text-gray-400">Nama Hutang</p>
+                <input class="form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" type="text" placeholder="Hutang KPR">
             </div>
         </div>
     
