@@ -84,5 +84,19 @@ document.addEventListener("alpine:init", () => {
                     }
                 });
         },
+
+        async logout() {
+            await fetch("http://127.0.0.1:8000/api/logout", {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8",
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+                });
+        },
     }));
 });
