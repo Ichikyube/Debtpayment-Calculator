@@ -8,7 +8,7 @@
                 </div>
                 <div class="w-full">
                     <div class="flex justify-between">
-                        <p class="mb-2">Hutang Pinjaman</p>
+                        <p class="mb-2">Nama Hitungan</p>
                         <p>$500</p>
                     </div>
                     <div class="w-full bg-gray-100 rounded-full h-2.5 dark:bg-gray-700">
@@ -137,7 +137,7 @@
             </div>
         </div>
         <div class="flex justify-end">
-            <button class="self-end px-5 text-white bg-myblue h-14 w-44 rounded-xl"><span class="inline-block text-center align-top">Simpan</d></button>
+            <button @click="calculated = false" class="self-end px-5 text-white bg-myblue h-14 w-44 rounded-xl"><span class="inline-block text-center align-top">Simpan</d></button>
         </div>
     </div>
 
