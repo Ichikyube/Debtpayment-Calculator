@@ -7,9 +7,8 @@
             <a href="" class="mx-3 text-4xl text-white"><img src="/img/far.png" alt="png" class="w-12"></a>
             <div class="flex flex-col gap-24 px-4">
                 @livewire('components.kalkulator')
-                @livewire('components.profile')
                 @livewire('components.list-hitungan')
-
+                @livewire('components.profile')
             </div>
             <a href="" class="mx-5 mt-12 text-4xl text-white"><i class="fa-solid fa-right-from-bracket"></i></a>
         </div>

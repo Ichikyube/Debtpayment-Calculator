@@ -29,65 +29,86 @@
                 </div>
 
             </div>
-            <div class="bg-[#F7D3C2] w-1/3 h-96 rounded-[30px] drop-shadow-md">
+            <div class="bg-[#F7D3C2] w-1/3 h-max -mt-11 rounded-[30px] drop-shadow-md">
                 <div class="flex flex-row px-5 py-5 align-middle border-b-2">
                     <h6 class="ml-5 text-xl font-bold text-blueGray-700">Edit Profile</h6>
                 </div>
-
-                <div class="flex flex-row items-center px-3 py-2 border-b-2">
+                <div class="border-t border-gray-200">
+                <div class="flex flex-row items-center px-4 py-5 border-b-2">
                     <div class="flex justify-center w-12 mr-2">
                         <img src="{{asset('img/1.svg')}}" alt="" class="h-5">
                     </div>
                     <div class="flex items-center justify-between w-full">
-                        <p class="text-base text-gray-400" class="text-base text-gray-400">Nama Lengkap</p>
+                        <p class="mt-1 text-sm text-gray-400 sm:col-span-2 sm:mt-0">Nama Lengkap</p>
+                        <input type="text" class="mt-1 text-sm text-gray-400 sm:col-span-2 sm:mt-0 form-input appearance-none block px-3 border-0
+                        rounded-xl outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5
+                        focus:border-none focus:outline-none focus-visible:ring-0" placeholder="Fulanah">
                     </div>
                 </div>
-
-                <div class="flex flex-row items-center px-3 py-2 border-b-2">
+                <div class="flex flex-row items-center px-4 py-5 border-b-2">
                     <div class="flex justify-center w-12 mr-2">
                         <img src="{{asset('img/moneys.svg')}}" alt="" class="h-5">
                     </div>
                     <div class="flex items-center justify-between w-full">
-                        <p class="text-base text-gray-400">Email</p>
+                        <p class="mt-1 text-sm text-gray-400 sm:col-span-2 sm:mt-0">Email</p>
+                        <input type="text" class="mt-1 text-sm text-gray-400 sm:col-span-2 sm:mt-0 form-input appearance-none
+                        block px-3 border-0 rounded-xl outline-none placeholder:!bg-transparent bg-transparent transition duration-150
+                        ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" placeholder="Fulanah">
                     </div>
                 </div>
 
-                <div class="flex flex-row items-center px-3 py-2 border-b-2">
+                <div class="flex flex-row items-center px-4 py-5 border-b-2">
                     <div class="flex justify-center w-12 mr-2">
                         <img src="{{asset('img/moneytime.svg')}}" alt="" class="h-5">
                     </div>
                     <div class="flex items-center justify-between w-full">
-                        <p class="text-base text-gray-400">Jenis Kelamin</p>
+                        <p class="mt-1 text-sm text-gray-400 sm:col-span-2 sm:mt-0">Jenis Kelamin</p>
+                        <input type="text" class="form-input appearance-none block px-3 border-0 rounded-xl outline-none
+                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5
+                        focus:border-none focus:outline-none focus-visible:ring-0
+                        mt-1 text-sm text-gray-400 sm:col-span-2 sm:mt-0" placeholder="Fulanah">
                     </div>
                 </div>
 
-                <div class="flex flex-row items-center px-3 py-2 border-b-2">
+                <div class="flex flex-row items-center px-4 py-5 border-b-2">
                     <div class="flex justify-center w-12 mr-2">
                         <img src="{{asset('img/moneysend.svg')}}" alt="" class="h-5">
                     </div>
                     <div class="flex items-center justify-between w-full">
-                        <p class="text-base text-gray-400">Tempat Lahir</p>
+                        <p class="mt-1 text-sm text-gray-400 sm:col-span-2 sm:mt-0 ">Tempat Lahir</p>
+                        <input type="text" class="form-input appearance-none block px-3 border-0 rounded-xl outline-none
+                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5
+                        focus:border-none focus:outline-none focus-visible:ring-0
+                        mt-1 text-sm text-gray-400 sm:col-span-2 sm:mt-0" placeholder="Fulanah">
                     </div>
                 </div>
 
-                <div class="flex flex-row items-center px-3 py-2 border-b-2">
+                <div class="flex flex-row items-center px-4 py-5 border-b-2">
                     <div class="flex justify-center w-12 mr-2">
                         <img src="{{asset('img/1.svg')}}" alt="" class="h-5">
                     </div>
                     <div class="flex items-center justify-between w-full">
-                        <p class="text-base text-gray-400">Tanggal Lahir</p>
+                        <p class="mt-1 text-sm text-gray-400 sm:col-span-2 sm:mt-0">Tanggal Lahir</p>
+                        <input type="text" class="form-input appearance-none block px-3 border-0 rounded-xl outline-none
+                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5
+                        focus:border-none focus:outline-none focus-visible:ring-0
+                        mt-1 text-sm text-gray-400 sm:col-span-2 sm:mt-0" placeholder="Fulanah">
                     </div>
                 </div>
 
-                <div class="flex flex-row items-center px-3 py-2 border-b-2">
+                <div class="flex flex-row items-center px-4 py-5 border-b-2">
                     <div class="flex justify-center w-12 mr-2">
                         <img src="{{asset('img/1.svg')}}" alt="" class="h-5">
                     </div>
                     <div class="flex items-center justify-between w-full">
-                        <p class="text-base text-gray-400">Alamat</p>
+                        <p class="mt-1 text-sm text-gray-400 sm:col-span-2 sm:mt-0">Alamat</p>
+                        <input type="text" class="form-input appearance-none block px-3 border-0 rounded-xl outline-none
+                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5
+                        focus:border-none focus:outline-none focus-visible:ring-0
+                        mt-1 text-sm text-gray-400 sm:col-span-2 sm:mt-0" placeholder="Fulanah">
                     </div>
                 </div>
-
+                <br><br>
             </div>
         </div>
 

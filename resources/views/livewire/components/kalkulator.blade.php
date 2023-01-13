@@ -25,7 +25,9 @@
                                 <img src="{{asset('img/1.svg')}}" alt="" class="h-5">
                             </div>
                             <div class="flex items-center justify-between w-full"><p class="text-base text-gray-400" class="text-base text-gray-400">Tipe Hutang</p>
-                                <select class="form-input appearance-none block px-3 border-0 rounded-xl outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" name="type" wire:model="type">
+                                <select class="form-input appearance-none block px-3 border-0 rounded-xl outline-none
+                                placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5
+                                focus:border-none focus:outline-none focus-visible:ring-0" name="type" wire:model="type">
                                     <option class="border-none" value=""></option>
                                     <option class="w-1/2 p-2" wire:key="1" value="1">Hutang KPR</option>
                                     <option class="w-1/2 p-2" wire:key="1" value="1">Hutang Kendaraan</option>
@@ -40,7 +42,9 @@
                             </div>
                             <div class="flex items-center justify-between w-full">
                                 <p class="text-base text-gray-400">Jumlah Hutang</p>
-                                <input class="form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" type="number" placeholder="500000">
+                                <input class="form-input appearance-none block px-3 border-0 text-right outline-none
+                                placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5
+                                focus:border-none focus:outline-none focus-visible:ring-0" type="number" placeholder="500000">
                             </div>
                         </div>
 
@@ -50,7 +54,9 @@
                             </div>
                             <div class="flex items-center justify-between w-full">
                                 <p class="text-base text-gray-400">Suku Bunga Hutang</p>
-                                <input class="form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" type="number" placeholder="15%">
+                                <input class="form-input appearance-none block px-3 border-0 text-right outline-none
+                                placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
+                                sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" placeholder="15%">
                             </div>
                         </div>
 
@@ -60,7 +66,9 @@
                             </div>
                             <div class="flex items-center justify-between w-full">
                                 <p class="text-base text-gray-400">Pembayaran minimum perbulan</p>
-                                <input class="form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" type="number" placeholder="500">
+                                <input class="form-input appearance-none block px-3 border-0 text-right outline-none
+                                placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
+                                sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" placeholder="500">
                             </div>
                         </div>
 
@@ -70,7 +78,9 @@
                             </div>
                             <div class="flex items-center justify-between w-full">
                                 <p class="text-base text-gray-400">Pendapatan perbulan</p>
-                                <input class="form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" type="number" placeholder="5000">
+                                <input class="form-input appearance-none block px-3 border-0 text-right outline-none
+                                placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
+                                sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" placeholder="5000">
                             </div>
                         </div>
 
