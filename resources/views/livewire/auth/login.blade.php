@@ -15,7 +15,7 @@
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div class="px-4 py-8 sm:rounded-lg sm:px-10">
-            <form wire:submit.prevent="fetchLogin()">
+            <div>
                 <h1 x-text="error.message"></h1>
                 <div>
                     <label for="email" class="block text-sm font-medium leading-5 text-slate-500">
@@ -25,8 +25,7 @@
                     <div class="mt-1 rounded-md">
                         <input x-model="email" type="email" name="email" id="email" required autofocus
                         class="form-input appearance-none block w-full px-3 py-2 border-0 border-b border-b-slate-400 border-b-solid outline-none placeholder:!bg-transparent bg-transparent
-                        transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0 @error('email') border-red-300
-                        text-red-900  focus:border-red-300 focus:ring-red @enderror" placeholder="you@example.com" />
+                        transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0  placeholder="you@example.com" />
                         <br/>
                         <p x-text="validation.email"></p>
                     </div>
@@ -38,10 +37,9 @@
                     </label>
 
                     <div class="mt-1 rounded-md shadow-sm">
-                        <input wire:model="password" type="password" name="password" id="password" required class="appearance-none form-input border-0 border-b border-b-slate-400
+                        <input x-model="password" type="password" name="password" id="password" required class="appearance-none form-input border-0 border-b border-b-slate-400
                         border-b-solid outline-none placeholder:!bg-transparent bg-transparent block w-full px-3 py-2 transition duration-150 ease-in-out sm:text-sm
-                        sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0 @error('password') border-red-300 text-red-900 placeholder-red-300
-                        focus:border-red-300 focus:ring-red @enderror" />
+                        sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" />
                         <p x-text="validation.password"></p>
                     </div>
                 </div>
