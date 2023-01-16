@@ -1,4 +1,11 @@
 <x-app-layout title="Sign in to your account">
+    <script>
+        let token = localStorage.getItem('token');
+
+        if(token != null){
+            window.location.replace("/dashboard");
+        }
+    </script>
     <div class="tracking-[4.03px] sm:mx-auto text-dark w-full">
     <script src="{{asset('js/auth/auth.js')}}"></script>
     <div x-data="$store.login" class="font-normal">
@@ -79,4 +86,5 @@
             </div>
         </div>
     </div>
+    
 </x-app-layout>

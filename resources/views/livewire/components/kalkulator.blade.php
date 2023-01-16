@@ -3,10 +3,11 @@
     <button type="button" x-on:click="coba = 'dashboard', localStorage.setItem('coba', 'dashboard')" class="pl-1 text-4xl text-white"><i class="fa-solid fa-qrcode"></i></button>
 
     <!-- Card Konten Dashboard -->
-    <div x-show="coba == 'dashboard'" class="overflow-scroll hilanginscroll absolute bg-white shadow bottom-5 left-28 w-[97%] h-[90%] rounded-xl p-10">
+    <template x-if="coba == 'dashboard'">
+    <div class="overflow-scroll hilanginscroll absolute bg-white shadow bottom-5 left-28 w-[97%] h-[90%] rounded-xl p-10">
         <h1 class="ml-8 text-3xl font-bold">Kalkulator Hutang</h1>
         <br>
-        <div x-show="!calculated">
+        <div x-show="calculated == false">
             @livewire('components.hasil-hitungan')
         </div>
 
@@ -117,4 +118,5 @@
     </script>
 
     </div>
+    </template>
 </div>

@@ -4,7 +4,8 @@
 
 
     <!-- Card Konten profile -->
-    <div x-show="coba == 'profile'" class="absolute bg-white shadow bottom-5 left-28 w-[97%] h-[90%] rounded-xl p-10">
+    <template x-if="coba == 'profile'">
+    <div class="absolute bg-white shadow bottom-5 left-28 w-[97%] h-[90%] rounded-xl p-10">
 
         <h1 class="mb-5 text-3xl font-bold">profile</h1>
         <div class="flex mt-14">
@@ -113,4 +114,5 @@
         </div>
 
     </div>
+    </template>
 </div>
