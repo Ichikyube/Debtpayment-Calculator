@@ -6,11 +6,15 @@
 
             <a href="{{ route('home') }}">
                 <div class="flex justify-center mx-auto mt-20 mb-4"><x-logo/></div>
-                <h2 class="mt-[22px] text-[53px] leading-[70.12px] text-center">
+                <h2 class="mt-[22px] text-[53px] leading-[70.12px] text-center hidden md:block">
                     Debt Repayment
                 </h2>
+                <h2 class="mt-[22px] text-[24px] leading-[70.12px] text-center text-white block md:hidden">
+                    Login
+                </h2>
             </a>
-            <p class="text-[36px] leading-[47.63px] text-center">Aplikasi Pelunasan Hutang</p>
+            <p class="text-[36px] leading-[47.63px] text-center hidden md:block">Aplikasi Pelunasan Hutang</p>
+            
         </div>
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
