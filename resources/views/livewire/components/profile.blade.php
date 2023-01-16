@@ -1,5 +1,5 @@
 <div>
-    <!-- Button to show form komentar -->
+    <!-- Button to show form profile -->
     <button type="button" x-on:click="coba = 'profile', localStorage.setItem('coba', 'profile')" class="pl-1 text-4xl text-white"><i class="fa-regular fa-user"></i></button>
 
 

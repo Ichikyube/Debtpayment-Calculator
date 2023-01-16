@@ -25,6 +25,7 @@
         @livewireScripts
 
         <script src="{{ asset('js/flowbite.min.js') }}"></script>
+        <script src="{{ asset('js/debt/debts.js') }}"></script>
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
