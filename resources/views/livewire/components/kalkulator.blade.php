@@ -77,18 +77,6 @@
                         <p x-text="$store.validation.mountlySalary"></p>
                     </div>
                 </div>
-
-                <div class="z-50 flex items-center justify-between px-3 py-2 text-center">
-                    <button type="button" x-on:click="posts++" class="text-sm py-4 px-7 ml-4
-                    bg-white text-red-500 font-bold rounded-[30px] drop-shadow-lg cursor-pointer select-none
-                    active:translate-y-1  active:[box-shadow:0_0px_0_0_#f2f2f2,0_0px_0_0_#b7b7b7]
-                    active:border-b-[0px] transition-all duration-150
-                    [box-shadow:0_1px_0_0_#f2f2f2,0_3px_0_0_#b7b7b7]  after:w-6 after:h-6 after:bg-red-500
-                    after:text-white  after:font-cursive after:font-extrabold after:absolute after:-right-3
-                    after:-scale-x-100  after:rounded-full after:content-['+'] after:align-middle after:text-center">
-                        Tambahkan Hutang
-                    </button>
-                </div>
             </div>
         </div>
         <!-- Looping Tambahan Form Hutang -->
@@ -96,15 +84,26 @@
             <livewire:debt-calc>
         </template>
               {{--   <div x-html="html"></div> --}}
+
     </template>
-    {{-- !!jika data masih kosong tombol calculate disabled!! --}}
-    <div x-show="calculated" class="absolute z-50 flex flex-col justify-end bottom-12 lg:right-10 lg:bottom-10">
-        <button x-on:click="calculated = false" type="button" class="self-end px-5 mt-2 text-white bg-myblue h-14 w-44 rounded-xl"><span class="inline-block text-center align-top">Simpan</span></button>
-    </div>
-    <div x-show="!calculated" class="absolute z-50 flex justify-end bottom-12 lg:right-10 lg:bottom-10">
+    <div class="z-50 flex items-center justify-between px-3 py-2 text-center bottom-10">
+        <button type="button" x-on:click.lazy="posts++" class="text-sm py-4 px-7 ml-4
+        bg-white text-red-500 font-bold rounded-[30px] drop-shadow-lg cursor-pointer select-none
+        active:translate-y-1 active:[box-shadow:0_0px_0_0_#f2f2f2,0_0px_0_0_#b7b7b7]
+        active:border-b-[0px] transition-all duration-150
+        [box-shadow:0_1px_0_0_#f2f2f2,0_3px_0_0_#b7b7b7]  after:w-6 after:h-6 after:bg-red-500
+        after:text-white  after:font-cursive after:font-extrabold after:absolute after:-right-3
+        after:-scale-x-100  after:rounded-full after:content-['+'] after:align-middle after:text-center">
+            Tambahkan Hutang
+        </button>
         <button  x-on:click="calculated = true" class=" self-end px-5 text-white shadow drop-shadow-lg cursor-pointer
         select-none active:translate-y-1 active:[box-shadow:0_0px_0_0_#f2f2f2,0_0px_0_0_#b7b7b7] active:border-b-[0px] rounded-xl
         [box-shadow:0_1px_0_0_#f2f2f2,0_3px_0_0_#b7b7b7] bg-myblue h-14 lg:w-44 transition-all duration-150">Calculate</button>
+
+    </div>
+    {{-- !!jika data masih kosong tombol calculate disabled!! --}}
+    <div x-show="calculated" class="absolute z-50 flex flex-col justify-end bottom-12 lg:right-10 lg:bottom-10">
+        <button x-on:click="calculated = false" type="button" class="self-end px-5 mt-2 text-white bg-myblue h-14 w-44 rounded-xl"><span class="inline-block text-center align-top">Simpan</span></button>
     </div>
     <script>
         const scrollContainer = document.getElementById("hilanginscroll");
