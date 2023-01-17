@@ -17,8 +17,10 @@
                 <li><button type="button" x-on:click.prevent=" tab = 'profile', localStorage.setItem('tab', 'profile')"
                     class="absolute pl-1 text-4xl lg:static text-dark lg:text-white left-64 top-1"><i class="fa-regular fa-user"></i></button>
                 </li>
-                <li><a href="{{ redirect()->back() }}" class="absolute text-4xl lg:static text-dark lg:text-white -right-4 top-1">
-                    <i class="fa-solid fa-right-from-bracket"></i></a></li>
+                <li x-data="$store.logout">
+                    <button x-on:click="logout()" class="absolute text-4xl lg:static text-dark lg:text-white -right-4 top-1">
+                        <i class="fa-solid fa-right-from-bracket"></i></button>
+                </li>
             </ul>
 
             <div class="overflow-scroll hilanginscroll absolute bg-white shadow bottom-5 -left-3 lg:left-28 top-12 lg:top-0 pt-0
@@ -45,9 +47,7 @@
                 x-transition:leave-start="opacity-100 scale-100"
                 x-transition:leave-end="opacity-0 scale-90">@livewire('components.profile')</div>
             </div>
-            <div x-data="$store.logout">
-                <button x-on:click="logout()" class="mx-5 mt-12 text-4xl text-white"><i class="fa-solid fa-right-from-bracket"></i></button>
-            </div>
+
         </div>
     </div>
 @endsection
