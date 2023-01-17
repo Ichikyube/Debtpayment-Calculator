@@ -23,7 +23,6 @@
 
         @livewireStyles
         <livewire:scripts />
-        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script src="{{ asset('js/debt/debts.js') }}"></script>
         <script src="{{asset('js/auth/auth.js')}}"></script>
         <script src="{{ asset('js/flowbite.min.js') }}"></script>
