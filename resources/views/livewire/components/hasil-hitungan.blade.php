@@ -1,5 +1,4 @@
 <div>
-    <script src="http://www.datejs.com/build/date.js" type="text/javascript"></script>
     <div class="flex">
         <!-- List Hutang -->
         <div class="w-1/2">

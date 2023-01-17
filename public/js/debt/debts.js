@@ -1,6 +1,9 @@
 document.addEventListener("alpine:init", () => {
     Alpine.store("create", () => ({
+<<<<<<< HEAD
         posts: 0,
+=======
+>>>>>>> 604f6893f738900d8c0ea6fe2642ca529347696f
         calculated: true,
         mountlySalary: [],
         dateNormal: '',

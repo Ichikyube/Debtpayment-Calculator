@@ -22,7 +22,7 @@
                     <div class="flex items-center justify-between w-full"><p class="text-base text-gray-400">Nama Hutang</p>
                         <input class="namaHutang form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition
                         duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="text" placeholder="KPR">
-                        <p x-text="validation.debtTitle"></p>
+                        <p x-text="$store.validation.debtTitle"></p>
                     </div>
                 </div>
 
@@ -35,7 +35,7 @@
                         <input class="jmlHutang form-input appearance-none block px-3 border-0 text-right outline-none
                         placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5
                         focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" max="" step="100" placeholder="500000">
-                        <p x-text="validation.debtAmount"></p>
+                        <p x-text="$store.validation.debtAmount"></p>
                     </div>
                 </div>
 
@@ -48,7 +48,7 @@
                         <input class="bungaHutang form-input appearance-none block px-3 border-0 text-right outline-none
                         placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
                         sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" max="100" placeholder="15%">
-                        <p x-text="$store.validation.debtInterest"></p>
+                        <p x-text="$store.$store.validation.debtInterest"></p>
                     </div>
                 </div>
 
@@ -61,7 +61,7 @@
                         <input class="minBayar form-input appearance-none block px-3 border-0 text-right outline-none
                         placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
                         sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="10" step="100" placeholder="500">
-                        <p x-text="$store.validation.monthlyInstallments"></p>
+                        <p x-text="$store.$store.validation.monthlyInstallments"></p>
                     </div>
                 </div>
 
@@ -74,7 +74,7 @@
                         <input x-model="mountlySalary" class="form-input appearance-none block px-3 border-0 text-right outline-none
                         placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
                         sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder="5000">
-                        <p x-text="$store.validation.mountlySalary"></p>
+                        <p x-text="$store.$store.validation.mountlySalary"></p>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@
         <button x-on:click="calculated = false" type="button" class="self-end px-5 mt-2 text-white bg-myblue h-14 w-44 rounded-xl"><span class="inline-block text-center align-top">Simpan</span></button>
     </div>
     <script>
-        const scrollContainer = document.getElementById("hilanginscroll");
+        const scrollContainer = document.getElementById("scrollhorizontal");
 
         scrollContainer.addEventListener("wheel", (evt) => {
             evt.preventDefault();
