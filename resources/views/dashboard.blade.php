@@ -23,7 +23,7 @@
                 </li>
             </ul>
 
-            <div class="overflow-scroll hilanginscroll absolute bg-white shadow bottom-5 -left-3 lg:left-28 top-12 lg:top-0 pt-0
+            <div class="absolute bg-white shadow bottom-5 -left-3 lg:left-28 top-12 lg:top-0 pt-0
                     h-fit lg:h-[90%] w-screen lg:w-[97%] transform rounded-none lg:rounded-xl px-0 lg:p-10 py-10">
                 <div x-show="tab == 'kalkulator'"  x-cloak
                 x-transition:enter="transition ease-out duration-300"

@@ -3,6 +3,8 @@ document.addEventListener("alpine:init", () => {
         posts: 0, 
         calculated: true,
         mountlySalary: [],
+        dateNormal: '',
+        dateSnowball: '',
         html: `
         <div class="bg-[#F7D3C2] w-[600px] rounded-[30px] drop-shadow-md">
             <div class="flex flex-row align-middle border-b-2 px-5 py-5">
@@ -64,7 +66,7 @@ document.addEventListener("alpine:init", () => {
         extraSalary: null,
         hasil: [],
         validation: [], 
-        async tambahData() {
+        async hitung() {
             console.log(this.hasil);
             var debtTitle = [];
             var debtAmount = [];
@@ -102,10 +104,19 @@ document.addEventListener("alpine:init", () => {
             .then((reponse) => reponse.json())
             .then((data) => {
                 if (data.status == true) {
-                    console.log(data);
-                    this.calculated = false;
+                    // console.log(data);
                     this.hasil = data.data;
-                    // window.location.replace("http://127.0.0.1:8001/login");
+
+                    var date = new Date(data.data.hasil.normalCalculator);
+                    var mount = date.toLocaleString('default', { month: 'long' });
+                    var year = date.getFullYear();
+                    this.dateNormal = mount + ', ' + year;
+
+                    var date2 = new Date(data.data.hasil.snowballCalculator);
+                    var mount = date2.toLocaleString('default', { month: 'long' });
+                    var year = date2.getFullYear();
+                    this.dateSnowball = mount + ', ' + year;
+                    
                     // Chart
                     const ctx2 = document.getElementById('hasilChart');
         
@@ -116,7 +127,7 @@ document.addEventListener("alpine:init", () => {
                             labels: ['Pendapatan', 'Pembayaran'],
                             datasets: [{
                                 label: ['Total Pendapatan', 'Total Min Pembayaran'],
-                                data: [data.data.hasil.mountlySalary, data.data.hasil.totalMinPayment],
+                                data: [this.hasil.hasil.mountlySalary, this.hasil.hasil.totalMinPayment],
                                 backgroundColor: [
                                     'rgb(54, 162, 235)',
                                     'rgb(255, 4, 4, 1)'
@@ -153,6 +164,8 @@ document.addEventListener("alpine:init", () => {
                             scales: 50
                         }
                     });
+                    
+                    this.calculated = false;
                 }
                 if (data.status == false) {
                     this.validation = data.error;
@@ -161,6 +174,49 @@ document.addEventListener("alpine:init", () => {
             });
 
 
+        },
+        async tambahData(){
+            var form = {
+                debtTitle: [],
+                debtAmount: [],
+                debtInterest: [],
+                monthlyInstallments: [],
+
+                totalDebt: this.hasil.hasil.totalDebt,
+                totalMinPayment: this.hasil.hasil.totalMinPayment,
+                mountlySalary: this.hasil.hasil.mountlySalary,
+                extraSalary: this.hasil.hasil.extraSalary,
+                normalCalculator: this.hasil.hasil.normalCalculator,
+                snowballCalculator: this.hasil.hasil.snowballCalculator,
+            }
+            for (let i = 0; i < this.hasil.hutang.length; i++) {
+                form.debtTitle.push(this.hasil.hutang[i].debtTitle);
+                form.debtAmount.push(this.hasil.hutang[i].debtAmount);
+                form.debtInterest.push(this.hasil.hutang[i].debtInterest);
+                form.monthlyInstallments.push(this.hasil.hutang[i].monthlyInstallments);
+            }
+
+            console.log(form);
+            this.calculated = true;
+            fetch("http://127.0.0.1:8000/api/debt", {
+                method: "POST",
+                body: JSON.stringify(form),
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    "Content-type": "application/json; charset=UTF-8",
+                },
+            })
+            .then((reponse) => reponse.json())
+            .then((data) => {
+                if (data.status == true) {
+                    console.log(data);
+                    window.location.replace("http://127.0.0.1:8001/dashboard");
+                }
+                if (data.status == false) {
+                    this.validation = data.error;
+                }
+                this.messages = data.message;
+            });
         }
     }));
 });

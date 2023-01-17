@@ -1,4 +1,5 @@
 <div>
+    <script src="http://www.datejs.com/build/date.js" type="text/javascript"></script>
     <div class="flex">
         <!-- List Hutang -->
         <div class="w-1/2">
@@ -37,17 +38,21 @@
             <div class="items-center justify-center block sm:flex md:block lg:flex">
                 <div class="mt-8 text-center sm:m-8 md:m-0 md:mt-8 lg:m-8">
                     <div class="inline-flex items-center">
-                        <span class="text-3xl font-medium" x-text="hasil.hasil.snowballCalculator"></span>
+                        <span class="text-3xl font-medium" x-text="dateSnowball"></span>
                     </div>
                     <span class="block mt-2 text-sm text-gray-600">Metode Snowball</span>
                 </div>
                 <div class="mt-4 mb-8 text-center sm:m-8 md:m-0 md:mt-4 md:mb-8 lg:m-8">
                     <div class="inline-flex items-center">
-                        <span class="text-3xl font-medium" x-text="hasil.hasil.normalCalculator"></span>
+                        <span class="text-3xl font-medium" 
+                        x-text="dateNormal"></span>
                     </div>
                     <span class="block mt-2 text-sm text-gray-600">Metode biasa</span>
                 </div>
             </div>
+        </div>
+        <div class="flex justify-end">
+            <button x-on:click="tambahData" class="self-end px-5 text-white bg-myblue h-14 w-44 rounded-xl"><span class="inline-block text-center align-top">Simpan</d></button>
         </div>
     </div>
 </div>
