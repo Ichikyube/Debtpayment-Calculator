@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+    <script>
+        let token = localStorage.getItem('token');
+
+        if(token == null){
+            window.location.replace("/login");
+        }
+    </script>
+    <script src="{{asset('js/auth/auth.js')}}"></script>
     <div class="relative h-[100vh] w-full" x-data="{ loading: true, tab: localStorage.getItem('tab') }" x-cloak x-init="loading = false">
     <div class="relative h-[100vh] w-full">
         <!-- Sidebar -->
@@ -17,8 +25,9 @@
                     class="absolute pl-1 text-4xl lg:static text-dark lg:text-white left-64 top-1"><i class="fa-regular fa-user"></i></button>
                 </li>
                 <li x-data="$store.logout">
-                    <button x-on:click="logout()" class="absolute text-4xl lg:static text-dark lg:text-white -right-4 top-1">
-                        <i class="fa-solid fa-right-from-bracket"></i></button>
+                    <button x-on:click="logout" class="absolute text-4xl lg:static text-dark lg:text-white -right-4 top-1">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </button>
                 </li>
             </ul>
 

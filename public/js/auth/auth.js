@@ -79,8 +79,10 @@ document.addEventListener("alpine:init", () => {
                     }
                     // response seccess = true (Login Berhasil)
                     if (this.status == true) {
-                        localStorage.setItem("token", data.access_token);                        
-                        window.location.replace("http://127.0.0.1:8001/dashboard");
+                        localStorage.setItem("token", data.access_token);
+                        window.location.replace(
+                            "http://127.0.0.1:8001/dashboard"
+                        );
                         // this.getData();
                     }
                 });
@@ -101,6 +103,7 @@ document.addEventListener("alpine:init", () => {
                 .then((data) => {
                     console.log(data);
                     localStorage.removeItem("token");
+                    window.location.replace("http://127.0.0.1:8001/login");
                 });
         },
     }));
