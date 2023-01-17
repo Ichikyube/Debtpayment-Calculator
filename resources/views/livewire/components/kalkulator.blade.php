@@ -82,8 +82,9 @@
         <!-- Looping Tambahan Form Hutang -->
         <template x-for="post in posts">
             <livewire:debt-calc>
+            {{--   <div x-html="html"></div> --}}
         </template>
-              {{--   <div x-html="html"></div> --}}
+
 
     </template>
     <div class="z-50 flex items-center justify-between px-3 py-2 text-center bottom-10">
