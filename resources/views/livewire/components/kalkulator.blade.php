@@ -1,4 +1,4 @@
-<div x-data="{posts: 0, calculated: false}">
+<div x-data="{posts: 0, calculated: false, simpanBtn: false}">
     <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 lg:mb-4">Kalkulator Hutang</h1>
     <template x-if="calculated">
         @livewire('components.hasil-hitungan')
@@ -48,7 +48,7 @@
                         <input class="bungaHutang form-input appearance-none block px-3 border-0 text-right outline-none
                         placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
                         sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" max="100" placeholder="15%">
-                        <p x-text="validation.debtInterest"></p>
+                        <p x-text="$store.validation.debtInterest"></p>
                     </div>
                 </div>
 
@@ -61,7 +61,7 @@
                         <input class="minBayar form-input appearance-none block px-3 border-0 text-right outline-none
                         placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
                         sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="10" step="100" placeholder="500">
-                        <p x-text="validation.monthlyInstallments"></p>
+                        <p x-text="$store.validation.monthlyInstallments"></p>
                     </div>
                 </div>
 
@@ -74,7 +74,7 @@
                         <input x-model="mountlySalary" class="form-input appearance-none block px-3 border-0 text-right outline-none
                         placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
                         sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder="5000">
-                        <p x-text="validation.mountlySalary"></p>
+                        <p x-text="$store.validation.mountlySalary"></p>
                     </div>
                 </div>
 
@@ -91,22 +91,21 @@
                 </div>
             </div>
         </div>
-            <!-- Looping Tambahan Form Hutang -->
-            <template x-for="post in posts">
-                <livewire:debt-calc>
-            </template>
-                <div x-html="html"></div>
-            </template>
-            <div x-show="calculated" class="flex justify-end ">
-                <button x-on:click="tambahData" class="px-5 text-white right-10 bottom-10 bg-myblue h-14 w-44 rounded-xl">Calculate</button>
-            </div>
+        <!-- Looping Tambahan Form Hutang -->
+        <template x-for="post in posts">
+            <livewire:debt-calc>
+        </template>
+              {{--   <div x-html="html"></div> --}}
     </template>
-    <div class="flex justify-end">
-        <button @click="calculated = true" class="absolute z-50 self-end px-5 text-white shadow lg:right-10 drop-shadow-lg cursor-pointer
-        select-none active:translate-y-1 active:[box-shadow:0_0px_0_0_#f2f2f2,0_0px_0_0_#b7b7b7] active:border-b-[0px] transition-all duration-150
-        [box-shadow:0_1px_0_0_#f2f2f2,0_3px_0_0_#b7b7b7] lg:bottom-10 bg-myblue h-14 lg:w-44 bottom-12 rounded-xl">Calculate</button>
+    <div x-show="calculated" class="absolute z-50 flex flex-col justify-end bottom-12 lg:right-10 lg:bottom-10">
+        <button x-on:click="tambahData" class="px-5 text-white bg-myblue h-14 w-44 rounded-xl">Add Calculation</button>
+        <button x-on:click="calculated = false" type="button" class="self-end px-5 mt-2 text-white bg-myblue h-14 w-44 rounded-xl"><span class="inline-block text-center align-top">Simpan</span></button>
     </div>
-
+    <div x-show="!calculated" class="absolute z-50 flex justify-end bottom-12 lg:right-10 lg:bottom-10">
+        <button  x-on:click="calculated = true" class=" self-end px-5 text-white shadow drop-shadow-lg cursor-pointer
+        select-none active:translate-y-1 active:[box-shadow:0_0px_0_0_#f2f2f2,0_0px_0_0_#b7b7b7] active:border-b-[0px] rounded-xl
+        [box-shadow:0_1px_0_0_#f2f2f2,0_3px_0_0_#b7b7b7] bg-myblue h-14 lg:w-44 transition-all duration-150">Calculate</button>
+    </div>
     <script>
         const scrollContainer = document.getElementById("hilanginscroll");
 
@@ -114,6 +113,5 @@
             evt.preventDefault();
             scrollContainer.scrollLeft += evt.deltaY;
         });
-
     </script>
 </div>
