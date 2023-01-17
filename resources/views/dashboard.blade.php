@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    <script src="{{asset('js/auth/auth.js')}}"></script>
     <div class="relative h-[100vh] w-full" x-data="{ loading: true, tab: localStorage.getItem('tab') }" x-cloak x-init="loading = false">
+    <div class="relative h-[100vh] w-full">
         <!-- Sidebar -->
         <div class="absolute left-[3%] top-[5%] bottom-0 flex flex-col gap-20 w-[90%]" x-show="!loading">
             <a href="" class="mx-3 text-4xl text-white w-fit"><img src="/img/far.png" alt="png" class="w-12"></a>
@@ -42,6 +44,9 @@
                 x-transition:leave="transition ease-in duration-300"
                 x-transition:leave-start="opacity-100 scale-100"
                 x-transition:leave-end="opacity-0 scale-90">@livewire('components.profile')</div>
+            </div>
+            <div x-data="$store.logout">
+                <button x-on:click="logout()" class="mx-5 mt-12 text-4xl text-white"><i class="fa-solid fa-right-from-bracket"></i></button>
             </div>
         </div>
     </div>

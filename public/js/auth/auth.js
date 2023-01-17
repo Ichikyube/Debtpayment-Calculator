@@ -1,5 +1,5 @@
 document.addEventListener("alpine:init", () => {
-    // fetch login
+    // fetch register
     Alpine.store("register", () => ({
         name: "",
         email: "",
@@ -7,7 +7,7 @@ document.addEventListener("alpine:init", () => {
         passwordConfirmation: "",
         validation: [],
         messages: [],
-        submited() {
+        async submited() {
             const form = {
                 name: this.name,
                 email: this.email,
@@ -15,7 +15,7 @@ document.addEventListener("alpine:init", () => {
                 password_confirmation: this.passwordConfirmation,
             };
 
-            fetch("http://127.0.0.1:8000/api/register", {
+            await fetch("http://127.0.0.1:8000/api/register", {
                 method: "POST",
                 body: JSON.stringify(form),
                 headers: {
@@ -85,8 +85,11 @@ document.addEventListener("alpine:init", () => {
                     }
                 });
         },
+    }));
 
+    Alpine.store("logout", () => ({
         async logout() {
+            console.log("logout");
             await fetch("http://127.0.0.1:8000/api/logout", {
                 method: "GET",
                 headers: {
@@ -97,6 +100,7 @@ document.addEventListener("alpine:init", () => {
                 .then((response) => response.json())
                 .then((data) => {
                     console.log(data);
+                    localStorage.removeItem("token");
                 });
         },
     }));
