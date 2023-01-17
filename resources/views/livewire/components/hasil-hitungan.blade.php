@@ -2,7 +2,6 @@
     <div class="flex">
         <!-- List Hutang -->
         <div class="w-1/2">
-
             <!-- Looping Tambahan Form Hutang -->
             <template x-for="data in hasil.hutang">
                 <div class="flex gap-2 mt-7">
@@ -22,9 +21,9 @@
             </template>
         </div>
         <!-- Chart Hutang -->
-        <div x-data="{pendapatan: hasil.hasil.mountlySalary}" class="absolute flex flex-col items-center w-1/2 -z-10 h-80 right-5">
+        <div x-data="{pendapatan: $hasil.mountlySalary}" class="absolute flex flex-col items-center w-1/2 -z-10 h-80 right-5">
             <canvas  width="400" height="400" id="hasilChart"></canvas>
-            <div>Total Hutang <span x-text="$store.hasil.hasil.totalDebt"></span></div>
+            <div>Total Hutang <span x-text="$hasil.totalDebt"></span></div>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
         </div>

@@ -1,4 +1,4 @@
-<div x-data="{posts: 0, calculated: false, simpanBtn: false}">
+<div x-data="{posts: 0, calculated: false}">
     <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 lg:mb-4">Kalkulator Hutang</h1>
     <template x-if="calculated">
         @livewire('components.hasil-hitungan')
@@ -97,8 +97,8 @@
         </template>
               {{--   <div x-html="html"></div> --}}
     </template>
+    {{-- !!jika data masih kosong tombol calculate disabled!! --}}
     <div x-show="calculated" class="absolute z-50 flex flex-col justify-end bottom-12 lg:right-10 lg:bottom-10">
-        <button x-on:click="tambahData" class="px-5 text-white bg-myblue h-14 w-44 rounded-xl">Add Calculation</button>
         <button x-on:click="calculated = false" type="button" class="self-end px-5 mt-2 text-white bg-myblue h-14 w-44 rounded-xl"><span class="inline-block text-center align-top">Simpan</span></button>
     </div>
     <div x-show="!calculated" class="absolute z-50 flex justify-end bottom-12 lg:right-10 lg:bottom-10">

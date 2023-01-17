@@ -1,6 +1,6 @@
 document.addEventListener("alpine:init", () => {
     Alpine.store("create", () => ({
-        posts: 0, 
+        posts: 0,
         calculated: true,
         mountlySalary: [],
         html: `
@@ -18,7 +18,7 @@ document.addEventListener("alpine:init", () => {
                     <p x-text="validation.debtTitle"></p>
                 </div>
             </div>
-        
+
             <div class="flex flex-row items-center border-b-2 py-2 px-3">
                 <div class="flex justify-center w-12 mr-2">
                     <img src="/img/moneys.svg" alt="" class="h-5">
@@ -63,7 +63,7 @@ document.addEventListener("alpine:init", () => {
         mountlySalary: null,
         extraSalary: null,
         hasil: [],
-        validation: [], 
+        validation: [],
         async tambahData() {
             console.log(this.hasil);
             var debtTitle = [];
@@ -91,7 +91,7 @@ document.addEventListener("alpine:init", () => {
             }
 
             // console.log(data);
-            fetch("http://127.0.0.1:8000/api/hitung", {
+            fetch("http://127.0.0.1:3000/api/hitung", {
                 method: "POST",
                 body: JSON.stringify(form),
                 headers: {
@@ -108,7 +108,7 @@ document.addEventListener("alpine:init", () => {
                     // window.location.replace("http://127.0.0.1:8001/login");
                     // Chart
                     const ctx2 = document.getElementById('hasilChart');
-        
+
                     // console.log(pendapatan);
                     new Chart(ctx2, {
                         type: 'doughnut',
