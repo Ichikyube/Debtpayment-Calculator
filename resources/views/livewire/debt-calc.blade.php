@@ -9,7 +9,8 @@
                 <img src="{{asset('img/1.svg')}}" alt="" class="h-5">
             </div>
             <div class="flex items-center justify-between w-full"><p class="text-base text-gray-400" class="text-base text-gray-400">Nama Hutang</p>
-                <input class="form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" type="text" placeholder="Hutang KPR">
+                <input class="nameTitle form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" type="text" placeholder="Hutang KPR">
+                <p x-text="validation.debtTitle"></p>
             </div>
         </div>
     
@@ -19,7 +20,8 @@
             </div>
             <div class="flex justify-between items-center w-full">
                 <p class="text-base text-gray-400">Jumlah Hutang</p>
-                <input class="form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" type="number" placeholder="500000">
+                <input x-model="debtAmount" class="form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" type="number" placeholder="500000">
+                <p x-text="validation.debtAmount"></p>
             </div>
         </div>
 
@@ -29,7 +31,8 @@
             </div>
             <div class="flex justify-between items-center w-full">
                 <p class="text-base text-gray-400">Suku Bunga Hutang</p>
-                <input class="form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" type="number" placeholder="15%">
+                <input x-model="debtInterest" class="form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" type="number" placeholder="15%">
+                <p x-text="validation.debtInterest"></p>
             </div>
         </div>
 
@@ -39,7 +42,8 @@
             </div>
             <div class="flex justify-between items-center w-full">
                 <p class="text-base text-gray-400">Pembayaran minimum perbulan</p>
-                <input class="form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" type="number" placeholder="500">
+                <input x-model="monthlyInstallments" class="form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" type="number" placeholder="500">
+                <p x-text="validation.monthlyInstallments"></p>
             </div>
         </div>
 

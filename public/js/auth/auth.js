@@ -26,7 +26,7 @@ document.addEventListener("alpine:init", () => {
                 .then((data) => {
                     if (data.success == true) {
                         console.log(data);
-                        window.location.replace("http://127.0.0.1:8000/login");
+                        window.location.replace("http://127.0.0.1:8001/login");
                     }
                     if (data.success == false) {
                         this.validation = data.error;
@@ -79,7 +79,8 @@ document.addEventListener("alpine:init", () => {
                     }
                     // response seccess = true (Login Berhasil)
                     if (this.status == true) {
-                        localStorage.setItem("token", data.access_token);
+                        localStorage.setItem("token", data.access_token);                        
+                        window.location.replace("http://127.0.0.1:8001/dashboard");
                         // this.getData();
                     }
                 });

@@ -20,16 +20,18 @@
         <link rel="stylesheet" href="{{ url(asset('css/style.css')) }}">
         <script src="https://kit.fontawesome.com/c12c059ff2.js" crossorigin="anonymous"></script>
 
-        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-        @livewireStyles
-        @livewireScripts
 
+        @livewireStyles
+        <livewire:scripts />
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <script src="{{ asset('js/debt/debts.js') }}"></script>
         <script src="{{ asset('js/flowbite.min.js') }}"></script>
+        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
 
-    <body class="h-screen font-poppins">
+    <body class="h-full font-poppins">
         @yield('body')
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
