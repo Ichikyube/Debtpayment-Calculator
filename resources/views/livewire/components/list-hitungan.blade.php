@@ -1,5 +1,5 @@
 <div id="hilanginscroll">
-    <h1 class="ml-8 text-3xl font-bold">List Hitungan</h1>
+    <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 lg:mb-4">List Hitungan</h1>
     <br>
     <div x-data="{ open: false, delete1: false }" class="bg-[#F7D3C2] py-[24px] px-[45px] rounded-[30px] mt-5">
         <!-- Head -->
@@ -19,7 +19,7 @@
         x-transition:leave="transition ease-in duration-300"
         x-transition:leave-start="opacity-100 scale-100"
         x-transition:leave-end="opacity-0 scale-90"
-        class="flex">
+        class="flex flex-wrap">
 
             <!-- List Hutang -->
             <div class="w-1/2 my-5">
@@ -106,8 +106,8 @@
         </div>
 
         <!-- Bottom Content -->
-        <div class="flex justify-between">
-            <div class="flex w-7/12 gap-16 mt-5">
+        <div class="flex flex-wrap justify-between">
+            <div class="flex gap-16 pb-2 mt-5 mb-4 border-b lg:w-7/12">
                 <div>
                     <p>Pendapatan</p>
                     <p class="text-xl font-bold">
@@ -128,7 +128,7 @@
                 </div>
             </div>
 
-            <div class="flex justify-between w-5/12">
+            <div class="flex justify-between w-full lg:w-5/12">
                 <div class="flex items-end gap-12">
                     <div>
                         <p>Snowball</p>

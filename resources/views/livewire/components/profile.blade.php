@@ -1,10 +1,10 @@
 <div class="container mx-auto">
-    <h1 class="mb-5 text-3xl font-bold">profile</h1>
-    <div class="flex mt-14">
-        <div class="w-1/2 px-8">
+    <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 lg:mb-4">profile</h1>
+    <div class="flex flex-col w-full mt-14">
+        <div class="px-8 lg:flex-row lg:w-1/2">
             <div class="flex flex-col justify-center -mt-8">
                 <img src="{{asset('img/avatar.svg')}}" class="self-center w-40 h-40 p-1 -mt-3 border-2 border-white border-solid rounded-full ring-2 ring-gray-300 dark:ring-gray-500" alt="Bordered avatar">
-                <div class="mt-12 text-center ">
+                <div class="mt-12 text-center">
                     <h3 class="mb-2 text-4xl font-semibold leading-normal text-blueGray-700">
                         Fulanah
                     </h3>
@@ -12,16 +12,16 @@
                         fulan@fulanah.com
                     </div>
                     <div class="px-4 mb-2 text-justify text-blueGray-600">
-                        <p>Jenis Kelamin  : <span>Laki-Laki</span></p>
-                        <p>Tempat, Tgl Lahir  : <span>Bandung, 02-Okt-2002</span></p>
-                        <p>Alamat                    : <span>Jl Cisitu Indah 2 no 16
-                        Kecamatan Coblong,
-                        Bandung, Jawa Barat</span></p>
+                        <p>Jenis Kelamin  : </p><p>Laki-Laki</p>
+                        <p>Tempat, Tgl Lahir  : </p><p>Bandung, 02-Okt-2002</p>
+                        <p>Alamat                    : </p><p>Jl Cisitu Indah 2 no 16
+                            Kecamatan Coblong,
+                            Bandung, Jawa Barat</p>
                     </div>
                     </div>
             </div>
         </div>
-        <div class="bg-[#F7D3C2] w-1/3 h-max -mt-11 rounded-[30px] drop-shadow-md">
+        <div class="bg-[#F7D3C2] w-full lg:w-1/3 h-max lg:-mt-11 rounded-[30px] drop-shadow-md">
             <div class="flex flex-row px-5 py-5 align-middle border-b-2">
                 <h6 class="ml-5 text-xl font-bold text-blueGray-700">Edit Profile</h6>
             </div>
