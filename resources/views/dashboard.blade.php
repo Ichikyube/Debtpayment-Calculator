@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <script src="{{asset('js/auth/auth.js')}}"></script>
     <div class="relative h-[100vh] w-full" x-data="{ loading: true, tab: localStorage.getItem('tab') }" x-cloak x-init="loading = false">
     <div class="relative h-[100vh] w-full">
         <!-- Sidebar -->
@@ -23,9 +22,9 @@
                 </li>
             </ul>
 
-            <div class="absolute bg-white shadow bottom-5 -left-3 lg:left-28 top-12 lg:top-0 pt-0
+            <div class="absolute overflow-y-scroll bg-white shadow bottom-5 -left-3 lg:left-28 top-12 lg:top-0 pt-0
                     h-fit lg:h-[90%] w-screen lg:w-[97%] transform rounded-none lg:rounded-xl px-0 lg:p-10 py-10">
-                <div x-show="tab == 'kalkulator'"  x-cloak
+                <div x-show="tab == 'kalkulator'"  x-data="$store.create" x-cloak
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 scale-90"
                 x-transition:enter-end="opacity-100 scale-100"
