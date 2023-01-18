@@ -1,8 +1,7 @@
 document.addEventListener("alpine:init", () => {
     Alpine.store("create", () => ({
-        
         posts: 0,
-        profile:null,
+        profile: null,
         calculated: false,
         dateNormal: "",
         dateSnowball: "",
@@ -218,19 +217,19 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-            .then((reponse) => reponse.json())
-            .then((data) => {
-                if (data.status == true) {
-                    console.log(data);
-                    window.location.replace(
-                        "http://127.0.0.1:8001/dashboard"
-                    );
-                }
-                if (data.status == false) {
-                    this.validation = data.error;
-                }
-                this.messages = data.message;
-            });
+                .then((reponse) => reponse.json())
+                .then((data) => {
+                    if (data.status == true) {
+                        console.log(data);
+                        window.location.replace(
+                            "http://127.0.0.1:8001/dashboard"
+                        );
+                    }
+                    if (data.status == false) {
+                        this.validation = data.error;
+                    }
+                    this.messages = data.message;
+                });
         },
         async listData() {
             this.calculated = true;
@@ -241,52 +240,51 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-            .then((reponse) => reponse.json())
-            .then((data) => {
-                if (data.success == true) {
-                    console.log(data);
-                    this.list = data.data;
-                }
-                if (data.status == false) {
-                    this.validation = data.error;
-                }
-                this.messages = data.message;
-            });
+                .then((reponse) => reponse.json())
+                .then((data) => {
+                    if (data.success == true) {
+                        console.log(data);
+                        this.list = data.data;
+                    }
+                    if (data.status == false) {
+                        this.validation = data.error;
+                    }
+                    this.messages = data.message;
+                });
         },
         async deleted(id) {
             // console.log(id);
-            fetch("http://127.0.0.1:8000/api/debt/delete/"+id, {
+            fetch("http://127.0.0.1:8000/api/debt/delete/" + id, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-            .then((reponse) => reponse.json())
-            .then((data) => {
-                if (data.status == true) {
-                    window.location.reload();
-                }
-                if (data.status == false) {
-                    this.validation = data.error;
-                }
-                this.messages = data.message;
-            });
+                .then((reponse) => reponse.json())
+                .then((data) => {
+                    if (data.status == true) {
+                        window.location.reload();
+                    }
+                    if (data.status == false) {
+                        this.validation = data.error;
+                    }
+                    this.messages = data.message;
+                });
         },
-        async getProfile(){
-            console.log('detail profile');
-            await fetch("http://127.0.0.1:8000/api/me",{
-                method:"GET",
-                headers:{
+        async getProfile() {
+            console.log("detail profile");
+            await fetch("http://127.0.0.1:8000/api/me", {
+                method: "GET",
+                headers: {
                     "Content-type": "application/json; charset=UTF-8",
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
-                }
+                },
             })
-                .then((response)=> response.json())
-                .then((data)=>{
-                    console.log(data.data);
-                    this.profile = data.data
-                })
-        }
+                .then((response) => response.json())
+                .then((data) => {
+                    this.profile = data.data;
+                });
+        },
     }));
 });

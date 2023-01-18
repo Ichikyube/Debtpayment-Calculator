@@ -103,8 +103,9 @@ document.addEventListener("alpine:init", () => {
                 .then((data) => {
                     console.log(data);
                     localStorage.removeItem("token");
+                    localStorage.removeItem("tab");
                     window.location.replace("http://127.0.0.1:8001/login");
                 });
         },
-    }));    
+    }));
 });

@@ -1,15 +1,11 @@
 document.addEventListener("alpine:init", () => {
     Alpine.store("userProfile", () => ({
         user: "",
-        nama: "",
-        gender: "",
-        tempat_lahir: "",
-        tgl_lahir: "",
-        alamat: "",
         validation: [],
         message: "",
+        showForm: false,
         async userData() {
-            await fetch("http://127.0.0.1:8000/api/user-profile", {
+            await fetch("http://127.0.0.1:8000/api/user", {
                 method: "GET",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8",
@@ -23,14 +19,14 @@ document.addEventListener("alpine:init", () => {
         },
         async updateProfile() {
             const formData = {
-                name: this.nama,
-                gender: this.gender,
-                tempat_lahir: this.tempat_lahir,
-                tgl_lahir: this.tgl_lahir,
-                alamat: this.alamat,
+                name: this.user.name,
+                gender: this.user.gender,
+                tempat_lahir: this.user.tempat_lahir,
+                tgl_lahir: this.user.tgl_lahir,
+                alamat: this.user.alamat,
             };
             await fetch("http://127.0.0.1:8000/api/user-profile", {
-                method: "GET",
+                method: "POST",
                 body: JSON.stringify(formData),
                 headers: {
                     "Content-type": "application/json; charset=UTF-8",
@@ -39,6 +35,7 @@ document.addEventListener("alpine:init", () => {
             })
                 .then((response) => response.json())
                 .then((data) => {
+                    console.log(data);
                     if (data.success == false) {
                         this.validation = data.error;
                     }
