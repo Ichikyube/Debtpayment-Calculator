@@ -1,4 +1,4 @@
-<div class="container mx-auto">
+<div class="container mx-auto" x-data="{edit:false}">
     <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 lg:mb-4">profile</h1>
     <div class="flex flex-col w-full lg:flex-row mt-14">
         <div class="px-8 lg:flex-row lg:w-1/2">
@@ -21,7 +21,16 @@
                     </div>
             </div>
         </div>
-        <div class="bg-[#F7D3C2] overflow-y-auto w-full lg:w-1/3 h-max lg:-mt-11 rounded-[30px] drop-shadow-md">
+        <div x-show="!edit" x-on:click="edit=true" class="flex flex-row items-center justify-center px-4 py-5 border-b-2">
+            <button type="button"  class="text-sm py-4 px-7 ml-4 bg-white text-red-500
+           font-bold rounded-[30px] drop-shadow-lg cursor-pointer select-none
+            active:translate-y-1 active:[box-shadow:0_0px_0_0_#f2f2f2,0_0px_0_0_#b7b7b7]
+            active:border-b-[0px] transition-all duration-150
+            [box-shadow:0_1px_0_0_#f2f2f2,0_3px_0_0_#b7b7b7]">
+            Edit
+            </button>
+        </div>
+        <div x-show="edit" class="bg-[#F7D3C2] overflow-y-auto w-full lg:w-1/3 h-max lg:-mt-11 rounded-[30px] drop-shadow-md">
             <div class="flex flex-row px-5 py-5 align-middle border-b-2">
                 <h6 class="ml-5 text-xl font-bold text-blueGray-700">Edit Profile</h6>
             </div>
@@ -99,6 +108,22 @@
                         focus:border-none focus:outline-none focus-visible:ring-0
                         mt-1 text-sm text-gray-400 sm:col-span-2 sm:mt-0" placeholder="Fulanah">
                     </div>
+                </div>
+                <div  class="flex flex-row items-center justify-center px-4 py-5 border-b-2">
+                    <button type="button" x-on:click="edit = false" class="text-sm py-4 px-7 ml-4 bg-white text-red-500
+                   font-bold rounded-[30px] drop-shadow-lg cursor-pointer select-none
+                    active:translate-y-1 active:[box-shadow:0_0px_0_0_#f2f2f2,0_0px_0_0_#b7b7b7]
+                    active:border-b-[0px] transition-all duration-150
+                    [box-shadow:0_1px_0_0_#f2f2f2,0_3px_0_0_#b7b7b7]">
+                    Simpan
+                    </button>
+                    <button type="button" x-on:click="edit = false" class="text-sm py-4 px-7 ml-4 bg-white text-red-500
+                    font-bold rounded-[30px] drop-shadow-lg cursor-pointer select-none
+                     active:translate-y-1 active:[box-shadow:0_0px_0_0_#f2f2f2,0_0px_0_0_#b7b7b7]
+                     active:border-b-[0px] transition-all duration-150
+                     [box-shadow:0_1px_0_0_#f2f2f2,0_3px_0_0_#b7b7b7]">
+                     Batal
+                     </button>
                 </div>
                 <br><br>
             </div>

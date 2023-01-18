@@ -12,11 +12,11 @@
         <div class="tracking-[4.03px] sm:mx-auto text-dark w-full">
 
             <a href="{{ route('home') }}">
-                <div class="flex justify-center mx-auto mt-20 mb-4"><x-logo/></div>
-                <h2 class="mt-[22px] text-[24px] md:text-[53px] leading-[70.12px] text-center text-white block">
+                <div class="flex justify-center w-20 mx-auto mt-20 mb-4"><x-logo/></div>
+                <h2 class="mt-[22px] text-[24px] md:text-[53px] leading-relaxed text-center text-white block">
                     Login
                 </h2>
-                <h2 class="mt-[22px] text-[53px] leading-[70.12px] text-white text-center hidden md:block">
+                <h2 class="hidden text-5xl leading-relaxed text-center text-white md:block">
                     Debt Repayment
                 </h2>
             </a>
