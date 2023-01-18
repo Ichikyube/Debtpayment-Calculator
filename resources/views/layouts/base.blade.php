@@ -31,7 +31,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
 
-    <body class="h-full font-poppins">
+    <body class="h-full max-h-full font-poppins">
         @yield('body')
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </body>

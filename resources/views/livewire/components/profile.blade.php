@@ -1,6 +1,6 @@
 <div class="container mx-auto">
     <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 lg:mb-4">profile</h1>
-    <div class="flex flex-col w-full mt-14">
+    <div class="flex flex-col w-full lg:flex-row mt-14">
         <div class="px-8 lg:flex-row lg:w-1/2">
             <div class="flex flex-col justify-center -mt-8">
                 <img src="{{asset('img/avatar.svg')}}" class="self-center w-40 h-40 p-1 -mt-3 border-2 border-white border-solid rounded-full ring-2 ring-gray-300 dark:ring-gray-500" alt="Bordered avatar">
@@ -21,7 +21,7 @@
                     </div>
             </div>
         </div>
-        <div class="bg-[#F7D3C2] w-full lg:w-1/3 h-max lg:-mt-11 rounded-[30px] drop-shadow-md">
+        <div class="bg-[#F7D3C2] overflow-y-auto w-full lg:w-1/3 h-max lg:-mt-11 rounded-[30px] drop-shadow-md">
             <div class="flex flex-row px-5 py-5 align-middle border-b-2">
                 <h6 class="ml-5 text-xl font-bold text-blueGray-700">Edit Profile</h6>
             </div>
@@ -104,5 +104,4 @@
             </div>
         </div>
     </div>
-
 </div>

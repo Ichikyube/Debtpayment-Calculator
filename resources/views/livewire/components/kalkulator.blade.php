@@ -9,31 +9,29 @@
             <!-- Form Kalkulator -->
             <div>
                 <div class="bg-[#F7D3C2] lg:w-[600px] w-11/12 rounded-none lg:rounded-[30px] drop-shadow-md">
-                    <div class="flex flex-row align-middle border-b-2 px-5 py-5">
-                        <h6 class="text-xl font-bold text-blueGray-700 ml-5">Hutang <span x-text="post+1"></span></h6>
+                    <div class="flex flex-row px-5 py-5 align-middle border-b-2">
+                        <h6 class="ml-5 text-xl font-bold text-blueGray-700">Hutang <span x-text="post+1"></span></h6>
                     </div>
-
                     <div class="flex flex-row items-center px-3 py-2 border-b-2">
                         <div class="flex justify-center w-12 mr-2">
                             <img src="{{asset('img/1.svg')}}" alt="" class="h-5">
                         </div>
                         <div class="flex items-center justify-between w-full"><p class="text-base text-gray-400">Nama Hutang</p>
-                            <input class="namaHutang form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition
-                            duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="text" placeholder="KPR">
                             <p x-text="validation.debtTitle"></p>
+                            <input class="namaHutang form-input appearance-none block px-3 border-0 text-right pr-6 outline-none placeholder:!bg-transparent bg-transparent transition
+                            duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="text" placeholder="KPR">
                         </div>
                     </div>
-
                     <div class="flex flex-row items-center px-3 py-2 border-b-2">
                         <div class="flex justify-center w-12 mr-2">
                             <img src="{{asset('img/moneys.svg')}}" alt="" class="h-5">
                         </div>
                         <div class="flex items-center justify-between w-full">
                             <p class="text-base text-gray-400">Jumlah Hutang</p>
+                            <p x-text="validation.debtAmount"></p>
                             <input class="jmlHutang form-input appearance-none block px-3 border-0 text-right outline-none
                             placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5
                             focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" max="" step="100" placeholder="500000">
-                            <p x-text="validation.debtAmount"></p>
                         </div>
                     </div>
 
@@ -43,10 +41,10 @@
                         </div>
                         <div class="flex items-center justify-between w-full">
                             <p class="text-base text-gray-400">Suku Bunga Hutang</p>
+                            <p x-text="validation.debtInterest"></p>
                             <input class="bungaHutang form-input appearance-none block px-3 border-0 text-right outline-none
                             placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
                             sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" max="100" placeholder="15%">
-                            <p x-text="validation.debtInterest"></p>
                         </div>
                     </div>
 
@@ -56,23 +54,23 @@
                         </div>
                         <div class="flex items-center justify-between w-full">
                             <p class="text-base text-gray-400">Pembayaran minimum perbulan</p>
+                            <p x-text="validation.monthlyInstallments"></p>
                             <input class="minBayar form-input appearance-none block px-3 border-0 text-right outline-none
                             placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
                             sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="10" step="100" placeholder="500">
-                            <p x-text="validation.monthlyInstallments"></p>
                         </div>
                     </div>
 
-                    <div class="flex items-center justify-between px-3 py-3 text-center">
+                    <div class="flex items-center justify-between px-3 py-2 text-center">
                         <div class="flex justify-center w-12 mr-2">
                             <img src="{{asset('img/1.svg')}}" alt="" class="h-5">
                         </div>
                         <div class="flex items-center justify-between w-full">
                             <p class="text-base text-gray-400">Pendapatan perbulan</p>
+                            <p x-text="validation.mountlySalary"></p>
                             <input x-model="mountlySalary" class="form-input appearance-none block px-3 border-0 text-right outline-none
                             placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
                             sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder="5000">
-                            <p x-text="validation.mountlySalary"></p>
                         </div>
                     </div>
 
@@ -82,10 +80,11 @@
                         </div>
                         <div class="flex items-center justify-between w-full">
                             <p class="text-base text-gray-400">Pembayaran Extra Perbulan</p>
+                            <p x-text="validation.extraSalary"></p>
                             <input x-model="extraSalary" class="form-input appearance-none block px-3 border-0 text-right outline-none
                             placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
                             sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder="1000">
-                            <p x-text="validation.extraSalary"></p>
+
                         </div>
                     </div>
                 </div>
@@ -112,7 +111,7 @@
         [box-shadow:0_1px_0_0_#f2f2f2,0_3px_0_0_#b7b7b7] bg-myblue h-14 lg:w-44 transition-all duration-150">Calculate</button>
 
     </div>
-    
+
     <script>
         const scrollContainer = document.getElementById("scrollhorizontal");
 

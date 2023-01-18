@@ -1,6 +1,13 @@
 <div id="hilanginscroll" x-init="listData()">
     <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 lg:mb-4">List Hitungan</h1>
     <br>
+    <template x-if="list.length == 0">
+        <div class="flex flex-col justify-center w-full mx-auto bg-white">
+            <h1 class="p-5 text-center whitespace-normal">Mohon maaf🙏🙏 belum ada perhitungan.</h1><br>
+            <h2 class="px-5 pb-3 text-center whitespace-normal">Silahkan dihitung terlebih dahulu.</h2>
+        </div>
+
+    </template>
     <!-- Looping Tambahan Form Hutang -->
     <template x-for="data in list">
     <div x-data="{ open: false, delete1: false }" class="bg-[#F7D3C2] py-[24px] px-[45px] rounded-[30px] mt-5">
@@ -58,7 +65,7 @@
                         const ctx = document.getElementById('myChart'+id);
                         // var data = document.getElementsByClassName('pendapatan');
                         // var dataPendapatan = data.getAttribute('data-pendapatan');
-    
+
                         console.log(id);
                         console.log(pendapatan);
                         // console.log(data.innerText);
@@ -84,8 +91,8 @@
         </div>
 
         <!-- Bottom Content -->
-        <div class="flex flex-wrap justify-between">
-            <div class="flex gap-16 mt-5 lg:w-7/12">
+        <div class="flex flex-wrap justify-between break-words">
+            <div class="flex gap-16 pb-2 mt-5 mb-4 border-b lg:w-7/12">
                 <div>
                     <p>Pendapatan</p>
                     <p class="text-xl font-bold pendapatan" x-text="'$'+data.mountly_salary">
@@ -97,7 +104,7 @@
                     </p>
                 </div>
                 <div>
-                    <p>Pembayaran</p>
+                    <p class="break-all">Pembayaran</p>
                     <p class="text-xl font-bold" x-text="'$'+data.total_min_payment">
                         $250
                     </p>
@@ -105,7 +112,7 @@
             </div>
 
             <div class="flex justify-between w-full lg:w-5/12">
-                <div class="flex items-end gap-12">
+                <div class="flex items-end gap-2 lg:gap-12">
                     <div>
                         <p>Snowball</p>
                         <p class="text-xl font-bold" x-text="data.snowball_calculator"></p>
