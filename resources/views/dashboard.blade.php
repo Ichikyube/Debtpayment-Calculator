@@ -32,27 +32,34 @@
 
                 <div class="absolute hilanginscroll overflow-y-scroll bg-transparent lg:bg-white shadow bottom-5 -left-3 lg:left-28 top-12 lg:top-0 pt-0
                         h-fit lg:h-[90%] w-screen lg:w-[97%] transform rounded-none lg:rounded-xl px-0 lg:p-10 py-10">
-                    <div x-show="tab == 'kalkulator'"  x-data="$store.create" x-cloak
+                    <template x-if="tab == 'kalkulator'"  x-data="$store.create" x-cloak
                     x-transition:enter="transition ease-out duration-300"
                     x-transition:enter-start="opacity-0 scale-90"
                     x-transition:enter-end="opacity-100 scale-100"
                     x-transition:leave="transition ease-in duration-300"
                     x-transition:leave-start="opacity-100 scale-100"
-                    x-transition:leave-end="opacity-0 scale-90">@livewire('components.kalkulator')</div>
-                    <div x-show="tab == 'listHitungan'" x-cloak
+                    x-transition:leave-end="opacity-0 scale-90">@livewire('components.kalkulator')</template>
+                    <template x-if="tab == 'edit-hitungan'" x-cloak
                     x-transition:enter="transition ease-out duration-300"
                     x-transition:enter-start="opacity-0 scale-90"
                     x-transition:enter-end="opacity-100 scale-100"
                     x-transition:leave="transition ease-in duration-300"
                     x-transition:leave-start="opacity-100 scale-100"
-                    x-transition:leave-end="opacity-0 scale-90">@livewire('components.list-hitungan')</div>
-                    <div x-show="tab == 'profile'" x-cloak
+                    x-transition:leave-end="opacity-0 scale-90">@livewire('components.edit-hitungan')</template>
+                    <template x-if="tab == 'listHitungan'" x-cloak
                     x-transition:enter="transition ease-out duration-300"
                     x-transition:enter-start="opacity-0 scale-90"
                     x-transition:enter-end="opacity-100 scale-100"
                     x-transition:leave="transition ease-in duration-300"
                     x-transition:leave-start="opacity-100 scale-100"
-                    x-transition:leave-end="opacity-0 scale-90">@livewire('components.profile')</div>
+                    x-transition:leave-end="opacity-0 scale-90">@livewire('components.list-hitungan')</template>
+                    <template x-if="tab == 'profile'" x-cloak
+                    x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="opacity-0 scale-90"
+                    x-transition:enter-end="opacity-100 scale-100"
+                    x-transition:leave="transition ease-in duration-300"
+                    x-transition:leave-start="opacity-100 scale-100"
+                    x-transition:leave-end="opacity-0 scale-90">@livewire('components.profile')</template>
                 </div>
 
         </div>

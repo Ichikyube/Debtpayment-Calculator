@@ -65,8 +65,8 @@
                         // var data = document.getElementsByClassName('pendapatan');
                         // var dataPendapatan = data.getAttribute('data-pendapatan');
 
-                        console.log(id);
-                        console.log(pendapatan);
+                        // console.log(id);
+                        // console.log(pendapatan);
                         // console.log(data.innerText);
                         new Chart(ctx, {
                             type: 'doughnut',
@@ -121,8 +121,9 @@
                         <p class="text-xl font-bold" x-text="data.normal_calculator"></p>
                     </div>
                 </div>
-                <div class="flex items-end gap-4">
-                    <a href="" class="text-2xl"><i class="fa-solid fa-pen-to-square"></i></a>
+                <div x-data="$store.getData" class="flex items-end gap-4">
+                    <!-- Buton Edit -->
+                    <button x-on:click.prevent="ubah(data.id), tab = 'edit-hitungan', localStorage.setItem('tab', 'edit-hitungan')" class="text-2xl"><i class="fa-solid fa-pen-to-square"></i></button>
 
                     <!-- Button Delete -->
                     <div x-data="{ modelOpen: false }">

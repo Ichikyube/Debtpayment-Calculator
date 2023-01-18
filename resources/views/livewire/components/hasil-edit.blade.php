@@ -48,8 +48,8 @@
                 </div>
             </div>
         </div>
-        <div class="flex justify-end" x-text="id">
-            <button x-on:click="tambahData" class="self-end px-5 text-white bg-myblue h-14 w-44 rounded-xl"><span class="inline-block text-center align-top">Simpan</d></button>
+        <div class="flex justify-end">
+            <button x-on:click="editData(id)" class="self-end px-5 text-white bg-myblue h-14 w-44 rounded-xl"><span class="inline-block text-center align-top">Simpan</d></button>
         </div>
     </div>
 </div>
