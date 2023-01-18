@@ -1,14 +1,14 @@
 document.addEventListener("alpine:init", () => {
     Alpine.store("create", () => ({
+        
         posts: 0,
         calculated: false,
-        mountlySalary: [],
         dateNormal: "",
         dateSnowball: "",
         html: `
         <div class="bg-[#F7D3C2] w-[600px] rounded-[30px] drop-shadow-md">
             <div class="flex flex-row align-middle border-b-2 px-5 py-5">
-                <h6 class="text-xl font-bold text-blueGray-700 ml-5">Hutang</h6>
+                <h6 class="text-xl font-bold text-blueGray-700 ml-5">Hutang <span x-text="post+1"></span></h6>
             </div>
 
             <div class="flex flex-row items-center border-b-2 py-2 px-3">
@@ -57,13 +57,15 @@ document.addEventListener("alpine:init", () => {
             </div>
 
             <div class="flex justify-between text-center items-center py-3">
-                <button @click="posts--" class="text-sm py-4 px-7 ml-4 font-bold text-red-500">
+                <button @click="posts--" class="text-sm py-2 px-7 ml-4 font-bold text-red-500">
                     Cancel
                 </button>
             </div>
         </div>`,
+        mountlySalary: null,
         extraSalary: null,
         hasil: [],
+        list: [],
         validation: [],
         async hitung() {
             var debtTitle = [];
@@ -74,7 +76,6 @@ document.addEventListener("alpine:init", () => {
             var jmlHutang = document.getElementsByClassName("jmlHutang");
             var bungaHutang = document.getElementsByClassName("bungaHutang");
             var minBayar = document.getElementsByClassName("minBayar");
-            var pendapatan = this.mountlySalary;
             for (let i = 0; i < namaHutang.length; i++) {
                 console.log(namaHutang[i].value);
                 debtTitle.push(namaHutang[i].value);
@@ -89,6 +90,7 @@ document.addEventListener("alpine:init", () => {
                 debtInterest: debtInterest,
                 monthlyInstallments: monthlyInstallments,
                 mountlySalary: this.mountlySalary,
+                extraSalary: this.extraSalary,
             };
             await fetch("http://127.0.0.1:8000/api/hitung", {
                 method: "POST",
@@ -122,7 +124,6 @@ document.addEventListener("alpine:init", () => {
                         // Chart
                         const ctx2 = document.getElementById("hasilChart");
 
-                        // console.log(pendapatan);
                         new Chart(ctx2, {
                             type: "doughnut",
                             data: {
@@ -175,7 +176,7 @@ document.addEventListener("alpine:init", () => {
                             },
                         });
 
-                        // this.calculated = false;
+                        this.calculated = true;
                     }
                     if (data.success == false) {
                         this.validation = data.error;
@@ -216,19 +217,60 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-                .then((reponse) => reponse.json())
-                .then((data) => {
-                    if (data.status == true) {
-                        console.log(data);
-                        window.location.replace(
-                            "http://127.0.0.1:8001/dashboard"
-                        );
-                    }
-                    if (data.status == false) {
-                        this.validation = data.error;
-                    }
-                    this.messages = data.message;
-                });
+            .then((reponse) => reponse.json())
+            .then((data) => {
+                if (data.status == true) {
+                    console.log(data);
+                    window.location.replace(
+                        "http://127.0.0.1:8001/dashboard"
+                    );
+                }
+                if (data.status == false) {
+                    this.validation = data.error;
+                }
+                this.messages = data.message;
+            });
+        },
+        async listData() {
+            this.calculated = true;
+            fetch("http://127.0.0.1:8000/api/debt-payment/list", {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    "Content-type": "application/json; charset=UTF-8",
+                },
+            })
+            .then((reponse) => reponse.json())
+            .then((data) => {
+                if (data.success == true) {
+                    console.log(data);
+                    this.list = data.data;
+                }
+                if (data.status == false) {
+                    this.validation = data.error;
+                }
+                this.messages = data.message;
+            });
+        },
+        async deleted(id) {
+            // console.log(id);
+            fetch("http://127.0.0.1:8000/api/debt/delete/"+id, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    "Content-type": "application/json; charset=UTF-8",
+                },
+            })
+            .then((reponse) => reponse.json())
+            .then((data) => {
+                if (data.status == true) {
+                    window.location.reload();
+                }
+                if (data.status == false) {
+                    this.validation = data.error;
+                }
+                this.messages = data.message;
+            });
         },
     }));
 });

@@ -6,12 +6,11 @@
             <template x-for="data in hasil.hutang">
                 <div class="flex gap-2 mt-7">
                     <div class="flex items-center px-3 text-white bg-blue-500 rounded-lg" x-text="data.debtInterest + '%'">
-                        5%
                     </div>
                     <div class="w-full">
                         <div class="flex justify-between">
                             <p class="mb-2" x-text="data.debtTitle"></p>
-                            <p x-text="'$' + $store.data.debtAmount"></p>
+                            <p x-text="'$' + data.debtAmount"></p>
                         </div>
                         <div class="w-full bg-gray-100 rounded-full h-2.5 dark:bg-gray-700">
                             <div class="bg-lime-400 h-2.5 rounded-full" style="width: 5%"></div>
@@ -21,9 +20,9 @@
             </template>
         </div>
         <!-- Chart Hutang -->
-        <div x-data="{pendapatan: $hasil.mountlySalary}" class="absolute flex flex-col items-center w-1/2 -z-10 h-80 right-5">
+        <div class="absolute flex flex-col items-center w-1/2 -z-10 h-80 right-5">
             <canvas  width="400" height="400" id="hasilChart"></canvas>
-            <div>Total Hutang <span x-text="$hasil.totalDebt"></span></div>
+            <div>Total Hutang <span x-text="hasil.hasil.totalDebt"></span></div>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
         </div>
