@@ -1,5 +1,6 @@
 document.addEventListener("alpine:init", () => {
     Alpine.store("userProfile", () => ({
+        profile: "",
         user: "",
         validation: [],
         message: "",

@@ -241,17 +241,17 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-            .then((reponse) => reponse.json())
-            .then((data) => {
-                if (data.success == true) {
-                    this.list = data.data;
-                    console.log(this.list);
-                }
-                if (data.status == false) {
-                    this.validation = data.error;
-                }
-                this.messages = data.message;
-            });
+                .then((reponse) => reponse.json())
+                .then((data) => {
+                    if (data.success == true) {
+                        this.list = data.data;
+                        console.log(this.list);
+                    }
+                    if (data.status == false) {
+                        this.validation = data.error;
+                    }
+                    this.messages = data.message;
+                });
         },
         async deleted(id) {
             // console.log(id);
@@ -273,23 +273,10 @@ document.addEventListener("alpine:init", () => {
                     this.messages = data.message;
                 });
         },
-        async getProfile(){
-            await fetch("http://127.0.0.1:8000/api/me",{
-                method:"GET",
-                headers:{
-                    "Content-type": "application/json; charset=UTF-8",
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
-            })
-                .then((response) => response.json())
-                .then((data) => {
-                    this.profile = data.data;
-                });
-        },
     }));
 
     Alpine.store("getData", () => ({
-        calculated : true,
+        calculated: true,
         // ambilData: [],
         html: `
         <div class="bg-[#F7D3C2] w-[600px] rounded-[30px] drop-shadow-md">
@@ -349,25 +336,25 @@ document.addEventListener("alpine:init", () => {
             </div>
         </div>`,
         async ubah(id) {
-            fetch("http://127.0.0.1:8000/api/debt/"+id, {
+            fetch("http://127.0.0.1:8000/api/debt/" + id, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-            .then((reponse) => reponse.json())
-            .then((data) => {
-                if (data.status == true) {
-                    this.ambilData = data.data;
-                    console.log(this.ambilData);
-                    this.posts = data.data.detail.length
-                }
-                if (data.status == false) {
-                    this.validation = data.error;
-                }
-                this.messages = data.message;
-            });
+                .then((reponse) => reponse.json())
+                .then((data) => {
+                    if (data.status == true) {
+                        this.ambilData = data.data;
+                        console.log(this.ambilData);
+                        this.posts = data.data.detail.length;
+                    }
+                    if (data.status == false) {
+                        this.validation = data.error;
+                    }
+                    this.messages = data.message;
+                });
         },
         async editData(id) {
             var form = {
@@ -393,7 +380,7 @@ document.addEventListener("alpine:init", () => {
             }
 
             this.calculated = true;
-            fetch("http://127.0.0.1:8000/api/debt/update/"+id, {
+            fetch("http://127.0.0.1:8000/api/debt/update/" + id, {
                 method: "POST",
                 body: JSON.stringify(form),
                 headers: {
@@ -401,20 +388,20 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-            .then((reponse) => reponse.json())
-            .then((data) => {
-                if (data.status == true) {
-                    console.log(data);
-                    localStorage.setItem('tab', 'listHitungan')
-                    window.location.replace(
-                        "http://127.0.0.1:8001/dashboard"
-                    );
-                }
-                if (data.status == false) {
-                    this.validation = data.error;
-                }
-                this.messages = data.message;
-            });
+                .then((reponse) => reponse.json())
+                .then((data) => {
+                    if (data.status == true) {
+                        console.log(data);
+                        localStorage.setItem("tab", "listHitungan");
+                        window.location.replace(
+                            "http://127.0.0.1:8001/dashboard"
+                        );
+                    }
+                    if (data.status == false) {
+                        this.validation = data.error;
+                    }
+                    this.messages = data.message;
+                });
         },
         async hitungedit(id) {
             var debtTitle = [];
@@ -538,7 +525,7 @@ document.addEventListener("alpine:init", () => {
     }));
 
     Alpine.store("getData", () => ({
-        calculated : true,
+        calculated: true,
         // ambilData: [],
         html: `
         <div class="bg-[#F7D3C2] w-[600px] rounded-[30px] drop-shadow-md">
@@ -598,25 +585,25 @@ document.addEventListener("alpine:init", () => {
             </div>
         </div>`,
         async ubah(id) {
-            fetch("http://127.0.0.1:8000/api/debt/"+id, {
+            fetch("http://127.0.0.1:8000/api/debt/" + id, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-            .then((reponse) => reponse.json())
-            .then((data) => {
-                if (data.status == true) {
-                    this.ambilData = data.data;
-                    console.log(this.ambilData);
-                    this.posts = data.data.detail.length
-                }
-                if (data.status == false) {
-                    this.validation = data.error;
-                }
-                this.messages = data.message;
-            });
+                .then((reponse) => reponse.json())
+                .then((data) => {
+                    if (data.status == true) {
+                        this.ambilData = data.data;
+                        console.log(this.ambilData);
+                        this.posts = data.data.detail.length;
+                    }
+                    if (data.status == false) {
+                        this.validation = data.error;
+                    }
+                    this.messages = data.message;
+                });
         },
         async editData(id) {
             var form = {
@@ -642,7 +629,7 @@ document.addEventListener("alpine:init", () => {
             }
 
             this.calculated = true;
-            fetch("http://127.0.0.1:8000/api/debt/update/"+id, {
+            fetch("http://127.0.0.1:8000/api/debt/update/" + id, {
                 method: "POST",
                 body: JSON.stringify(form),
                 headers: {
@@ -650,20 +637,20 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-            .then((reponse) => reponse.json())
-            .then((data) => {
-                if (data.status == true) {
-                    console.log(data);
-                    localStorage.setItem('tab', 'listHitungan')
-                    window.location.replace(
-                        "http://127.0.0.1:8001/dashboard"
-                    );
-                }
-                if (data.status == false) {
-                    this.validation = data.error;
-                }
-                this.messages = data.message;
-            });
+                .then((reponse) => reponse.json())
+                .then((data) => {
+                    if (data.status == true) {
+                        console.log(data);
+                        localStorage.setItem("tab", "listHitungan");
+                        window.location.replace(
+                            "http://127.0.0.1:8001/dashboard"
+                        );
+                    }
+                    if (data.status == false) {
+                        this.validation = data.error;
+                    }
+                    this.messages = data.message;
+                });
         },
         async hitungedit(id) {
             var debtTitle = [];

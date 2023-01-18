@@ -26,6 +26,7 @@
         <script src="{{ asset('js/debt/debts.js') }}"></script>
         <script src="{{asset('js/auth/auth.js')}}"></script>
         <script src="{{ asset('js/flowbite.min.js') }}"></script>
+        <script src="{{asset('js/users/profile.js')}}"></script>
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">

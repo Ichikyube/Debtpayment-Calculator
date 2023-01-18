@@ -83,6 +83,7 @@ document.addEventListener("alpine:init", () => {
                         window.location.replace(
                             "http://127.0.0.1:8001/dashboard"
                         );
+                        localStorage.setItem("tab", "kalkulator");
                         // this.getData();
                     }
                 });
