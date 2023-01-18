@@ -1,22 +1,21 @@
-<div class="container mx-auto" x-data="{edit:false}">
+<div class="container mx-auto" x-data="{edit:false}" x-init="getProfile()">
+
     <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 lg:mb-4">profile</h1>
     <div class="flex flex-col w-full lg:flex-row mt-14">
         <div class="px-8 lg:flex-row lg:w-1/2">
             <div class="flex flex-col justify-center -mt-8">
                 <img src="{{asset('img/avatar.svg')}}" class="self-center w-40 h-40 p-1 -mt-3 border-2 border-white border-solid rounded-full ring-2 ring-gray-300 dark:ring-gray-500" alt="Bordered avatar">
                 <div class="mt-12 text-center">
-                    <h3 class="mb-2 text-4xl font-semibold leading-normal text-blueGray-700">
+                    <h3 class="mb-2 text-4xl font-semibold leading-normal text-blueGray-700"x-text="profile.name">
                         Fulanah
                     </h3>
-                    <div class="mt-0 mb-2 text-sm font-bold leading-normal uppercase text-blueGray-400">
-                        fulan@fulanah.com
+                    <div class="mt-0 mb-2 text-sm font-bold leading-normal uppercase text-blueGray-400" x-text="profile.email">                       
                     </div>
                     <div class="px-4 mb-2 text-justify text-blueGray-600">
-                        <p>Jenis Kelamin  : </p><p>Laki-Laki</p>
-                        <p>Tempat, Tgl Lahir  : </p><p>Bandung, 02-Okt-2002</p>
-                        <p>Alamat                    : </p><p>Jl Cisitu Indah 2 no 16
-                            Kecamatan Coblong,
-                            Bandung, Jawa Barat</p>
+                        <p>Jenis Kelamin  : <span x-text="profile.gender">Laki-Laki</span> </p>
+                        
+                        <p>Tempat, Tgl Lahir  : <span x-text="profile.tempat_lahir + ','"></span> <span x-text="profile.tgl_lahir"></span> </p>
+                        <p>Alamat                    : <span x-text="profile.alamat"></span></p>
                     </div>
                     </div>
             </div>

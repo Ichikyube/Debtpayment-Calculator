@@ -6,7 +6,6 @@
             <h1 class="p-5 text-center whitespace-normal">Mohon maaf🙏🙏 belum ada perhitungan.</h1><br>
             <h2 class="px-5 pb-3 text-center whitespace-normal">Silahkan dihitung terlebih dahulu.</h2>
         </div>
-
     </template>
     <!-- Looping Tambahan Form Hutang -->
     <template x-for="data in list">

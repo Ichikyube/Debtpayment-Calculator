@@ -2,6 +2,7 @@ document.addEventListener("alpine:init", () => {
     Alpine.store("create", () => ({
         
         posts: 0,
+        profile:null,
         calculated: false,
         dateNormal: "",
         dateSnowball: "",
@@ -272,5 +273,20 @@ document.addEventListener("alpine:init", () => {
                 this.messages = data.message;
             });
         },
+        async getProfile(){
+            console.log('detail profile');
+            await fetch("http://127.0.0.1:8000/api/me",{
+                method:"GET",
+                headers:{
+                    "Content-type": "application/json; charset=UTF-8",
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                }
+            })
+                .then((response)=> response.json())
+                .then((data)=>{
+                    console.log(data.data);
+                    this.profile = data.data
+                })
+        }
     }));
 });
