@@ -20,35 +20,46 @@
             </template>
         </div>
         <!-- Chart Hutang -->
-        <div class="absolute flex flex-col items-center w-1/2 -z-10 h-80 right-5">
+        <div class="flex flex-col items-center w-1/2 -z-10 h-80 right-5" x-init="charts(hasil.hasil.mountlySalary,hasil.hasil.totalMinPayment)">
+            <div class="flex justify-between w-full px-16">
+                <div>
+                    Pendapatan <br>
+                    <span x-text="hasil.hasil.mountlySalary"></span>
+                </div>
+                <div class="text-end">
+                    Total Min Bayar <br>
+                    <span x-text="hasil.hasil.totalMinPayment"></span>
+                </div>
+            </div>
             <canvas  width="400" height="400" id="hasilChart"></canvas>
-            <div>Total Hutang <span x-text="hasil.hasil.totalDebt"></span></div>
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+            <div>Total Hutang <span x-text="hasil.hasil.totalDebt"></span></div>
         </div>
     </div>
-    <div class="flex justify-between mt-[82px]">
-        <div class="">
+    <div class="flex justify-between">
+        <div>
             <div
-            class="p-8 text-lg font-medium tracking-wide text-center text-green-500 uppercase border-b border-gray-200">
+            class="p-8 pb-0 text-lg font-medium tracking-wide text-center text-green-500 uppercase border-gray-200">
             Estimasi Lunas</div>
             <div class="items-center justify-center block sm:flex md:block lg:flex">
-                <div class="mt-8 text-center sm:m-8 md:m-0 md:mt-8 lg:m-8">
+                <template x-if="hasil.hutang.length > 1">
+                <div class="mt-2 text-center sm:m-8 md:m-0 md:mt-4 md:mb-8 lg:m-5">
                     <div class="inline-flex items-center">
                         <span class="text-3xl font-medium" x-text="dateSnowball"></span>
                     </div>
                     <span class="block mt-2 text-sm text-gray-600">Metode Snowball</span>
                 </div>
-                <div class="mt-4 mb-8 text-center sm:m-8 md:m-0 md:mt-4 md:mb-8 lg:m-8">
+                </template>
+                <div class="mt-2 text-center sm:m-8 md:m-0 md:mt-4 md:mb-8 lg:m-5">
                     <div class="inline-flex items-center">
-                        <span class="text-3xl font-medium" 
-                        x-text="dateNormal"></span>
+                        <span class="text-3xl font-medium" x-text="dateNormal"></span>
                     </div>
                     <span class="block mt-2 text-sm text-gray-600">Metode biasa</span>
                 </div>
             </div>
         </div>
-        <div class="flex justify-end" x-text="id">
+        <div class="flex justify-end">
+            <button x-on:click="calculated = !calculated" class="self-end mr-7 mb-3 text-xl font-bold">Kembali</button>
             <button x-on:click="tambahData" class="self-end px-5 text-white bg-myblue h-14 w-44 rounded-xl"><span class="inline-block text-center align-top">Simpan</d></button>
         </div>
     </div>
