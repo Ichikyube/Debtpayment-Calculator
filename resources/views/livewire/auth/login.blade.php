@@ -33,10 +33,10 @@
 
                     <div class="mt-1 rounded-md">
                         <input x-model="email" type="email" name="email" id="email" required autofocus
-                        class="form-input text-white appearance-none block w-full px-3 py-2 border-0 border-b border-b-slate-400 border-b-solid outline-none placeholder:!bg-transparent bg-transparent
-                        transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0  placeholder="you@example.com" />
+                        class="form-input text-white appearance-none block w-full px-3 py-2 border-0 border-b border-b-2 border-b-white border-b-solid outline-none placeholder:!bg-transparent bg-transparent
+                        transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-black focus:outline-none focus-visible:ring-0  placeholder="you@example.com" />
                         <br/>
-                        <p x-text="validation.email"></p>
+                        <p class="" x-text="validation.email"></p>
                     </div>
                 </div>
 
@@ -46,25 +46,10 @@
                     </label>
 
                     <div class="mt-1 rounded-md shadow-sm">
-                        <input x-model="password" type="password" name="password" id="password" required class="appearance-none text-white form-input border-0 border-b border-b-slate-400
+                        <input x-model="password" type="password" name="password" id="password" required class="appearance-none text-white form-input border-0 border-b border-b-white
                         border-b-solid outline-none placeholder:!bg-transparent bg-transparent block w-full px-3 py-2 transition duration-150 ease-in-out sm:text-sm
-                        sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" />
+                        sm:leading-5 focus:border-black focus:outline-none focus-visible:ring-0" />
                         <p x-text="validation.password"></p>
-                    </div>
-                </div>
-
-                <div class="flex items-center justify-between mt-6">
-                    <div class="flex items-center">
-                        <input wire:model.lazy="remember" id="remember" type="checkbox" class="w-4 h-4 text-indigo-600 transition duration-150 ease-in-out form-checkbox" />
-                        <label for="remember" class="block ml-2 text-sm leading-5 text-white">
-                            Remember
-                        </label>
-                    </div>
-
-                    <div class="w-32 text-xs leading-5">
-                        <a href="{{ route('password.request') }}" class="font-medium text-white transition duration-150 ease-in-out hover:text-indigo-500 focus:outline-none focus:underline">
-                            Forgot your password?
-                        </a>
                     </div>
                 </div>
 

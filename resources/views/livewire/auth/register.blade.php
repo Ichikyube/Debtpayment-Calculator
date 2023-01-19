@@ -28,8 +28,8 @@
                     </label>
 
                     <div class="mt-1 rounded-md shadow-sm">
-                        <input x-model="name"  name="name" id="name" type="text" required autofocus :class="validation.name !== undefined ? 'text-red-900':''" class="form-input appearance-none block w-full px-3 py-2 border-0 border-b border-b-slate-400 border-b-solid outline-none placeholder:!bg-transparent bg-transparent
-                        transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none  sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0 text-white"/>
+                        <input x-model="name"  name="name" id="name" type="text" required autofocus :class="validation.name !== undefined ? 'text-red-900':''" class="form-input appearance-none block w-full px-3 py-2 border-0 border-b border-b-white border-b-solid outline-none placeholder:!bg-transparent bg-transparent
+                        transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-black sm:leading-5 focus:outline-none focus-visible:ring-0 text-white"/>
                     </div>
                     <p class="text-xs" x-text="validation.name"></p>
                 </div>
@@ -40,8 +40,8 @@
                     </label>
 
                     <div class="mt-1 rounded-md shadow-sm">
-                        <input x-model="email"  name="email" id="email" required :class="validation.email !== undefined ? 'text-red-900':''" class="form-input appearance-none text-white block w-full px-3 py-2 border-0 border-b border-b-slate-400 border-b-solid outline-none placeholder:!bg-transparent bg-transparent
-                        transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0"/>
+                        <input x-model="email"  name="email" id="email" required :class="validation.email !== undefined ? 'text-red-900':''" class="form-input appearance-none text-white block w-full px-3 py-2 border-0 border-b border-b-white border-b-solid outline-none placeholder:!bg-transparent bg-transparent
+                        transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-black focus:outline-none focus-visible:ring-0"/>
                     </div>
                     <p class="text-xs" x-text="validation.email"></p>
                 </div>
@@ -52,8 +52,8 @@
                     </label>
 
                     <div class="mt-1 rounded-md shadow-sm">
-                        <input x-model="password" type="password" name="password" id="password" required :class="validation.password !== undefined ? 'text-red-900':''" class="form-input appearance-none block w-full px-3 py-2 border-0 border-b border-b-slate-400 border-b-solid outline-none placeholder:!bg-transparent bg-transparent
-                        transition duration-150 ease-in-out sm:text-sm sm:leading-5 text-white focus:border-none focus:outline-none focus-visible:ring-0 @error('password') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror" />
+                        <input x-model="password" type="password" name="password" id="password" required :class="validation.password !== undefined ? 'text-red-900':''" class="form-input appearance-none block w-full px-3 py-2 border-0 border-b border-b-white border-b-solid outline-none placeholder:!bg-transparent bg-transparent
+                        transition duration-150 ease-in-out sm:text-sm sm:leading-5 text-white focus:border-black focus:outline-none focus-visible:ring-0 @error('password') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror" />
                     </div>
                     <p class="text-xs" x-text="validation.password"></p>
                 </div>
@@ -64,8 +64,8 @@
                     </label>
 
                     <div class="mt-1 rounded-md shadow-sm">
-                        <input x-model="passwordConfirmation" id="password_confirmation" type="password" required class="form-input appearance-none block w-full px-3 py-2 border-0 border-b border-b-slate-400 border-b-solid outline-none placeholder:!bg-transparent bg-transparent
-                        transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-none text-white focus:outline-none focus-visible:ring-0" />
+                        <input x-model="passwordConfirmation" id="password_confirmation" type="password" required class="form-input appearance-none block w-full px-3 py-2 border-0 border-b border-b-white border-b-solid outline-none placeholder:!bg-transparent bg-transparent
+                        transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-black text-white focus:outline-none focus-visible:ring-0" />
                     </div>
                     <p class="text-xs" x-text="validation.password_confirmation"></p>
                 </div>
@@ -77,10 +77,6 @@
                         </button>
                     </span>
                 </div>
-                <h2 class="mt-6 text-base font-normal leading-9 text-center text-white">
-                    Create a new account
-                </h2>
-    
                 <p class="mt-2 text-sm leading-5 text-center text-gray-600 max-w">
                     Or
                     <a href="{{ route('login') }}" class="font-medium transition duration-150 ease-in-out text-white hover:text-indigo-500 focus:outline-none focus:underline">
