@@ -6,7 +6,7 @@
     <div x-data="$store.register" class="bg-transparent" >
         <div class="tracking-[4.03px] sm:mx-auto text-dark w-full">
             <a href="{{ route('home') }}">
-                <div class="flex justify-center mx-auto mt-20 mb-4"><x-logo/></div>
+                <div class="flex justify-center w-20 mx-auto mb-4"><x-logo/></div>
                 <h2 class="mt-11 mb-4 text-[24px] md:text-[53px] leading-[70.12px] text-center text-white">
                     Register
                 </h2>
@@ -16,7 +16,7 @@
             </a>
 
 
-            
+
         </div>
 
         <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
@@ -79,7 +79,7 @@
                 </div>
                 <p class="mt-2 text-sm leading-5 text-center text-gray-600 max-w">
                     Or
-                    <a href="{{ route('login') }}" class="font-medium transition duration-150 ease-in-out text-white hover:text-indigo-500 focus:outline-none focus:underline">
+                    <a href="{{ route('login') }}" class="font-medium text-white transition duration-150 ease-in-out hover:text-indigo-500 focus:outline-none focus:underline">
                         sign in to your account
                     </a>
                 </p>

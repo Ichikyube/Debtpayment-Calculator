@@ -4,82 +4,55 @@
         @livewire('components.hasil-hitungan')
     </template>
 
-    <div x-show="!calculated">
-        <div class="flex flex-row gap-5 overflow-x-scroll scroll-auto touch-auto overscroll-x-contain hilanginscroll flex-nowrap" id="scrollhorizontal">
+    <div x-show="!calculated" class="flex">
+        <div class="flex w-1/2 mx-auto overflow-x-scroll scroll-auto touch-auto overscroll-x-contain hilanginscroll flex-nowrap" id="scrollhorizontal">
             <!-- Form Kalkulator -->
-            <div>
-                <div class="bg-[#F7D3C2] lg:w-[600px] w-11/12 rounded-none lg:rounded-[30px] drop-shadow-md">
-                    <div class="flex flex-row px-5 py-5 align-middle border-b-2">
-                        <h6 class="ml-5 text-xl font-bold text-blueGray-700">Hutang 1</h6>
+            <div class="bg-[#F7D3C2] lg:w-[600px]  max-h-[63vh] lg:max-h-full overflow-y-scroll lg:overflow-y-visible hilanginscroll rounded-xl w-11/12 lg:rounded-[30px] shadow-sm hover:shadow-md transition-shadow duration-300 ease-in-out">
+                <div class="flex flex-row px-5 py-5 align-middle border-b-2">
+                    <h6 class="ml-5 text-xl font-bold text-blueGray-700">Hutang 1</h6>
+                </div>
+                <div class="flex flex-row items-center px-3 py-2 border-b-2">
+                    <div class="flex justify-center w-12 mr-2">
+                        <img src="{{asset('img/1.svg')}}" alt="" class="h-5">
                     </div>
-                    <div class="flex flex-row items-center px-3 py-2 border-b-2">
-                        <div class="flex justify-center w-12 mr-2">
-                            <img src="{{asset('img/1.svg')}}" alt="" class="h-5">
-                        </div>
-                        <div class="flex items-center justify-between w-full"><p class="text-base text-gray-400">Nama Hutang</p>
-                            <input class="namaHutang form-input appearance-none block px-3 border-0 text-right pr-6 outline-none placeholder:!bg-transparent bg-transparent transition
-                            duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="text" placeholder="KPR">
-                        </div>
+                    <div class="flex items-center justify-between w-full"><p class="text-base text-gray-400">Nama Hutang</p>
+                        <input class="namaHutang form-input appearance-none block px-3 border-0 text-right pr-6 outline-none placeholder:!bg-transparent bg-transparent transition
+                        duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="text" placeholder="KPR">
                     </div>
-                    <div class="flex flex-row items-center px-3 py-2 border-b-2">
-                        <div class="flex justify-center w-12 mr-2">
-                            <img src="{{asset('img/moneys.svg')}}" alt="" class="h-5">
-                        </div>
-                        <div class="flex items-center justify-between w-full">
-                            <p class="text-base text-gray-400">Jumlah Hutang</p>
-                            <input class="jmlHutang form-input appearance-none block px-3 border-0 text-right outline-none
-                            placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5
-                            focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" max="" step="100" placeholder="500000">
-                        </div>
+                </div>
+                <div class="flex flex-row items-center px-3 py-2 border-b-2">
+                    <div class="flex justify-center w-12 mr-2">
+                        <img src="{{asset('img/moneys.svg')}}" alt="" class="h-5">
                     </div>
+                    <div class="flex items-center justify-between w-full">
+                        <p class="text-base text-gray-400">Jumlah Hutang</p>
+                        <input class="jmlHutang form-input appearance-none block px-3 border-0 text-right outline-none
+                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5
+                        focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" max="" step="100" placeholder="500000">
+                    </div>
+                </div>
 
-                    <div class="flex flex-row items-center px-3 py-2 border-b-2">
-                        <div class="flex justify-center w-12 mr-2">
-                            <img src="{{asset('img/moneytime.svg')}}" alt="" class="h-5">
-                        </div>
-                        <div class="flex items-center justify-between w-full">
-                            <p class="text-base text-gray-400">Suku Bunga Hutang</p>
-                            <input class="bungaHutang form-input appearance-none block px-3 border-0 text-right outline-none
-                            placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
-                            sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" max="100" placeholder="15%">
-                        </div>
+                <div class="flex flex-row items-center px-3 py-2 border-b-2">
+                    <div class="flex justify-center w-12 mr-2">
+                        <img src="{{asset('img/moneytime.svg')}}" alt="" class="h-5">
                     </div>
-
-                    <div class="flex flex-row items-center px-3 py-2 border-b-2">
-                        <div class="flex justify-center w-12 mr-2">
-                            <img src="{{asset('img/moneysend.svg')}}" alt="" class="h-5">
-                        </div>
-                        <div class="flex items-center justify-between w-full">
-                            <p class="text-base text-gray-400">Pembayaran minimum perbulan</p>
-                            <input class="minBayar form-input appearance-none block px-3 border-0 text-right outline-none
-                            placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
-                            sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="10" step="100" placeholder="500">
-                        </div>
+                    <div class="flex items-center justify-between w-full">
+                        <p class="text-base text-gray-400">Suku Bunga Hutang</p>
+                        <input class="bungaHutang form-input appearance-none block px-3 border-0 text-right outline-none
+                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
+                        sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" max="100" placeholder="15%">
                     </div>
+                </div>
 
-                    <div class="flex items-center justify-between px-3 py-2 text-center">
-                        <div class="flex justify-center w-12 mr-2">
-                            <img src="{{asset('img/1.svg')}}" alt="" class="h-5">
-                        </div>
-                        <div class="flex items-center justify-between w-full">
-                            <p class="text-base text-gray-400">Pendapatan perbulan</p>
-                            <input x-model="mountlySalary" class="form-input appearance-none block px-3 border-0 text-right outline-none
-                            placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
-                            sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder="5000">
-                        </div>
+                <div class="flex flex-row items-center px-3 py-2 border-b-2">
+                    <div class="flex justify-center w-12 mr-2">
+                        <img src="{{asset('img/moneysend.svg')}}" alt="" class="h-5">
                     </div>
-
-                    <div class="flex items-center justify-between px-3 py-3">
-                        <div class="flex justify-center w-12 mr-2">
-                            <img src="{{asset('img/1.svg')}}" alt="" class="h-5">
-                        </div>
-                        <div class="flex items-center justify-between w-full">
-                            <p class="text-base text-gray-400">Pembayaran Extra Perbulan</p>
-                            <input x-model="extraSalary" class="form-input appearance-none block px-3 border-0 text-right outline-none
-                            placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
-                            sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder="1000">
-
-                        </div>
+                    <div class="flex items-center justify-between w-full">
+                        <p class="text-base text-gray-400">Pembayaran minimum perbulan</p>
+                        <input class="minBayar form-input appearance-none block px-3 border-0 text-right outline-none
+                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
+                        sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="10" step="100" placeholder="500">
                     </div>
                 </div>
             </div>
@@ -87,6 +60,32 @@
             <template x-for="post in posts">
                 <div x-html="html"></div>
             </template>
+        </div>
+        <div class="bg-[#F7D3C2] rounded-xl lg:rounded-[30px] shadow-sm hover:shadow-md transition-shadow duration-300 ease-in-out">
+            <div class="flex items-center justify-between px-3 py-2 text-center">
+                <div class="flex justify-center w-12 mr-2">
+                    <img src="{{asset('img/1.svg')}}" alt="" class="h-5">
+                </div>
+                <div class="flex items-center justify-between w-full">
+                    <p class="text-base text-gray-400">Pendapatan perbulan</p>
+                    <input x-model="mountlySalary" class="form-input appearance-none block px-3 border-0 text-right outline-none
+                    placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
+                    sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder="5000">
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between px-3 py-3">
+                <div class="flex justify-center w-12 mr-2">
+                    <img src="{{asset('img/1.svg')}}" alt="" class="h-5">
+                </div>
+                <div class="flex items-center justify-between w-full">
+                    <p class="text-base text-gray-400">Pembayaran Extra Perbulan</p>
+                    <input x-model="extraSalary" class="form-input appearance-none block px-3 border-0 text-right outline-none
+                    placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
+                    sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder="1000">
+
+                </div>
+            </div>
         </div>
     </div>
 
