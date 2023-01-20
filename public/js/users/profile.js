@@ -2,6 +2,7 @@ document.addEventListener("alpine:init", () => {
     Alpine.store("userProfile", () => ({
         profile: "",
         user: "",
+        update: "",
         validation: [],
         message: "",
         showForm: false,
@@ -15,16 +16,30 @@ document.addEventListener("alpine:init", () => {
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    this.user = data;
+                    this.user = data;                    
+                    // console.log(this.update)
                 });
+                
         },
+         insertUpdate(name,email,gender,tempat_lahir,tgl_lahir,alamat){
+            this.update ={
+                name:name,
+                email:email,
+                gender:gender,
+                tempat_lahir:tempat_lahir,
+                tgl_lahir:tgl_lahir,
+                alamat:alamat
+            }
+            console.log(this.update)
+        }
+        ,
         async updateProfile() {
             const formData = {
-                name: this.user.name,
-                gender: this.user.gender,
-                tempat_lahir: this.user.tempat_lahir,
-                tgl_lahir: this.user.tgl_lahir,
-                alamat: this.user.alamat,
+                name: this.update.name,
+                gender: this.update.gender,
+                tempat_lahir: this.update.tempat_lahir,
+                tgl_lahir: this.update.tgl_lahir,
+                alamat: this.update.alamat,
             };
             await fetch("http://127.0.0.1:8000/api/user-profile", {
                 method: "POST",
@@ -44,6 +59,7 @@ document.addEventListener("alpine:init", () => {
                         this.message = data.message;
                     }
                 });
+            this.userData();
         },
     }));
 });
