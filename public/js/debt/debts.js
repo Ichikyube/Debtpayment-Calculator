@@ -402,6 +402,7 @@ document.addEventListener("alpine:init", () => {
                 });
         },
         async hitungedit(id) {
+        
             var debtTitle = [];
             var debtAmount = [];
             var debtInterest = [];
@@ -423,7 +424,7 @@ document.addEventListener("alpine:init", () => {
                 debtAmount: debtAmount,
                 debtInterest: debtInterest,
                 monthlyInstallments: monthlyInstallments,
-                mountlySalary: this.mountlySalary,
+                mountlySalary: '800',
                 extraSalary: this.extraSalary,
             };
             await fetch("http://127.0.0.1:8000/api/hitung", {
@@ -524,6 +525,8 @@ document.addEventListener("alpine:init", () => {
 
     Alpine.store("getData", () => ({
         calculated: true,
+        mountlySalary: 0,
+        extraSalary: 0,
         // ambilData: [],
         html: `
         <div class="bg-[#F7D3C2] w-[600px] rounded-[30px] drop-shadow-md">
@@ -651,6 +654,7 @@ document.addEventListener("alpine:init", () => {
                 });
         },
         async hitungedit(id) {
+     
             var debtTitle = [];
             var debtAmount = [];
             var debtInterest = [];
@@ -672,8 +676,8 @@ document.addEventListener("alpine:init", () => {
                 debtAmount: debtAmount,
                 debtInterest: debtInterest,
                 monthlyInstallments: monthlyInstallments,
-                mountlySalary: this.mountlySalary,
-                extraSalary: this.extraSalary,
+                mountlySalary: document.querySelector('#mountlySalary').value,
+                extraSalary: document.querySelector('#extraSalary').value,
             };
             await fetch("http://127.0.0.1:8000/api/hitung", {
                 method: "POST",

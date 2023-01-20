@@ -68,7 +68,7 @@
                         <div class="flex items-center justify-between w-full">
                             <p class="text-base text-gray-400">Pendapatan perbulan</p>
                             <p x-text="validation.mountlySalary"></p>
-                            <input x-model="mountlySalary" class="form-input appearance-none block px-3 border-0 text-right outline-none
+                            <input id="mountlySalary" x-model="$store.create.mountlySalary" class="form-input appearance-none block px-3 border-0 text-right outline-none
                             placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
                             sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder="5000" x-bind:value="ambilData.mountlySalary">
                         </div>
@@ -81,7 +81,7 @@
                         <div class="flex items-center justify-between w-full">
                             <p class="text-base text-gray-400">Pembayaran Extra Perbulan</p>
                             <p x-text="validation.extraSalary"></p>
-                            <input x-model="extraSalary" class="form-input appearance-none block px-3 border-0 text-right outline-none
+                            <input id="extraSalary" class="form-input appearance-none block px-3 border-0 text-right outline-none
                             placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
                             sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder="1000" x-bind:value="ambilData.extraSalary">
                         </div>
