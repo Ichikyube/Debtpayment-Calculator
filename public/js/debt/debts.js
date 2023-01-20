@@ -132,9 +132,9 @@ document.addEventListener("alpine:init", () => {
                 });
         },
         async charts (pendapatan, pembayaran){
-            const ctx2 = document.getElementById("hasilChart");
+            const ctx = document.getElementById("hasilChart");
 
-            new Chart(ctx2, {
+            new Chart(ctx, {
                 type: "doughnut",
                 data: {
                     labels: ["Pendapatan", "Pembayaran"],
@@ -149,40 +149,12 @@ document.addEventListener("alpine:init", () => {
                                 pembayaran,
                             ],
                             backgroundColor: [
-                                "rgb(54, 162, 235)",
-                                "rgb(255, 4, 4, 1)",
+                                'rgb(42, 124, 151)',
+                                'rgb(254, 159, 87)'
                             ],
-                            borderWidth: 1,
-                            borderColor: "rgb(93, 56, 219)",
-                            hoverOffset: 7,
+                            hoverOffset: 7
                         },
                     ],
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            display: true,
-                            maxWidth: 700,
-                            align: "center",
-                            padding: 25,
-                            labels: {
-                                color: "rgb(56, 57, 64)",
-                                boxHeight: 10,
-                                boxWidth: 10,
-                                padding: 20,
-                                textAlign: "left",
-                                font: {
-                                    size: 14,
-                                    weight: "bolder",
-                                },
-                            },
-                        },
-                    },
-                    layout: {
-                        autoPadding: true,
-                    },
-                    scales: 50,
                 },
             });
         },
@@ -273,6 +245,32 @@ document.addEventListener("alpine:init", () => {
                     this.messages = data.message;
                 });
         },
+        formatUang(params) {
+            
+            var data = Number (params)
+            let USDollar = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+            });
+            // var uang = "$" + data.toFixed(2).replace(/(\d)(?=(\d{3})+.)/g, "$1,").replace(/.00$/, '');
+            return USDollar.format(data).replace(/.00$/, '');
+        },
+        formatTgl(params) {
+            var date = new Date(params);
+            var mount = date.toLocaleString("default", {
+                month: "long",
+            });
+            var year = date.getFullYear();
+            tgl = mount + ", " + year;
+            return tgl;
+        },
+        title: [],
+        textTitile (params){
+            for (let i = 0; i < params.length; i++) {
+                this.title.push(params[0].debtTitle)
+            }
+            console.log(this.title);
+        }
     }));
 
     Alpine.store("getData", () => ({

@@ -1,11 +1,11 @@
 <div>
     <div class="flex">
         <!-- List Hutang -->
-        <div class="w-1/2">
+        <div class="w-1/2 h-80 overflow-scroll hilanginscroll">
             <!-- Looping Tambahan Form Hutang -->
             <template x-for="data in hasil.hutang">
                 <div class="flex gap-2 mt-7">
-                    <div class="flex items-center px-3 text-white bg-blue-500 rounded-lg" x-text="data.debtInterest + '%'">
+                    <div class="flex items-center px-3 text-white bg-[#2A7C97] rounded-lg" x-text="data.debtInterest + '%'">
                     </div>
                     <div class="w-full">
                         <div class="flex justify-between">
@@ -23,29 +23,39 @@
         <div class="flex flex-col items-center w-1/2 -z-10 h-80 right-5" x-init="charts(hasil.hasil.mountlySalary,hasil.hasil.totalMinPayment)">
             <div class="flex justify-between w-full px-16">
                 <div>
-                    Pendapatan <br>
-                    <span x-text="hasil.hasil.mountlySalary"></span>
+                    Total Min Bayar <br>
+                    <span class="font-semibold" x-text="formatUang(hasil.hasil.totalMinPayment)"></span>
                 </div>
                 <div class="text-end">
-                    Total Min Bayar <br>
-                    <span x-text="hasil.hasil.totalMinPayment"></span>
+                    Pembayaran Extra <br>
+                    <span class="font-semibold" x-text="formatUang(hasil.hasil.extraSalary)"></span>
                 </div>
             </div>
-            <canvas  width="400" height="400" id="hasilChart"></canvas>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <canvas width="200px" height="200px" id="hasilChart"></canvas>
 
-            <div>Total Hutang <span x-text="hasil.hasil.totalDebt"></span></div>
+            <div class="flex justify-between w-full px-16">
+                <div>
+                    <span class="font-semibold" x-text="formatUang(hasil.hasil.mountlySalary)"></span><br>
+                    Pendapatan
+                </div>
+                <div class="text-end">
+                    <span class="font-semibold" x-text="formatUang(hasil.hasil.totalDebt)"></span><br>
+                    Total Hutang
+                </div>
+            </div>
         </div>
     </div>
-    <div class="flex justify-between">
-        <div>
+    <div class="flex justify-between gap-2 mt-5">
+        <div class="w-7/12">
             <div
             class="p-8 pb-0 text-lg font-medium tracking-wide text-center text-green-500 uppercase border-gray-200">
             Estimasi Lunas</div>
             <div class="items-center justify-center block sm:flex md:block lg:flex">
-                <template x-if="hasil.hutang.length > 1">
+                <template x-if="hasil.hutang.length > 1 || hasil.hasil.extraSalary > 20">
                 <div class="mt-2 text-center sm:m-8 md:m-0 md:mt-4 md:mb-8 lg:m-5">
                     <div class="inline-flex items-center">
-                        <span class="text-3xl font-medium" x-text="dateSnowball"></span>
+                        <span class="text-3xl font-semibold text-[#2A7C97]" x-text="dateSnowball"></span>
                     </div>
                     <span class="block mt-2 text-sm text-gray-600">Metode Snowball</span>
                 </div>
@@ -60,7 +70,7 @@
         </div>
         <div class="flex justify-end">
             <button x-on:click="calculated = !calculated" class="self-end mr-7 mb-3 text-xl font-bold">Kembali</button>
-            <button x-on:click="tambahData" class="self-end px-5 text-white bg-myblue h-14 w-44 rounded-xl"><span class="inline-block text-center align-top">Simpan</d></button>
+            <button x-on:click="tambahData" class="self-end px-5 text-white bg-[#2A7C97] h-14 w-44 rounded-xl"><span class="inline-block text-center align-top">Simpan</d></button>
         </div>
     </div>
 </div>
