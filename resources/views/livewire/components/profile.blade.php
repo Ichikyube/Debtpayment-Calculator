@@ -4,13 +4,29 @@
         <div class="px-8 lg:flex-row lg:w-1/2">
             <div class="flex flex-col justify-center -mt-8">
                 <img src="{{asset('img/avatar.svg')}}" class="self-center w-40 h-40 p-1 -mt-3 border-2 border-white border-solid rounded-full ring-2 ring-gray-300 dark:ring-gray-500" alt="Bordered avatar">
+
                 <div class="mt-12 text-center">
-                    <h3 class="mb-2 text-4xl font-semibold leading-normal text-blueGray-700"  x-text="user.name"  >wew
-                    </h3>
+                    <div class="flex justify-center">
+                        <h3 class="pl-16 mb-2 text-4xl font-semibold leading-normal text-blueGray-700"  x-text="user.name"  >wew
+                        </h3>
+                        <div x-show="!showForm" x-on:click="userData, showForm = !showForm, message=''"
+                            class="flex flex-row items-center py-5 -pl-4">
+                            <button type="button" @click="insertUpdate(user.name,user.email,user.gender,user.tempat_lahir,user.tgl_lahir,user.alamat)"
+                                class="text-sm py-2 px-7 ml-4 bg-white text-red-500
+                                font-bold rounded-[30px] drop-shadow-lg cursor-pointer select-none
+                                active:translate-y-1 active:[box-shadow:0_0px_0_0_#f2f2f2,0_0px_0_0_#b7b7b7]
+                                active:border-b-[0px] transition-all duration-150
+                                [box-shadow:0_1px_0_0_#f2f2f2,0_3px_0_0_#b7b7b7]">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                        </div>
+                    </div>
+
+
                     <div class="mt-0 mb-2 text-sm font-bold leading-normal uppercase text-blueGray-400" x-text="user.email" >
                     </div>
-                    <div class="px-4 mb-2 text-justify text-blueGray-600">
-                        <p>Jenis Kelamin      : <span x-text="user.gender"></span> </p>
+                    <div class="flex flex-col justify-center px-4 mx-auto mb-2 text-justify align-middle w-fit text-blueGray-600">
+                        <p>Jenis Kelamin      : <span x-text="user.gender"></span> </p><br>
 
                         <p>Tempat, Tgl Lahir  : <span x-text="user.tempat_lahir + ',    '" ></span> <span x-text="user.tgl_lahir"></span> </p>
                         <p>alamat             : <span x-text="user.alamat"></span></p>
@@ -18,17 +34,7 @@
                     </div>
             </div>
         </div>
-        <div x-show="!showForm" x-on:click="userData, showForm = !showForm, message=''"
-            class="flex flex-row items-center py-5 -pl-4">
-            <button type="button" @click="insertUpdate(user.name,user.email,user.gender,user.tempat_lahir,user.tgl_lahir,user.alamat)"
-                class="text-sm py-4 px-7 ml-4 bg-white text-red-500
-                font-bold rounded-[30px] drop-shadow-lg cursor-pointer select-none
-                active:translate-y-1 active:[box-shadow:0_0px_0_0_#f2f2f2,0_0px_0_0_#b7b7b7]
-                active:border-b-[0px] transition-all duration-150
-                [box-shadow:0_1px_0_0_#f2f2f2,0_3px_0_0_#b7b7b7]">
-                Edit
-            </button>
-        </div>
+
         <div x-show="showForm"class="bg-[#F7D3C2] overflow-y-auto w-full lg:w-1/3 h-max lg:h-5/6
             lg:absolute lg:right-28 lg:-mt-11 rounded-[30px] drop-shadow-md static hilanginscroll"
             x-transition:enter="transition ease-out duration-1000"

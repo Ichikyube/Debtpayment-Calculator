@@ -17,7 +17,7 @@ document.addEventListener("alpine:init", () => {
                 </div>
                 <div class="flex items-center justify-between w-full"><p class="text-base text-gray-400" class="text-base text-gray-400">Nama Hutang</p>
                     <input class="namaHutang form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" type="text" placeholder="Hutang KPR">
-                    
+
                 </div>
             </div>
 
@@ -30,7 +30,7 @@ document.addEventListener("alpine:init", () => {
                     <input class="jmlHutang form-input appearance-none block px-3 border-0 text-right outline-none
                     placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5
                     focus:border-none focus:outline-none focus-visible:ring-0" type="number" placeholder="500000">
-                    
+
                 </div>
             </div>
 
@@ -41,7 +41,7 @@ document.addEventListener("alpine:init", () => {
                 <div class="flex justify-between items-center w-full">
                     <p class="text-base text-gray-400">Suku Bunga Hutang</p>
                     <input class="bungaHutang form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" type="number" placeholder="15%">
-                    
+
                 </div>
             </div>
 
@@ -52,7 +52,7 @@ document.addEventListener("alpine:init", () => {
                 <div class="flex justify-between items-center w-full">
                     <p class="text-base text-gray-400">Pembayaran minimum perbulan</p>
                     <input class="minBayar form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" type="number" placeholder="500">
-                    
+
                 </div>
             </div>
 
@@ -246,7 +246,7 @@ document.addEventListener("alpine:init", () => {
                 });
         },
         formatUang(params) {
-            
+
             var data = Number (params)
             let USDollar = new Intl.NumberFormat('en-US', {
                 style: 'currency',
@@ -288,7 +288,7 @@ document.addEventListener("alpine:init", () => {
                 </div>
                 <div class="flex items-center justify-between w-full"><p class="text-base text-gray-400" class="text-base text-gray-400">Nama Hutang</p>
                     <input class="namaHutang form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" type="text" placeholder="Hutang KPR" x-bind:value="ambilData.detail[index].debtTitle">
-                    
+
                 </div>
             </div>
 
@@ -301,7 +301,7 @@ document.addEventListener("alpine:init", () => {
                     <input class="jmlHutang form-input appearance-none block px-3 border-0 text-right outline-none
                     placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5
                     focus:border-none focus:outline-none focus-visible:ring-0" type="number" placeholder="500000" x-bind:value="ambilData.detail[index].debtAmount">
-                    
+
                 </div>
             </div>
 
@@ -312,7 +312,7 @@ document.addEventListener("alpine:init", () => {
                 <div class="flex justify-between items-center w-full">
                     <p class="text-base text-gray-400">Suku Bunga Hutang</p>
                     <input class="bungaHutang form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" type="number" placeholder="15%" x-bind:value="ambilData.detail[index].debtInterest">
-                    
+
                 </div>
             </div>
 
@@ -323,7 +323,7 @@ document.addEventListener("alpine:init", () => {
                 <div class="flex justify-between items-center w-full">
                     <p class="text-base text-gray-400">Pembayaran minimum perbulan</p>
                     <input class="minBayar form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" type="number" placeholder="500" x-bind:value="ambilData.detail[index].monthlyInstallments">
-                    
+
                 </div>
             </div>
 
@@ -402,7 +402,7 @@ document.addEventListener("alpine:init", () => {
                 });
         },
         async hitungedit(id) {
-        
+
             var debtTitle = [];
             var debtAmount = [];
             var debtInterest = [];
@@ -529,7 +529,8 @@ document.addEventListener("alpine:init", () => {
         extraSalary: 0,
         // ambilData: [],
         html: `
-        <div class="bg-[#F7D3C2] w-[600px] rounded-[30px] drop-shadow-md">
+        <div class="bg-[#F7D3C2] mr-4 mb-11 lg:w-full lg:max-w-full rounded-md lg:rounded-[30px]
+        shadow-sm hover:shadow-xl transition-shadow duration-300 ease-in-out">
             <div class="flex flex-row align-middle border-b-2 px-5 py-5">
                 <h6 class="text-xl font-bold text-blueGray-700 ml-5">Hutang <span x-text="index+1"></span></h6>
             </div>
@@ -540,7 +541,7 @@ document.addEventListener("alpine:init", () => {
                 </div>
                 <div class="flex items-center justify-between w-full"><p class="text-base text-gray-400" class="text-base text-gray-400">Nama Hutang</p>
                     <input class="namaHutang form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" type="text" placeholder="Hutang KPR" x-bind:value="ambilData.detail[index].debtTitle">
-                    
+
                 </div>
             </div>
 
@@ -553,7 +554,7 @@ document.addEventListener("alpine:init", () => {
                     <input class="jmlHutang form-input appearance-none block px-3 border-0 text-right outline-none
                     placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5
                     focus:border-none focus:outline-none focus-visible:ring-0" type="number" placeholder="500000" x-bind:value="ambilData.detail[index].debtAmount">
-                    
+
                 </div>
             </div>
 
@@ -564,7 +565,7 @@ document.addEventListener("alpine:init", () => {
                 <div class="flex justify-between items-center w-full">
                     <p class="text-base text-gray-400">Suku Bunga Hutang</p>
                     <input class="bungaHutang form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" type="number" placeholder="15%" x-bind:value="ambilData.detail[index].debtInterest">
-                    
+
                 </div>
             </div>
 
@@ -575,7 +576,7 @@ document.addEventListener("alpine:init", () => {
                 <div class="flex justify-between items-center w-full">
                     <p class="text-base text-gray-400">Pembayaran minimum perbulan</p>
                     <input class="minBayar form-input appearance-none block px-3 border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5focus:border-none focus:outline-none focus-visible:ring-0" type="number" placeholder="500" x-bind:value="ambilData.detail[index].monthlyInstallments">
-                    
+
                 </div>
             </div>
 
@@ -654,7 +655,7 @@ document.addEventListener("alpine:init", () => {
                 });
         },
         async hitungedit(id) {
-     
+
             var debtTitle = [];
             var debtAmount = [];
             var debtInterest = [];

@@ -1,8 +1,8 @@
 <div x-data="$store.getData">
     <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 lg:mb-4">Edit Hitungan Hutang</h1>
-    <diiv x-show="!calculated">
+    <div x-show="!calculated">
         @livewire('components.hasil-edit')
-    </diiv>
+    </div>
 
     <div x-show="calculated">
         <div class="flex flex-row gap-5 overflow-x-scroll scroll-auto touch-auto overscroll-x-contain hilanginscroll flex-nowrap" id="scrollhorizontal">
@@ -119,7 +119,7 @@
 
             element.scrollBy({
                 left: event.deltaY < 0 ? -30 : 30,
-                
+
             });
         });
     </script>

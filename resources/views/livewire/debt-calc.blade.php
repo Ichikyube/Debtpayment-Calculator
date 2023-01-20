@@ -1,5 +1,6 @@
 <div>
-    <div class="bg-[#F7D3C2] w-[600px] rounded-[30px] drop-shadow-md">
+    <div class="bg-[#F7D3C2] mr-4 mb-11 lg:w-full lg:max-w-full rounded-md lg:rounded-[30px]
+    shadow-sm hover:shadow-xl transition-shadow duration-300 ease-in-out">
         <div class="flex flex-row px-5 py-5 align-middle border-b-2">
             <h6 class="ml-5 text-xl font-bold text-blueGray-700" x-text="`Hutang ${post+1}`"></h6>
         </div>

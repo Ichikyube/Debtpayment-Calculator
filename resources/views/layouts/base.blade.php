@@ -24,13 +24,11 @@
 
 
         @livewireStyles
-        <livewire:scripts />
+
         <script src="{{ asset('js/debt/debts.js') }}"></script>
         <script src="{{asset('js/auth/auth.js')}}"></script>
         <script src="{{ asset('js/flowbite.min.js') }}"></script>
         <script src="{{asset('js/users/profile.js')}}"></script>
-        <!-- Alpine Plugins -->
-        <script defer src="https://unpkg.com/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -40,5 +38,6 @@
 
         @yield('body')
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        @livewireScripts
     </body>
 </html>
