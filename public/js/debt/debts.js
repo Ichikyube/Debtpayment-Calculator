@@ -137,7 +137,7 @@ document.addEventListener("alpine:init", () => {
             new Chart(ctx, {
                 type: "doughnut",
                 data: {
-                    labels: ["Pendapatan", "Pembayaran"],
+                    labels: ["Pendapatan", "Total Min Bayar"],
                     datasets: [
                         {
                             label: [
