@@ -5,7 +5,7 @@
     </template>
 
     <div x-show="!calculated" class="relative flex flex-col md:flex-row lg:flex-row justify-evenly stretch">
-        <div class="flex flex-col items-center lg:w-1/2 overflow-y-scroll overflow-x-hidden order-last md:order-first lg:order-first h-[450px] touch-auto hilanginscroll">
+        <div class="flex flex-col items-center lg:w-1/2 overflow-y-scroll rounded-xl overflow-x-hidden order-last md:order-first lg:order-first h-[450px] touch-auto hilanginscroll">
             <!-- Form Kalkulator -->
             <div class="bg-[#F7D3C2] mx-4 mb-8 w-11/12 lg:w-full lg:max-w-full rounded-md lg:rounded-[15px]
                 shadow-sm hover:shadow-xl transition-shadow duration-300 ease-in-out">
@@ -14,46 +14,59 @@
                 </div>
                 <div class="flex flex-row items-center px-3 py-4 border-b-2">
                     <div class="flex justify-center w-12 mr-2">
-                        <img class="invert" src="{{asset('img/1.svg')}}" alt="" class="h-5">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
                     </div>
-                    <div class="relative flex items-center justify-between w-full"><p class="text-base text-dark">Nama Hutang</p>
-                        <input class="namaHutang form-input w-full absolute appearance-none inline border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition
-                        duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="text" placeholder="KPR">
+                    <div class="relative flex items-center justify-between w-fit">
+                        <input class="namaHutang form-input z-10 peer bg-white/10 block w-full appearance-none px-3 border-0 text-left outline-none
+                        placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-none focus:outline-none
+                        focus-visible:ring-0" type="text" placeholder=" ">
+                        <label class="absolute top-3 origin-[0] w-max -translate-y-6 scale-75 transform text-sm text-dark duration-300
+                        peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6
+                        peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Nama Hutang</label>
                     </div>
                 </div>
                 <div class="flex flex-row items-center px-3 py-4 border-b-2">
                     <div class="flex justify-center w-12 mr-2">
-                        <img class="invert" src="{{asset('img/moneys.svg')}}" alt="" class="h-5">
+                        <i class="fa-solid fa-coins"></i>
                     </div>
-                    <div class="relative flex items-center justify-between w-full">
-                        <p class="text-base text-dark">Jumlah Hutang <span class="text-xs text-gray-400">($)</span></p>
-                        <input class="jmlHutang form-input w-full absolute appearance-none inline border-0 outline-none
-                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5
-                        focus:border-none focus:outline-none text-right focus-visible:ring-0" type="number" min="0" max="" step="100" placeholder="500000">
+                    <div class="relative flex items-center justify-between w-fit">
+                        <input class="jmlHutang form-input z-10 peer bg-white/10 block w-full appearance-none px-3 border-0 text-left outline-none
+                        placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-none focus:outline-none
+                        focus-visible:ring-0" type="number" min="0" max="" step="100" placeholder=" ">
+                        <label class="absolute top-3 origin-[0] w-max -translate-y-6 scale-75 transform text-sm text-dark duration-300
+                        peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6
+                        peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Jumlah Hutang <span class="text-xs text-gray-400">($)</span>
+                        </label>
                     </div>
                 </div>
 
                 <div class="flex flex-row items-center px-3 py-4 border-b-2">
                     <div class="flex justify-center w-12 mr-2">
-                        <img class="invert" src="{{asset('img/moneytime.svg')}}" alt="" class="h-5">
+                        <i class="fa-solid fa-percent"></i>
                     </div>
-                    <div class="relative flex items-center justify-between w-full">
-                        <p class="text-base text-dark">Suku Bunga Hutang <span class="text-xs text-gray-400">(%)</span></p>
-                        <input class="bungaHutang absolute w-full form-input appearance-none block px-3 border-0 text-right outline-none
-                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
-                        sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" max="100" placeholder="15">
+                    <div class="relative flex items-center justify-between w-fit">
+                        <input class="bungaHutang form-input z-10 peer bg-white/10 block w-full appearance-none px-3 border-0 text-left outline-none
+                        placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-none focus:outline-none
+                        focus-visible:ring-0" type="number" min="0" max="100" placeholder=" ">
+                        <label class="absolute top-3 origin-[0] w-max -translate-y-6 scale-75 transform text-sm text-dark duration-300
+                        peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6
+                        peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Suku Bunga Hutang <span class="text-xs text-gray-400">(%)</span>
+                        </label>
                     </div>
                 </div>
 
                 <div class="flex flex-row items-center px-3 py-4">
                     <div class="flex justify-center w-12 mr-2">
-                        <img class="invert" src="{{asset('img/moneysend.svg')}}" alt="" class="h-5">
+                        <i class="fa-regular fa-calendar-check"></i><i class="fa-solid fa-file-invoice-dollar"></i>
                     </div>
-                    <div class="relative flex items-center justify-between w-full group">
-                        <p class="text-base text-dark">Pembayaran minimum perbulan <span class="text-xs text-gray-400">($)</span></p>
-                        <input name="minBayar" id="minBayar" class="minBayar absolute w-full form-input appearance-none block px-3 border-0 text-right outline-none
-                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
-                        sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="10" step="100" placeholder="500">
+                    <div class="relative flex items-center justify-between w-max group">
+                        <input name="minBayar" id="minBayar" class="minBayar form-input z-10 peer bg-white/10 block w-full appearance-none px-3 border-0
+                        text-left outline-none placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-none
+                        focus:outline-none focus-visible:ring-0" required type="number" min="10" step="100" placeholder=" ">
+                        <label class="absolute top-3 origin-[0] w-max -translate-y-6 scale-75 transform text-sm text-dark duration-300
+                        peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6
+                        peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Pembayaran minimum perbulan <span class="text-xs text-gray-400">($)</span>
+                        </label>
                     </div>
                 </div>
             </div>
@@ -62,37 +75,40 @@
                 <livewire:debt-calc/>
             </template>
         </div>
-        <div class="flex flex-col lg:items-end items-center order-first mb-2 align-middle md:order-last lg:order-last lg:w-1/2">
+        <div class="flex flex-row items-center order-first mb-2 align-middle md:flex-col lg:flex-col lg:items-end md:order-last lg:order-last lg:w-1/2">
             <div class="bg-[#F7D3C2] w-11/12 h-fit md:ml-4 lg:ml-4 rounded-md lg:rounded-[15px] shadow-sm hover:shadow-md transition-shadow duration-300 ease-in-out">
                 <div class="flex flex-row px-5 py-5 align-middle border-b-2">
                     <h6 class="ml-5 text-xl font-bold text-blueGray-700">Tambahan</h6>
                 </div>
-                <div class="flex items-center justify-between px-3 py-4 text-center border-b-2">
-                    <div class="flex justify-center w-6 mr-2">
-                        <img class="invert" src="{{asset('img/1.svg')}}" alt="" class="h-5">
+                <div class="flex flex-row flex-wrap lg:flex-col">
+                    <div class="flex items-center px-3 py-4 text-center">
+                        <div class="flex justify-center w-6 mr-2">
+                            <i class="fa-solid fa-circle-dollar-to-slot"></i>
+                        </div>
+                        <div class="relative flex items-center w-fit">
+                            <input x-model="mountlySalary" id="mountlySalary" class="form-input z-10 peer bg-white/10 block w-full appearance-none px-3 border-0 text-left outline-none
+                            placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder=" ">
+                            <label for="mountlySalary" class="absolute top-3 origin-[0] w-max -translate-y-6 scale-75 transform text-sm text-dark duration-300
+                            peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75
+                            peer-focus:text-myblue peer-focus:dark:text-blue-500">Pendapatan perbulan <span class="text-xs text-gray-400">($)</span></label>
+                        </div>
                     </div>
-                    <div class="relative flex justify-between w-full">
-                        <p class="text-base text-dark">Pendapatan perbulan <span class="text-xs text-gray-400">($)</span></p>
-                        <input x-model="mountlySalary" class="form-input appearance-none block px-3 border-0 text-right outline-none w-full
-                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm absolute
-                        sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder="5000">
+
+                    <div class="flex items-center px-3 py-4 text-center">
+                        <div class="flex justify-center w-6 mr-2">
+                            <i class="fa-solid fa-money-bill-1-wave"></i>
+                        </div>
+                        <div class="relative flex items-center w-fit">
+                            <input x-model="extraSalary" class="form-input peer z-10 bg-white/10 block w-full appearance-none px-3 border-0 text-left outline-none
+                            placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder=" ">
+                            <label for="extraSalary" class="absolute top-3 origin-[0] w-max -translate-y-6 scale-75 transform text-sm text-dark duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Pembayaran Extra Perbulan <span class="text-xs text-gray-400">($)</span></label>
+                        </div>
                     </div>
+
                 </div>
 
-                <div class="flex items-center justify-between px-3 py-4">
-                    <div class="flex justify-center w-6 mr-2">
-                        <img class="invert" src="{{asset('img/1.svg')}}" alt="" class="h-5">
-                    </div>
-                    <div class="relative flex items-center justify-between w-full">
-                        <p class="text-base text-dark">Pembayaran Extra Perbulan <span class="text-xs text-gray-400">($)</span></p>
-                        <input x-model="extraSalary" class="form-input absolute appearance-none block px-3 border-0 text-right outline-none w-full
-                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
-                        sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder="1000">
-
-                    </div>
-                </div>
             </div>
-            <div x-show="!calculated" class="flex items-center justify-between w-11/12 ml-4 text-center lg:mt-10 md:justify-between lg:justify-evenly">
+            <div x-show="!calculated" class="flex flex-col items-center justify-between w-11/12 mb-2 ml-4 text-center align-middle lg:flex-row md:flex-row lg:mt-10 md:justify-between lg:justify-evenly">
                 <button type="button" x-on:click.lazy="posts++" class="text-sm md:py-4 lg:py-4 px-7 w-36 lg:w-auto
                 bg-white text-red-500 font-bold rounded-[15px] drop-shadow-lg cursor-pointer select-none
                 active:translate-y-1 active:[box-shadow:0_0px_0_0_#f2f2f2,0_0px_0_0_#b7b7b7]

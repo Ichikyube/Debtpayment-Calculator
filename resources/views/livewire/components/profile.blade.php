@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        <div x-show="showForm"class="bg-[#F7D3C2] overflow-y-auto w-full lg:w-1/3 h-max md:h-96 lg:h-5/6 md:w-min
+        <div x-show="showForm"class="bg-[#F7D3C2] overflow-y-auto w-full lg:w-1/3 h-[590px] md:h-96 lg:h-5/6 md:w-min
             md:static lg:absolute lg:right-28 lg:-mt-11 -mt-[29.4rem] rounded-b-[30px] md:rounded-[30px] lg:rounded-[30px] drop-shadow-md static hilanginscroll"
             x-transition:enter="transition ease-out duration-1000"
             x-transition:enter-start="opacity-0 transform scale-90"
@@ -73,72 +73,68 @@
             <div class="border-t border-gray-200">
                 <div class="flex flex-row items-center px-4 py-5 border-b-2" >
                     <div class="flex justify-center w-12 mr-2">
-                        <img src="{{asset('img/1.svg')}}" alt="" class="h-5">
+                        <i class="fa-solid fa-signature"></i>
                     </div>
                     <div class="flex items-center justify-between w-full"  >
-                        <p class="mt-1 text-sm text-gray-400 sm:col-span-2 sm:mt-0">Nama Lengkap</p>
-                        <input x-model="update.name" type="text" class="mt-1 text-sm text-gray-400 sm:col-span-2 sm:mt-0 form-input appearance-none block px-3 border-0
-                        rounded-xl outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5
+                        <p class="mt-1 text-sm text-zinc-900 sm:col-span-2 sm:mt-0">Nama Lengkap</p>
+                        <input x-model="update.name" type="text" class="mt-1 text-lg w-1/2 text-zinc-900 sm:col-span-2 sm:mt-0 form-input appearance-none block px-3 border-0
+                        rounded-xl outline-none placeholder:!bg-transparent bg-transparent text-center transition duration-150 ease-in-out sm:text-sm sm:leading-5
                         focus:border-none focus:outline-none focus-visible:ring-0">
                     </div>
                 </div>
                 <div class="border-t border-gray-200">
                     <div class="flex flex-row items-center px-4 py-5 border-b-2">
-                        {{-- <div class="flex justify-center w-12 mr-2">
-                            <img src="{{asset('img/moneytime.svg')}}" alt="" class="h-5">
-                        </div> --}}
+                        <div class="flex justify-center w-12 mr-2">
+                            <i class="fa-solid fa-venus-mars"></i>
+                        </div>
                         <div class="flex items-center justify-between w-full">
-                            <p class="mt-1 text-sm text-gray-400 sm:col-span-2 sm:mt-0">Jenis Kelamin</p>
+                            <p class="mt-1 text-sm text-zinc-900 sm:col-span-2 sm:mt-0">Jenis Kelamin</p>
                             <select x-model="update.gender"
-                            class="mt-1 text-sm text-gray-400 sm:col-span-2 sm:mt-0 form-input appearance-none block px-3 border-0
+                            class="mt-1  text-zinc-900 sm:col-span-2 sm:mt-0 text-lg w-1/2 form-input appearance-none block px-3 border-0
                             rounded-xl outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5
                             focus:border-none focus:outline-none focus-visible:ring-0">
                                 <option>Laki-Laki</option>
                                 <option>Perempuan</option>
                             </select>
-                            {{-- <input x-model="user.gender" type="text" class="form-input appearance-none block px-3 border-0 rounded-xl outline-none
-                            placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5
-                            focus:border-none focus:outline-none focus-visible:ring-0
-                            mt-1 text-sm text-gray-400 sm:col-span-2 sm:mt-0"> --}}
                         </div>
                     </div>
                 </div>
                 <div class="flex flex-row items-center px-4 py-5 border-b-2">
                     <div class="flex justify-center w-12 mr-2">
-                        <img src="{{asset('img/moneysend.svg')}}" alt="" class="h-5">
+                        <i class="fa-solid fa-hospital"></i>
                     </div>
                     <div class="flex items-center justify-between w-full">
-                        <p class="mt-1 text-sm text-gray-400 sm:col-span-2 sm:mt-0 ">Tempat Lahir</p>
+                        <p class="mt-1 text-sm text-zinc-900 sm:col-span-2 sm:mt-0 ">Tempat Lahir</p>
                         <input x-model="update.tempat_lahir" type="text" class="form-input appearance-none block px-3 border-0 rounded-xl outline-none
-                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5
+                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:leading-5
                         focus:border-none focus:outline-none focus-visible:ring-0
-                        mt-1 text-sm text-gray-400 sm:col-span-2 sm:mt-0">
+                        mt-1 text-lg w-1/2 text-zinc-900 sm:col-span-2 sm:mt-0">
                     </div>
                 </div>
 
                 <div class="flex flex-row items-center px-4 py-5 border-b-2">
                     <div class="flex justify-center w-12 mr-2">
-                        <img src="{{asset('img/1.svg')}}" alt="" class="h-5">
+                        <i class="fa-solid fa-cake-candles"></i>
                     </div>
                     <div class="flex items-center justify-between w-full">
-                        <p class="mt-1 text-sm text-gray-400 sm:col-span-2 sm:mt-0">Tanggal Lahir</p>
+                        <p class="mt-1 text-sm text-zinc-900 sm:col-span-2 sm:mt-0">Tanggal Lahir</p>
                         <input x-model="update.tgl_lahir" type="date" class="form-input appearance-none block px-3 border-0 rounded-xl outline-none
-                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5
+                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:leading-5
                         focus:border-none focus:outline-none focus-visible:ring-0
-                        mt-1 text-sm text-gray-400 sm:col-span-2 sm:mt-0">
+                        mt-1  text-lg w-1/2 text-zinc-900 sm:col-span-2 sm:mt-0">
                     </div>
                 </div>
 
                 <div class="flex flex-row items-center px-4 py-5 border-b-2">
                     <div class="flex justify-center w-12 mr-2">
-                        <img src="{{asset('img/1.svg')}}" alt="" class="h-5">
+                        <i class="fa-solid fa-map"></i>
                     </div>
                     <div class="flex items-center justify-between w-full">
-                        <p class="mt-1 text-sm text-gray-400 sm:col-span-2 sm:mt-0">Alamat</p>
+                        <p class="mt-1 text-sm text-zinc-900 sm:col-span-2 sm:mt-0">Alamat</p>
                         <input x-model="update.alamat" type="text" class="form-input appearance-none block px-3 border-0 rounded-xl outline-none
-                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5
+                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:leading-5
                         focus:border-none focus:outline-none focus-visible:ring-0
-                        mt-1 text-sm text-gray-400 sm:col-span-2 sm:mt-0">
+                        mt-1  text-lg w-1/2 text-zinc-900 sm:col-span-2 sm:mt-0">
                     </div>
                 </div>
                 <br><br>
