@@ -1,4 +1,4 @@
-<div>
+<div class="overflow-y-scroll overflow-x-hidden h-[430px] hilanginscroll">
     <div class="flex">
         <!-- List Hutang -->
         <div class="w-1/2 h-80 overflow-scroll hilanginscroll">
@@ -20,7 +20,7 @@
             </template>
         </div>
         <!-- Chart Hutang -->
-        <div class="flex flex-col items-center w-1/2 -z-10 h-80 right-5" x-init="charts(hasil.hasil.mountlySalary,hasil.hasil.totalMinPayment)">
+        <div class="flex flex-col items-center w-1/2 -z-10 h-80">
             <div class="flex justify-between w-full px-16">
                 <div>
                     Pendapatan<br>
@@ -33,7 +33,8 @@
                 </div>
             </div>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-            <canvas width="200px" height="200px" id="hasilChart"></canvas>
+            <canvas w="200px" h="200px" id="hasilChart"></canvas>
+            <div x-init="charts(hasil.hasil.mountlySalary,hasil.hasil.totalMinPayment)"></div>
 
             <div class="flex justify-between w-full px-16">
                 <div>
@@ -69,9 +70,9 @@
                 </div>
             </div>
         </div>
-        <div class="flex justify-end">
-            <button x-on:click="calculated = !calculated" class="self-end mr-7 mb-3 text-xl font-bold">Kembali</button>
-            <button x-on:click="tambahData" class="self-end px-5 text-white bg-[#2A7C97] h-14 w-44 rounded-xl"><span class="inline-block text-center align-top">Simpan</d></button>
+        <div class="flex justify-end mr-[50px]">
+            <button x-on:click="calculated = !calculated" class="self-end mr-7 my-2 text-xl font-bold">Kembali</button>
+            <button x-on:click="tambahData" class="self-end px-4 py-2 text-white bg-[#2A7C97] rounded-xl"><span class="inline-block text-center align-top">Simpan</d></button>
         </div>
     </div>
 </div>

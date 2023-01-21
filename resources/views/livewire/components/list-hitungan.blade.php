@@ -121,9 +121,9 @@
                         new Chart(ctx, {
                             type: 'doughnut',
                             data: {
-                                labels: ['Pendapatan', 'Hutang'],
+                                labels: ['Pendapatan', 'Total Min Bayar'],
                                 datasets: [{
-                                    label: 'Total Pembayaran Perbulan',
+                                    label: 'Perbulan',
                                     data: [pendapatan, hutang],
                                     backgroundColor: [
                                         'rgb(42, 124, 151)',
