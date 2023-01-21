@@ -1,14 +1,13 @@
 <div class="container mx-auto" x-data="$store.userProfile">
     <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 lg:mb-4">profile</h1>
     <div class="flex flex-col w-full transition-all ease-in-out delay-100 md:flex-row lg:flex-row mt-14 mt-150"  x-bind:class="showForm == true ? 'justify-evenly lg:w-1/2' : 'justify-center w-full'" x-init="userData()">
-        <div class="px-8 lg:flex-row lg:w-1/2">
-            <div class="flex flex-col justify-center -mt-8">
+        <div class="px-8 lg:flex-row ">
+            <div class="flex flex-col justify-center -mt-8 w-max">
                 <img src="{{asset('img/avatar.svg')}}" class="self-center w-40 h-40 p-1 -mt-3 border-2 border-white border-solid rounded-full ring-2 ring-gray-300 dark:ring-gray-500" alt="Bordered avatar">
 
                 <div class="mt-6 text-center">
                     <div class="flex justify-center">
-                        <h3 class="pl-16 mb-2 text-4xl font-semibold leading-normal text-blueGray-700"  x-text="user.name"  >wew
-                        </h3>
+                        <h3 class="pl-16 mb-2 text-4xl font-semibold leading-normal text-blueGray-700"  x-text="user.name"  ></h3>
                         <div x-show="!showForm" x-on:click="userData, showForm = !showForm, message=''"
                             class="flex flex-row items-center py-5 -pl-4">
                             <button type="button" @click="insertUpdate(user.name,user.email,user.gender,user.tempat_lahir,user.tgl_lahir,user.alamat)"
@@ -24,7 +23,7 @@
 
 
                     <div class="mt-0 mb-2 text-sm font-bold leading-normal uppercase text-blueGray-400" x-text="user.email" ></div>
-                    <ul class="grid gap-2 mx-auto text-justify w-fit overflow-clip text-blueGray-600">
+                    <ul class="grid gap-2 mx-auto text-justify w-fit lg:w-[600px] overflow-clip text-blueGray-600">
                         <li><p>Jenis Kelamin      : <span x-text="user.gender"></span> </p></li>
                         <li><p class="break-normal whitespace-pre-wrap">Tempat, Tgl Lahir  : <span x-text="user.tempat_lahir + ',    '" ></span> <span x-text="user.tgl_lahir"></span> </p></li>
                         <li><p>alamat             : <span class="" x-text="user.alamat"></span></p></li>
@@ -45,7 +44,7 @@
                 <div class="flex flex-col justify-between px-5 py-5 align-middle border-b-2">
                     <h6 class="ml-5 text-xl font-bold text-blueGray-700">Edit Profile</h6>
                     <div class="flex items-end justify-between">
-                        <button type="button"  x-on:click="updateProfile"  class="text-sm w-24 bg-white  text-green-500
+                        <button type="button" x-on:click="updateProfile" class="text-sm w-24 bg-white text-green-500
                             font-bold rounded-[30px] drop-shadow-lg cursor-pointer select-none py-2
                             active:translate-y-1 active:[box-shadow:0_0px_0_0_#f2f2f2,0_0px_0_0_#b7b7b7]
                             active:border-b-[0px] transition-all duration-150
