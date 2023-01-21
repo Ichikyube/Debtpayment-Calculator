@@ -132,6 +132,7 @@ document.addEventListener("alpine:init", () => {
                         window.location.replace(
                             "http://127.0.0.1:8001/dashboard"
                         );
+                        localStorage.setItem('tab', 'listHitungan');
                     }
                     if (data.status == false) {
                         this.validation = data.error;
@@ -161,7 +162,7 @@ document.addEventListener("alpine:init", () => {
                 });
         },
         async deleted(id) {
-            // console.log(id);
+            console.log(id);
             fetch("http://127.0.0.1:8000/api/debt/delete/" + id, {
                 method: "GET",
                 headers: {
