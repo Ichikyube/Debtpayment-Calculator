@@ -5,9 +5,9 @@
     </template>
 
     <div x-show="!calculated" class="relative flex flex-col md:flex-row lg:flex-row justify-evenly stretch">
-        <div class="flex flex-col items-center px-4 lg:w-1/2 overflow-y-scroll rounded-xl overflow-x-hidden order-last md:order-first lg:order-first h-[450px] touch-auto hilanginscroll">
+        <div class="flex snap-y snap-mandatory flex-col items-center px-4 lg:w-1/2 overflow-y-scroll scroll-smooth rounded-xl overflow-x-hidden order-last md:order-first lg:order-first h-[450px] touch-auto hilanginscroll">
             <!-- Form Kalkulator -->
-            <div class="bg-[#F7D3C2] mx-4 mb-8 w-11/12 lg:w-full lg:max-w-full rounded-md lg:rounded-[15px]
+            <div class="bg-[#F7D3C2] snap-start snap-always mx-4 mb-8 w-11/12 lg:w-full lg:max-w-full rounded-md lg:rounded-[15px]
                 shadow-sm hover:shadow-xl transition-shadow duration-300 ease-in-out">
                 <div class="flex flex-row px-5 py-5 align-middle border-b-2">
                     <h6 class="ml-5 text-xl font-bold text-blueGray-700">Hutang 1</h6>
