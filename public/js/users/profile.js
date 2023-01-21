@@ -16,10 +16,10 @@ document.addEventListener("alpine:init", () => {
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    this.user = data;                    
+                    this.user = data;
                     // console.log(this.update)
                 });
-                
+
         },
          insertUpdate(name,email,gender,tempat_lahir,tgl_lahir,alamat){
             this.update ={
@@ -41,6 +41,7 @@ document.addEventListener("alpine:init", () => {
                 tgl_lahir: this.update.tgl_lahir,
                 alamat: this.update.alamat,
             };
+            console.log(formData);
             await fetch("http://127.0.0.1:8000/api/user-profile", {
                 method: "POST",
                 body: JSON.stringify(formData),

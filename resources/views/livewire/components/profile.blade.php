@@ -5,7 +5,7 @@
             <div class="flex flex-col justify-center -mt-8">
                 <img src="{{asset('img/avatar.svg')}}" class="self-center w-40 h-40 p-1 -mt-3 border-2 border-white border-solid rounded-full ring-2 ring-gray-300 dark:ring-gray-500" alt="Bordered avatar">
 
-                <div class="mt-12 text-center">
+                <div class="mt-6 text-center">
                     <div class="flex justify-center">
                         <h3 class="pl-16 mb-2 text-4xl font-semibold leading-normal text-blueGray-700"  x-text="user.name"  >wew
                         </h3>
@@ -23,20 +23,18 @@
                     </div>
 
 
-                    <div class="mt-0 mb-2 text-sm font-bold leading-normal uppercase text-blueGray-400" x-text="user.email" >
-                    </div>
-                    <div class="flex flex-col justify-center px-4 mx-auto mb-2 text-justify align-middle w-fit text-blueGray-600">
-                        <p>Jenis Kelamin      : <span x-text="user.gender"></span> </p><br>
-
-                        <p>Tempat, Tgl Lahir  : <span x-text="user.tempat_lahir + ',    '" ></span> <span x-text="user.tgl_lahir"></span> </p>
-                        <p>alamat             : <span x-text="user.alamat"></span></p>
-                    </div>
+                    <div class="mt-0 mb-2 text-sm font-bold leading-normal uppercase text-blueGray-400" x-text="user.email" ></div>
+                    <ul class="grid gap-2 mx-auto text-justify w-fit overflow-clip text-blueGray-600">
+                        <li><p>Jenis Kelamin      : <span x-text="user.gender"></span> </p></li>
+                        <li><p class="break-normal whitespace-pre-wrap">Tempat, Tgl Lahir  : <span x-text="user.tempat_lahir + ',    '" ></span> <span x-text="user.tgl_lahir"></span> </p></li>
+                        <li><p>alamat             : <span class="" x-text="user.alamat"></span></p></li>
+                    </ul>
                     </div>
             </div>
         </div>
 
         <div x-show="showForm"class="bg-[#F7D3C2] overflow-y-auto w-full lg:w-1/3 h-[590px] md:h-96 lg:h-5/6 md:w-min
-            md:static lg:absolute lg:right-28 lg:-mt-11 -mt-[29.4rem] rounded-b-[30px] md:rounded-[30px] lg:rounded-[30px] drop-shadow-md static hilanginscroll"
+            md:static lg:absolute lg:right-28 lg:-mt-11 -mt-[31.3rem] rounded-b-[30px] md:rounded-[30px] lg:rounded-[30px] drop-shadow-md static hilanginscroll"
             x-transition:enter="transition ease-out duration-1000"
             x-transition:enter-start="opacity-0 transform scale-90"
             x-transition:enter-end="opacity-100 transform scale-100"
@@ -93,6 +91,7 @@
                             class="mt-1  text-zinc-900 sm:col-span-2 sm:mt-0 text-lg w-1/2 form-input appearance-none block px-3 border-0
                             rounded-xl outline-none placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5
                             focus:border-none focus:outline-none focus-visible:ring-0">
+                                <option>pilih gender</option>
                                 <option>Laki-Laki</option>
                                 <option>Perempuan</option>
                             </select>
@@ -104,7 +103,7 @@
                         <i class="fa-solid fa-hospital"></i>
                     </div>
                     <div class="flex items-center justify-between w-full">
-                        <p class="mt-1 text-sm text-zinc-900 sm:col-span-2 sm:mt-0 ">Tempat Lahir</p>
+                        <label class="mt-1 text-sm text-zinc-900 sm:col-span-2 sm:mt-0 ">Tempat Lahir</label>
                         <input x-model="update.tempat_lahir" type="text" class="form-input appearance-none block px-3 border-0 rounded-xl outline-none
                         placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:leading-5
                         focus:border-none focus:outline-none focus-visible:ring-0
