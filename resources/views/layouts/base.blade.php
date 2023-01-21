@@ -34,7 +34,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
 
-    <body class="flex flex-col justify-center max-h-full min-h-screen hilanginscroll font-poppins">
+    <body class="flex flex-col justify-center flex-1 max-h-full min-h-screen bg-no-repeat bg-cover hilanginscroll font-poppins">
 
         @yield('body')
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

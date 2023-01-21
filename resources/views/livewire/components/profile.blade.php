@@ -1,6 +1,6 @@
 <div class="container mx-auto" x-data="$store.userProfile">
     <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 lg:mb-4">profile</h1>
-    <div class="flex flex-col w-full transition-all ease-in-out delay-100 lg:flex-row mt-14 mt-150"  x-bind:class="showForm == true ? 'justify-evenly lg:w-1/2' : 'justify-center w-full'" x-init="userData()">
+    <div class="flex flex-col w-full transition-all ease-in-out delay-100 md:flex-row lg:flex-row mt-14 mt-150"  x-bind:class="showForm == true ? 'justify-evenly lg:w-1/2' : 'justify-center w-full'" x-init="userData()">
         <div class="px-8 lg:flex-row lg:w-1/2">
             <div class="flex flex-col justify-center -mt-8">
                 <img src="{{asset('img/avatar.svg')}}" class="self-center w-40 h-40 p-1 -mt-3 border-2 border-white border-solid rounded-full ring-2 ring-gray-300 dark:ring-gray-500" alt="Bordered avatar">
@@ -35,8 +35,8 @@
             </div>
         </div>
 
-        <div x-show="showForm"class="bg-[#F7D3C2] overflow-y-auto w-full lg:w-1/3 h-max lg:h-5/6
-            lg:absolute lg:right-28 lg:-mt-11 rounded-[30px] drop-shadow-md static hilanginscroll"
+        <div x-show="showForm"class="bg-[#F7D3C2] overflow-y-auto w-full lg:w-1/3 h-max md:h-96 lg:h-5/6 md:w-min
+            md:static lg:absolute lg:right-28 lg:-mt-11 -mt-[29.4rem] rounded-b-[30px] md:rounded-[30px] lg:rounded-[30px] drop-shadow-md static hilanginscroll"
             x-transition:enter="transition ease-out duration-1000"
             x-transition:enter-start="opacity-0 transform scale-90"
             x-transition:enter-end="opacity-100 transform scale-100"
@@ -47,7 +47,7 @@
                 <div class="flex flex-col justify-between px-5 py-5 align-middle border-b-2">
                     <h6 class="ml-5 text-xl font-bold text-blueGray-700">Edit Profile</h6>
                     <div class="flex items-end justify-between">
-                        <button type="button"  x-on:click="updateProfile"  class="text-sm w-24 bg-white text-green-500
+                        <button type="button"  x-on:click="updateProfile"  class="text-sm w-24 bg-white  text-green-500
                             font-bold rounded-[30px] drop-shadow-lg cursor-pointer select-none py-2
                             active:translate-y-1 active:[box-shadow:0_0px_0_0_#f2f2f2,0_0px_0_0_#b7b7b7]
                             active:border-b-[0px] transition-all duration-150

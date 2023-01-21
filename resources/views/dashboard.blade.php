@@ -42,8 +42,8 @@
         </div>
 
 
-        <div class="mt-4 lg:mt-0 md:px-4 bg-transparent md:bg-white lg:bg-white
-                    shadow bottom-5 -left-3 lg:left-28 top-12 lg:top-0 pt-0 h-[560px] lg:w-[97%] transform
+        <div class="mt-4 lg:mt-0 md:px-4 bg-white stretch
+                    shadow pt-0 h-[560px] lg:w-[97%] transform
                     rounded-none lg:rounded-xl px-0 lg:p-10 py-10">
             <template x-if="tab == 'kalkulator'" x-data="$store.create" x-cloak
                 x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90"
