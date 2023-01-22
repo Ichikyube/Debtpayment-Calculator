@@ -18,7 +18,7 @@
                             <i class="fa-solid fa-hand-holding-dollar"></i>
                         </div>
                         <div class="relative flex items-center justify-between w-fit">
-                            <input x-model="namaHutang" class="namaHutang form-input z-10 peer bg-white/10 block w-full appearance-none px-3 pt-5  border-0 text-left outline-none
+                            <input x-model="namaHutang" class="namaHutang form-input z-10 peer bg-white/10 text-white/30 focus:text-dark block w-full appearance-none px-3 pt-5  border-0 text-left outline-none
                             placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none
                             focus-visible:ring-0" type="text" placeholder=" ">
                             <label class="absolute top-3 origin-[0]  break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-sm text-dark duration-300
@@ -34,12 +34,12 @@
                             <i class="fa-solid fa-coins"></i>
                         </div>
                         <div class="relative flex items-center justify-between w-fit">
-                            <input x-model="jmlHutang" class="jmlHutang form-input z-10 peer bg-white/10 block w-full appearance-none px-3 pt-5  border-0 text-left outline-none
+                            <input x-model="jmlHutang" class="jmlHutang  text-white/30 focus:text-black form-input z-10 peer bg-white/10 block w-full appearance-none px-3 pt-5  border-0 text-left outline-none
                             placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none
                             focus-visible:ring-0" type="number" min="0" max="" step="100" placeholder=" ">
                             <label class="absolute top-3 origin-[0]  break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-sm text-dark duration-300
                             peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6
-                            peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Jumlah Hutang <span class="text-xs text-gray-400">($)</span>
+                            peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Jumlah Hutang <span class="text-xs text-green-600">($)</span>
                             </label>
                         </div>
                     </div>
@@ -52,12 +52,12 @@
                             <i class="fa-solid fa-percent"></i>
                         </div>
                         <div class="relative flex items-center justify-between w-fit">
-                            <input x-model="bungaHutang" class="bungaHutang form-input z-10 peer bg-white/10 block w-full appearance-none pt-5  px-3 border-0 text-left outline-none
+                            <input x-model="bungaHutang" class="bungaHutang  text-white/30 focus:text-black form-input z-10 peer bg-white/10 block w-full appearance-none pt-5  px-3 border-0 text-left outline-none
                             placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none
                             focus-visible:ring-0" x-mask="99" placeholder=" ">
                             <label class="absolute top-3 origin-[0] break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-sm text-dark duration-300
                             peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6
-                            peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Suku Bunga Hutang <span class="text-xs text-gray-400">(%)</span>
+                            peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Suku Bunga Hutang <span class="text-xs text-green-600">(%)</span>
                             </label>
                         </div>
                     </div>
@@ -70,11 +70,11 @@
                         </div>
                         <div class="relative flex items-center justify-between w-fit group">
                             <input name="minBayar" x-model="minBayar" id="minBayar" class="minBayar form-input align-text-bottom z-10 pt-5  peer bg-white/10 block w-full appearance-none px-3 border-0
-                            text-left outline-none placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-1 focus:border-none
+                            text-left outline-none placeholder:!bg-transparent  text-white/30 focus:text-black transition duration-150 ease-in-out sm:text-sm sm:leading-1 focus:border-none
                             focus:outline-none focus-visible:ring-0" required type="number" min="10" step="100" placeholder=" ">
                             <label class="absolute top-3 origin-[0] break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-sm text-dark duration-300
                             peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6
-                            peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Pembayaran minimum perbulan <span class="text-xs text-gray-400">($)</span>
+                            peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Pembayaran minimum perbulan <span class="text-xs text-green-600">($)</span>
                             </label>
                         </div>
                     </div>
@@ -99,10 +99,10 @@
                             </div>
                             <div class="relative flex items-center w-fit">
                                 <input x-model="mountlySalary" id="mountlySalary" class="form-input align-text-bottom z-10 pt-5 peer bg-white/10 block w-full appearance-none px-3 border-0 text-left outline-none
-                                placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-1 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder=" ">
+                                placeholder:!bg-transparent transition duration-150 ease-in-out  text-white/30 focus:text-black sm:text-sm sm:leading-1 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder=" ">
                                 <label for="mountlySalary" class="absolute top-3 origin-[0]  break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-sm text-dark duration-300
                                 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75
-                                peer-focus:text-myblue peer-focus:dark:text-blue-500">Pendapatan perbulan <span class="text-xs text-gray-400">($)</span></label>
+                                peer-focus:text-myblue peer-focus:dark:text-blue-500">Pendapatan perbulan <span class="text-xs text-green-600">($)</span></label>
                             </div>
                         </div>
                         <div class="mr-4 text-right" x-money.en-US.USD.decimal="mountlySalary"></div>
@@ -114,11 +114,11 @@
                                 <i class="fa-solid fa-money-bill-1-wave"></i>
                             </div>
                             <div class="relative flex items-center w-fit">
-                                <input x-model="extraSalary" class="form-input peer z-10 pt-5 align-text-bottom text-left bg-white/10 block w-full appearance-none px-3 border-0 outline-none
+                                <input x-model="extraSalary" class="form-input peer  text-white/30 focus:text-black z-10 pt-5 align-text-bottom text-left bg-white/10 block w-full appearance-none px-3 border-0 outline-none
                                 placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-1 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder=" ">
                                 <label for="extraSalary" class="absolute top-3 origin-[0]  break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-sm text-dark duration-300
                                 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75
-                                peer-focus:text-myblue peer-focus:dark:text-blue-500">Pembayaran Extra Perbulan <span class="text-xs text-gray-400">($)</span></label>
+                                peer-focus:text-myblue peer-focus:dark:text-blue-500">Pembayaran Extra Perbulan <span class="text-xs text-green-600">($)</span></label>
                             </div>
                         </div>
                         <div class="mr-4 text-right" x-money.en-US.USD.decimal="extraSalary"></div>
