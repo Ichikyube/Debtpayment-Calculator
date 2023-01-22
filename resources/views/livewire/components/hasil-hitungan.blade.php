@@ -24,22 +24,22 @@
             <div class="flex justify-between w-full px-16">
                 <div>
                     Pendapatan<br>
-                    <span class="font-semibold" x-text="formatUang(hasil.hasil.mountlySalary)"></span>
+                    <span class="font-semibold" x-text="formatUang(hasil.hasil.monthlySalary)"></span>
                 </div>
                 <div class="text-end">
                     Total Min Bayar <br>
                     <span class="font-semibold" x-text="formatUang(hasil.hasil.totalMinPayment)"></span>
-                    
+
                 </div>
             </div>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <canvas w="200px" h="200px" id="hasilChart"></canvas>
-            <div x-init="charts(hasil.hasil.mountlySalary,hasil.hasil.totalMinPayment)"></div>
+            <div x-init="charts(hasil.hasil.monthlySalary,hasil.hasil.totalMinPayment)"></div>
 
             <div class="flex justify-between w-full px-16">
                 <div>
                     <span class="font-semibold" x-text="formatUang(hasil.hasil.extraSalary)"></span><br>
-                    Pembayaran Extra 
+                    Pembayaran Extra
                 </div>
                 <div class="text-end">
                     <span class="font-semibold" x-text="formatUang(hasil.hasil.totalDebt)"></span><br>

@@ -1,16 +1,22 @@
 document.addEventListener("alpine:init", () => {
     Alpine.store("create", () => ({
-        posts: 0,
+        posts: [1],
         profile: null,
         calculated: false,
         dateNormal: "",
         dateSnowball: "",
-        mountlySalary: null,
+        monthlySalary: null,
         extraSalary: null,
         hasil: [],
         list: [],
         ambilData: [],
         validation: [],
+        addDebt() {
+            this.posts.push('');
+        },
+        removeDebt(index) {
+            this.posts.splice(index, 1);
+        },
         async hitung() {
             var debtTitle = [];
             var debtAmount = [];
@@ -21,11 +27,10 @@ document.addEventListener("alpine:init", () => {
             var bungaHutang = document.getElementsByClassName("bungaHutang");
             var minBayar = document.getElementsByClassName("minBayar");
             for (let i = 0; i < namaHutang.length; i++) {
-                console.log(namaHutang[i].value);
                 debtTitle.push(namaHutang[i].value);
-                debtAmount.push(jmlHutang[i].value);
-                debtInterest.push(bungaHutang[i].value);
-                monthlyInstallments.push(minBayar[i].value);
+                debtAmount.push(parseInt(jmlHutang[i].value));
+                debtInterest.push(parseInt(bungaHutang[i].value));
+                monthlyInstallments.push(parseInt(minBayar[i].value));
             }
 
             const form = {
@@ -33,7 +38,7 @@ document.addEventListener("alpine:init", () => {
                 debtAmount: debtAmount,
                 debtInterest: debtInterest,
                 monthlyInstallments: monthlyInstallments,
-                mountlySalary: this.mountlySalary,
+                monthlySalary: this.monthlySalary,
                 extraSalary: this.extraSalary,
             };
             await fetch("http://127.0.0.1:8000/api/hitung", {
@@ -59,11 +64,11 @@ document.addEventListener("alpine:init", () => {
                         var date2 = new Date(
                             data.data.hasil.snowballCalculator
                         );
-                        var mount = date2.toLocaleString("default", {
+                        var month = date2.toLocaleString("default", {
                             month: "long",
                         });
                         var year = date2.getFullYear();
-                        this.dateSnowball = mount + ", " + year;
+                        this.dateSnowball = month + ", " + year;
 
                         this.calculated = !this.calculated;
                     }
@@ -102,7 +107,7 @@ document.addEventListener("alpine:init", () => {
 
                 totalDebt: this.hasil.hasil.totalDebt,
                 totalMinPayment: this.hasil.hasil.totalMinPayment,
-                mountlySalary: this.hasil.hasil.mountlySalary,
+                monthlySalary: this.hasil.hasil.monthlySalary,
                 extraSalary: this.hasil.hasil.extraSalary,
                 normalCalculator: this.hasil.hasil.normalCalculator,
                 snowballCalculator: this.hasil.hasil.snowballCalculator,
@@ -213,7 +218,7 @@ document.addEventListener("alpine:init", () => {
         calculated: true,
         // ambilData: [],
         html: `
-            
+
                 <div class="flex flex-row px-5 py-5 align-middle border-b-2">
                     <h6 class="ml-5 text-xl font-bold text-blueGray-700">Hutang <span x-text="index+1"></span></h6>
                 </div>
@@ -291,7 +296,7 @@ document.addEventListener("alpine:init", () => {
 
                 totalDebt: this.hasil.hasil.totalDebt,
                 totalMinPayment: this.hasil.hasil.totalMinPayment,
-                mountlySalary: this.hasil.hasil.mountlySalary,
+                monthlySalary: this.hasil.hasil.monthlySalary,
                 extraSalary: this.hasil.hasil.extraSalary,
                 normalCalculator: this.hasil.hasil.normalCalculator,
                 snowballCalculator: this.hasil.hasil.snowballCalculator,
@@ -352,8 +357,8 @@ document.addEventListener("alpine:init", () => {
                 debtAmount: debtAmount,
                 debtInterest: debtInterest,
                 monthlyInstallments: monthlyInstallments,
-                mountlySalary: '800',
-                extraSalary: this.extraSalary,
+                monthlySalary: parseInt(this.monthlySalary),
+                extraSalary: parseInt(this.extraSalary),
             };
             await fetch("http://127.0.0.1:8000/api/hitung", {
                 method: "POST",
@@ -398,7 +403,7 @@ document.addEventListener("alpine:init", () => {
                                             "Total Min Pembayaran",
                                         ],
                                         data: [
-                                            this.hasil.hasil.mountlySalary,
+                                            this.hasil.hasil.monthlySalary,
                                             this.hasil.hasil.totalMinPayment,
                                         ],
                                         backgroundColor: [

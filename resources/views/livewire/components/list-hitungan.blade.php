@@ -15,7 +15,7 @@
 
 
 
-    <template x-if="list.length == 0">
+    <template x-if="list.length == 0" x-cloack>
         <div class="flex flex-col justify-center w-full mx-auto bg-white">
             <h1 class="p-5 text-center whitespace-normal">Mohon maaf🙏🙏 belum ada perhitungan.</h1><br>
             <h2 class="px-5 pb-3 text-center whitespace-normal">Silahkan dihitung terlebih dahulu.</h2>
@@ -32,7 +32,7 @@
                     <span x-text="data.debt_details.length == 1 ? `${detail.debtTitle}` : `${detail.debtTitle}, `"></span>
                 </template>
             </p>
-            <button x-on:click="open = !open" @click="chart(data.id,data.mountly_salary,data.total_min_payment)" type="button" class="text-2xl text-right"><i class="fa-solid fa-chevron-down"></i></button>
+            <button x-on:click="open = !open" @click="chart(data.id,data.monthly_salary,data.total_min_payment)" type="button" class="text-2xl text-right"><i class="fa-solid fa-chevron-down"></i></button>
         </div>
 
         <!-- Show Hide Content -->
@@ -102,7 +102,7 @@
             <div class="flex gap-16 mt-5 lg:w-6/12">
                 <div>
                     <p>Pendapatan</p>
-                    <p class="text-xl font-bold text-gray-700" x-text="formatUang(data.mountly_salary)">
+                    <p class="text-xl font-bold text-gray-700" x-text="formatUang(data.monthly_salary)">
                     </p>
                 </div>
                 <div>
