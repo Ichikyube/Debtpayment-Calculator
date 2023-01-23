@@ -8,11 +8,11 @@
     </script>
     <div class="tracking-[4.03px] sm:mx-auto text-dark w-full">
         <script src="{{asset('js/auth/auth.js')}}"></script>
-        <div class="bg-white items-center w-[500px] mx-auto rounded-[15px] shadow-2xl">
+        <div class="bg-white items-center w-[300px] sm:w-[500px] mx-auto rounded-[15px] shadow-2xl">
             <div x-data="$store.login" class="font-normal">
                 <div class="tracking-[4.03px] text-dark">
                     <a href="{{ route('home') }}">
-                        <div class="flex justify-center w-20 mx-auto mb-4 pt-[50px]">
+                        <div class="flex justify-center w-20 mx-auto mb-4 md:pt-[50px]">
                             <x-logo />
                         </div>
                         <h2 class="mt-[22px] text-[24px] md:text-[40px] leading-relaxed text-center block">
