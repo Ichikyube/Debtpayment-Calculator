@@ -1,5 +1,11 @@
 <x-app-layout title="Create a new account" >
+    <script>
+        let token = localStorage.getItem('token');
 
+        if (token != null) {
+            window.location.replace("/dashboard");
+        }
+    </script>
     {{-- fecth data di file public/js/auth/auth.js --}}
     <script src="{{asset('js/auth/auth.js')}}"></script>
 

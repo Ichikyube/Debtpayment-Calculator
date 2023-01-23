@@ -15,16 +15,16 @@ document.addEventListener("alpine:init", () => {
         isLoading: false,
         idDebt: 0,
         addDebt() {
-            this.posts.push('');
-            console.log(this.posts)
+            this.posts.push("");
+            console.log(this.posts);
         },
         removeDebt(index) {
             this.posts.splice(index, 1);
-        },       
+        },
         async hitung() {
             this.isLoading = true;
-            var alert=[]
-            var stop = false
+            var alert = [];
+            var stop = false;
             var debtTitle = [];
             var debtAmount = [];
             var debtInterest = [];
@@ -34,38 +34,38 @@ document.addEventListener("alpine:init", () => {
             var bungaHutang = document.getElementsByClassName("bungaHutang");
             var minBayar = document.getElementsByClassName("minBayar");
             for (let i = 0; i < namaHutang.length; i++) {
-                let temp=''
-                if (namaHutang[i].value === '') {
-                    temp += "nama hutang, "
+                let temp = "";
+                if (namaHutang[i].value === "") {
+                    temp += "nama hutang, ";
                 }
-                if (jmlHutang[i].value === '') {
-                    temp += "jumlah hutang, "                   
+                if (jmlHutang[i].value === "") {
+                    temp += "jumlah hutang, ";
                 }
-                if (bungaHutang[i].value === '') {
-                    temp += "bunga hutang, "
+                if (bungaHutang[i].value === "") {
+                    temp += "bunga hutang, ";
                 }
-                if (minBayar[i].value === '') {
-                    temp += "minmal bayar hutang "                   
+                if (minBayar[i].value === "") {
+                    temp += "minmal bayar hutang ";
                 }
-                if (temp !== '') {
-                    temp += 'tidak boleh kosong'
-                    alert.push(temp)
-                    // document.getElementById(`alert${i}`).innerHTML = alert + 'tidak boleh kosong'                    
-                }else{
-                    alert.push(temp)
+                if (temp !== "") {
+                    temp += "tidak boleh kosong";
+                    alert.push(temp);
+                    // document.getElementById(`alert${i}`).innerHTML = alert + 'tidak boleh kosong'
+                } else {
+                    alert.push(temp);
                 }
                 debtTitle.push(namaHutang[i].value);
                 debtAmount.push(parseInt(jmlHutang[i].value));
                 debtInterest.push(parseInt(bungaHutang[i].value));
                 monthlyInstallments.push(parseInt(minBayar[i].value));
             }
-            
-            for (let i = 0; i < alert.length; i++){
-                if (alert[i] !== '' ) {
-                    document.getElementById(`alert${i}`).innerHTML = alert[i]   
-                    stop = true                 
-                }else{
-                    document.getElementById(`alert${i}`).innerHTML = ''    
+
+            for (let i = 0; i < alert.length; i++) {
+                if (alert[i] !== "") {
+                    document.getElementById(`alert${i}`).innerHTML = alert[i];
+                    stop = true;
+                } else {
+                    document.getElementById(`alert${i}`).innerHTML = "";
                 }
             }
             this.isLoading = false;
@@ -79,7 +79,7 @@ document.addEventListener("alpine:init", () => {
                 monthlyInstallments: monthlyInstallments,
                 monthlySalary: this.monthlySalary,
                 extraSalary: this.extraSalary,
-            };            
+            };
             await fetch("http://127.0.0.1:8000/api/hitung", {
                 method: "POST",
                 body: JSON.stringify(form),
@@ -120,22 +120,24 @@ document.addEventListener("alpine:init", () => {
                     // console.log(this.messages)
                 });
         },
-        async charts (pendapatan, pembayaran){
-            const ctx = document.getElementById('hasilChart');
+        async charts(pendapatan, pembayaran) {
+            const ctx = document.getElementById("hasilChart");
 
             new Chart(ctx, {
-                type: 'doughnut',
+                type: "doughnut",
                 data: {
-                    labels: ['Pendapatan', 'Total Min Bayar'],
-                    datasets: [{
-                        label: 'Perbulan',
-                        data: [pendapatan,pembayaran],
-                        backgroundColor: [
-                            'rgb(42, 124, 151)',
-                            'rgb(254, 159, 87)'
-                        ],
-                        hoverOffset: 7
-                    }],
+                    labels: ["Pendapatan", "Total Min Bayar"],
+                    datasets: [
+                        {
+                            label: "Perbulan",
+                            data: [pendapatan, pembayaran],
+                            backgroundColor: [
+                                "rgb(42, 124, 151)",
+                                "rgb(254, 159, 87)",
+                            ],
+                            hoverOffset: 7,
+                        },
+                    ],
                 },
             });
         },
@@ -150,7 +152,7 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-                .then(async(reponse) => await reponse.json())
+                .then(async (reponse) => await reponse.json())
                 .then(async (data) => {
                     if (data.success == true) {
                         this.list = await data.data;
@@ -161,9 +163,6 @@ document.addEventListener("alpine:init", () => {
                     }
                     this.isLoading = false;
                 });
-                // console.log(this.messages)
-
-
         },
         async tambahData() {
             this.isLoading = true;
@@ -198,20 +197,20 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-                .then ( async (reponse) =>  await  reponse.json())
-                .then(async(data) => {
-                    if (data.status == true) {                       
+                .then(async (reponse) => await reponse.json())
+                .then(async (data) => {
+                    if (data.status == true) {
                         this.listData();
                         this.calculated = !this.calculated;
-                        localStorage.setItem('tab', 'listHitungan');
+                        localStorage.setItem("tab", "listHitungan");
                         this.isLoading = false;
                     }
                     if (data.status == false) {
                         this.validation = data.error;
                         this.isLoading = false;
                     }
-                    this.messages = data.message;     
-                    console.log(this.messages);               
+                    this.messages = data.message;
+                    console.log(this.messages);
                     // console.log(this.messages)
                 });
         },
@@ -224,27 +223,25 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-            .then( async (reponse) => await  reponse.json())
-            .then(async (data) => {
-                if (data.status == true) {
-                    this.listData()                    
-                }
-                if (data.status == false) {
-                    this.validation = data.error;
-                }
-                this.messages = data.message;
-
-            });
-            this.listData() 
+                .then(async (reponse) => await reponse.json())
+                .then(async (data) => {
+                    if (data.status == true) {
+                        this.listData();
+                    }
+                    if (data.status == false) {
+                        this.validation = data.error;
+                    }
+                    this.messages = data.message;
+                });
+            this.listData();
         },
         formatUang(params) {
-
-            var data = Number (params)
-            let USDollar = new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
+            var data = Number(params);
+            let USDollar = new Intl.NumberFormat("en-US", {
+                style: "currency",
+                currency: "USD",
             });
-            return USDollar.format(data).replace(/.00$/, '');
+            return USDollar.format(data).replace(/.00$/, "");
         },
         formatTgl(params) {
             var date = new Date(params);
@@ -256,12 +253,12 @@ document.addEventListener("alpine:init", () => {
             return tgl;
         },
         title: [],
-        textTitile (params){
+        textTitile(params) {
             for (let i = 0; i < params.length; i++) {
-                this.title.push(params[0].debtTitle)
+                this.title.push(params[0].debtTitle);
             }
             console.log(this.title);
-        }
+        },
     }));
 
     Alpine.store("getData", () => ({
@@ -294,7 +291,6 @@ document.addEventListener("alpine:init", () => {
                         focus:border-none focus:outline-none text-right focus-visible:ring-0" type="number" min="0" max="" step="100" placeholder="500000" x-bind:value="ambilData.detail[index].debtAmount">
                     </div>
                 </div>
-
                 <div class="flex flex-row items-center px-3 py-4 border-b-2">
                     <div class="flex justify-center w-12 mr-2">
                         <img class="invert" src="/img/moneytime.svg" alt="" class="h-5">
@@ -306,7 +302,6 @@ document.addEventListener("alpine:init", () => {
                         sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" max="100" placeholder="15" x-bind:value="ambilData.detail[index].debtInterest">
                     </div>
                 </div>
-
                 <div class="flex flex-row items-center px-3 py-4">
                     <div class="flex justify-center w-12 mr-2">
                         <img class="invert" src="/img/moneysend.svg" alt="" class="h-5">
@@ -376,8 +371,8 @@ document.addEventListener("alpine:init", () => {
                     if (data.status == true) {
                         console.log(data);
                         this.calculated = !this.calculated;
-                        localStorage.setItem('tab', 'listHitungan');
-                        this.listData()
+                        localStorage.setItem("tab", "listHitungan");
+                        this.listData();
                     }
                     if (data.status == false) {
                         this.validation = data.error;
@@ -386,8 +381,8 @@ document.addEventListener("alpine:init", () => {
                 });
         },
         async hitungedit(id) {
-            var alert=[]
-            var stop = false
+            var alert = [];
+            var stop = false;
             var debtTitle = [];
             var debtAmount = [];
             var debtInterest = [];
@@ -396,45 +391,45 @@ document.addEventListener("alpine:init", () => {
             var jmlHutang = document.getElementsByClassName("jmlHutang");
             var bungaHutang = document.getElementsByClassName("bungaHutang");
             var minBayar = document.getElementsByClassName("minBayar");
-            var monthlySalary = document.getElementsByClassName("monthlySalary")[0].value;            
-            var extraSalary = document.getElementsByClassName("extraSalary")[0].value;
-            
+            var monthlySalary =
+                document.getElementsByClassName("monthlySalary")[0].value;
+            var extraSalary =
+                document.getElementsByClassName("extraSalary")[0].value;
 
-            for (let i = 0; i < namaHutang.length; i++) {   
-                
-                let temp=''
-                if (namaHutang[i].value === '') {
-                    temp += "nama hutang, "
+            for (let i = 0; i < namaHutang.length; i++) {
+                let temp = "";
+                if (namaHutang[i].value === "") {
+                    temp += "nama hutang, ";
                 }
-                if (jmlHutang[i].value === '') {
-                    temp += "jumlah hutang, "                   
+                if (jmlHutang[i].value === "") {
+                    temp += "jumlah hutang, ";
                 }
-                if (bungaHutang[i].value === '') {
-                    temp += "bunga hutang, "
+                if (bungaHutang[i].value === "") {
+                    temp += "bunga hutang, ";
                 }
-                if (minBayar[i].value === '') {
-                    temp += "minmal bayar hutang "                   
+                if (minBayar[i].value === "") {
+                    temp += "minmal bayar hutang ";
                 }
-                if (temp !== '') {
-                    temp += 'tidak boleh kosong'
-                    alert.push(temp)
-                    // document.getElementById(`alert${i}`).innerHTML = alert + 'tidak boleh kosong'                    
-                }else{
-                    alert.push(temp)
+                if (temp !== "") {
+                    temp += "tidak boleh kosong";
+                    alert.push(temp);
+                    // document.getElementById(`alert${i}`).innerHTML = alert + 'tidak boleh kosong'
+                } else {
+                    alert.push(temp);
                 }
-                
+
                 debtTitle.push(namaHutang[i].value);
                 debtAmount.push(jmlHutang[i].value);
                 debtInterest.push(bungaHutang[i].value);
                 monthlyInstallments.push(minBayar[i].value);
             }
 
-            for (let i = 0; i < alert.length; i++){
-                if (alert[i] !== '' ) {
-                    document.getElementById(`alert${i}`).innerHTML = alert[i]   
-                    stop = true                 
-                }else{
-                    document.getElementById(`alert${i}`).innerHTML = ''    
+            for (let i = 0; i < alert.length; i++) {
+                if (alert[i] !== "") {
+                    document.getElementById(`alert${i}`).innerHTML = alert[i];
+                    stop = true;
+                } else {
+                    document.getElementById(`alert${i}`).innerHTML = "";
                 }
             }
 
@@ -458,37 +453,36 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-            .then((reponse) => reponse.json())
-            .then((data) => {
-                if (data.status == true) {
-                    this.hasil = data.data;
+                .then((reponse) => reponse.json())
+                .then((data) => {
+                    if (data.status == true) {
+                        this.hasil = data.data;
 
-                    var date = new Date(data.data.hasil.normalCalculator);
-                    var mount = date.toLocaleString("default", {
-                        month: "long",
-                    });
-                    var year = date.getFullYear();
-                    this.dateNormal = mount + ", " + year;
+                        var date = new Date(data.data.hasil.normalCalculator);
+                        var mount = date.toLocaleString("default", {
+                            month: "long",
+                        });
+                        var year = date.getFullYear();
+                        this.dateNormal = mount + ", " + year;
 
-                    var date2 = new Date(
-                        data.data.hasil.snowballCalculator
-                    );
-                    var mount = date2.toLocaleString("default", {
-                        month: "long",
-                    });
-                    var year = date2.getFullYear();
-                    this.dateSnowball = mount + ", " + year;
+                        var date2 = new Date(
+                            data.data.hasil.snowballCalculator
+                        );
+                        var mount = date2.toLocaleString("default", {
+                            month: "long",
+                        });
+                        var year = date2.getFullYear();
+                        this.dateSnowball = mount + ", " + year;
 
-                    this.id = id;
-                    this.calculated = !this.calculated;
-                }
-                if (data.success == false) {
-                    this.validation = data.error;
-                }
-                this.messages = data.message;
-                // console.log(validation);
-            });
+                        this.id = id;
+                        this.calculated = !this.calculated;
+                    }
+                    if (data.success == false) {
+                        this.validation = data.error;
+                    }
+                    this.messages = data.message;
+                    // console.log(validation);
+                });
         },
     }));
-
 });

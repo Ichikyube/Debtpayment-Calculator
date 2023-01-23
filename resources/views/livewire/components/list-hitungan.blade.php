@@ -147,7 +147,7 @@
 
                             <!-- Button Delete -->
                             <div>
-                                <button @click="modelOpen =!modelOpen , idDebt = data.id" class="text-xl">
+                                <button x-on:click="modelOpen =!modelOpen , idDebt = data.id" class="text-xl">
                                     <span class="bg-[#2A7C97] px-1 text-[#F7D3C2] rounded shadow"><i class="fa-regular fa-trash-can"></i></span>
                                 </button>
 
