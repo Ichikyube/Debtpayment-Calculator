@@ -1,4 +1,4 @@
-<div id="hilanginscroll" x-data="{modelOpen: false }" x-init="await listData()" x-cloak>
+<div id="hilanginscroll" x-data="{modelOpen: false }" x-init="listData()" x-cloak>
     <div class="flex justify-between">
         <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 drop-shadow-md">List Hitungan</h1>
         <template x-if="messages != null">

@@ -174,6 +174,7 @@ document.addEventListener("alpine:init", () => {
                         console.log(data);
                         this.calculated = !this.calculated;
                         localStorage.setItem('tab', 'listHitungan');
+                        this.listData();
                     }
                     if (data.status == false) {
                         this.validation = data.error;
@@ -185,17 +186,17 @@ document.addEventListener("alpine:init", () => {
             this.isLoading = true;
 
             this.calculated = true;
-            fetch("http://127.0.0.1:8000/api/debt-payment/list", {
+            await fetch("http://127.0.0.1:8000/api/debt-payment/list", {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-                .then((reponse) => reponse.json())
-                .then((data) => {
+                .then(async(reponse) => await reponse.json())
+                .then(async (data) => {
                     if (data.success == true) {
-                        this.list = data.data;
+                        this.list = await data.data;
                         //console.log(this.list);
                     }
                     if (data.status == false) {
@@ -215,9 +216,8 @@ document.addEventListener("alpine:init", () => {
                 },
             })
             .then((reponse) => reponse.json())
-            .then((data) => {
+            .then(async (data) => {
                 if (data.status == true) {
-                    
                 }
                 if (data.status == false) {
                     this.validation = data.error;
@@ -225,7 +225,7 @@ document.addEventListener("alpine:init", () => {
                 this.messages = data.message;
 
             });
-            this.listData();
+            
         },
         formatUang(params) {
 
