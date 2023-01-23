@@ -44,7 +44,7 @@
 
         <div class="mt-4 lg:mt-0 md:px-4 bg-white stretch
                     shadow pt-0 h-[560px] lg:w-[97%] transform
-                    rounded-none lg:rounded-xl px-0 lg:p-10 py-10">
+                    rounded-md lg:rounded-xl px-0 lg:p-10 py-10">
             <template x-if="tab == 'kalkulator'" x-data="$store.create" x-cloak
                 x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90"
                 x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-300"

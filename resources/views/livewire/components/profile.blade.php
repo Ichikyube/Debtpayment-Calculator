@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class="mt-0 mb-2 text-sm font-bold leading-normal uppercase text-blueGray-400" x-text="user.email" ></div>
-                    <ul class="overflow-y-scroll group hover:border transition-colors ease-in-out duration-1000 p-2 hover:border-sky-500 hilanginscroll mt-10 h-40 mx-auto text-justify w-fit lg:w-[600px] overflow-clip text-blueGray-600">
+                    <ul class="h-40 p-2 mx-auto mt-10 overflow-y-scroll text-justify transition-colors duration-1000 ease-in-out group hover:border hover:border-sky-500 hilanginscroll w-fit overflow-clip text-blueGray-600">
                         <li class="whitespace-pre transition-colors duration-1000 ease-in-out border-transparent group-hover:border-b group-hover:border-sky-500"><p>Jenis Kelamin        : <span x-text="user.gender"></span> </p></li>
                         <li class="whitespace-pre transition-colors duration-1000 ease-in-out border-transparent group-hover:border-b group-hover:border-sky-500"><p class="break-normal whitespace-pre-wrap">Tempat, Tgl Lahir  : <span x-text="user.tempat_lahir + ',    '" ></span> <span x-text="user.tgl_lahir"></span> </p></li>
                         <li class="whitespace-pre"><p>alamat                    : <span class="" x-text="user.alamat"></span></p></li>
@@ -36,8 +36,9 @@
             </div>
         </div>
 
-        <div x-show="showForm"class="bg-[#F7D3C2] overflow-y-auto w-full lg:w-1/3 h-[590px] md:h-96 lg:h-5/6 md:w-min
-            md:static lg:absolute lg:right-28 lg:-mt-11 -mt-[31.3rem] rounded-b-[30px] md:rounded-[30px] lg:rounded-[30px] drop-shadow-md static hilanginscroll"
+        <div x-show="showForm"class="bg-[#F7D3C2] overflow-y-auto w-full md:w-2/3 lg:w-1/3 h-[590px] md:h-96 lg:h-5/6
+            md:static lg:absolute lg:right-28 md:mt-0 lg:-mt-11 absolute mt-0 top-0 lg:top-[20%] rounded-b-[30px] md:rounded-[30px]
+            lg:rounded-[30px] drop-shadow-md static hilanginscroll"
             x-transition:enter="transition ease-out duration-1000"
             x-transition:enter-start="opacity-0 transform scale-90"
             x-transition:enter-end="opacity-100 transform scale-100"

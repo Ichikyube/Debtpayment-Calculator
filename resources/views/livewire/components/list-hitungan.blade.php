@@ -1,16 +1,16 @@
 <div id="hilanginscroll" x-data="{modelOpen: false }" x-init="await listData()" x-cloak>
-    <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 lg:mb-4 drop-shadow-md">List Hitungan</h1>
+    <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 drop-shadow-md">List Hitungan</h1>
     <br>
     <template x-if="isLoading && list == 0">
         <div class="flex flex-col items-center justify-center w-full h-full min-h-[300px] align-center mx-auto bg-white">
-            <span class="h-6 w-6 block text-center whitespace-normal rounded-full border-4 border-t-blue-300 animate-spin"></span>
+            <span class="block w-6 h-6 text-center whitespace-normal border-4 rounded-full border-t-blue-300 animate-spin"></span>
             loading...
         </div>
     </template>
     <!-- Looping Tambahan Form Hutang -->
     <div class="flex flex-col px-4 overflow-y-scroll h-[443px] touch-auto hilanginscroll">
     <template x-for="data in list">
-    <div x-data="{ open: false, delete1: false}" class="bg-[#F7D3C2] py-[24px] px-[45px] rounded-[30px] mt-5 shadow-sm hover:shadow-md transition-shadow duration-300 ease-in-out">
+    <div x-data="{ open: false, delete1: false}" class="bg-[#F7D3C2] py-[24px] px-[45px] rounded-[30px] shadow-sm hover:shadow-md transition-shadow duration-300 ease-in-out">
         <!-- Head -->
         <div class="flex justify-between">
             <p class="inline-block text-xl font-semibold text-gray-800 truncate w-96">
@@ -108,7 +108,7 @@
                 <div class="flex items-end gap-2 lg:gap-12">
                     <div>
                         <p class="">Snowball</p>
-                        <p class="text-xl font-bold text-[#FE9F57]" x-text="formatTgl(data.snowball_calculator)"></p>
+                        <p class="text-xl font-bold text-myyellow" x-text="formatTgl(data.snowball_calculator)"></p>
                     </div>
                     <div>
                         <p>Tanpa Snowball</p>
