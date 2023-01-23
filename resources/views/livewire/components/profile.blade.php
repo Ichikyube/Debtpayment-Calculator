@@ -27,16 +27,16 @@
                         </div>
                     </div>
                     <div class="mt-0 mb-2 text-sm font-bold leading-normal uppercase text-blueGray-400" x-text="user.email" ></div>
-                    <ul class="h-40 p-2 mx-auto mt-10 overflow-y-scroll text-justify transition-colors duration-1000 ease-in-out group hover:border hover:border-sky-500 hilanginscroll w-fit overflow-clip text-blueGray-600">
+                    <ul class="w-1/2 h-40 p-2 mx-auto mt-10 overflow-y-scroll text-justify transition-colors duration-1000 ease-in-out group hover:border hover:border-sky-500 hilanginscroll overflow-clip text-blueGray-600">
                         <li class="whitespace-pre transition-colors duration-1000 ease-in-out border-transparent group-hover:border-b group-hover:border-sky-500"><p>Jenis Kelamin        : <span x-text="user.gender"></span> </p></li>
                         <li class="whitespace-pre transition-colors duration-1000 ease-in-out border-transparent group-hover:border-b group-hover:border-sky-500"><p class="break-normal whitespace-pre-wrap">Tempat, Tgl Lahir  : <span x-text="user.tempat_lahir + ',    '" ></span> <span x-text="user.tgl_lahir"></span> </p></li>
-                        <li class="whitespace-pre"><p>alamat                    : <span class="" x-text="user.alamat"></span></p></li>
+                        <li class="whitespace-pre"><p>alamat               : </p><p class="break-words whitespace-normal" x-text="user.alamat"></p></li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <div x-show="showForm"class="bg-[#F7D3C2] overflow-y-auto w-full h-full md:w-2/3 lg:w-1/3 min-h-min md:h-96 lg:h-5/6
+        <div x-show="showForm"class="bg-[#F7D3C2] overflow-y-auto w-full h-full md:w-2/3 lg:w-2/5 min-h-min md:h-96 lg:h-5/6
             md:static lg:absolute lg:right-28 md:mt-0 lg:-mt-11 absolute mt-0 top-0 lg:top-[20%] rounded-b-md md:rounded-xl
             lg:rounded-xl drop-shadow-md static hilanginscroll"
             x-transition:enter="transition ease-out duration-1000"
