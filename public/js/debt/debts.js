@@ -23,7 +23,8 @@ document.addEventListener("alpine:init", () => {
             i
         },
         async hitung() {
-            var alert=''
+            var alert=[]
+            var stop = false
             var debtTitle = [];
             var debtAmount = [];
             var debtInterest = [];
@@ -33,31 +34,43 @@ document.addEventListener("alpine:init", () => {
             var bungaHutang = document.getElementsByClassName("bungaHutang");
             var minBayar = document.getElementsByClassName("minBayar");
             for (let i = 0; i < namaHutang.length; i++) {
+                let temp=''
                 if (namaHutang[i].value === '') {
-                    alert += "nama hutang, "
+                    temp += "nama hutang, "
                 }
                 if (jmlHutang[i].value === '') {
-                    alert += "jumlah hutang, "                   
+                    temp += "jumlah hutang, "                   
                 }
                 if (bungaHutang[i].value === '') {
-                    alert += "bunga hutang, "
+                    temp += "bunga hutang, "
                 }
                 if (minBayar[i].value === '') {
-                    alert += "minmal bayar hutang "                   
+                    temp += "minmal bayar hutang "                   
                 }
-                if (alert !== '') {
-                    document.getElementById(`alert${i}`).innerHTML = alert + 'tidak boleh kosong'
-                    return;
+                if (temp !== '') {
+                    temp += 'tidak boleh kosong'
+                    alert.push(temp)
+                    // document.getElementById(`alert${i}`).innerHTML = alert + 'tidak boleh kosong'                    
                 }else{
-                    document.getElementById(`alert${i}`).innerHTML = ""
+                    alert.push(temp)
                 }
-
                 debtTitle.push(namaHutang[i].value);
                 debtAmount.push(parseInt(jmlHutang[i].value));
                 debtInterest.push(parseInt(bungaHutang[i].value));
                 monthlyInstallments.push(parseInt(minBayar[i].value));
             }
-
+            
+            for (let i = 0; i < alert.length; i++){
+                if (alert[i] !== '' ) {
+                    document.getElementById(`alert${i}`).innerHTML = alert[i]   
+                    stop = true                 
+                }else{
+                    document.getElementById(`alert${i}`).innerHTML = ''    
+                }
+            }
+            if (stop) {
+                return;
+            }
             const form = {
                 debtTitle: debtTitle,
                 debtAmount: debtAmount,
@@ -65,8 +78,7 @@ document.addEventListener("alpine:init", () => {
                 monthlyInstallments: monthlyInstallments,
                 monthlySalary: this.monthlySalary,
                 extraSalary: this.extraSalary,
-            };
-            
+            };            
             await fetch("http://127.0.0.1:8000/api/hitung", {
                 method: "POST",
                 body: JSON.stringify(form),
