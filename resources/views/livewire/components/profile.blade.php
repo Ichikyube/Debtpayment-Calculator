@@ -27,10 +27,10 @@
                         </div>
                     </div>
                     <div class="mt-0 mb-2 text-sm font-bold leading-normal uppercase text-blueGray-400" x-text="user.email" ></div>
-                    <ul class="w-1/2 h-40 p-2 mx-auto mt-10 overflow-y-scroll text-justify transition-colors duration-1000 ease-in-out group hover:border hover:border-sky-500 hilanginscroll overflow-clip text-blueGray-600">
-                        <li class="whitespace-pre transition-colors duration-1000 ease-in-out border-transparent group-hover:border-b group-hover:border-sky-500"><p>Jenis Kelamin        : <span x-text="user.gender"></span> </p></li>
-                        <li class="whitespace-pre transition-colors duration-1000 ease-in-out border-transparent group-hover:border-b group-hover:border-sky-500"><p class="break-normal whitespace-pre-wrap">Tempat, Tgl Lahir  : <span x-text="user.tempat_lahir + ',    '" ></span> <span x-text="user.tgl_lahir"></span> </p></li>
-                        <li class="whitespace-pre"><p>alamat               : </p><p class="break-words whitespace-normal" x-text="user.alamat"></p></li>
+                    <ul class="w-3/4 h-40 p-2 mx-auto mt-10 overflow-y-scroll text-justify transition-colors duration-1000 ease-in-out md:w-1/2 lg:w-1/2 group hover:border hover:border-sky-500 hilanginscroll overflow-clip text-blueGray-600">
+                        <li class="transition-colors duration-1000 ease-in-out border-transparent group-hover:border-b group-hover:border-sky-500"><p class="break-words whitespace-normal"><b> Jenis Kelamin  </b>    <span> : </span> <span x-text="user.gender"></span> </p></li>
+                        <li class="transition-colors duration-1000 ease-in-out border-transparent group-hover:border-b group-hover:border-sky-500"><p class="break-normal whitespace-normal"><b> Tempat, Tgl Lahir  </b> <span> : </span> <span x-text="user.tempat_lahir + ',    '" ></span> <span x-text="user.tgl_lahir"></span> </p></li>
+                        <li><p class="whitespace-normal"><b> alamat </b><span class="align-left">: </span></p><p class="break-words whitespace-normal" x-text="user.alamat"></p></li>
                     </ul>
                 </div>
             </div>
