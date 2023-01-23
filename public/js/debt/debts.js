@@ -114,7 +114,7 @@ document.addEventListener("alpine:init", () => {
                         console.log(this.validation);
                     }
                     this.messages = data.message;
-                    console.log(this.messages)
+                    // console.log(this.messages)
                 });
         },
         async charts (pendapatan, pembayaran){
@@ -168,23 +168,26 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-                .then((reponse) => reponse.json())
+                .then ( async (reponse) =>  await  reponse.json())
                 .then((data) => {
                     if (data.status == true) {
-                        console.log(data);
+                        this.messages = data.message;
+                        console.log(data.message);                        
                         this.calculated = !this.calculated;
                         localStorage.setItem('tab', 'listHitungan');
                         this.listData();
+                        
                     }
                     if (data.status == false) {
                         this.validation = data.error;
                     }
-                    this.messages = data.message;
+                    
+                    // console.log(this.messages)
                 });
         },
         async listData() {
+            this.list = [];
             this.isLoading = true;
-
             this.calculated = true;
             await fetch("http://127.0.0.1:8000/api/debt-payment/list", {
                 method: "GET",
@@ -197,13 +200,14 @@ document.addEventListener("alpine:init", () => {
                 .then(async (data) => {
                     if (data.success == true) {
                         this.list = await data.data;
-                        // console.log(this.list);
+                        console.log(this.list);
                     }
                     if (data.status == false) {
                         this.validation = data.error;
                     }
                     this.isLoading = false;
                 });
+                // console.log(this.messages)
 
 
         },
@@ -216,10 +220,10 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-            .then((reponse) => reponse.json())
+            .then( async (reponse) => await  reponse.json())
             .then(async (data) => {
                 if (data.status == true) {
-                    this.listData()
+                    this.listData()                    
                 }
                 if (data.status == false) {
                     this.validation = data.error;
@@ -227,7 +231,7 @@ document.addEventListener("alpine:init", () => {
                 this.messages = data.message;
 
             });
-            
+            this.listData() 
         },
         formatUang(params) {
 
