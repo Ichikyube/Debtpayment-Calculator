@@ -180,16 +180,16 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-                .then((reponse) => reponse.json())
-                .then((data) => {
-                    if (data.status == true) {
-                        window.location.reload();
-                    }
-                    if (data.status == false) {
-                        this.validation = data.error;
-                    }
-                    this.messages = data.message;
-                });
+            .then((reponse) => reponse.json())
+            .then((data) => {
+                if (data.status == true) {
+                    window.location.reload();
+                }
+                if (data.status == false) {
+                    this.validation = data.error;
+                }
+                this.messages = data.message;
+            });
         },
         formatUang(params) {
 
@@ -198,7 +198,6 @@ document.addEventListener("alpine:init", () => {
                 style: 'currency',
                 currency: 'USD',
             });
-            // var uang = "$" + data.toFixed(2).replace(/(\d)(?=(\d{3})+.)/g, "$1,").replace(/.00$/, '');
             return USDollar.format(data).replace(/.00$/, '');
         },
         formatTgl(params) {
@@ -221,6 +220,8 @@ document.addEventListener("alpine:init", () => {
 
     Alpine.store("getData", () => ({
         calculated: true,
+        mountlySalary: null,
+        extraSalary: null,
         // ambilData: [],
         html: `
 
@@ -349,6 +350,9 @@ document.addEventListener("alpine:init", () => {
             var jmlHutang = document.getElementsByClassName("jmlHutang");
             var bungaHutang = document.getElementsByClassName("bungaHutang");
             var minBayar = document.getElementsByClassName("minBayar");
+            var mountlySalary = document.getElementsByClassName("mountlySalary");
+            var extraSalary = document.getElementsByClassName("extraSalary");
+
             for (let i = 0; i < namaHutang.length; i++) {
                 console.log(namaHutang[i].value);
                 debtTitle.push(namaHutang[i].value);
@@ -373,91 +377,36 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-                .then((reponse) => reponse.json())
-                .then((data) => {
-                    if (data.status == true) {
-                        this.hasil = data.data;
+            .then((reponse) => reponse.json())
+            .then((data) => {
+                if (data.status == true) {
+                    this.hasil = data.data;
 
-                        var date = new Date(data.data.hasil.normalCalculator);
-                        var mount = date.toLocaleString("default", {
-                            month: "long",
-                        });
-                        var year = date.getFullYear();
-                        this.dateNormal = mount + ", " + year;
+                    var date = new Date(data.data.hasil.normalCalculator);
+                    var mount = date.toLocaleString("default", {
+                        month: "long",
+                    });
+                    var year = date.getFullYear();
+                    this.dateNormal = mount + ", " + year;
 
-                        var date2 = new Date(
-                            data.data.hasil.snowballCalculator
-                        );
-                        var mount = date2.toLocaleString("default", {
-                            month: "long",
-                        });
-                        var year = date2.getFullYear();
-                        this.dateSnowball = mount + ", " + year;
+                    var date2 = new Date(
+                        data.data.hasil.snowballCalculator
+                    );
+                    var mount = date2.toLocaleString("default", {
+                        month: "long",
+                    });
+                    var year = date2.getFullYear();
+                    this.dateSnowball = mount + ", " + year;
 
-                        // Chart
-                        const ctx2 = document.getElementById("hasilChart");
-
-                        new Chart(ctx2, {
-                            type: "doughnut",
-                            data: {
-                                labels: ["Pendapatan", "Pembayaran"],
-                                datasets: [
-                                    {
-                                        label: [
-                                            "Total Pendapatan",
-                                            "Total Min Pembayaran",
-                                        ],
-                                        data: [
-                                            this.hasil.hasil.monthlySalary,
-                                            this.hasil.hasil.totalMinPayment,
-                                        ],
-                                        backgroundColor: [
-                                            "rgb(54, 162, 235)",
-                                            "rgb(255, 4, 4, 1)",
-                                        ],
-                                        borderWidth: 1,
-                                        borderColor: "rgb(93, 56, 219)",
-                                        hoverOffset: 7,
-                                    },
-                                ],
-                            },
-                            options: {
-                                responsive: true,
-                                plugins: {
-                                    legend: {
-                                        display: true,
-                                        maxWidth: 700,
-                                        align: "center",
-                                        padding: 25,
-                                        labels: {
-                                            color: "rgb(56, 57, 64)",
-                                            boxHeight: 10,
-                                            boxWidth: 10,
-                                            padding: 20,
-                                            textAlign: "left",
-                                            font: {
-                                                size: 14,
-                                                weight: "bolder",
-                                            },
-                                        },
-                                    },
-                                },
-                                layout: {
-                                    autoPadding: true,
-                                },
-                                scales: 50,
-                            },
-                        });
-
-                        this.id = id;
-                        this.calculated = !this.calculated;
-                    }
-                    if (data.success == false) {
-                        this.validation = data.error;
-                    }
-                    this.messages = data.message;
-                    console.log(validation);
-                });
+                    this.id = id;
+                    this.calculated = !this.calculated;
+                }
+                if (data.success == false) {
+                    this.validation = data.error;
+                }
+                this.messages = data.message;
+                console.log(validation);
+            });
         },
     }));
 

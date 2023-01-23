@@ -73,7 +73,7 @@
                     </div>
                     <div class="relative flex justify-between w-full">
                         <p class="text-base text-dark">Pendapatan perbulan <span class="text-xs text-gray-400">($)</span></p>
-                        <input x-model="monthlySalary" class="form-input appearance-none block px-3 border-0 text-right outline-none w-full
+                        <input x-model="mountlySalary" class="mountlySalary form-input appearance-none block px-3 border-0 text-right outline-none w-full
                         placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm absolute
                         sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder="5000" x-bind:value="ambilData.monthlySalary">
                     </div>
@@ -85,7 +85,7 @@
                     </div>
                     <div class="relative flex items-center justify-between w-full">
                         <p class="text-base text-dark">Pembayaran Extra Perbulan <span class="text-xs text-gray-400">($)</span></p>
-                        <input x-model="extraSalary" class="form-input absolute appearance-none block px-3 border-0 text-right outline-none w-full
+                        <input x-model="extraSalary" class="extraSalary form-input absolute appearance-none block px-3 border-0 text-right outline-none w-full
                         placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
                         sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder="1000" x-bind:value="ambilData.extraSalary">
 
