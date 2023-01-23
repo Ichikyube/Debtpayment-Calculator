@@ -1,12 +1,12 @@
 document.addEventListener("alpine:init", () => {
     Alpine.store("create", () => ({
-        posts: [1],
+        posts: [0],
         profile: null,
         calculated: false,
         dateNormal: "",
         dateSnowball: "",
-        monthlySalary: null,
-        extraSalary: null,
+        monthlySalary: 0,
+        extraSalary: 0,
         hasil: [],
         list: [],
         ambilData: [],
@@ -14,11 +14,16 @@ document.addEventListener("alpine:init", () => {
         isLoading: false,
         addDebt() {
             this.posts.push('');
+            console.log(this.posts)
         },
         removeDebt(index) {
             this.posts.splice(index, 1);
         },
+        async cekInput(val){
+            i
+        },
         async hitung() {
+            var alert=''
             var debtTitle = [];
             var debtAmount = [];
             var debtInterest = [];
@@ -28,6 +33,25 @@ document.addEventListener("alpine:init", () => {
             var bungaHutang = document.getElementsByClassName("bungaHutang");
             var minBayar = document.getElementsByClassName("minBayar");
             for (let i = 0; i < namaHutang.length; i++) {
+                if (namaHutang[i].value === '') {
+                    alert += "nama hutang, "
+                }
+                if (jmlHutang[i].value === '') {
+                    alert += "jumlah hutang, "                   
+                }
+                if (bungaHutang[i].value === '') {
+                    alert += "bunga hutang, "
+                }
+                if (minBayar[i].value === '') {
+                    alert += "minmal bayar hutang "                   
+                }
+                if (alert !== '') {
+                    document.getElementById(`alert${i}`).innerHTML = alert + 'tidak boleh kosong'
+                    return;
+                }else{
+                    document.getElementById(`alert${i}`).innerHTML = ""
+                }
+
                 debtTitle.push(namaHutang[i].value);
                 debtAmount.push(parseInt(jmlHutang[i].value));
                 debtInterest.push(parseInt(bungaHutang[i].value));
@@ -42,6 +66,7 @@ document.addEventListener("alpine:init", () => {
                 monthlySalary: this.monthlySalary,
                 extraSalary: this.extraSalary,
             };
+            
             await fetch("http://127.0.0.1:8000/api/hitung", {
                 method: "POST",
                 body: JSON.stringify(form),
@@ -75,9 +100,10 @@ document.addEventListener("alpine:init", () => {
                     }
                     if (data.success == false) {
                         this.validation = data.error;
+                        console.log(this.validation);
                     }
                     this.messages = data.message;
-                    console.log(validation);
+                    console.log(this.messages)
                 });
         },
         async charts (pendapatan, pembayaran){
@@ -307,6 +333,7 @@ document.addEventListener("alpine:init", () => {
                 normalCalculator: this.hasil.hasil.normalCalculator,
                 snowballCalculator: this.hasil.hasil.snowballCalculator,
             };
+            console.log(this.hasil.hasil.monthlySalary);
             for (let i = 0; i < this.hasil.hutang.length; i++) {
                 form.debtTitle.push(this.hasil.hutang[i].debtTitle);
                 form.debtAmount.push(this.hasil.hutang[i].debtAmount);
@@ -341,7 +368,7 @@ document.addEventListener("alpine:init", () => {
                 });
         },
         async hitungedit(id) {
-
+            
             var debtTitle = [];
             var debtAmount = [];
             var debtInterest = [];
@@ -350,11 +377,12 @@ document.addEventListener("alpine:init", () => {
             var jmlHutang = document.getElementsByClassName("jmlHutang");
             var bungaHutang = document.getElementsByClassName("bungaHutang");
             var minBayar = document.getElementsByClassName("minBayar");
-            var mountlySalary = document.getElementsByClassName("mountlySalary");
-            var extraSalary = document.getElementsByClassName("extraSalary");
+            var monthlySalary = document.getElementsByClassName("monthlySalary")[0].value;            
+            var extraSalary = document.getElementsByClassName("extraSalary")[0].value;
+            
 
             for (let i = 0; i < namaHutang.length; i++) {
-                console.log(namaHutang[i].value);
+                
                 debtTitle.push(namaHutang[i].value);
                 debtAmount.push(jmlHutang[i].value);
                 debtInterest.push(bungaHutang[i].value);
@@ -366,8 +394,8 @@ document.addEventListener("alpine:init", () => {
                 debtAmount: debtAmount,
                 debtInterest: debtInterest,
                 monthlyInstallments: monthlyInstallments,
-                monthlySalary: parseInt(this.monthlySalary),
-                extraSalary: parseInt(this.extraSalary),
+                monthlySalary: parseInt(monthlySalary),
+                extraSalary: parseInt(extraSalary),
             };
             await fetch("http://127.0.0.1:8000/api/hitung", {
                 method: "POST",
@@ -405,7 +433,7 @@ document.addEventListener("alpine:init", () => {
                     this.validation = data.error;
                 }
                 this.messages = data.message;
-                console.log(validation);
+                // console.log(validation);
             });
         },
     }));

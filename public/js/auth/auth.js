@@ -26,7 +26,7 @@ document.addEventListener("alpine:init", () => {
                 .then((data) => {
                     if (data.success == true) {
                         console.log(data);
-                        window.location.replace("http://127.0.0.1:8001/login");
+                        // window.location.replace("http://127.0.0.1:8001/login");
                     }
                     if (data.success == false) {
                         this.validation = data.error;

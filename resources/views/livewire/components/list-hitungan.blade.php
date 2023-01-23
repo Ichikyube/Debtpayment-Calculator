@@ -102,6 +102,7 @@
                         $250
                     </p>
                 </div>
+               
             </div>
 
             <div class="flex justify-between w-full lg:w-6/12">
