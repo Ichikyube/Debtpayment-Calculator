@@ -13,6 +13,7 @@ document.addEventListener("alpine:init", () => {
         validation: [],
         messages: null,
         isLoading: false,
+        idDebt: 0,
         addDebt() {
             this.posts.push('');
             console.log(this.posts)
@@ -204,9 +205,9 @@ document.addEventListener("alpine:init", () => {
                 });
 
         },
-        async deleted(id) {
-            console.log(id);
-            fetch("http://127.0.0.1:8000/api/debt/delete/" + id, {
+        async deleted() {
+            // console.log(this.idDebt);
+            fetch("http://127.0.0.1:8000/api/debt/delete/" + this.idDebt, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -216,13 +217,15 @@ document.addEventListener("alpine:init", () => {
             .then((reponse) => reponse.json())
             .then((data) => {
                 if (data.status == true) {
-                    window.location.reload();
+                    
                 }
                 if (data.status == false) {
                     this.validation = data.error;
                 }
                 this.messages = data.message;
+
             });
+            this.listData();
         },
         formatUang(params) {
 
@@ -363,10 +366,9 @@ document.addEventListener("alpine:init", () => {
                 .then((data) => {
                     if (data.status == true) {
                         console.log(data);
-                        localStorage.setItem("tab", "listHitungan");
-                        window.location.replace(
-                            "http://127.0.0.1:8001/dashboard"
-                        );
+                        this.calculated = !this.calculated;
+                        localStorage.setItem('tab', 'listHitungan');
+                        this.listData()
                     }
                     if (data.status == false) {
                         this.validation = data.error;
