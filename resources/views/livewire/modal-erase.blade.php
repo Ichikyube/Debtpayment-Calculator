@@ -30,7 +30,7 @@
                 Apakah Anda yakin ingin menghapus data ini?
             </p>
             <div class="flex justify-center gap-8 mt-12">
-                <button x-on:click="deleted(data.id)" class="px-5 py-2 text-white bg-red-600 rounded-xl">Ya</a>
+                <button x-on:click="deleted, modelOpen = !modelOpen, listData()" class="px-5 py-2 text-white bg-red-600 rounded-xl">Ya</a>
                 <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
                     Tidak
                     </svg>
