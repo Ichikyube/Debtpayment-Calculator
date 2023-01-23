@@ -18,10 +18,7 @@ document.addEventListener("alpine:init", () => {
         },
         removeDebt(index) {
             this.posts.splice(index, 1);
-        },
-        async cekInput(val){
-            i
-        },
+        },       
         async hitung() {
             var alert=[]
             var stop = false
