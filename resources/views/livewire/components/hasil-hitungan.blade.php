@@ -72,7 +72,7 @@
         </div>
         <div class="flex justify-end mr-[50px]">
             <button x-on:click="calculated = !calculated" class="self-end mr-7 my-2 text-xl font-bold">Kembali</button>
-            <button x-on:click="tambahData" class="self-end px-4 py-2 text-white bg-[#2A7C97] rounded-xl"><span class="inline-block text-center align-top">Simpan</d></button>
+            <button x-on:click="tambahData, tab = 'listHitungan'" class="self-end px-4 py-2 text-white bg-[#2A7C97] rounded-xl"><span class="inline-block text-center align-top">Simpan</d></button>
         </div>
     </div>
 </div>

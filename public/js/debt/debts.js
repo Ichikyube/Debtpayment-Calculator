@@ -11,6 +11,7 @@ document.addEventListener("alpine:init", () => {
         list: [],
         ambilData: [],
         validation: [],
+        messages: null,
         isLoading: false,
         addDebt() {
             this.posts.push('');
@@ -170,9 +171,7 @@ document.addEventListener("alpine:init", () => {
                 .then((data) => {
                     if (data.status == true) {
                         console.log(data);
-                        window.location.replace(
-                            "http://127.0.0.1:8001/dashboard"
-                        );
+                        this.calculated = !this.calculated;
                         localStorage.setItem('tab', 'listHitungan');
                     }
                     if (data.status == false) {
@@ -201,7 +200,6 @@ document.addEventListener("alpine:init", () => {
                     if (data.status == false) {
                         this.validation = data.error;
                     }
-                    this.messages = data.message;
                     this.isLoading = false;
                 });
 
