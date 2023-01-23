@@ -197,13 +197,14 @@ document.addEventListener("alpine:init", () => {
                 .then(async (data) => {
                     if (data.success == true) {
                         this.list = await data.data;
-                        //console.log(this.list);
+                        // console.log(this.list);
                     }
                     if (data.status == false) {
                         this.validation = data.error;
                     }
                     this.isLoading = false;
                 });
+
 
         },
         async deleted() {
@@ -218,6 +219,7 @@ document.addEventListener("alpine:init", () => {
             .then((reponse) => reponse.json())
             .then(async (data) => {
                 if (data.status == true) {
+                    this.listData()
                 }
                 if (data.status == false) {
                     this.validation = data.error;
@@ -260,9 +262,9 @@ document.addEventListener("alpine:init", () => {
         extraSalary: null,
         // ambilData: [],
         html: `
-
                 <div class="flex flex-row px-5 py-5 align-middle border-b-2">
                     <h6 class="ml-5 text-xl font-bold text-blueGray-700">Hutang <span x-text="index+1"></span></h6>
+                    <p :id="'alert'+index"></p>
                 </div>
                 <div class="flex flex-row items-center px-3 py-4 border-b-2">
                     <div class="flex justify-center w-12 mr-2">
@@ -377,7 +379,8 @@ document.addEventListener("alpine:init", () => {
                 });
         },
         async hitungedit(id) {
-            
+            var alert=[]
+            var stop = false
             var debtTitle = [];
             var debtAmount = [];
             var debtInterest = [];
@@ -390,12 +393,46 @@ document.addEventListener("alpine:init", () => {
             var extraSalary = document.getElementsByClassName("extraSalary")[0].value;
             
 
-            for (let i = 0; i < namaHutang.length; i++) {
+            for (let i = 0; i < namaHutang.length; i++) {   
+                
+                let temp=''
+                if (namaHutang[i].value === '') {
+                    temp += "nama hutang, "
+                }
+                if (jmlHutang[i].value === '') {
+                    temp += "jumlah hutang, "                   
+                }
+                if (bungaHutang[i].value === '') {
+                    temp += "bunga hutang, "
+                }
+                if (minBayar[i].value === '') {
+                    temp += "minmal bayar hutang "                   
+                }
+                if (temp !== '') {
+                    temp += 'tidak boleh kosong'
+                    alert.push(temp)
+                    // document.getElementById(`alert${i}`).innerHTML = alert + 'tidak boleh kosong'                    
+                }else{
+                    alert.push(temp)
+                }
                 
                 debtTitle.push(namaHutang[i].value);
                 debtAmount.push(jmlHutang[i].value);
                 debtInterest.push(bungaHutang[i].value);
                 monthlyInstallments.push(minBayar[i].value);
+            }
+
+            for (let i = 0; i < alert.length; i++){
+                if (alert[i] !== '' ) {
+                    document.getElementById(`alert${i}`).innerHTML = alert[i]   
+                    stop = true                 
+                }else{
+                    document.getElementById(`alert${i}`).innerHTML = ''    
+                }
+            }
+
+            if (stop) {
+                return;
             }
 
             const form = {

@@ -11,6 +11,9 @@
                 shadow-sm hover:shadow-xl transition-shadow duration-300 ease-in-out">
                 <div class="flex flex-row px-5 py-5 align-middle border-b-2">
                     <h6 class="ml-5 text-xl font-bold text-blueGray-700">Hutang 1</h6>
+                    <p :id="'alert0'">
+
+                    </p>
                 </div>
                 <div class="flex flex-row items-center px-3 py-4 border-b-2">
                     <div class="flex justify-center w-12 mr-2">
@@ -59,7 +62,9 @@
             </div>
             <!-- Looping Tambahan Form Hutang -->
             <template x-for="index in posts-1">
-            <div class="bg-[#F7D3C2] mx-4 mb-8 w-11/12 lg:w-full lg:max-w-full rounded-md lg:rounded-[15px] shadow-sm hover:shadow-xl transition-shadow duration-300 ease-in-out" x-html="html"></div>
+            <div class="bg-[#F7D3C2] mx-4 mb-8 w-11/12 lg:w-full lg:max-w-full rounded-md lg:rounded-[15px] shadow-sm hover:shadow-xl transition-shadow duration-300 ease-in-out" x-html="html">
+            
+            </div>
             </template>
         </div>
         <div class="flex flex-col lg:items-end items-center order-first mb-2 align-middle md:order-last lg:order-last lg:w-1/2">

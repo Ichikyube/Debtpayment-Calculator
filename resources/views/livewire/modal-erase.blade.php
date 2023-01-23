@@ -1,4 +1,4 @@
-<div x-show="modelOpen" x-trap="open" class="fixed top-0 left-0 right-0" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+<div x-show="modelOpen"  x-trap="open" class="fixed top-0 left-0 right-0" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <div class="flex items-center justify-center w-full h-full min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
         <div x-cloak @click="modelOpen = false" x-show="modelOpen"
             x-transition:enter="transition ease-out duration-300 transform"
