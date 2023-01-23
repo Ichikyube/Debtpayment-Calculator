@@ -1,4 +1,4 @@
-<div class="container mx-auto" x-data="$store.userProfile">
+<div class="container" x-data="$store.userProfile">
     <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 lg:mb-4 drop-shadow-md">profile</h1>
     <div class="flex flex-col w-full transition-all ease-in-out delay-100 md:flex-row lg:flex-row mt-14 mt-150"  x-bind:class="showForm == true ? 'justify-evenly lg:w-1/2' : 'justify-center w-full'" x-init="userData()">
         <div class="px-8 lg:flex-row">
@@ -36,9 +36,9 @@
             </div>
         </div>
 
-        <div x-show="showForm"class="bg-[#F7D3C2] overflow-y-auto w-full md:w-2/3 lg:w-1/3 h-[590px] md:h-96 lg:h-5/6
-            md:static lg:absolute lg:right-28 md:mt-0 lg:-mt-11 absolute mt-0 top-0 lg:top-[20%] rounded-b-[30px] md:rounded-[30px]
-            lg:rounded-[30px] drop-shadow-md static hilanginscroll"
+        <div x-show="showForm"class="bg-[#F7D3C2] overflow-y-auto w-full h-full md:w-2/3 lg:w-1/3 min-h-min md:h-96 lg:h-5/6
+            md:static lg:absolute lg:right-28 md:mt-0 lg:-mt-11 absolute mt-0 top-0 lg:top-[20%] rounded-b-md md:rounded-xl
+            lg:rounded-xl drop-shadow-md static hilanginscroll"
             x-transition:enter="transition ease-out duration-1000"
             x-transition:enter-start="opacity-0 transform scale-90"
             x-transition:enter-end="opacity-100 transform scale-100"
@@ -73,75 +73,91 @@
                 <p x-text="validation.alamat"></p>
             </div>
             <div class="border-t border-gray-200">
-                <div class="flex flex-row items-center px-4 py-5 border-b-2" >
+                <div class="flex flex-row items-center px-4 border-b-2" >
                     <div class="flex justify-center w-12 mr-2">
                         <i class="fa-solid fa-signature"></i>
                     </div>
-                    <div class="flex items-center justify-between w-full"  >
-                        <p class="mt-1 text-sm text-zinc-900 sm:col-span-2 sm:mt-0">Nama Lengkap</p>
-                        <input x-model="update.name" type="text" class="mt-1 text-lg w-1/2 text-zinc-900 sm:col-span-2 sm:mt-0 form-input appearance-none block px-3 border-0
-                        rounded-xl outline-none placeholder:!bg-transparent bg-transparent text-center transition duration-150 ease-in-out sm:text-sm sm:leading-5
+                    <div class="relative flex items-center justify-between w-full py-2">
+                        <input x-model="update.name" id="fullname" type="text" class="w-1/2 form-input peer text-white/30 focus:text-black z-10 align-text-bottom text-left
+                        bg-white/10 block appearance-none px-3 border-0 pb-0 outline-none placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-1
                         focus:border-none focus:outline-none focus-visible:ring-0">
+                        <label for="fullname" class="absolute top-3 origin-[0] break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-xl
+                        bg-main text-dark duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0
+                        peer-focus:-translate-y-5 peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Nama Lengkap</label>
+                        <div class="w-full text-xl font-bold text-center text-zinc-900 lr-4" x-text="update.name"></div>
                     </div>
                 </div>
-                <div class="border-t border-gray-200">
-                    <div class="flex flex-row items-center px-4 py-5 border-b-2">
-                        <div class="flex justify-center w-12 mr-2">
-                            <i class="fa-solid fa-venus-mars"></i>
-                        </div>
-                        <div class="flex items-center justify-between w-full">
-                            <label for="gender" class="block mt-1 text-sm font-medium text-zinc-900 sm:col-span-2 sm:mt-0">Jenis Kelamin</label>
-                            <select x-model="update.gender" name="gender" id="gender"
-                            class="mt-1 w-full py-2 text-zinc-900 bg-white/10 after:rounded-md placeholder-shown:bg-gray-600 sm:col-span-2 sm:mt-0 text-lg form-input appearance-none block px-3 border-0
-                            rounded-xl shadow-sm outline-none placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5
-                            focus:border-none focus:outline-none focus-visible:ring-0">
-                                <option class="text-center">-- pilih gender --</option>
-                                <option>Laki-Laki</option>
-                                <option>Perempuan</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex flex-row items-center px-4 py-5 border-b-2">
-                    <div class="flex justify-center w-12 mr-2">
-                        <i class="fa-solid fa-hospital"></i>
-                    </div>
-                    <div class="flex items-center justify-between w-full">
-                        <label class="mt-1 text-sm text-zinc-900 sm:col-span-2 sm:mt-0 ">Tempat Lahir</label>
-                        <input x-model="update.tempat_lahir" type="text" class="form-input appearance-none block px-3 border-0 rounded-xl outline-none
-                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:leading-5
-                        focus:border-none focus:outline-none focus-visible:ring-0
-                        mt-1 text-lg w-1/2 text-zinc-900 sm:col-span-2 sm:mt-0">
-                    </div>
-                </div>
-
-                <div class="flex flex-row items-center px-4 py-5 border-b-2">
-                    <div class="flex justify-center w-12 mr-2">
-                        <i class="fa-solid fa-cake-candles"></i>
-                    </div>
-                    <div class="flex items-center justify-between w-full">
-                        <p class="mt-1 text-sm text-zinc-900 sm:col-span-2 sm:mt-0">Tanggal Lahir</p>
-                        <input x-model="update.tgl_lahir" type="date" class="form-input appearance-none block px-3 border-0 rounded-xl outline-none
-                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:leading-5
-                        focus:border-none focus:outline-none focus-visible:ring-0
-                        mt-1  text-lg w-1/2 text-zinc-900 sm:col-span-2 sm:mt-0">
-                    </div>
-                </div>
-
-                <div class="flex flex-row items-center px-4 py-5 border-b-2">
-                    <div class="flex justify-center w-12 mr-2">
-                        <i class="fa-solid fa-map"></i>
-                    </div>
-                    <div class="flex items-center justify-between w-full">
-                        <p class="mt-1 text-sm text-zinc-900 sm:col-span-2 sm:mt-0">Alamat</p>
-                        <input x-model="update.alamat" type="text" class="form-input appearance-none block px-3 border-0 rounded-xl outline-none
-                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:leading-5
-                        focus:border-none focus:outline-none focus-visible:ring-0
-                        mt-1  text-lg w-1/2 text-zinc-900 sm:col-span-2 sm:mt-0">
-                    </div>
-                </div>
-                <br><br>
             </div>
+            <div class="border-t border-gray-200">
+                <div class="flex flex-row items-center px-4 border-b-2">
+                    <div class="flex justify-center w-12 mr-2">
+                        <i class="fa-solid fa-venus-mars"></i>
+                    </div>
+                    <div class="relative flex items-center justify-between w-full py-2">
+                        <select x-model="update.gender" name="gender" id="gender"
+                        class="w-fit form-input peer text-white/30 pb-0 focus:text-black z-10 align-text-bottom text-left bg-white/10 block
+                        appearance-none px-3 border-0 outline-none placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-1
+                        focus:border-none focus:outline-none focus-visible:ring-0">
+                            <option class="text-xs text-center">-- pilih gender --</option>
+                            <option class="text-xs">Laki-Laki</option>
+                            <option class="text-xs">Perempuan</option>
+                        </select>
+                        <label for="gender" class="absolute top-3 origin-[0] break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-xl
+                        bg-main text-dark duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0
+                        peer-focus:-translate-y-5 peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Jenis Kelamin</label>
+                        <i class="w-full text-xl font-bold text-center text-zinc-900 lr-4" x-bind:class="update.gender == 'Laki-Laki'? 'fa-solid fa-mars' : update.gender == 'Perempuan'? 'fa-solid fa-venus': ' '"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-row items-center px-4 border-b-2">
+                <div class="flex justify-center w-12 mr-2">
+                    <i class="fa-solid fa-hospital"></i>
+                </div>
+                <div class="relative flex items-center justify-between w-full py-2">
+                    <input x-model="update.tempat_lahir" type="text" class="w-1/2 form-input peer pt-5 text-white/30 focus:text-black z-10 align-text-bottom text-left bg-white/10 block
+                    appearance-none px-3 border-0 outline-none pb-0 placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-1
+                    focus:border-none focus:outline-none focus-visible:ring-0">
+                    <label class="absolute top-3 origin-[0] break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-xl
+                    bg-main text-dark duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0
+                    peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Tempat Lahir</label>
+                    <div class="w-full text-xl font-bold text-center text-zinc-900 lr-4" x-text="update.tempat_lahir"></div>
+                </div>
+            </div>
+            <div class="flex flex-row items-center px-4 border-b-2">
+                <div class="flex justify-center w-12 mr-2">
+                    <i class="fa-solid fa-cake-candles"></i>
+                </div>
+                <div class="relative flex items-center justify-between w-full py-2">
+                    <input x-model="update.tgl_lahir" type="date" class="w-1/2 form-input peer text-white/30 focus:text-black z-10 align-text-bottom text-left bg-white/10 block
+                        appearance-none px-3 border-0 outline-none pb-0 placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-1
+                        focus:border-none focus:outline-none focus-visible:ring-0">
+                    <label class="absolute top-3 origin-[0] break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-xl
+                      bg-main text-dark duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0
+                        peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Tanggal Lahir</label>
+                    <div class="w-full text-xl font-bold text-center break-words text-zinc-900 lr-4"  x-text="new Date(update.tgl_lahir).toLocaleDateString('default', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })"></div>
+                </div>
+            </div>
+            <script>
+                const date_str = "07/20/2021";
+                const date = new Date(date_str);
+                const full_day_name = date.toLocaleDateString('default', { weekday: 'long' });
+            </script>
+            <div class="flex flex-row items-center px-4 border-b-2 h-max">
+                <div class="flex justify-center w-12 mr-2">
+                    <i class="fa-solid fa-map"></i>
+                </div>
+                <div class="relative flex items-center justify-between w-full py-2">
+                    <input x-model="update.alamat" type="text" class="w-11/12 form-input peer text-white/30 focus:text-black z-10 align-text-bottom text-left bg-white/10 block
+                    appearance-none px-3 border-0 outline-none pb-0 placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-1
+                    focus:border-none focus:outline-none focus-visible:ring-0">
+                    <label class="absolute top-3 origin-[0] break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-xl
+                    bg-main text-dark duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0
+                      peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Alamat</label>
+                </div>
+
+            </div>
+            <div class="w-8/12 mx-auto text-xl font-bold text-center break-words text-zinc-900 lr-4" x-text="update.alamat"></div>
+            <br><br>
         </div>
     </div>
 </div>
