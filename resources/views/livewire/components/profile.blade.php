@@ -3,13 +3,13 @@
     <div class="flex flex-col w-full transition-all ease-in-out delay-100 md:flex-row lg:flex-row mt-14 mt-150"  x-bind:class="showForm == true ? 'justify-evenly lg:w-1/2' : 'justify-center w-full'" x-init="userData()">
         <div class="px-8 lg:flex-row">
             <div class="flex flex-col justify-center -mt-8 lg:w-max">
-                <img src="{{asset('img/avatar.svg')}}" class="self-center ring-primary ring-offset-base-100 ring-offset-2 w-40 h-40 p-1 -mt-3 border-2 shadow-lg border-white border-solid rounded-full ring-2 ring-green-300 dark:ring-gray-500" alt="Bordered avatar">
+                <img src="{{asset('img/avatar.svg')}}" class="self-center w-40 h-40 p-1 -mt-3 border-2 border-white border-solid rounded-full shadow-lg ring-primary ring-offset-base-100 ring-offset-2 ring-2 ring-green-300 dark:ring-gray-500" alt="Bordered avatar">
 
                 <div class="mt-6 text-center">
                     <div class="flex justify-center">
                         <h3 class="mb-2 text-4xl font-semibold leading-normal text-blueGray-700"  x-text="user.name"  ></h3>
                         <div x-show="!showForm" x-on:click="userData, showForm = !showForm, message=''"
-                            class="relative justify-end flex items-center">
+                            class="relative flex items-center justify-end">
 
 
                             <button type="button" @click="insertUpdate(user.name,user.email,user.gender,user.tempat_lahir,user.tgl_lahir,user.alamat)"
@@ -19,22 +19,20 @@
                                 active:border-b-[0px] transition-all duration-150
                                 [box-shadow:0_1px_0_0_#f2f2f2,0_3px_0_0_#b7b7b7]">
 
-                                <span class="inline-flex items-center rounded-full hover:pl-2 group transition-all duration-500 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none" role="alert" tabindex="0">
+                                <span class="inline-flex items-center transition-all duration-500 rounded-full hover:pl-2 group focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none" role="alert" tabindex="0">
                                     <i class="fa-solid fa-pen-to-square "></i>
-                                    <span class="whitespace-nowrap inline-block group-hover:max-w-screen-2xl group-focus:max-w-screen-2xl max-w-0 scale-80 group-hover:scale-100 overflow-hidden transition-all duration-500 group-hover:px-2 group-focus:px-2">edit</span>
+                                    <span class="inline-block overflow-hidden transition-all duration-500 whitespace-nowrap group-hover:max-w-screen-2xl group-focus:max-w-screen-2xl max-w-0 scale-80 group-hover:scale-100 group-hover:px-2 group-focus:px-2">edit</span>
                                 </span>
                             </button>
                         </div>
                     </div>
-
-
                     <div class="mt-0 mb-2 text-sm font-bold leading-normal uppercase text-blueGray-400" x-text="user.email" ></div>
-                    <ul class="grid overflow-y-scroll hilanginscroll h-40 gap-2 mx-auto text-justify w-fit lg:w-[600px] overflow-clip text-blueGray-600">
-                        <li><p>Jenis Kelamin      : <span x-text="user.gender"></span> </p></li>
-                        <li><p class="break-normal whitespace-pre-wrap">Tempat, Tgl Lahir  : <span x-text="user.tempat_lahir + ',    '" ></span> <span x-text="user.tgl_lahir"></span> </p></li>
-                        <li><p>alamat             : <span class="" x-text="user.alamat"></span></p></li>
+                    <ul class="overflow-y-scroll group hover:border transition-colors ease-in-out duration-1000 p-2 hover:border-sky-500 hilanginscroll mt-10 h-40 mx-auto text-justify w-fit lg:w-[600px] overflow-clip text-blueGray-600">
+                        <li class="whitespace-pre transition-colors duration-1000 ease-in-out border-transparent group-hover:border-b group-hover:border-sky-500"><p>Jenis Kelamin        : <span x-text="user.gender"></span> </p></li>
+                        <li class="whitespace-pre transition-colors duration-1000 ease-in-out border-transparent group-hover:border-b group-hover:border-sky-500"><p class="break-normal whitespace-pre-wrap">Tempat, Tgl Lahir  : <span x-text="user.tempat_lahir + ',    '" ></span> <span x-text="user.tgl_lahir"></span> </p></li>
+                        <li class="whitespace-pre"><p>alamat                    : <span class="" x-text="user.alamat"></span></p></li>
                     </ul>
-                    </div>
+                </div>
             </div>
         </div>
 
@@ -91,7 +89,7 @@
                             <i class="fa-solid fa-venus-mars"></i>
                         </div>
                         <div class="flex items-center justify-between w-full">
-                            <label for="gender" class="mt-1 text-sm block font-medium text-zinc-900 sm:col-span-2 sm:mt-0">Jenis Kelamin</label>
+                            <label for="gender" class="block mt-1 text-sm font-medium text-zinc-900 sm:col-span-2 sm:mt-0">Jenis Kelamin</label>
                             <select x-model="update.gender" name="gender" id="gender"
                             class="mt-1 w-full py-2 text-zinc-900 bg-white/10 after:rounded-md placeholder-shown:bg-gray-600 sm:col-span-2 sm:mt-0 text-lg form-input appearance-none block px-3 border-0
                             rounded-xl shadow-sm outline-none placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5

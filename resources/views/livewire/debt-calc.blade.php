@@ -52,7 +52,7 @@
                 </label>
             </div>
         </div>
-        <div class="mr-4 text-right" x-text="bungaHutang?'% '+bungaHutang : ''"></div>
+        <div class="mr-4 text-right" x-text="bungaHutang?bungaHutang ' %': ''"></div>
     </div>
     <div class="flex flex-row items-center justify-between px-3 py-4">
         <div class="flex flex-row items-center">

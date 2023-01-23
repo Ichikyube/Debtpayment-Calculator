@@ -10,8 +10,13 @@ module.exports = {
             colors: {
                 dark:'#354446',
                 main:'#F7D3C2',
-                myblue:'#18A0FB'
+                myblue:'#18A0FB',
+                myyellow:'#FDC32F',
+                myorange:'#FBB85D'
             },
+            dropShadow: {
+                '3xl': '0 25px 25px rgba(251, 184, 93, 1)',
+            }
         },
     },
     variants: {

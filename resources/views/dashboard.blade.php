@@ -19,19 +19,19 @@
                 <li><button type="button"
                         x-on:click.prevent=" tab = 'kalkulator', localStorage.setItem('tab', 'kalkulator')"
                         class="text-4xl text-dark lg:text-white"><i
-                            x-bind:class="tab == 'kalkulator' ? 'text-red-400' : 'text-gray-400'"
-                            class="fa-solid fa-qrcode drop-shadow-md"></i></button>
+                            x-bind:class="tab == 'kalkulator' ? 'text-myyellow drop-shadow-3xl' : 'text-gray-400 drop-shadow-md'"
+                            class="fa-solid fa-qrcode"></i></button>
                 </li>
                 <li><button type="button"
                         x-on:click.prevent=" tab = 'listHitungan', localStorage.setItem('tab', 'listHitungan')"
                         class="text-4xl text-dark lg:text-white "><i
-                            x-bind:class="tab == 'listHitungan' ? 'text-red-400' : 'text-gray-400'"
-                            class="fa-solid fa-money-bill drop-shadow-md"></i></button>
+                            x-bind:class="tab == 'listHitungan' ? 'text-myyellow drop-shadow-3xl' : 'text-gray-400 drop-shadow-md'"
+                            class="fa-solid fa-money-bill"></i></button>
                 </li>
                 <li><button type="button" x-on:click.prevent=" tab = 'profile', localStorage.setItem('tab', 'profile')"
                         class="text-4xl text-dark lg:text-white"><i
-                            x-bind:class="tab == 'profile' ? 'text-red-400' : 'text-gray-400'"
-                            class="fa-regular fa-user drop-shadow-md"></i></button>
+                            x-bind:class="tab == 'profile' ? 'text-myyellow drop-shadow-3xl' : 'text-gray-400 drop-shadow-md'"
+                            class="fa-regular fa-user"></i></button>
                 </li>
             </ul>
             <div class="px-4" x-data="$store.logout">
