@@ -18,26 +18,26 @@
             <ul class="flex flex-row w-full h-full px-4 justify-evenly lg:flex-col">
                 <li><button type="button"
                         x-on:click.prevent=" tab = 'kalkulator', localStorage.setItem('tab', 'kalkulator')"
-                        class="pl-1 text-4xl lg:static text-dark lg:text-white left-24 top-1"><i
+                        class="text-4xl text-dark lg:text-white"><i
                             x-bind:class="tab == 'kalkulator' ? 'text-red-400' : 'text-gray-400'"
-                            class="fa-solid fa-qrcode"></i></button>
+                            class="fa-solid fa-qrcode drop-shadow-md"></i></button>
                 </li>
                 <li><button type="button"
                         x-on:click.prevent=" tab = 'listHitungan', localStorage.setItem('tab', 'listHitungan')"
-                        class="pl-1 text-4xl lg:static text-dark lg:text-white left-44 top-1"><i
+                        class="text-4xl text-dark lg:text-white "><i
                             x-bind:class="tab == 'listHitungan' ? 'text-red-400' : 'text-gray-400'"
-                            class="fa-solid fa-money-bill"></i></button>
+                            class="fa-solid fa-money-bill drop-shadow-md"></i></button>
                 </li>
                 <li><button type="button" x-on:click.prevent=" tab = 'profile', localStorage.setItem('tab', 'profile')"
-                        class="pl-1 text-4xl lg:static text-dark lg:text-white left-64 top-1"><i
+                        class="text-4xl text-dark lg:text-white"><i
                             x-bind:class="tab == 'profile' ? 'text-red-400' : 'text-gray-400'"
-                            class="fa-regular fa-user"></i></button>
+                            class="fa-regular fa-user drop-shadow-md"></i></button>
                 </li>
             </ul>
             <div class="px-4" x-data="$store.logout">
                 <button x-on:click="logout()"
-                    class="text-4xl lg:static text-dark lg:text-white">
-                    <i class="fa-solid fa-right-from-bracket"></i></button>
+                    class="text-4xl text-dark lg:text-white">
+                    <i class="fa-solid fa-right-from-bracket drop-shadow-md"></i></button>
             </div>
         </div>
 

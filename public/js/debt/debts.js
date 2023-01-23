@@ -11,6 +11,7 @@ document.addEventListener("alpine:init", () => {
         list: [],
         ambilData: [],
         validation: [],
+        isLoading: false,
         addDebt() {
             this.posts.push('');
         },
@@ -146,6 +147,8 @@ document.addEventListener("alpine:init", () => {
                 });
         },
         async listData() {
+            this.isLoading = true;
+
             this.calculated = true;
             fetch("http://127.0.0.1:8000/api/debt-payment/list", {
                 method: "GET",
@@ -158,13 +161,15 @@ document.addEventListener("alpine:init", () => {
                 .then((data) => {
                     if (data.success == true) {
                         this.list = data.data;
-                        console.log(this.list);
+                        //console.log(this.list);
                     }
                     if (data.status == false) {
                         this.validation = data.error;
                     }
                     this.messages = data.message;
+                    this.isLoading = false;
                 });
+
         },
         async deleted(id) {
             console.log(id);

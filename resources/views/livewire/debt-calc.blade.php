@@ -1,7 +1,7 @@
 <div x-id="['id']" class="bg-[#F7D3C2] snap-start snap-always mx-4 mb-8 w-11/12 lg:w-full lg:max-w-full rounded-md lg:rounded-[15px]
     shadow-sm hover:shadow-xl transition-shadow duration-300 ease-in-out"  x-data="{namaHutang:'', jmlHutang:'', bungaHutang:'', minBayar:'', monthlySalary:''}">
     <div class="flex flex-row px-5 py-5 align-middle border-b-2">
-        <h6 class="ml-5 text-xl font-bold text-blueGray-700">Hutang <span  :id="$id('id')" x-text="$id('id')"></span></h6>
+        <h6 class="ml-5 text-xl font-bold text-blueGray-700">Hutang <span  x-text="index+1"></span></h6>
     </div>
     <div class="flex flex-row items-center justify-between px-3 py-4 border-b-2">
         <div class="flex flex-row items-center">

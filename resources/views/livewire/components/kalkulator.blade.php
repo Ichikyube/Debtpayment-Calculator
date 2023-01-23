@@ -1,5 +1,5 @@
 <div x-data="$store.create">
-    <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 lg:mb-8">Kalkulator Hutang</h1>
+    <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 lg:mb-8 drop-shadow-md">Kalkulator Hutang</h1>
     <template x-if="calculated">
         @livewire('components.hasil-hitungan')
     </template>

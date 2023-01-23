@@ -10,6 +10,8 @@ input[type=number] {
 -moz-appearance: textfield;
 }
 
+[x-cloak] { display: none !important; }
+
 body{
     background: linear-gradient(116.82deg, #457081 0%, #EDCCBC 100%);
 }

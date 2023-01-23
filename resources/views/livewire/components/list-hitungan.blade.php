@@ -1,24 +1,10 @@
-<div id="hilanginscroll" x-data="{modelOpen: false }" x-init="listData()">
-    <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 lg:mb-4">List Hitungan</h1>
+<div id="hilanginscroll" x-data="{modelOpen: false }" x-init="await listData()" x-cloak>
+    <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 lg:mb-4 drop-shadow-md">List Hitungan</h1>
     <br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <template x-if="list.length == 0" x-cloack>
-        <div class="flex flex-col justify-center w-full mx-auto bg-white">
-            <h1 class="p-5 text-center whitespace-normal">Mohon maaf🙏🙏 belum ada perhitungan.</h1><br>
-            <h2 class="px-5 pb-3 text-center whitespace-normal">Silahkan dihitung terlebih dahulu.</h2>
+    <template x-if="isLoading && list == 0">
+        <div class="flex flex-col items-center justify-center w-full h-full min-h-[300px] align-center mx-auto bg-white">
+            <span class="h-6 w-6 block text-center whitespace-normal rounded-full border-4 border-t-blue-300 animate-spin"></span>
+            loading...
         </div>
     </template>
     <!-- Looping Tambahan Form Hutang -->
