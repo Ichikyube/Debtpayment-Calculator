@@ -1,4 +1,4 @@
-<x-app-layout title="Create a new account">
+<x-app-layout title="Create a new account" >
 
     {{-- fecth data di file public/js/auth/auth.js --}}
     <script src="{{asset('js/auth/auth.js')}}"></script>
@@ -16,7 +16,7 @@
 
         </div>
 
-        <div class="sm:mx-auto sm:w-full sm:max-w-md">
+        <div class="sm:mx-auto sm:w-full sm:max-w-md px-[20px]"  >
             <div class="px-4">
                 <p x-text="messages"></p>
                 <div>

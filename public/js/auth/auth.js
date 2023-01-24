@@ -6,7 +6,7 @@ document.addEventListener("alpine:init", () => {
         password: "",
         passwordConfirmation: "",
         validation: [],
-        messages: [],
+        messages: [],       
         async submited() {
             const form = {
                 name: this.name,
@@ -26,7 +26,8 @@ document.addEventListener("alpine:init", () => {
                 .then((data) => {
                     if (data.success == true) {
                         console.log(data);
-                        // window.location.replace("http://127.0.0.1:8001/login");
+                        localStorage.setItem("messages", data.message);
+                        window.location.replace("http://127.0.0.1:8001/login");
                     }
                     if (data.success == false) {
                         this.validation = data.error;
@@ -38,11 +39,17 @@ document.addEventListener("alpine:init", () => {
 
     // fetch login
     Alpine.store("login", () => ({
-        email: "",
+        email: "",        
         password: "",
+        messages: null, 
         error: [],
         validation: [],
-        status: "",
+        status: "", 
+        async getMessages(){
+            this.messages =  localStorage.getItem("messages")
+            localStorage.removeItem("messages");
+            console.log(this.messages)
+        },
         async getData() {
             await fetch("http://127.0.0.1:8000/api/user", {
                 method: "GET",
@@ -80,6 +87,7 @@ document.addEventListener("alpine:init", () => {
                     // response seccess = true (Login Berhasil)
                     if (this.status == true) {
                         localStorage.setItem("token", data.access_token);
+                        
                         window.location.replace(
                             "http://127.0.0.1:8001/dashboard"
                         );

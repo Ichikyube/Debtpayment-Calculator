@@ -358,7 +358,6 @@ document.addEventListener("alpine:init", () => {
                     this.hasil.hutang[i].monthlyInstallments
                 );
             }
-
             this.calculated = true;
             fetch("http://127.0.0.1:8000/api/debt/update/" + id, {
                 method: "POST",
