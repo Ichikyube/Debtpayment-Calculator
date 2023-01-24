@@ -5,16 +5,24 @@
             <!-- Looping Tambahan Form Hutang -->
             <template x-for="data in hasil.hutang">
                 <div class="flex gap-2 mt-7">
-                    <div class="flex items-center px-3 text-white bg-[#2A7C97] rounded-lg" x-text="data.debtInterest + '%'">
+                    <div>
+                        <div class="flex items-center px-3 text-white bg-[#2A7C97] rounded-lg" x-text="data.debtInterest + '%'">
+                        </div>
+                        <p class="text-center mt-[8px]" x-text="'$' + data.monthlyInstallments"></p>
                     </div>
+                    
                     <div class="w-full">
                         <div class="flex justify-between">
                             <p class="mb-2" x-text="data.debtTitle"></p>
+                            <p x-text="formatTglFull(data.datePayment)"></p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-full bg-gray-100 rounded-full h-2.5 dark:bg-gray-700">
+                                <div class="bg-lime-400 h-2.5 rounded-full" style="width: 5%"></div>
+                            </div>
                             <p x-text="'$' + data.debtAmount"></p>
                         </div>
-                        <div class="w-full bg-gray-100 rounded-full h-2.5 dark:bg-gray-700">
-                            <div class="bg-lime-400 h-2.5 rounded-full" style="width: 5%"></div>
-                        </div>
+                        
                     </div>
                 </div>
             </template>

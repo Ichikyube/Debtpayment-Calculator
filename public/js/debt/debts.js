@@ -27,10 +27,12 @@ document.addEventListener("alpine:init", () => {
             var stop = false;
             var debtTitle = [];
             var debtAmount = [];
+            var datePayment = [];
             var debtInterest = [];
             var monthlyInstallments = [];
             var namaHutang = document.getElementsByClassName("namaHutang");
             var jmlHutang = document.getElementsByClassName("jmlHutang");
+            var waktuBayar = document.getElementsByClassName("waktuBayar");
             var bungaHutang = document.getElementsByClassName("bungaHutang");
             var minBayar = document.getElementsByClassName("minBayar");
             for (let i = 0; i < namaHutang.length; i++) {
@@ -40,6 +42,9 @@ document.addEventListener("alpine:init", () => {
                 }
                 if (jmlHutang[i].value === "") {
                     temp += "jumlah hutang, ";
+                }
+                if (waktuBayar[i].value === "") {
+                    temp += "waktu bayar, ";
                 }
                 if (bungaHutang[i].value === "") {
                     temp += "bunga hutang, ";
@@ -56,6 +61,7 @@ document.addEventListener("alpine:init", () => {
                 }
                 debtTitle.push(namaHutang[i].value);
                 debtAmount.push(parseInt(jmlHutang[i].value));
+                datePayment.push(waktuBayar[i].value);
                 debtInterest.push(parseInt(bungaHutang[i].value));
                 monthlyInstallments.push(parseInt(minBayar[i].value));
             }
@@ -76,6 +82,7 @@ document.addEventListener("alpine:init", () => {
                 debtTitle: debtTitle,
                 debtAmount: debtAmount,
                 debtInterest: debtInterest,
+                datePayment: datePayment,
                 monthlyInstallments: monthlyInstallments,
                 monthlySalary: this.monthlySalary,
                 extraSalary: this.extraSalary,
@@ -243,6 +250,17 @@ document.addEventListener("alpine:init", () => {
             });
             return USDollar.format(data).replace(/.00$/, "");
         },
+        formatTglFull(params) {
+            var date = new Date(params);
+            var day = date.getDate();
+
+            var mount = date.toLocaleString("default", {
+                month: "long",
+            });
+            var year = date.getFullYear();
+            tgl =day + " " + mount + " " + year;
+            return tgl;
+        },
         formatTgl(params) {
             var date = new Date(params);
             var mount = date.toLocaleString("default", {
@@ -302,6 +320,17 @@ document.addEventListener("alpine:init", () => {
                         sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" max="100" placeholder="15" x-bind:value="ambilData.detail[index].debtInterest">
                     </div>
                 </div>
+                <div class="flex flex-row items-center px-3 py-4 border-b-2">
+                    <div class="flex justify-center w-12 mr-2">
+                        <img class="invert" src="{{asset('img/moneytime.svg')}}" alt="" class="h-5">
+                    </div>
+                    <div class="relative flex items-center justify-between w-full">
+                        <p class="text-base text-dark">Tanggal Pembayaran </p>
+                        <input class="waktuBayar absolute w-full form-input appearance-none block px-3 border-0 text-right outline-none
+                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
+                        sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="date" x-bind:value="ambilData.detail[index].datePayment">
+                    </div>
+                </div>
                 <div class="flex flex-row items-center px-3 py-4">
                     <div class="flex justify-center w-12 mr-2">
                         <img class="invert" src="/img/moneysend.svg" alt="" class="h-5">
@@ -338,6 +367,7 @@ document.addEventListener("alpine:init", () => {
             var form = {
                 debtTitle: [],
                 debtAmount: [],
+                datePayment: [],
                 debtInterest: [],
                 monthlyInstallments: [],
 
@@ -352,10 +382,9 @@ document.addEventListener("alpine:init", () => {
             for (let i = 0; i < this.hasil.hutang.length; i++) {
                 form.debtTitle.push(this.hasil.hutang[i].debtTitle);
                 form.debtAmount.push(this.hasil.hutang[i].debtAmount);
+                form.datePayment.push(this.hasil.hutang[i].datePayment);
                 form.debtInterest.push(this.hasil.hutang[i].debtInterest);
-                form.monthlyInstallments.push(
-                    this.hasil.hutang[i].monthlyInstallments
-                );
+                form.monthlyInstallments.push(this.hasil.hutang[i].monthlyInstallments);
             }
             this.calculated = true;
             fetch("http://127.0.0.1:8000/api/debt/update/" + id, {
@@ -385,11 +414,13 @@ document.addEventListener("alpine:init", () => {
             var stop = false;
             var debtTitle = [];
             var debtAmount = [];
+            var datePayment = [];
             var debtInterest = [];
             var monthlyInstallments = [];
             var namaHutang = document.getElementsByClassName("namaHutang");
             var jmlHutang = document.getElementsByClassName("jmlHutang");
             var bungaHutang = document.getElementsByClassName("bungaHutang");
+            var waktuBayar = document.getElementsByClassName("waktuBayar");
             var minBayar = document.getElementsByClassName("minBayar");
             var monthlySalary =
                 document.getElementsByClassName("monthlySalary")[0].value;
@@ -407,6 +438,9 @@ document.addEventListener("alpine:init", () => {
                 if (bungaHutang[i].value === "") {
                     temp += "bunga hutang, ";
                 }
+                if (waktuBayar[i].value === "") {
+                    temp += "waktu bayar, ";
+                }
                 if (minBayar[i].value === "") {
                     temp += "minmal bayar hutang ";
                 }
@@ -420,6 +454,7 @@ document.addEventListener("alpine:init", () => {
 
                 debtTitle.push(namaHutang[i].value);
                 debtAmount.push(jmlHutang[i].value);
+                datePayment.push(waktuBayar[i].value);
                 debtInterest.push(bungaHutang[i].value);
                 monthlyInstallments.push(minBayar[i].value);
             }
@@ -441,6 +476,7 @@ document.addEventListener("alpine:init", () => {
                 debtTitle: debtTitle,
                 debtAmount: debtAmount,
                 debtInterest: debtInterest,
+                datePayment: datePayment,
                 monthlyInstallments: monthlyInstallments,
                 monthlySalary: parseInt(monthlySalary),
                 extraSalary: parseInt(extraSalary),

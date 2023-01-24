@@ -61,7 +61,7 @@
                                 <div class="w-full">
                                     <div class="flex justify-between py-2">
                                         <p class="mb-2" x-text="detail.debtTitle"></p>
-                                        <p>12 Januari 2023</p>
+                                        <p class="mb-2" x-text="formatTglFull(detail.datePayment)"></p>
                                     </div>
                                     <div class="flex items-center gap-2">
                                         <div class="w-full bg-gray-100 rounded-full h-2.5 dark:bg-gray-700">
