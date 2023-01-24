@@ -84,6 +84,28 @@
                             peer-focus:scale-75 peer-focus:text-myblue break-words peer-focus:dark:text-blue-500">Pembayaran minimum perbulan <span class="text-xs text-green-600">($)</span>
                             </label>
                         </div>
+
+                <div class="flex flex-row items-center px-3 py-4 border-b-2">
+                    <div class="flex justify-center w-12 mr-2">
+                        <img class="invert" src="{{asset('img/moneytime.svg')}}" alt="" class="h-5">
+                    </div>
+                    <div class="relative flex items-center justify-between w-full">
+                        <p class="text-base text-dark">Tanggal Pembayaran </p>
+                        <input class="waktuBayar absolute w-full form-input appearance-none block px-3 border-0 text-right outline-none
+                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
+                        sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="date" x-bind:value="ambilData.detail[0].datePayment">
+                    </div>
+                </div>
+
+                <div class="flex flex-row items-center px-3 py-4">
+                    <div class="flex justify-center w-12 mr-2">
+                        <img class="invert" src="{{asset('img/moneysend.svg')}}" alt="" class="h-5">
+                    </div>
+                    <div class="relative flex items-center justify-between w-full group">
+                        <p class="text-base text-dark">Pembayaran minimum perbulan <span class="text-xs text-gray-400">($)</span></p>
+                        <input name="minBayar" id="minBayar" class="minBayar absolute w-full form-input appearance-none block px-3 border-0 text-right outline-none
+                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
+                        sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="10" step="100" placeholder="500" x-bind:value="ambilData.detail[0].monthlyInstallments">
                     </div>
                     <div class="mr-4 text-right" x-money.en-US.USD.decimal="minBayar"></div>
                 </div>

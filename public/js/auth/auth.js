@@ -6,7 +6,7 @@ document.addEventListener("alpine:init", () => {
         password: "",
         passwordConfirmation: "",
         validation: [],
-        messages: [],
+        messages: [],       
         async submited() {
             const form = {
                 name: this.name,
@@ -26,7 +26,8 @@ document.addEventListener("alpine:init", () => {
                 .then((data) => {
                     if (data.success == true) {
                         console.log(data);
-                        // window.location.replace("http://127.0.0.1:8001/login");
+                        localStorage.setItem("messages", data.message);
+                        window.location.replace("http://127.0.0.1:8001/login");
                     }
                     if (data.success == false) {
                         this.validation = data.error;
@@ -38,11 +39,17 @@ document.addEventListener("alpine:init", () => {
 
     // fetch login
     Alpine.store("login", () => ({
-        email: "",
+        email: "",        
         password: "",
+        messages: null, 
         error: [],
         validation: [],
-        status: "",
+        status: "", 
+        async getMessages(){
+            this.messages =  localStorage.getItem("messages")
+            localStorage.removeItem("messages");
+            console.log(this.messages)
+        },
         async getData() {
             await fetch("http://127.0.0.1:8000/api/user", {
                 method: "GET",
@@ -51,7 +58,7 @@ document.addEventListener("alpine:init", () => {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
             })
-                .then((response) => response.json())
+                .then(async(response) => await  response.json())
                 .then((data) => {
                     // localStorage.setItem("user", {data});
                     console.log(data);
@@ -69,17 +76,20 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-                .then((response) => response.json())
+                .then(async(response) => await response.json())
                 .then(async (data) => {
                     this.status = data.success;
                     // response success == false (gagal Login)
                     if (this.status == false) {
                         this.error = data;
+                        localStorage.setItem ('messages', data.message)
                         this.validation = data.error;
+                        this.getMessages();
                     }
                     // response seccess = true (Login Berhasil)
                     if (this.status == true) {
                         localStorage.setItem("token", data.access_token);
+                        
                         window.location.replace(
                             "http://127.0.0.1:8001/dashboard"
                         );

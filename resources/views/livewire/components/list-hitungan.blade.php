@@ -59,16 +59,20 @@
                                 <div>
                                     <div class="flex items-center px-3 py-2 text-white bg-[#2A7C97] rounded-lg" x-text="detail.debtInterest+'%'">
                                     </div>
-                                    <p class="text-center" x-text="formatUang(detail.monthlyInstallments)"></p>
+                                    <p class="text-center mt-[8px]" x-text="formatUang(detail.monthlyInstallments)"></p>
                                 </div>
                                 <div class="w-full">
                                     <div class="flex justify-between py-2">
                                         <p class="mb-2" x-text="detail.debtTitle"></p>
+                                        <p class="mb-2" x-text="formatTglFull(detail.datePayment)"></p>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-full bg-gray-100 rounded-full h-2.5 dark:bg-gray-700">
+                                            <div class="bg-[#2A7C97] h-2.5 rounded-full" style="width: 5%"></div>
+                                        </div>
                                         <p x-text="formatUang(detail.debtAmount)"></p>
                                     </div>
-                                    <div class="w-full bg-gray-100 rounded-full h-2.5 dark:bg-gray-700">
-                                        <div class="bg-[#2A7C97] h-2.5 rounded-full" style="width: 5%"></div>
-                                    </div>
+
                                 </div>
                             </div>
                         </template>
@@ -106,29 +110,37 @@
                 <div class="flex flex-wrap justify-between break-words">
                     <div class="flex gap-5 mt-5 lg:gap-16 lg:w-6/12">
                         <div>
-                            <p>Pendapatan</p>
-                            <p class="text-xl font-bold text-gray-700" x-text="formatUang(data.monthly_salary)">
+                            <p class="text-sm break-all">Pendapatan</p>
+                            <p class="text-lg font-bold text-gray-700" x-text="formatUang(data.monthly_salary)">
                             </p>
                         </div>
                         <div>
-                            <p>Total Hutang</p>
-                            <p class="text-xl font-bold text-gray-700" x-text="formatUang(data.total_debt)">
+                            <p class="text-sm break-all">Total Hutang</p>
+                            <p class="text-lg font-bold text-gray-700" x-text="formatUang(data.total_debt)">
                             </p>
                         </div>
                         <div>
-                            <p class="break-all">Pembayaran</p>
-                            <p class="text-xl font-bold text-gray-700" x-text="formatUang(data.total_min_payment)">
+                            <p class="text-sm break-all">Pembayaran</p>
+                            <p class="text-lg font-bold text-gray-700" x-text="formatUang(data.total_min_payment)">
+                                $250
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-sm break-all">Extra</p>
+                            <p class="text-lg font-bold text-gray-700" x-text="formatUang(data.extra_salary)">
                                 $250
                             </p>
                         </div>
                     </div>
 
                     <div class="flex justify-between w-full lg:w-6/12">
-                        <div class="flex items-end gap-2 lg:gap-12">
-                            <div>
-                                <p class="">Snowball</p>
-                                <p class="text-xl font-bold text-myyellow" x-text="formatTgl(data.snowball_calculator)"></p>
-                            </div>
+                        <div class="flex items-end gap-2 lg:gap-10">
+                            <template x-if="data.debt_details.length > 1 || data.extra_salary > 20">
+                                <div>
+                                    <p class="">Snowball</p>
+                                    <p class="text-xl font-bold text-myyellow" x-text="formatTgl(data.snowball_calculator)"></p>
+                                </div>
+                            </template>
                             <div>
                                 <p>Tanpa Snowball</p>
                                 <p class="text-xl font-bold text-gray-700" x-text="formatTgl(data.normal_calculator)"></p>
@@ -140,7 +152,7 @@
 
                             <!-- Button Delete -->
                             <div>
-                                <button @click="modelOpen =!modelOpen , idDebt = data.id" class="text-xl">
+                                <button x-on:click="modelOpen =!modelOpen , idDebt = data.id" class="text-xl">
                                     <span class="bg-[#2A7C97] px-1 text-[#F7D3C2] rounded shadow"><i class="fa-regular fa-trash-can"></i></span>
                                 </button>
 
