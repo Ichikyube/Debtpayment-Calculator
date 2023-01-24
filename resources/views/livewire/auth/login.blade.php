@@ -9,6 +9,7 @@
     <div class="tracking-[4.03px] sm:mx-auto text-dark w-full ">
         <script src="{{asset('js/auth/auth.js')}}"></script>
         <div class="bg-white items-center w-[300px] sm:w-[400px] mx-auto rounded-[15px] shadow-2xl">
+
             <div x-data="$store.login" class="font-normal">
                 <div class="tracking-[4.03px] text-dark">
                     <a href="{{ route('home') }}">
@@ -65,7 +66,7 @@
                             @if (Route::has('register'))
                             <p class="mt-2 text-[11px] text-center text-black">
                                 <a href="{{ route('register') }}"
-                                    class=" transition duration-150 ease-in-out hover:text-indigo-500 focus:outline-none focus:underline tracking-tight underline underline-offset-1">
+                                    class="tracking-tight underline transition duration-150 ease-in-out  hover:text-indigo-500 focus:outline-none focus:underline underline-offset-1">
                                     Belum punya akun? sign up
                                 </a>
                             </p>

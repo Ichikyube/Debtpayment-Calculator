@@ -1,7 +1,7 @@
 <div class="overflow-y-scroll overflow-x-hidden h-[430px] hilanginscroll">
     <div class="flex">
         <!-- List Hutang -->
-        <div class="w-1/2 h-80 overflow-scroll hilanginscroll">
+        <div class="w-1/2 overflow-scroll h-80 hilanginscroll">
             <!-- Looping Tambahan Form Hutang -->
             <template x-for="data in hasil.hutang">
                 <div class="flex gap-2 mt-7">
@@ -71,8 +71,8 @@
             </div>
         </div>
         <div class="flex justify-end mr-[50px]">
-            <button x-on:click="calculated = !calculated" class="self-end mr-7 my-2 text-xl font-bold">Kembali</button>
-            <button x-on:click="tab = 'listHitungan', editData(id)" class="self-end px-4 py-2 text-white bg-[#2A7C97] rounded-xl"><span class="inline-block text-center align-top">Simpan</d></button>
+            <button x-on:click="calculated = !calculated" class="self-end my-2 text-xl font-bold mr-7">Kembali</button>
+            <button x-on:click="tab = 'listHitungan', editData(id)" class="self-end px-4 py-2 text-white bg-[#2A7C97] rounded-xl"><span class="inline-block text-center align-top">Simpan</span></button>
         </div>
     </div>
 </div>

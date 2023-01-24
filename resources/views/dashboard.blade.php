@@ -22,7 +22,7 @@
                             x-bind:class="tab == 'kalkulator' ? 'text-myyellow drop-shadow-3xl' : 'text-gray-400 drop-shadow-md'"
                             class="fa-solid fa-qrcode"></i></button>
                 </li>
-                <li><button type="button"
+                <li><button type="button" x-bind:disabled="!list"
                         x-on:click.prevent=" tab = 'listHitungan', localStorage.setItem('tab', 'listHitungan')"
                         class="text-4xl text-dark lg:text-white "><i
                             x-bind:class="tab == 'listHitungan' ? 'text-myyellow drop-shadow-3xl' : 'text-gray-400 drop-shadow-md'"
