@@ -9,10 +9,10 @@
     {{-- fecth data di file public/js/auth/auth.js --}}
     <script src="{{asset('js/auth/auth.js')}}"></script>
 
-    <div x-data="$store.register" class="bg-white items-center w-[300px]  py-[20px] sm:w-[500px] mx-auto rounded-[15px] shadow-2xl" >
-        <div class="tracking-[4.03px] sm:mx-auto text-dark w-full">
+    <div x-data="$store.register" class="bg-white items-center px-5  py-7 sm:w-[500px] mx-auto rounded-[15px] shadow-2xl" >
+        <div class="sm:mx-auto text-dark w-full">
             <a href="{{ route('home') }}">
-                <div class="flex justify-center w-20 mx-auto"><x-logo/></div>
+                <div class="flex justify-center w-20 mx-auto mt-5"><x-logo/></div>
                 <h2 class=" text-[24px] md:text-[40px] leading-[70.12px] font-semibold text-center text-black tracking-tight">
                     Register
                 </h2>
@@ -22,7 +22,7 @@
 
         </div>
 
-        <div class="sm:mx-auto sm:w-full sm:max-w-md px-[20px]"  >
+        <div class="sm:mx-auto sm:w-full sm:max-w-md px-[20px] mt-5"  >
             <div class="px-4">                
                 <div>
                     <label for="name" class="block text-sm font-medium leading-5 text-black">
@@ -80,8 +80,8 @@
                     </span>
                 </div>
                 <p class="mt-2 text-sm leading-5 text-center text-gray-600 max-w tracking-tight">
-                    <a href="{{ route('login') }}" class="underline underline-offset-1 text-black font-medium transition duration-150 ease-in-out hover:text-indigo-500 focus:outline-none focus:underline">
-                        Sudah memiliki akun? sign in
+                    Sudah memiliki akun? <a href="{{ route('login') }}" class="no-underline text-blue-500 font-medium transition duration-150 ease-in-out hover:text-indigo-500 focus:outline-none focus:underline">
+                         Sign in
                     </a>
                 </p>
             </div>

@@ -6,11 +6,11 @@
             window.location.replace("/dashboard");
         }
     </script>
-    <div class="tracking-[4.03px] sm:mx-auto text-dark w-full ">
+    <div class="sm:mx-auto text-dark w-full ">
         <script src="{{asset('js/auth/auth.js')}}"></script>
-        <div class="bg-white items-center w-[300px] sm:w-[500px] mx-auto rounded-[15px] shadow-2xl">
+        <div class="bg-white items-center px-5 sm:w-[500px] mx-auto rounded-[15px] shadow-2xl">
             <div x-data="$store.login" class="font-normal">
-                <div class="tracking-[4.03px] text-dark" x-init="getMessages()">
+                <div class="text-dark" x-init="getMessages()">
 
                     <a href="{{ route('home') }}">
                         <div class="flex justify-center w-20 mx-auto mb-4 md:pt-[50px]">
@@ -81,10 +81,10 @@
                                 </span>
                             </div>
                             @if (Route::has('register'))
-                            <p class="mt-2 text-[11px] text-center text-black">
-                                <a href="{{ route('register') }}"
-                                    class=" transition duration-150 ease-in-out font-medium hover:text-indigo-500 focus:outline-none focus:underline tracking-tight underline underline-offset-1">
-                                    Belum punya akun? sign up
+                            <p class="mt-2 text-sm leading-5 text-center text-gray-600 max-w tracking-tight">
+                                Belum punya akun? <a href="{{ route('register') }}"
+                                    class="no-underline transition duration-150 ease-in-out font-medium hover:text-indigo-500 text-blue-500 focus:outline-none focus:underline tracking-tight">
+                                     Sign up
                                 </a>
                             </p>
                             @endif

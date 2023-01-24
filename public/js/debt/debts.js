@@ -207,22 +207,22 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-                .then(async (reponse) => await reponse.json())
-                .then(async (data) => {
-                    if (data.status == true) {
-                        this.listData();
-                        this.calculated = !this.calculated;
-                        localStorage.setItem("tab", "listHitungan");
-                        this.isLoading = false;
-                    }
-                    if (data.status == false) {
-                        this.validation = data.error;
-                        this.isLoading = false;
-                    }
-                    this.messages = data.message;
-                    console.log(this.messages);
-                    // console.log(this.messages)
-                });
+            .then(async (reponse) => await reponse.json())
+            .then(async (data) => {
+                if (data.status == true) {
+                    this.listData();
+                    this.calculated = !this.calculated;
+                    localStorage.setItem("tab", "listHitungan");
+                    this.isLoading = false;
+                }
+                if (data.status == false) {
+                    this.validation = data.error;
+                    this.isLoading = false;
+                }
+                this.messages = data.message;
+                console.log(this.messages);
+                // console.log(this.messages)
+            });
         },
         async deleted() {
             // console.log(this.idDebt);
@@ -287,64 +287,6 @@ document.addEventListener("alpine:init", () => {
         mountlySalary: null,
         extraSalary: null,
         // ambilData: [],
-        html: `
-                <div class="flex flex-row px-5 py-5 align-middle border-b-2">
-                    <h6 class="ml-5 text-xl font-bold text-blueGray-700">Hutang <span x-text="index+1"></span></h6>
-                    <p :id="'alert'+index"></p>
-                </div>
-                <div class="flex flex-row items-center px-3 py-4 border-b-2">
-                    <div class="flex justify-center w-12 mr-2">
-                        <img class="invert" src="/img/1.svg" alt="" class="h-5">
-                    </div>
-                    <div class="relative flex items-center justify-between w-full"><p class="text-base text-dark">Nama Hutang</p>
-                        <input class="namaHutang form-input w-full absolute appearance-none inline border-0 text-right outline-none placeholder:!bg-transparent bg-transparent transition
-                        duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="text" placeholder="KPR" x-bind:value="ambilData.detail[index].debtTitle">
-                    </div>
-                </div>
-                <div class="flex flex-row items-center px-3 py-4 border-b-2">
-                    <div class="flex justify-center w-12 mr-2">
-                        <img class="invert" src="/img/moneys.svg" alt="" class="h-5">
-                    </div>
-                    <div class="relative flex items-center justify-between w-full">
-                        <p class="text-base text-dark">Jumlah Hutang <span class="text-xs text-gray-400">($)</span></p>
-                        <input class="jmlHutang form-input w-full absolute appearance-none inline border-0 outline-none
-                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-5
-                        focus:border-none focus:outline-none text-right focus-visible:ring-0" type="number" min="0" max="" step="100" placeholder="500000" x-bind:value="ambilData.detail[index].debtAmount">
-                    </div>
-                </div>
-                <div class="flex flex-row items-center px-3 py-4 border-b-2">
-                    <div class="flex justify-center w-12 mr-2">
-                        <img class="invert" src="/img/moneytime.svg" alt="" class="h-5">
-                    </div>
-                    <div class="relative flex items-center justify-between w-full">
-                        <p class="text-base text-dark">Suku Bunga Hutang <span class="text-xs text-gray-400">(%)</span></p>
-                        <input class="bungaHutang absolute w-full form-input appearance-none block px-3 border-0 text-right outline-none
-                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
-                        sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" max="100" placeholder="15" x-bind:value="ambilData.detail[index].debtInterest">
-                    </div>
-                </div>
-                <div class="flex flex-row items-center px-3 py-4 border-b-2">
-                    <div class="flex justify-center w-12 mr-2">
-                        <img class="invert" src="{{asset('img/moneytime.svg')}}" alt="" class="h-5">
-                    </div>
-                    <div class="relative flex items-center justify-between w-full">
-                        <p class="text-base text-dark">Tanggal Pembayaran </p>
-                        <input class="waktuBayar absolute w-full form-input appearance-none block px-3 border-0 text-right outline-none
-                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
-                        sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="date" x-bind:value="ambilData.detail[index].datePayment">
-                    </div>
-                </div>
-                <div class="flex flex-row items-center px-3 py-4">
-                    <div class="flex justify-center w-12 mr-2">
-                        <img class="invert" src="/img/moneysend.svg" alt="" class="h-5">
-                    </div>
-                    <div class="relative flex items-center justify-between w-full group">
-                        <p class="text-base text-dark">Pembayaran minimum perbulan <span class="text-xs text-gray-400">($)</span></p>
-                        <input name="minBayar" id="minBayar" class="minBayar absolute w-full form-input appearance-none block px-3 border-0 text-right outline-none
-                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
-                        sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="10" step="100" placeholder="500" x-bind:value="ambilData.detail[index].monthlyInstallments">
-                    </div>
-                </div>`,
         async ubah(id) {
             fetch("http://127.0.0.1:8000/api/debt/" + id, {
                 method: "GET",
@@ -381,7 +323,7 @@ document.addEventListener("alpine:init", () => {
                 normalCalculator: this.hasil.hasil.normalCalculator,
                 snowballCalculator: this.hasil.hasil.snowballCalculator,
             };
-            console.log(this.hasil.hasil.monthlySalary);
+            
             for (let i = 0; i < this.hasil.hutang.length; i++) {
                 form.debtTitle.push(this.hasil.hutang[i].debtTitle);
                 form.debtAmount.push(this.hasil.hutang[i].debtAmount);
@@ -389,6 +331,7 @@ document.addEventListener("alpine:init", () => {
                 form.debtInterest.push(this.hasil.hutang[i].debtInterest);
                 form.monthlyInstallments.push(this.hasil.hutang[i].monthlyInstallments);
             }
+            console.log(form);
             this.calculated = true;
             fetch("http://127.0.0.1:8000/api/debt/update/" + id, {
                 method: "POST",
@@ -398,21 +341,22 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-                .then((reponse) => reponse.json())
-                .then((data) => {
-                    if (data.status == true) {
-                        console.log(data);
-                        this.calculated = !this.calculated;
-                        localStorage.setItem("tab", "listHitungan");
-                        this.listData();
-                    }
-                    if (data.status == false) {
-                        this.validation = data.error;
-                    }
-                    this.messages = data.message;
-                });
+            .then((reponse) => reponse.json())
+            .then((data) => {
+                if (data.status == true) {
+                    console.log(data);
+                    this.calculated = !this.calculated;
+                    localStorage.setItem("tab", "listHitungan");
+                    this.listData();
+                }
+                if (data.status == false) {
+                    this.validation = data.error;
+                }
+                this.messages = data.message;
+            });
         },
         async hitungedit(id) {
+            console.log(id);
             var alert = [];
             var stop = false;
             var debtTitle = [];
@@ -462,19 +406,20 @@ document.addEventListener("alpine:init", () => {
                 monthlyInstallments.push(minBayar[i].value);
             }
 
-            for (let i = 0; i < alert.length; i++) {
-                if (alert[i] !== "") {
-                    document.getElementById(`alert${i}`).innerHTML = alert[i];
-                    stop = true;
-                } else {
-                    document.getElementById(`alert${i}`).innerHTML = "";
-                }
-            }
+            // for (let i = 0; i < alert.length; i++) {
+            //     if (alert[i] !== "") {
+            //         document.getElementById(`alert${i}`).innerHTML = alert[i];
+            //         stop = true;
+            //     } else {
+            //         document.getElementById(`alert${i}`).innerHTML = "";
+            //     }
+            // }
 
-            if (stop) {
-                return;
-            }
+            // if (stop) {
+            //     return;
+            // }
 
+            console.log(datePayment);
             const form = {
                 debtTitle: debtTitle,
                 debtAmount: debtAmount,
