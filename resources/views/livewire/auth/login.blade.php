@@ -26,7 +26,7 @@
                 <div class="">
                     <div class="px-4 py-8 sm:rounded-lg sm:px-10">
                         <div>
-                            <h1 x-text="error.message"></h1>
+                            <h1 class="tracking-tight text-black mb-3" x-text="error.message"></h1>
                             <div>
                                 <label for="email" class="block text-sm font-medium tracking-tight text-black">
                                     Email
@@ -37,7 +37,7 @@
                                         class="form-input w-full appearance-none block px-3 py-2 border-0 border-b border-b-2 border-b-white border-b-solid outline-none placeholder:!bg-transparent bg-transparent
                             transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-black focus:outline-none focus-visible:ring-0  placeholder=" you@example.com" />
                                     <br />
-                                    <p class="" x-text="validation.email"></p>
+                                    <p class="text-xs tracking-tight text-black" x-text="validation.email"></p>
                                 </div>
                             </div>
 
@@ -50,7 +50,7 @@
                                     <input x-model="password" type="password" name="password" id="password" required class="appearance-none form-input border-0 border-b border-b-white
                             border-b-solid outline-none w-full placeholder:!bg-transparent bg-transparent block px-3 py-2 transition duration-150 ease-in-out sm:text-sm
                             sm:leading-5 focus:border-black focus:outline-none focus-visible:ring-0" />
-                                    <p x-text="validation.password"></p>
+                                    <p class="text-xs tracking-tight text-black" x-text="validation.password"></p>
                                 </div>
                             </div>
 

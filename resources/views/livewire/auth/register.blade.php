@@ -64,7 +64,7 @@
                         <input x-model="passwordConfirmation" id="password_confirmation" type="password" required class="form-input appearance-none block w-full px-3 py-2 border-0 border-b border-b-white border-b-solid outline-none placeholder:!bg-transparent bg-transparent
                         transition duration-150 ease-in-out sm:text-sm text-black sm:leading-5 focus:border-black focus:outline-none focus-visible:ring-0" />
                     </div>
-                    <p class="text-xs" x-text="validation.password_confirmation"></p>
+                    <p class="text-xs tracking-tight" x-text="validation.password_confirmation"></p>
                 </div>
 
                 <div class="mt-6">
