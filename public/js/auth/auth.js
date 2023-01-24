@@ -58,7 +58,7 @@ document.addEventListener("alpine:init", () => {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
             })
-                .then((response) => response.json())
+                .then(async(response) => await  response.json())
                 .then((data) => {
                     // localStorage.setItem("user", {data});
                     console.log(data);
@@ -76,13 +76,15 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-                .then((response) => response.json())
+                .then(async(response) => await response.json())
                 .then(async (data) => {
                     this.status = data.success;
                     // response success == false (gagal Login)
                     if (this.status == false) {
                         this.error = data;
+                        localStorage.setItem ('messages', data.message)
                         this.validation = data.error;
+                        this.getMessages();
                     }
                     // response seccess = true (Login Berhasil)
                     if (this.status == true) {

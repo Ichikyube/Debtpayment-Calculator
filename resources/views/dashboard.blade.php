@@ -5,6 +5,7 @@
     let token = localStorage.getItem('token');
 
     if (token == null) {
+        localStorage.setItem ('messages', 'Harap Login terlebih dahulu')
         window.location.replace("/login");
     }
 </script>
