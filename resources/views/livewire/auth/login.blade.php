@@ -8,7 +8,7 @@
     </script>
     <div class="tracking-[4.03px] sm:mx-auto text-dark w-full ">
         <script src="{{asset('js/auth/auth.js')}}"></script>
-        <div class="bg-white items-center w-[300px] sm:w-[400px] mx-auto rounded-[15px] shadow-2xl">
+        <div class="bg-white items-center w-[300px] sm:w-[500px] mx-auto rounded-[15px] shadow-2xl">
             <div x-data="$store.login" class="font-normal">
                 <div class="tracking-[4.03px] text-dark">
                     <a href="{{ route('home') }}">
