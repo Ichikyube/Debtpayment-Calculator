@@ -132,10 +132,12 @@
 
                     <div class="flex justify-between w-full lg:w-6/12">
                         <div class="flex items-end gap-2 lg:gap-10">
-                            <div>
-                                <p class="">Snowball</p>
-                                <p class="text-xl font-bold text-myyellow" x-text="formatTgl(data.snowball_calculator)"></p>
-                            </div>
+                            <template x-if="data.debt_details.length > 1 || data.extra_salary > 20">
+                                <div>
+                                    <p class="">Snowball</p>
+                                    <p class="text-xl font-bold text-myyellow" x-text="formatTgl(data.snowball_calculator)"></p>
+                                </div>
+                            </template>
                             <div>
                                 <p>Tanpa Snowball</p>
                                 <p class="text-xl font-bold text-gray-700" x-text="formatTgl(data.normal_calculator)"></p>
