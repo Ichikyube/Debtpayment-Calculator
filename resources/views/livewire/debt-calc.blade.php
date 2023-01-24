@@ -12,7 +12,7 @@
                 <i class="fa-regular fa-calendar-xmark"></i>
             </div>
             <div class="relative tanggalPembayaran flex items-center justify-between w-fit">
-                <input x-model="tanggalPembayaran"  class="form-input z-10 peer bg-white/10 text-white/30 focus:text-dark block w-full appearance-none px-3 pt-5  border-0 text-left outline-none
+                <input type="date" x-model="waktuBayar" class="waktuBayar form-input z-10 peer bg-white/10 text-white/30 focus:text-dark block w-full appearance-none px-3 pt-5  border-0 text-left outline-none
                 placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none
                 focus-visible:ring-0" type="date" placeholder=" " >
                 <label class="absolute top-3 origin-[0] break-words sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
@@ -20,7 +20,7 @@
                 peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Tanggal Pembayaran Selanjutnya</label>
             </div>
         </div>
-        <div class="mr-4 text-right"  x-text="new Date(jatuhTemo).toLocaleDateString('default', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })"></div>
+        <div class="mr-4 text-right"  x-text="new Date(waktuBayar).toLocaleDateString('default', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })"></div>
     </div>
     <div class="flex items-center justify-between w-full px-3 py-4 border-b-2">
         <div class="flex flex-row items-center">
@@ -28,7 +28,7 @@
                 <i class="fa-solid fa-coins"></i>
             </div>
             <div class="relative flex items-center justify-between w-fit">
-                <input x-model="jmlHutang"  :id="$id('id')" class="jmlHutang  text-white/30 focus:text-black form-input z-10 peer bg-white/10 block w-full appearance-none px-3 pt-5  border-0 text-left outline-none
+                <input x-model="jmlHutang" :id="$id('id')" class="jmlHutang  text-white/30 focus:text-black form-input z-10 peer bg-white/10 block w-full appearance-none px-3 pt-5  border-0 text-left outline-none
                 placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none
                 focus-visible:ring-0" type="number" min="0" max="" step="100" placeholder=" ">
                 <label class="absolute top-3 origin-[0]  break-word sm:w-max md:w-max lg:w-max -translate-y-4 scale-100 transform text-sm text-dark duration-300
@@ -46,7 +46,7 @@
                 <i class="fa-solid fa-percent"></i>
             </div>
             <div class="relative flex items-center justify-between w-fit">
-                <input x-model="bungaHutang" class="bungaHutang  text-white/30 focus:text-black form-input z-10 peer bg-white/10 block w-full appearance-none pt-5  border-0 text-left outline-none
+                <input x-model="bungaHutang" class="bungaHutang text-white/30 focus:text-black form-input z-10 peer bg-white/10 block w-full appearance-none pt-5  border-0 text-left outline-none
                 placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none
                 focus-visible:ring-0" x-mask="99" placeholder=" ">
                 <label class="absolute top-3 truncate origin-[0] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
@@ -57,30 +57,13 @@
         </div>
         <div class="mr-4 text-right w-fit" x-text="bungaHutang?bungaHutang + ' %': ''"></div>
     </div>
-    <div class="flex flex-row items-center justify-between w-full px-3 py-4 border-b-2">
-        <div class="flex flex-row items-center w-1/2">
-            <div class="flex justify-center w-12 mr-2">
-                <i class="fa-solid fa-percent"></i>
-            </div>
-            <div class="relative flex items-center justify-between w-fit">
-                <input x-model="waktuBayar" type="date" class="waktuBayar text-white/30 focus:text-black form-input z-10 peer bg-white/10 block w-full appearance-none pt-5  border-0 text-left outline-none
-                placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none
-                focus-visible:ring-0" x-mask="99" placeholder=" ">
-                <label class="absolute top-3 truncate origin-[0] sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-sm text-dark duration-300
-                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6
-                peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Waktu Pembayaran
-                </label>
-            </div>
-        </div>
-        <div class="mr-4 text-right w-fit" x-text="waktuBayar"></div>
-    </div>
     <div class="flex flex-row items-center justify-between w-full px-3 py-4">
         <div class="flex flex-row items-center">
             <div class="flex justify-center w-12 mr-2">
                 <i class="fa-solid fa-hand-holding-dollar"></i>
             </div>
             <div class="relative flex items-center justify-between w-fit group">
-                <input name="minBayar" x-model="minBayar" id="minBayar" class="minBayar  form-input align-text-bottom z-10 pt-5  peer bg-white/10 block w-full appearance-none px-3 border-0
+                <input x-model="minBayar" class="minBayar  form-input align-text-bottom z-10 pt-5  peer bg-white/10 block w-full appearance-none px-3 border-0
                 text-left outline-none placeholder:!bg-transparent  text-white/30 focus:text-black transition duration-150 ease-in-out sm:text-sm sm:leading-1 focus:border-none
                 focus:outline-none focus-visible:ring-0" required type="number" min="10" step="100" placeholder=" ">
                 <label class="absolute top-3 origin-[0] break-word w-44  lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300

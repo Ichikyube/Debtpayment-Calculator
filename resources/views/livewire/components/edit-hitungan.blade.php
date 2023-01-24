@@ -1,5 +1,5 @@
 <div x-data="$store.getData">
-    <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 lg:mb-8 drop-shadow-md">Kalkulator Hutang</h1>
+    <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 lg:mb-8 drop-shadow-md">Edit Kalkulator Hutang</h1>
     <template x-if="!calculated">
         @livewire('components.hasil-edit')
     </template>
@@ -15,7 +15,7 @@
                 <div class="flex flex-row px-5 py-5 align-middle border-b-2">
                     <input x-model="namaHutang" class="namaHutang ml-5 text-xl font-bold border-0 appearance-none text-blueGray-700 outline-none
                     placeholder:!bg-transparent bg-transparent focus:border-none focus:outline-none
-                    focus-visible:ring-0" type="text" >
+                    focus-visible:ring-0" type="text" x-bind:value="ambilData.detail[0].debtTitle">
                     <p :id="'alert0'"></p>
                 </div>
                 <div class="flex flex-row items-center justify-between w-full px-3 py-4 border-b-2">
@@ -24,9 +24,9 @@
                             <i class="fa-regular fa-calendar-xmark"></i>
                         </div>
                         <div class="relative tanggalPembayaran flex items-center justify-between w-fit">
-                            <input x-model="tanggalPembayaran" x-ref="tanggalPembayaran"  class=" form-input z-10 peer bg-white/10 text-white/30 focus:text-dark block w-full appearance-none px-3 pt-5  border-0 text-left outline-none
+                            <input x-model="tanggalPembayaran" x-ref="tanggalPembayaran"  class="waktuBayar form-input z-10 peer bg-white/10 text-white/30 focus:text-dark block w-full appearance-none px-3 pt-5  border-0 text-left outline-none
                             placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none
-                            focus-visible:ring-0" type="date" placeholder=" " >
+                            focus-visible:ring-0" type="date" placeholder=" " x-bind:value="ambilData.detail[0].datePayment">
                             <label class="absolute top-3 origin-[0] break-words sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
                             peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-4
                             peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Tanggal Pembayaran Selanjutnya</label>
@@ -42,7 +42,7 @@
                         <div class="relative flex items-center justify-between w-fit">
                             <input :id="$id('id')" x-model="jmlHutang" class="jmlHutang text-white/30 focus:text-black form-input z-10 peer bg-white/10 block w-full appearance-none px-3 pt-5  border-0 text-left outline-none
                             placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none
-                            focus-visible:ring-0" type="number" min="0" max="" step="100" placeholder=" ">
+                            focus-visible:ring-0" type="number" min="0" max="" step="100" placeholder=" " x-bind:value="ambilData.detail[0].debtAmount">
                             <label class="absolute top-3 origin-[0]  break-word sm:w-max md:w-max lg:w-max -translate-y-4 scale-100 transform text-sm text-dark duration-300
                             peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-125 peer-focus:left-0 peer-focus:-translate-y-4
                             peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Jumlah Hutang <span class="text-xs text-green-600">($)</span>
@@ -76,43 +76,21 @@
                             <i class="fa-solid fa-hand-holding-dollar"></i>
                         </div>
                         <div class="relative flex items-center justify-between w-fit group">
-                            <input name="minBayar" id="minBayar" x-model="minBayar" class="minBayar  form-input align-text-bottom z-10 pt-5  peer bg-white/10 block w-full appearance-none px-3 border-0
+                            <input x-model="minBayar" class="minBayar form-input align-text-bottom z-10 pt-5  peer bg-white/10 block w-full appearance-none px-3 border-0
                             text-left outline-none placeholder:!bg-transparent  text-white/30 focus:text-black transition duration-150 ease-in-out sm:text-sm sm:leading-1 focus:border-none
-                            focus:outline-none focus-visible:ring-0" required type="number" min="10" step="100" placeholder=" ">
+                            focus:outline-none focus-visible:ring-0" required type="number" min="10" step="100" placeholder=" " x-bind:value="ambilData.detail[0].monthlyInstallments">
                             <label class="absolute top-3 origin-[0] break-word w-44  lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
                             peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-4 text-ellipsis
                             peer-focus:scale-75 peer-focus:text-myblue break-words peer-focus:dark:text-blue-500">Pembayaran minimum perbulan <span class="text-xs text-green-600">($)</span>
                             </label>
                         </div>
-
-                <div class="flex flex-row items-center px-3 py-4 border-b-2">
-                    <div class="flex justify-center w-12 mr-2">
-                        <img class="invert" src="{{asset('img/moneytime.svg')}}" alt="" class="h-5">
-                    </div>
-                    <div class="relative flex items-center justify-between w-full">
-                        <p class="text-base text-dark">Tanggal Pembayaran </p>
-                        <input class="waktuBayar absolute w-full form-input appearance-none block px-3 border-0 text-right outline-none
-                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
-                        sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="date" x-bind:value="ambilData.detail[0].datePayment">
-                    </div>
-                </div>
-
-                <div class="flex flex-row items-center px-3 py-4">
-                    <div class="flex justify-center w-12 mr-2">
-                        <img class="invert" src="{{asset('img/moneysend.svg')}}" alt="" class="h-5">
-                    </div>
-                    <div class="relative flex items-center justify-between w-full group">
-                        <p class="text-base text-dark">Pembayaran minimum perbulan <span class="text-xs text-gray-400">($)</span></p>
-                        <input name="minBayar" id="minBayar" class="minBayar absolute w-full form-input appearance-none block px-3 border-0 text-right outline-none
-                        placeholder:!bg-transparent bg-transparent transition duration-150 ease-in-out sm:text-sm
-                        sm:leading-5 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="10" step="100" placeholder="500" x-bind:value="ambilData.detail[0].monthlyInstallments">
                     </div>
                     <div class="mr-4 text-right" x-money.en-US.USD.decimal="minBayar"></div>
                 </div>
                 <div x-text="console.log(ambilData.id)"></div>
             </div>
             <template x-for="index in posts-1">
-                <div x-html="html"></div>
+                <div  class="bg-[#F7D3C2] mx-4 mb-8 w-11/12 lg:w-full lg:max-w-full rounded-md lg:rounded-[15px] shadow-sm hover:shadow-xl transition-shadow duration-300 ease-in-out"  x-html="html"></div>
             </template>
             <div class="h-screen">
                 <div class="bg-[#F7D3C2] w-11/12 mx-4 snap-start snap-always block md:hidden lg:hidden h-fit md:ml-4 lg:ml-4 rounded-md lg:rounded-[15px] shadow-sm hover:shadow-lg mb-8 transition-shadow duration-300 ease-in-out">
@@ -127,7 +105,7 @@
                                 </div>
                                 <div class="relative flex items-center w-fit">
                                     <input x-model="monthlySalary" id="monthlySalary" class="form-input monthlySalary align-text-bottom z-10 pt-5 peer bg-white/10 block w-full appearance-none px-3 border-0 text-left outline-none
-                                    placeholder:!bg-transparent transition duration-150 ease-in-out text-white/30 focus:text-black sm:text-sm sm:leading-1 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder=" ">
+                                    placeholder:!bg-transparent transition duration-150 ease-in-out text-white/30 focus:text-black sm:text-sm sm:leading-1 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder=" " x-bind:value="ambilData.monthlySalary">
                                     <label for="monthlySalary" class="absolute top-3 origin-[0] break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-sm text-dark duration-300
                                     peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75
                                     peer-focus:text-myblue peer-focus:dark:text-blue-500">Pendapatan perbulan <span class="text-xs text-green-600">($)</span></label>
@@ -143,7 +121,7 @@
                                 </div>
                                 <div class="relative flex items-center w-fit">
                                     <input x-model="extraSalary" class="form-input peer extraSalary text-white/30 focus:text-black z-10 pt-5 align-text-bottom text-left bg-white/10 block w-full appearance-none px-3 border-0 outline-none
-                                    placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-1 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder=" ">
+                                    placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-1 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder=" " x-bind:value="ambilData.extraSalary">
                                     <label for="extraSalary" class="absolute top-3 origin-[0]  break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-sm text-dark duration-300
                                     peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75
                                     peer-focus:text-myblue peer-focus:dark:text-blue-500">Pembayaran Extra Perbulan <span class="text-xs text-green-600">($)</span></label>

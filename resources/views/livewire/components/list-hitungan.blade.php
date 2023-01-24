@@ -66,9 +66,9 @@
                                         <p class="mb-2" x-text="detail.debtTitle"></p>
                                         <p class="mb-2" x-text="formatTglFull(detail.datePayment)"></p>
                                     </div>
-                                    <div class="flex items-center gap-2">
+                                    <div class="flex items-center gap-2" x-data="{persen: detail.monthlyInstallments/detail.debtAmount*100}">
                                         <div class="w-full bg-gray-100 rounded-full h-2.5 dark:bg-gray-700">
-                                            <div class="bg-[#2A7C97] h-2.5 rounded-full" style="width: 5%"></div>
+                                            <div class="bg-[#2A7C97] h-2.5 rounded-full" x-bind:style="'width: '+persen+'%'"></div>
                                         </div>
                                         <p x-text="formatUang(detail.debtAmount)"></p>
                                     </div>
