@@ -56,16 +56,20 @@
                                 <div>
                                     <div class="flex items-center px-3 py-2 text-white bg-[#2A7C97] rounded-lg" x-text="detail.debtInterest+'%'">
                                     </div>
-                                    <p class="text-center" x-text="formatUang(detail.monthlyInstallments)"></p>
+                                    <p class="text-center mt-[8px]" x-text="formatUang(detail.monthlyInstallments)"></p>
                                 </div>
                                 <div class="w-full">
                                     <div class="flex justify-between py-2">
                                         <p class="mb-2" x-text="detail.debtTitle"></p>
+                                        <p>12 Januari 2023</p>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-full bg-gray-100 rounded-full h-2.5 dark:bg-gray-700">
+                                            <div class="bg-[#2A7C97] h-2.5 rounded-full" style="width: 5%"></div>
+                                        </div>
                                         <p x-text="formatUang(detail.debtAmount)"></p>
                                     </div>
-                                    <div class="w-full bg-gray-100 rounded-full h-2.5 dark:bg-gray-700">
-                                        <div class="bg-[#2A7C97] h-2.5 rounded-full" style="width: 5%"></div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </template>
@@ -101,27 +105,33 @@
 
                 <!-- Bottom Content -->
                 <div class="flex flex-wrap justify-between break-words">
-                    <div class="flex lg:gap-16 gap-5 mt-5 lg:w-6/12">
+                    <div class="flex lg:gap-8 gap-5 mt-5 lg:w-6/12">
                         <div>
-                            <p>Pendapatan</p>
-                            <p class="text-xl font-bold text-gray-700" x-text="formatUang(data.monthly_salary)">
+                            <p class="text-sm break-all">Pendapatan</p>
+                            <p class="text-lg font-bold text-gray-700" x-text="formatUang(data.monthly_salary)">
                             </p>
                         </div>
                         <div>
-                            <p>Total Hutang</p>
-                            <p class="text-xl font-bold text-gray-700" x-text="formatUang(data.total_debt)">
+                            <p class="text-sm break-all">Total Hutang</p>
+                            <p class="text-lg font-bold text-gray-700" x-text="formatUang(data.total_debt)">
                             </p>
                         </div>
                         <div>
-                            <p class="break-all">Pembayaran</p>
-                            <p class="text-xl font-bold text-gray-700" x-text="formatUang(data.total_min_payment)">
+                            <p class="text-sm break-all">Pembayaran</p>
+                            <p class="text-lg font-bold text-gray-700" x-text="formatUang(data.total_min_payment)">
+                                $250
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-sm break-all">Extra</p>
+                            <p class="text-lg font-bold text-gray-700" x-text="formatUang(data.extra_salary)">
                                 $250
                             </p>
                         </div>
                     </div>
 
                     <div class="flex justify-between w-full lg:w-6/12">
-                        <div class="flex items-end gap-2 lg:gap-12">
+                        <div class="flex items-end gap-2 lg:gap-10">
                             <div>
                                 <p class="">Snowball</p>
                                 <p class="text-xl font-bold text-myyellow" x-text="formatTgl(data.snowball_calculator)"></p>
