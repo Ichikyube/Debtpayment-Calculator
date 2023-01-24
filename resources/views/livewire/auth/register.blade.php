@@ -17,8 +17,7 @@
         </div>
 
         <div class="sm:mx-auto sm:w-full sm:max-w-md px-[20px]"  >
-            <div class="px-4">
-                <p x-text="messages"></p>
+            <div class="px-4">                
                 <div>
                     <label for="name" class="block text-sm font-medium leading-5 text-black">
                         Nama
