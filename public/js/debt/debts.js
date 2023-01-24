@@ -22,6 +22,7 @@ document.addEventListener("alpine:init", () => {
             this.posts.splice(index, 1);
         },       
         async hitung() {
+            this.isLoading = true;
             var alert=[]
             var stop = false
             var debtTitle = [];
@@ -67,6 +68,7 @@ document.addEventListener("alpine:init", () => {
                     document.getElementById(`alert${i}`).innerHTML = ''    
                 }
             }
+            this.isLoading = false;
             if (stop) {
                 return;
             }
@@ -113,6 +115,7 @@ document.addEventListener("alpine:init", () => {
                         this.validation = data.error;
                         console.log(this.validation);
                     }
+                    this.isLoading = false;
                     this.messages = data.message;
                     // console.log(this.messages)
                 });
@@ -136,7 +139,34 @@ document.addEventListener("alpine:init", () => {
                 },
             });
         },
+        async listData() {
+            this.list = [];
+            this.isLoading = true;
+            this.calculated = true;
+            await fetch("http://127.0.0.1:8000/api/debt-payment/list", {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    "Content-type": "application/json; charset=UTF-8",
+                },
+            })
+                .then(async(reponse) => await reponse.json())
+                .then(async (data) => {
+                    if (data.success == true) {
+                        this.list = await data.data;
+                        console.log(this.list);
+                    }
+                    if (data.status == false) {
+                        this.validation = data.error;
+                    }
+                    this.isLoading = false;
+                });
+                // console.log(this.messages)
+
+
+        },
         async tambahData() {
+            this.isLoading = true;
             var form = {
                 debtTitle: [],
                 debtAmount: [],
@@ -169,47 +199,21 @@ document.addEventListener("alpine:init", () => {
                 },
             })
                 .then ( async (reponse) =>  await  reponse.json())
-                .then((data) => {
-                    if (data.status == true) {
-                        this.messages = data.message;
-                        console.log(data.message);                        
+                .then(async(data) => {
+                    if (data.status == true) {                       
+                        this.listData();
                         this.calculated = !this.calculated;
                         localStorage.setItem('tab', 'listHitungan');
-                        this.listData();
-                        
+                        this.isLoading = false;
                     }
                     if (data.status == false) {
                         this.validation = data.error;
+                        this.isLoading = false;
                     }
-                    
+                    this.messages = data.message;     
+                    console.log(this.messages);               
                     // console.log(this.messages)
                 });
-        },
-        async listData() {
-            this.list = [];
-            this.isLoading = true;
-            this.calculated = true;
-            await fetch("http://127.0.0.1:8000/api/debt-payment/list", {
-                method: "GET",
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                    "Content-type": "application/json; charset=UTF-8",
-                },
-            })
-                .then(async(reponse) => await reponse.json())
-                .then(async (data) => {
-                    if (data.success == true) {
-                        this.list = await data.data;
-                        console.log(this.list);
-                    }
-                    if (data.status == false) {
-                        this.validation = data.error;
-                    }
-                    this.isLoading = false;
-                });
-                // console.log(this.messages)
-
-
         },
         async deleted() {
             // console.log(this.idDebt);
