@@ -21,6 +21,7 @@
     "dependencies": {
         "@alpinejs/focus": "^3.11.1",
         "@alpinejs/mask": "^3.11.1",
-        "flowbite": "^1.6.0"
+        "flowbite": "^1.6.0",
+        "sweetalert": "^2.1.2"
     }
 }

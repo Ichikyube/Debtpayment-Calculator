@@ -20,7 +20,6 @@ document.addEventListener("alpine:init", () => {
         showNotif() {
             if (this.notif) return;
             this.notif = true;
-
             // reset time to 0 second
             clearTimeout(timer);
 
@@ -230,12 +229,15 @@ document.addEventListener("alpine:init", () => {
             .then(data => {
                 if (data.status == true) {
                     localStorage.setItem("tab", "listHitungan");
+                    localStorage.setItem("mssg", data.message);
                 }
                 if (data.status == false) {
                     this.validation = data.error;
                 }
-                this.messages = data.message;
+                swal(data.message);
                 this.showNotif();
+
+
             });
 
         },
@@ -299,6 +301,13 @@ document.addEventListener("alpine:init", () => {
     }));
 
     Alpine.store("getData", () => ({
+        namaHutang:null,
+        waktuBayar:null,
+        jmlHutang:null,
+        bungaHutang:null,
+        minBayar:null,
+        monthlySalary:null,
+        extraSalary:null,
         calculated: true,
         monthlySalary: null,
         extraSalary: null,
@@ -374,7 +383,7 @@ document.addEventListener("alpine:init", () => {
                 });
         },
         async hitungedit(id) {
-            console.log(id);
+            console.log(document.getElementById("monthlySalary"));
             var alert = [];
             var stop = false;
             var debtTitle = [];
@@ -388,9 +397,9 @@ document.addEventListener("alpine:init", () => {
             var waktuBayar = document.getElementsByClassName("waktuBayar");
             var minBayar = document.getElementsByClassName("minBayar");
             var monthlySalary =
-                document.getElementsByClassName("monthlySalary")[0].value;
+                document.getElementById("monthlySalary").value;
             var extraSalary =
-                document.getElementsByClassName("extraSalary")[0].value;
+                document.getElementById("extraSalary").value;
 
             for (let i = 0; i < namaHutang.length; i++) {
                 let temp = "";
