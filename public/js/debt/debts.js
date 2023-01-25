@@ -78,13 +78,9 @@ document.addEventListener("alpine:init", () => {
                 }
                 if (temp !== "") {
                     document.getElementById(`alert${i}`).innerHTML = this.alert;
-                    this.showMultiAlert = true;
                 } else {
                     // alert.push(temp);
                 }
-
-                this.alertLoping.push(debtTitle);
-                console.log(this.alertLoping);
             }
 
             for (let i = 0; i < this.alert.length; i++) {
