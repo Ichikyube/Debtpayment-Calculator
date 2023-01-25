@@ -137,7 +137,8 @@ document.addEventListener("alpine:init", () => {
 
                         this.calculated = !this.calculated;
                     }
-                    if (data.success == false) {
+                    if (data.status == false) {
+                        this.messages = data.message;
                         this.validation = data.error;
                     }
                     this.isLoading = false;
@@ -297,6 +298,7 @@ document.addEventListener("alpine:init", () => {
 
     Alpine.store("getData", () => ({
         calculated: true,
+        messages: null,
         monthlySalary: null,
         extraSalary: null,
         // ambilData: [],
@@ -317,7 +319,7 @@ document.addEventListener("alpine:init", () => {
                     if (data.status == false) {
                         this.validation = data.error;
                     }
-                    this.messages = data.message;
+                    // this.messages = data.message;
                     this.showNotif();
                 });
         },
@@ -473,12 +475,13 @@ document.addEventListener("alpine:init", () => {
                         this.id = id;
                         this.calculated = !this.calculated;
                     }
-                    if (data.success == false) {
+                    if (data.status == false) {
+                        this.messages = data.message;
                         this.validation = data.error;
                     }
+                    this.isLoading = false;
                     this.messages = data.message;
-                    this.showNotif();
-                    // console.log(validation);
+                    this.notif = true;
                 });
         },
     }));
