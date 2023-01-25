@@ -26,7 +26,7 @@ document.addEventListener("alpine:init", () => {
 
             // auto close toast after 5 seconds
             timer = setTimeout(() => {
-                this.notif = false;
+                this.closeNotif();
             }, 5000);
         },
         closeNotif() {
@@ -235,7 +235,7 @@ document.addEventListener("alpine:init", () => {
                     this.validation = data.error;
                 }
                 this.messages = data.message;
-                this.notif = true;
+                this.showNotif();
             });
 
         },
@@ -257,7 +257,7 @@ document.addEventListener("alpine:init", () => {
                         this.validation = data.error;
                     }
                     this.messages = data.message;
-                    this.notif = true;
+                    this.showNotif();
                 });
             this.listData();
         },
@@ -322,7 +322,7 @@ document.addEventListener("alpine:init", () => {
                         this.validation = data.error;
                     }
                     this.messages = data.message;
-                    this.notif = true;
+                    this.showNotif();
                 });
         },
         async editData(id) {
@@ -370,7 +370,7 @@ document.addEventListener("alpine:init", () => {
                         this.validation = data.error;
                     }
                     this.messages = data.message;
-                    this.notif = true;
+                    this.showNotif();
                 });
         },
         async hitungedit(id) {
@@ -483,7 +483,7 @@ document.addEventListener("alpine:init", () => {
                         this.validation = data.error;
                     }
                     this.messages = data.message;
-                    this.notif = true;
+                    this.showNotif();
                     // console.log(validation);
                 });
         },
