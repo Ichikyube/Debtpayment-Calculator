@@ -269,6 +269,11 @@ document.addEventListener("alpine:init", () => {
             });
             return USDollar.format(data).replace(/.00$/, "");
         },
+        formatTglAja(params) {
+            var date = new Date(params);
+            var day = date.getDate();
+            return day;
+        },
         formatTglFull(params) {
             var date = new Date(params);
             var day = date.getDate();

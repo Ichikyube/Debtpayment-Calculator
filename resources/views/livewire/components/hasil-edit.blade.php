@@ -4,7 +4,7 @@
         <div class="w-1/2 overflow-scroll h-80 hilanginscroll">
             <!-- Looping Tambahan Form Hutang -->
             <template x-for="data in hasil.hutang">
-                <div class="flex gap-2 mt-7">
+                <div class="flex gap-2 mt-7 tooltip">
                     <div>
                         <div class="flex items-center px-3 text-white bg-[#2A7C97] rounded-lg" x-text="data.debtInterest + '%'">
                         </div>
@@ -23,6 +23,11 @@
                             <p x-text="'$' + data.debtAmount"></p>
                         </div>
                         
+                    </div>
+
+                    <div class="bottom">
+                        <p>Pembayaran tanggal <span class="font-bold" x-text="formatTglAja(data.datePayment)"></span> setiap bulannya</p>
+                        <i></i>
                     </div>
                 </div>
             </template>
