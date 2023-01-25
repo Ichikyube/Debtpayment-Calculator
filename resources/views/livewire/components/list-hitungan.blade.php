@@ -47,7 +47,7 @@
                     <div class="w-1/2 my-5 h-[250px] overflow-scroll hilanginscroll">
 
                         <template x-for="detail in data.debt_details">
-                            <div class="flex gap-2 mt-3">
+                            <div class="flex gap-2 mt-3 hover:shadow-sm p-1 w-full tooltip">
                                 <div>
                                     <div class="flex items-center px-3 py-2 text-white bg-[#2A7C97] rounded-lg" x-text="detail.debtInterest+'%'">
                                     </div>
@@ -65,6 +65,10 @@
                                         <p x-text="formatUang(detail.debtAmount)"></p>
                                     </div>
 
+                                    <div class="bottom">
+                                        <p>Pembayaran tanggal <span class="font-bold" x-text="formatTglAja(detail.datePayment)"></span> setiap bulannya</p>
+                                        <i></i>
+                                    </div>
                                 </div>
                             </div>
                         </template>
@@ -99,7 +103,7 @@
                 </div>
 
                 <!-- Bottom Content -->
-                <div class="flex flex-wrap justify-between break-words">
+                <div class="flex flex-wrap lg:flex-nowrap justify-between break-words">
                     <div class="flex gap-5 mt-5 lg:gap-16 lg:w-6/12">
                         <div>
                             <p class="text-sm break-all">Pendapatan</p>
@@ -126,7 +130,7 @@
                     </div>
 
                     <div class="flex justify-between w-full lg:w-6/12">
-                        <div class="flex items-end gap-2 lg:gap-10">
+                        <div class="flex items-end gap-2 lg:gap-10 lg:pl-10">
                             <template x-if="data.debt_details.length > 1 || data.extra_salary > 20">
                                 <div>
                                     <p class="">Snowball</p>
@@ -140,7 +144,7 @@
                         </div>
                         <div x-data="$store.getData" class="flex flex-col items-end gap-2 lg:flex-row">
                             <!-- Buton Edit -->
-                            <button x-on:click.prevent="ubah(data.id),console.log('data ke ' + data.id ), tab = 'edit-hitungan', localStorage.setItem('tab', 'edit-hitungan')" class="text-xl bg-[#2A7C97] px-1 text-[#F7D3C2] rounded shadow"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button x-on:click.prevent="ubah(data.id), tab = 'edit-hitungan', localStorage.setItem('tab', 'edit-hitungan')" class="text-xl bg-[#2A7C97] px-1 text-[#F7D3C2] rounded shadow"><i class="fa-solid fa-pen-to-square"></i></button>
 
                             <!-- Button Delete -->
                             <div>

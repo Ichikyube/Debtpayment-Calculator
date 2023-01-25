@@ -6,6 +6,8 @@ document.addEventListener("alpine:init", () => {
         validation: [],
         message: "",
         showForm: false,
+        showSuccessAlert: false,
+        showErrorAlert: false,
         async userData() {
             await fetch("http://127.0.0.1:8000/api/user", {
                 method: "GET",
@@ -17,22 +19,18 @@ document.addEventListener("alpine:init", () => {
                 .then((response) => response.json())
                 .then((data) => {
                     this.user = data;
-                    // console.log(this.update)
                 });
-
         },
-         insertUpdate(name,email,gender,tempat_lahir,tgl_lahir,alamat){
-            this.update ={
-                name:name,
-                email:email,
-                gender:gender,
-                tempat_lahir:tempat_lahir,
-                tgl_lahir:tgl_lahir,
-                alamat:alamat
-            }
-            console.log(this.update)
-        }
-        ,
+        insertUpdate(name, email, gender, tempat_lahir, tgl_lahir, alamat) {
+            this.update = {
+                name: name,
+                email: email,
+                gender: gender,
+                tempat_lahir: tempat_lahir,
+                tgl_lahir: tgl_lahir,
+                alamat: alamat,
+            };
+        },
         async updateProfile() {
             const formData = {
                 name: this.update.name,
@@ -41,7 +39,6 @@ document.addEventListener("alpine:init", () => {
                 tgl_lahir: this.update.tgl_lahir,
                 alamat: this.update.alamat,
             };
-            console.log(formData);
             await fetch("http://127.0.0.1:8000/api/user-profile", {
                 method: "POST",
                 body: JSON.stringify(formData),
@@ -52,12 +49,15 @@ document.addEventListener("alpine:init", () => {
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data);
                     if (data.success == false) {
                         this.validation = data.error;
+                        this.showErrorAlert = true;
+                        this.showSuccessAlert = false;
                     }
                     if (data.success == true) {
                         this.message = data.message;
+                        this.showErrorAlert = false;
+                        this.showSuccessAlert = true;
                     }
                 });
             this.userData();

@@ -1,5 +1,15 @@
 <div x-data="$store.getData">
-    <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 lg:mb-8 drop-shadow-md">Edit Kalkulator Hutang</h1>
+    <div class="flex">
+        <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 lg:mb-8 drop-shadow-md">Edit Kalkulator Hutang</h1>
+
+        <button x-show="messages" type="button" x-on:click="closeNotif" id="alert-4" class="absolute justify-self-end right-0 top-0 flex items-center space-x-2 z-50 rounded-md bg-green-500 px-4 w-fit h-6 text-white transition hover:bg-green-600" role="alert" x-transition.duration.300ms>
+            <svg aria-hidden="true" class="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+            <span class="sr-only">Info</span>
+            {{-- pesan notifikasi --}}
+            <div class="ml-3 text-sm font-medium" x-text="messages"></div>
+        </button>
+    </div>
+
     <template x-if="!calculated">
         @livewire('components.hasil-edit')
     </template>
@@ -23,7 +33,7 @@
                             <div class="flex justify-center w-12 mr-2">
                                 <i class="fa-regular fa-calendar-xmark"></i>
                             </div>
-                            <div class="relative waktuBayar flex items-center justify-between w-fit">
+                            <div class="relative flex items-center justify-between w-fit">
                                 <input x-model="waktuBayar"  class="waktuBayar form-input z-10 peer bg-white/10 text-white/30 focus:text-dark block w-full appearance-none px-3 pt-5  border-0 text-left outline-none
                                 placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none
                                 focus-visible:ring-0" type="date" placeholder=" ">
@@ -100,7 +110,7 @@
                                     <i class="fa-solid fa-circle-dollar-to-slot"></i>
                                 </div>
                                 <div class="relative flex items-center w-fit">
-                                    <input x-model="ambilData.monthlySalary" x-ref="monthlySalary" id="monthlySalary" class="form-input monthlySalary align-text-bottom z-10 pt-5 peer bg-white/10 block w-full appearance-none px-3 border-0 text-left outline-none
+                                    <input x-model="ambilData.monthlySalary" id="monthlySalary" class="form-input monthlySalary align-text-bottom z-10 pt-5 peer bg-white/10 block w-full appearance-none px-3 border-0 text-left outline-none
                                     placeholder:!bg-transparent transition duration-150 ease-in-out text-white/30 focus:text-black sm:text-sm sm:leading-1 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder=" ">
                                     <label for="monthlySalary" class="absolute top-3 origin-[0] break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-sm text-dark duration-300
                                     peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75
