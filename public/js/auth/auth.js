@@ -6,7 +6,7 @@ document.addEventListener("alpine:init", () => {
         password: "",
         passwordConfirmation: "",
         validation: [],
-        messages: [],       
+        messages: [],
         async submited() {
             const form = {
                 name: this.name,
@@ -22,7 +22,7 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-                .then((reponse) => reponse.json())
+                .then((response) => response.json())
                 .then((data) => {
                     if (data.success == true) {
                         console.log(data);
@@ -39,12 +39,12 @@ document.addEventListener("alpine:init", () => {
 
     // fetch login
     Alpine.store("login", () => ({
-        email: "",        
+        email: "",
         password: "",
-        messages: null, 
+        messages: null,
         error: [],
         validation: [],
-        status: "", 
+        status: "",
         async getMessages(){
             this.messages =  localStorage.getItem("messages")
             localStorage.removeItem("messages");
@@ -89,7 +89,7 @@ document.addEventListener("alpine:init", () => {
                     // response seccess = true (Login Berhasil)
                     if (this.status == true) {
                         localStorage.setItem("token", data.access_token);
-                        
+
                         window.location.replace(
                             "http://127.0.0.1:8001/dashboard"
                         );

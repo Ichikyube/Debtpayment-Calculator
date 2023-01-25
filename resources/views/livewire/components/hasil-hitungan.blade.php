@@ -10,7 +10,7 @@
                         </div>
                         <p class="text-center mt-[8px]" x-text="'$' + data.monthlyInstallments"></p>
                     </div>
-                    
+
                     <div class="w-full">
                         <div class="flex justify-between">
                             <p class="mb-2" x-text="data.debtTitle"></p>
@@ -22,13 +22,33 @@
                             </div>
                             <p x-text="'$' + data.debtAmount"></p>
                         </div>
-                        
                     </div>
                 </div>
             </template>
+            <div class="">
+                <div
+                class="p-8 pb-0 text-lg font-medium tracking-wide text-center text-green-500 uppercase border-gray-200">
+                Estimasi Lunas</div>
+                <div class="items-center justify-center block sm:flex md:block lg:flex">
+                    <template x-if="hasil.hutang.length > 1 || hasil.hasil.extraSalary > 20">
+                    <div class="mt-2 text-center sm:m-8 md:m-0 md:mt-4 md:mb-8 lg:m-5">
+                        <div class="inline-flex items-center">
+                            <span class="text-3xl font-semibold text-[#2A7C97]" x-text="dateSnowball"></span>
+                        </div>
+                        <span class="block mt-2 text-sm text-gray-600">Metode Snowball</span>
+                    </div>
+                    </template>
+                    <div class="mt-2 text-center sm:m-8 md:m-0 md:mt-4 md:mb-8 lg:m-5">
+                        <div class="inline-flex items-center">
+                            <span class="text-3xl font-medium" x-text="dateNormal"></span>
+                        </div>
+                        <span class="block mt-2 text-sm text-gray-600">Metode biasa</span>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- Chart Hutang -->
-        <div class="flex flex-col items-center w-1/2 -z-10 h-80">
+        <div class="flex flex-col items-center w-1/2 -z-10">
             <div class="flex justify-between w-full px-16">
                 <div>
                     Pendapatan<br>
@@ -41,7 +61,7 @@
                 </div>
             </div>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-            <canvas w="200px" h="200px" id="hasilChart"></canvas>
+            <div class="relative w-full justify-center overflow-visible flex h-[200px]"><canvas class="absolute" w="300px" h="300px" id="hasilChart"></canvas></div>
             <div x-init="charts(hasil.hasil.monthlySalary,hasil.hasil.totalMinPayment)"></div>
 
             <div class="flex justify-between w-full px-16">
@@ -56,31 +76,8 @@
             </div>
         </div>
     </div>
-    <div class="flex justify-between gap-2 mt-5">
-        <div class="w-7/12">
-            <div
-            class="p-8 pb-0 text-lg font-medium tracking-wide text-center text-green-500 uppercase border-gray-200">
-            Estimasi Lunas</div>
-            <div class="items-center justify-center block sm:flex md:block lg:flex">
-                <template x-if="hasil.hutang.length > 1 || hasil.hasil.extraSalary > 20">
-                <div class="mt-2 text-center sm:m-8 md:m-0 md:mt-4 md:mb-8 lg:m-5">
-                    <div class="inline-flex items-center">
-                        <span class="text-3xl font-semibold text-[#2A7C97]" x-text="dateSnowball"></span>
-                    </div>
-                    <span class="block mt-2 text-sm text-gray-600">Metode Snowball</span>
-                </div>
-                </template>
-                <div class="mt-2 text-center sm:m-8 md:m-0 md:mt-4 md:mb-8 lg:m-5">
-                    <div class="inline-flex items-center">
-                        <span class="text-3xl font-medium" x-text="dateNormal"></span>
-                    </div>
-                    <span class="block mt-2 text-sm text-gray-600">Metode biasa</span>
-                </div>
-            </div>
-        </div>
-        <div class="flex justify-end mr-[50px]">
-            <button x-on:click="calculated = !calculated" class="self-end my-2 text-xl font-bold mr-7">Kembali</button>
-            <button x-on:click="tambahData, tab = 'listHitungan'" class="self-end px-4 py-2 text-white bg-[#2A7C97] rounded-xl"><span class="inline-block text-center align-top">Simpan</span></button>
-        </div>
+    <div class="flex justify-end  mt-5 mr-[50px]">
+        <button x-on:click="calculated = !calculated" class="self-end my-2 text-xl font-bold mr-7">Kembali</button>
+        <button x-on:click="tambahData, tab = 'listHitungan'" class="self-end px-4 py-2 text-white bg-[#2A7C97] rounded-xl"><span class="inline-block text-center align-top">Simpan</span></button>
     </div>
 </div>

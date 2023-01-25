@@ -1,3 +1,5 @@
+let timer;
+
 document.addEventListener("alpine:init", () => {
     Alpine.store("create", () => ({
         posts: [0],
@@ -7,6 +9,7 @@ document.addEventListener("alpine:init", () => {
         dateSnowball: "",
         monthlySalary: 0,
         extraSalary: 0,
+        notif: false,
         hasil: [],
         list: [],
         ambilData: [],
@@ -14,6 +17,23 @@ document.addEventListener("alpine:init", () => {
         messages: null,
         isLoading: false,
         idDebt: 0,
+        showNotif() {
+            if (this.notif) return;
+            this.notif = true;
+
+            // reset time to 0 second
+            clearTimeout(timer);
+
+            // auto close toast after 5 seconds
+            timer = setTimeout(() => {
+                this.notif = false;
+            }, 5000);
+        },
+        closeNotif() {
+            this.notif = false;
+            this.messages = null;
+            localStorage.removeItem("mssg");
+        },
         addDebt() {
             this.posts.push("");
             console.log(this.posts);
@@ -96,7 +116,7 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-                .then((reponse) => reponse.json())
+                .then((response) => response.json())
                 .then((data) => {
                     if (data.status == true) {
                         this.hasil = data.data;
@@ -125,6 +145,7 @@ document.addEventListener("alpine:init", () => {
                     }
                     this.isLoading = false;
                     this.messages = data.message;
+                this.notif = true;
                     // console.log(this.messages)
                 });
         },
@@ -160,7 +181,7 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-                .then(async (reponse) => await reponse.json())
+                .then(async (response) => await response.json())
                 .then(async (data) => {
                     if (data.success == true) {
                         this.list = await data.data;
@@ -172,8 +193,7 @@ document.addEventListener("alpine:init", () => {
                     this.isLoading = false;
                 });
         },
-        async tambahData() {
-            this.isLoading = true;
+        tambahData() {
             var form = {
                 debtTitle: [],
                 datePayment: [],
@@ -197,7 +217,6 @@ document.addEventListener("alpine:init", () => {
                     this.hasil.hutang[i].monthlyInstallments
                 );
             }
-
             this.calculated = true;
             fetch("http://127.0.0.1:8000/api/debt", {
                 method: "POST",
@@ -207,22 +226,18 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-                .then(async (reponse) => await reponse.json())
-                .then(async (data) => {
-                    if (data.status == true) {
-                        this.listData();
-                        this.calculated = !this.calculated;
-                        localStorage.setItem("tab", "listHitungan");
-                        this.isLoading = false;
-                    }
-                    if (data.status == false) {
-                        this.validation = data.error;
-                        this.isLoading = false;
-                    }
-                    this.messages = data.message;
-                    console.log(this.messages);
-                    // console.log(this.messages)
-                });
+            .then( response =>  response.json())
+            .then(data => {
+                if (data.status == true) {
+                    localStorage.setItem("tab", "listHitungan");
+                }
+                if (data.status == false) {
+                    this.validation = data.error;
+                }
+                this.messages = data.message;
+                this.notif = true;
+            });
+
         },
         async deleted() {
             // console.log(this.idDebt);
@@ -233,7 +248,7 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-                .then(async (reponse) => await reponse.json())
+                .then(async (response) => await response.json())
                 .then(async (data) => {
                     if (data.status == true) {
                         this.listData();
@@ -242,6 +257,7 @@ document.addEventListener("alpine:init", () => {
                         this.validation = data.error;
                     }
                     this.messages = data.message;
+                    this.notif = true;
                 });
             this.listData();
         },
@@ -284,7 +300,7 @@ document.addEventListener("alpine:init", () => {
 
     Alpine.store("getData", () => ({
         calculated: true,
-        mountlySalary: null,
+        monthlySalary: null,
         extraSalary: null,
         // ambilData: [],
         html: `
@@ -353,7 +369,7 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-                .then((reponse) => reponse.json())
+                .then((response) => response.json())
                 .then((data) => {
                     if (data.status == true) {
                         this.ambilData = data.data;
@@ -364,6 +380,7 @@ document.addEventListener("alpine:init", () => {
                         this.validation = data.error;
                     }
                     this.messages = data.message;
+                    this.notif = true;
                 });
         },
         async editData(id) {
@@ -398,7 +415,7 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-                .then((reponse) => reponse.json())
+                .then((response) => response.json())
                 .then((data) => {
                     if (data.status == true) {
                         console.log(data);
@@ -410,6 +427,7 @@ document.addEventListener("alpine:init", () => {
                         this.validation = data.error;
                     }
                     this.messages = data.message;
+                    this.notif = true;
                 });
         },
         async hitungedit(id) {
@@ -492,7 +510,7 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-                .then((reponse) => reponse.json())
+                .then((response) => response.json())
                 .then((data) => {
                     if (data.status == true) {
                         this.hasil = data.data;
@@ -520,6 +538,7 @@ document.addEventListener("alpine:init", () => {
                         this.validation = data.error;
                     }
                     this.messages = data.message;
+                    this.notif = true;
                     // console.log(validation);
                 });
         },

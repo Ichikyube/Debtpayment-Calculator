@@ -137,11 +137,6 @@
                     <div class="w-full text-xl font-bold text-center break-words text-zinc-900 lr-4"  x-text="new Date(update.tgl_lahir).toLocaleDateString('default', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })"></div>
                 </div>
             </div>
-            <script>
-                const date_str = "07/20/2021";
-                const date = new Date(date_str);
-                const full_day_name = date.toLocaleDateString('default', { weekday: 'long' });
-            </script>
             <div class="flex flex-row items-center px-4 border-b-2 h-max">
                 <div class="flex justify-center w-12 mr-2">
                     <i class="fa-solid fa-map"></i>

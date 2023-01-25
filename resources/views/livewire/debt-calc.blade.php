@@ -1,5 +1,5 @@
 <div  x-id="['index']" x-bind:id="index ? 'hutang'+ index : ''" class="bg-[#F7D3C2] snap-start snap-always mx-4 mb-8 w-11/12 lg:w-full lg:max-w-full rounded-md lg:rounded-[15px]
-    shadow-sm hover:shadow-xl transition-shadow duration-300 ease-in-out"  x-data="{namaHutang:`Hutang ${index+1}`, jmlHutang:'', bungaHutang:'', minBayar:'', monthlySalary:''}">
+    shadow-sm hover:shadow-xl transition-shadow duration-300 ease-in-out"  x-data="{namaHutang:`Hutang ${index+1}`,waktuBayar:'', jmlHutang:'', bungaHutang:'', minBayar:'', monthlySalary:''}">
     <div class="flex flex-row px-5 py-5 align-middle border-b-2">
         <input x-model="namaHutang" :id="$id('id')" class="namaHutang form-input ml-5 text-xl font-bold border-0 appearance-none text-blueGray-700 outline-none
         placeholder:!bg-transparent bg-transparent focus:border-none focus:outline-none
@@ -20,7 +20,7 @@
                 peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Tanggal Pembayaran Selanjutnya</label>
             </div>
         </div>
-        <div class="mr-4 text-right"  x-text="new Date(waktuBayar).toLocaleDateString('default', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })"></div>
+        <div class="mr-4 text-right"  x-text="waktuBayar?new Date(waktuBayar).toLocaleDateString('default', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' }):''"></div>
     </div>
     <div class="flex items-center justify-between w-full px-3 py-4 border-b-2">
         <div class="flex flex-row items-center">
