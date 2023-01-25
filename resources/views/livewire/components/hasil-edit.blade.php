@@ -67,7 +67,7 @@
             class="p-8 pb-0 text-lg font-medium tracking-wide text-center text-green-500 uppercase border-gray-200">
             Estimasi Lunas</div>
             <div class="items-center justify-center block sm:flex md:block lg:flex">
-                <template x-if="hasil.hutang.length > 1 || hasil.hasil.extraSalary > 20">
+                <template x-if="formatTgl(hasil.hasil.snowballCalculator) < formatTgl(hasil.hasil.normalCalculator)">
                 <div class="mt-2 text-center sm:m-8 md:m-0 md:mt-4 md:mb-8 lg:m-5">
                     <div class="inline-flex items-center">
                         <span class="text-3xl font-semibold text-[#2A7C97]" x-text="dateSnowball"></span>

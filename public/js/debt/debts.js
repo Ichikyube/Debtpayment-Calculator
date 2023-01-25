@@ -282,6 +282,16 @@ document.addEventListener("alpine:init", () => {
             tgl = day + " " + mount + " " + year;
             return tgl;
         },
+        pembanding(params) {
+            var date = new Date(params);
+            var day = date.getDate();
+
+            var mount = date.getMonth()+1;
+
+            var year = date.getFullYear();
+            tgl = day + "-" + mount + "-" + year;
+            return tgl;
+        },
         formatTgl(params) {
             var date = new Date(params);
             var mount = date.toLocaleString("default", {
