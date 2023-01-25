@@ -36,13 +36,11 @@ document.addEventListener("alpine:init", () => {
         },
         addDebt() {
             this.posts.push("");
-            console.log(this.posts);
         },
         removeDebt(index) {
             this.posts.splice(index, 1);
         },
         async hitung() {
-            console.log('qwerty');
             this.isLoading = true;
             var alert = [];
             var stop = false;
@@ -141,12 +139,10 @@ document.addEventListener("alpine:init", () => {
                     }
                     if (data.success == false) {
                         this.validation = data.error;
-                        console.log(this.validation);
                     }
                     this.isLoading = false;
                     this.messages = data.message;
-                this.notif = true;
-                    // console.log(this.messages)
+                    this.notif = true;
                 });
         },
         async charts(pendapatan, pembayaran) {
@@ -185,7 +181,6 @@ document.addEventListener("alpine:init", () => {
                 .then(async (data) => {
                     if (data.success == true) {
                         this.list = await data.data;
-                        console.log(this.list);
                     }
                     if (data.status == false) {
                         this.validation = data.error;
@@ -226,21 +221,19 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-            .then( response =>  response.json())
-            .then(data => {
-                if (data.status == true) {
-                    localStorage.setItem("tab", "listHitungan");
-                }
-                if (data.status == false) {
-                    this.validation = data.error;
-                }
-                this.messages = data.message;
-                this.showNotif();
-            });
-
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.status == true) {
+                        localStorage.setItem("tab", "listHitungan");
+                    }
+                    if (data.status == false) {
+                        this.validation = data.error;
+                    }
+                    this.messages = data.message;
+                    this.showNotif();
+                });
         },
         async deleted() {
-            // console.log(this.idDebt);
             fetch("http://127.0.0.1:8000/api/debt/delete/" + this.idDebt, {
                 method: "GET",
                 headers: {
@@ -282,7 +275,7 @@ document.addEventListener("alpine:init", () => {
                 month: "long",
             });
             var year = date.getFullYear();
-            tgl =day + " " + mount + " " + year;
+            tgl = day + " " + mount + " " + year;
             return tgl;
         },
         formatTgl(params) {
@@ -299,7 +292,6 @@ document.addEventListener("alpine:init", () => {
             for (let i = 0; i < params.length; i++) {
                 this.title.push(params[0].debtTitle);
             }
-            console.log(this.title);
         },
     }));
 
@@ -320,7 +312,6 @@ document.addEventListener("alpine:init", () => {
                 .then((data) => {
                     if (data.status == true) {
                         this.ambilData = data.data;
-                        console.log(this.ambilData);
                         this.posts = data.data.detail.length;
                     }
                     if (data.status == false) {
@@ -351,9 +342,10 @@ document.addEventListener("alpine:init", () => {
                 form.debtAmount.push(this.hasil.hutang[i].debtAmount);
                 form.datePayment.push(this.hasil.hutang[i].datePayment);
                 form.debtInterest.push(this.hasil.hutang[i].debtInterest);
-                form.monthlyInstallments.push(this.hasil.hutang[i].monthlyInstallments);
+                form.monthlyInstallments.push(
+                    this.hasil.hutang[i].monthlyInstallments
+                );
             }
-            console.log(form);
             this.calculated = true;
             fetch("http://127.0.0.1:8000/api/debt/update/" + id, {
                 method: "POST",
@@ -366,7 +358,6 @@ document.addEventListener("alpine:init", () => {
                 .then((response) => response.json())
                 .then((data) => {
                     if (data.status == true) {
-                        console.log(data);
                         this.calculated = !this.calculated;
                         localStorage.setItem("tab", "listHitungan");
                         this.listData();
@@ -379,7 +370,6 @@ document.addEventListener("alpine:init", () => {
                 });
         },
         async hitungedit(id) {
-            console.log(id);
             var alert = [];
             var stop = false;
             var debtTitle = [];
@@ -442,7 +432,6 @@ document.addEventListener("alpine:init", () => {
             //     return;
             // }
 
-            console.log(datePayment);
             const form = {
                 debtTitle: debtTitle,
                 debtAmount: debtAmount,

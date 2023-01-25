@@ -144,7 +144,7 @@
                         </div>
                         <div x-data="$store.getData" class="flex flex-col items-end gap-2 lg:flex-row">
                             <!-- Buton Edit -->
-                            <button x-on:click.prevent="ubah(data.id),console.log('data ke ' + data.id ), tab = 'edit-hitungan', localStorage.setItem('tab', 'edit-hitungan')" class="text-xl bg-[#2A7C97] px-1 text-[#F7D3C2] rounded shadow"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button x-on:click.prevent="ubah(data.id), tab = 'edit-hitungan', localStorage.setItem('tab', 'edit-hitungan')" class="text-xl bg-[#2A7C97] px-1 text-[#F7D3C2] rounded shadow"><i class="fa-solid fa-pen-to-square"></i></button>
 
                             <!-- Button Delete -->
                             <div>

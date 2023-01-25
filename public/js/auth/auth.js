@@ -25,7 +25,6 @@ document.addEventListener("alpine:init", () => {
                 .then((response) => response.json())
                 .then((data) => {
                     if (data.success == true) {
-                        console.log(data);
                         localStorage.setItem("messages", data.message);
                         window.location.replace("http://127.0.0.1:8001/login");
                     }
@@ -45,10 +44,9 @@ document.addEventListener("alpine:init", () => {
         error: [],
         validation: [],
         status: "",
-        async getMessages(){
-            this.messages =  localStorage.getItem("messages")
+        async getMessages() {
+            this.messages = localStorage.getItem("messages");
             localStorage.removeItem("messages");
-            console.log(this.messages)
         },
         async getData() {
             await fetch("http://127.0.0.1:8000/api/user", {
@@ -58,10 +56,9 @@ document.addEventListener("alpine:init", () => {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
             })
-                .then(async(response) => await  response.json())
+                .then(async (response) => await response.json())
                 .then((data) => {
                     // localStorage.setItem("user", {data});
-                    console.log(data);
                 });
         },
         async submited() {
@@ -76,13 +73,13 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-                .then(async(response) => await response.json())
+                .then(async (response) => await response.json())
                 .then(async (data) => {
                     this.status = data.success;
                     // response success == false (gagal Login)
                     if (this.status == false) {
                         this.error = data;
-                        localStorage.setItem ('messages', data.message)
+                        localStorage.setItem("messages", data.message);
                         this.validation = data.error;
                         this.getMessages();
                     }
@@ -102,7 +99,6 @@ document.addEventListener("alpine:init", () => {
 
     Alpine.store("logout", () => ({
         async logout() {
-            console.log("logout");
             await fetch("http://127.0.0.1:8000/api/logout", {
                 method: "GET",
                 headers: {
@@ -112,7 +108,6 @@ document.addEventListener("alpine:init", () => {
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data);
                     localStorage.removeItem("token");
                     localStorage.removeItem("tab");
                     window.location.replace("http://127.0.0.1:8001/login");
