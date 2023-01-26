@@ -41,13 +41,14 @@
                     x-data="{namaHutang:ambilData.detail[index-1].debtTitle, waktuBayar:ambilData.detail[index-1].datePayment, jmlHutang:ambilData.detail[index-1].debtAmount,
                         bungaHutang:ambilData.detail[index-1].debtInterest, minBayar:ambilData.detail[index-1].monthlyInstallments,
                         monthlySalary:ambilData.monthlySalary, extraSalary:ambilData.extraSalary}">
-                    <div class="flex flex-row px-5 py-5 align-middle border-b-2">
+                    <div class="flex flex-row px-5 py-5 align-middle border-b-2 tooltip">
                         <input x-model="namaHutang" class="namaHutang ml-5 text-xl font-bold border-0 appearance-none text-blueGray-700 outline-none
                         placeholder:!bg-transparent bg-transparent focus:border-none focus:outline-none
-                        focus-visible:ring-0" type="text" >                        
-                        <p class="nama"></p>
+                        focus-visible:ring-0" type="text">
+                        <div class="nama"></div>
+                        
                     </div>
-                    <div class="flex flex-row items-center justify-between w-full px-3 py-4 border-b-2">
+                    <div class="flex flex-row items-center justify-between w-full px-3 py-4 border-b-2 tooltip">
                         <div class="flex flex-row items-center">
                             <div class="flex justify-center w-12 mr-2">
                                 <i class="fa-regular fa-calendar-xmark"></i>
@@ -65,7 +66,7 @@
                         <div class="waktu"></div>
                         <div class="mr-4 text-right"  x-text="new Date(waktuBayar).toLocaleDateString('default', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })"></div>
                     </div>
-                    <div class="flex items-center justify-between w-full px-3 py-4 border-b-2">
+                    <div class="flex items-center justify-between w-full px-3 py-4 border-b-2 tooltip">
                         <div class="flex flex-row items-center">
                             <div class="flex justify-center w-12 mr-2">
                                 <i class="fa-solid fa-coins"></i>
@@ -84,7 +85,7 @@
                         <div class="mr-4 text-right" x-money.en-US.USD.decimal="jmlHutang"></div>
                     </div>
 
-                    <div class="flex flex-row items-center justify-between w-full px-3 py-4 border-b-2">
+                    <div class="flex flex-row items-center justify-between w-full px-3 py-4 border-b-2 tooltip">
                         <div class="flex flex-row items-center w-1/2">
                             <div class="flex justify-center w-12 mr-2">
                                 <i class="fa-solid fa-percent"></i>
@@ -103,7 +104,7 @@
                         <div class="bunga"></div>
                         <div class="mr-4 text-right w-fit" x-text="bungaHutang?bungaHutang + ' %': ''"></div>
                     </div>
-                    <div class="flex flex-row items-center justify-between w-full px-3 py-4">
+                    <div class="flex flex-row items-center justify-between w-full px-3 py-4 tooltip">
                         <div class="flex flex-row items-center">
                             <div class="flex justify-center w-12 mr-2">
                                 <i class="fa-solid fa-hand-holding-dollar"></i>
