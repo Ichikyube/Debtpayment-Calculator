@@ -150,7 +150,6 @@ document.addEventListener("alpine:init", () => {
         },
         async charts(pendapatan, pembayaran) {
             const ctx = document.getElementById("hasilChart");
-
             new Chart(ctx, {
                 type: "doughnut",
                 data: {
@@ -184,7 +183,7 @@ document.addEventListener("alpine:init", () => {
                 .then(async (data) => {
                     if (data.success == true) {
                         this.list = await data.data;
-                        if(this.list.length == 0) swal("Tidak ditemukan perhitungan.  Silahkan melakukan perhitungan terlebih dahulu!")
+                        if(this.list.length == 0) swal("Tidak ditemukan perhitungan.  Silahkan melakukan perhitungan terlebih dahulu!",{icon: "warning"})
                     }
                     if (data.status == false) {
                         this.validation = data.error;
@@ -234,7 +233,7 @@ document.addEventListener("alpine:init", () => {
                     if (data.status == false) {
                         this.validation = data.error;
                     }
-                    swal(data.message);
+                    swal(data.message,{icon: "success"});
                     this.showNotif();
                 });
         },
