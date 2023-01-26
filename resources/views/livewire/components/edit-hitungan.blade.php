@@ -28,7 +28,7 @@
         </div>
     </div>
     {{-- end error alert --}}
-    
+
     <template x-if="!calculated">
         @livewire('components.hasil-edit')
     </template>
