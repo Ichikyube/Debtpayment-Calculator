@@ -31,6 +31,7 @@ const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 document.addEventListener("alpine:init", () => {
     Alpine.store("create", () => ({
         posts: [0],
+        postAdded: false,
         alert: [],
         profile: null,
         calculated: false,
@@ -58,8 +59,6 @@ document.addEventListener("alpine:init", () => {
         no_of_days: [],
         blankdays: [],
         showNotif() {
-            if (this.notif) return;
-            this.notif = true;
             // reset time to 0 second
             clearTimeout(timer);
 
@@ -74,7 +73,16 @@ document.addEventListener("alpine:init", () => {
             localStorage.removeItem("mssg");
         },
         addDebt() {
+            this.postAdded = true;
             this.posts.push("");
+
+            // reset time to 0 second
+            clearTimeout(timer);
+
+            // auto close toast after 5 seconds
+            timer = setTimeout(() => {
+                this.postAdded = false;
+            }, 5000);
         },
         removeDebt(index) {
             this.posts.splice(index, 1);
@@ -203,7 +211,6 @@ document.addEventListener("alpine:init", () => {
                     }
                     this.isLoading = false;
                     this.messages = data.message;
-                    // this.notif = true;
                     this.showNotif();
                 });
         },
@@ -512,6 +519,7 @@ document.addEventListener("alpine:init", () => {
         // ambilData: [],
         async ubah(id) {
             this.isLoading = true;
+            localStorage.setItem("tab", "editHitungan");
             await fetch("http://127.0.0.1:8000/api/debt/" + id, {
                 method: "GET",
                 headers: {
@@ -522,7 +530,7 @@ document.addEventListener("alpine:init", () => {
                 .then((response) => response.json())
                 .then((data) => {
                     if (data.status == true) {
-                        localStorage.setItem("tab", "editHitungan");
+
                         this.ambilData = data.data;
                         this.posts = data.data.detail;
                         this.isLoading = false;

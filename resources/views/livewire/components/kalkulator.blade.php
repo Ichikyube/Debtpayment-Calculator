@@ -72,13 +72,17 @@
                 <livewire:debt-calc />
             </template>
 
-            <template x-if="posts.length >  1">
-                <button type="button" class="absolute bottom-0 px-3 text-black rounded-r-md hover:text-myblue">
-                    <div class="flex flex-row w-6 h-6 align-middle motion-safe:animate-bounce">
-                        <i class="fa-solid fa-arrow-down"></i>
-                    </div>
-                </button>
-            </template>
+
+                <div x-show="postAdded" class="absolute flex flex-col justify-center h-6 px-3 leading-none text-center align-middle motion-safe:animate-bounce bottom-16 rounded-r-md hover:text-myblue"
+                x-transition:enter="transition -translate-y-10 ease-out duration-300"
+                x-transition:enter-start="opacity-0 -translate-y-10"
+                x-transition:enter-end="-translate-y-0 opacity-100"
+                x-transition:leave="transition -translate-y-10 ease-in duration-300"
+                x-transition:leave-start="opacity-100 -translate-y-10"
+                x-transition:leave-end="-translate-y-10 opacity-0">
+                    <h3 class="text-myblue ">Debt is added</h3>
+                    <i class="text-red-500 fa-solid fa-arrow-down"></i>
+                </div>
 
 
             <div class="h-screen">

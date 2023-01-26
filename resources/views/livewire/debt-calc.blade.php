@@ -3,10 +3,10 @@
       <div x-data="{ open : false }" class="flex flex-row w-full px-5 py-5 align-middle border-b-2 tooltip">
         <div  class="flex items-center justify-between">
             <input x-show="open"  x-model="namaHutang" :id="$id('id')" class="w-full ml-5 text-xl font-bold border-0 rounded-md namaHutang form-input focus-visible:ring-0" type="text">
-            <button type="button" class="flex px-4 py-2 font-mediumgroup" x-bind:class="open? 'bg-myorange rounded-md -ml-16': ''"
+            <button type="button" class="flex px-4 py-2 font-medium group" x-bind:class="open? 'bg-myorange rounded-md -ml-12': ''"
             @click="open = !open">
             <div x-show="!open" class="ml-2 mr-4 text-xl font-bold" x-text="namaHutang"></div>
-                <span class="group-hover:bg-myorange"> Edit</span></button>
+                <span class="group-hover:text-red-500"><i class="fa-solid fa-pen-to-square"></i></span></button>
 		</div>
         <p class="nama"></p>
     </div>
