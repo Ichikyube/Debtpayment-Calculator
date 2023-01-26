@@ -20,7 +20,7 @@
                 <li><button type="button"
                         x-on:click.prevent=" tab = 'kalkulator', localStorage.setItem('tab', 'kalkulator')"
                         class="text-4xl text-dark lg:text-white"><i
-                            x-bind:class="tab == 'kalkulator' ? 'text-myyellow drop-shadow-3xl' : 'text-gray-400 drop-shadow-md'"
+                            x-bind:class="tab == 'kalkulator' || tab == 'editHitungan' ? 'text-myyellow drop-shadow-3xl' : 'text-gray-400 drop-shadow-md'"
                             class="fa-solid fa-qrcode"></i></button>
                 </li>
                 <li><button type="button" x-bind:disabled="!list"
@@ -101,7 +101,7 @@
                 x-transition:leave="transition ease-in duration-300"
                 x-transition:leave-start="opacity-100 scale-100"
                 x-transition:leave-end="opacity-0 scale-90">@livewire('components.edit-hitungan')</template>
-            <template x-if="tab == 'listHitungan'" x-cloak x-transition:enter="transition ease-out duration-300" 
+            <template x-if="tab == 'listHitungan'" x-cloak x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
                 x-transition:leave="transition ease-in duration-300"
                 x-transition:leave-start="opacity-100 scale-100"

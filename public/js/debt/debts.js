@@ -474,7 +474,8 @@ document.addEventListener("alpine:init", () => {
         showMinierrrorAlert: false,
         // ambilData: [],
         async ubah(id) {
-            fetch("http://127.0.0.1:8000/api/debt/" + id, {
+            this.isLoading = true;
+            await fetch("http://127.0.0.1:8000/api/debt/" + id, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -484,9 +485,10 @@ document.addEventListener("alpine:init", () => {
                 .then((response) => response.json())
                 .then((data) => {
                     if (data.status == true) {
+                        localStorage.setItem("tab", "editHitungan");
                         this.ambilData = data.data;
                         this.posts = data.data.detail;
-                        // console.log( this.posts)
+                        this.isLoading = false;
                     }
                     if (data.status == false) {
                         this.validation = data.error;
@@ -521,6 +523,7 @@ document.addEventListener("alpine:init", () => {
                 );
             }
             this.calculated = true;
+            this.isLoading = true;
             fetch("http://127.0.0.1:8000/api/debt/update/" + id, {
                 method: "POST",
                 body: JSON.stringify(form),
@@ -530,14 +533,12 @@ document.addEventListener("alpine:init", () => {
                 },
             })
                 .then(async (response) => await response.json())
-                .then(async (data) => {
+                .then( (data) => {
                     if (data.status == true) {
                         this.calculated = !this.calculated;
                         localStorage.setItem("tab", "listHitungan");
-                       await this.listData();
-                       if (id) {
-                        window.location.reload();
-                    }
+                        this.listData();
+                        this.isLoading = false;
                     }
                     if (data.status == false) {
                         this.validation = data.error;
