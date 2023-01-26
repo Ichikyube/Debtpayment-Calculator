@@ -44,17 +44,6 @@ document.addEventListener("alpine:init", () => {
         error: [],
         validation: [],
         status: "",
-        showNotif() {
-            if (this.notif) return;
-            this.notif = true;
-            // reset time to 0 second
-            clearTimeout(timer);
-
-            // auto close toast after 5 seconds
-            timer = setTimeout(() => {
-                this.closeNotif();
-            }, 5000);
-        },
         closeNotif() {
             this.notif = false;
             this.messages = null;
@@ -96,15 +85,15 @@ document.addEventListener("alpine:init", () => {
                     if (this.status == false) {
                         this.error = data;
                         if (data.message) {
-                            localStorage.setItem("messages", data.message);                            
+                            localStorage.setItem("messages", data.message);
                         }
-                        this.validation = data.error;                        
+                        this.validation = data.error;
                         this.getMessages();
                     }
                     // response seccess = true (Login Berhasil)
                     if (this.status == true) {
                         localStorage.setItem("token", data.access_token);
-                        
+
                         window.location.replace(
                             "http://127.0.0.1:8001/dashboard"
                         );
