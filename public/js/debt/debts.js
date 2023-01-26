@@ -18,8 +18,9 @@ document.addEventListener("alpine:init", () => {
         messages: null,
         isLoading: false,
         idDebt: 0,
-        showMinierrrorAlert: false,
+        showMiniErrorAlert: false,
         showErrorAlert: false,
+        statusCode: 0,
         showNotif() {
             if (this.notif) return;
             this.notif = true;
@@ -56,47 +57,50 @@ document.addEventListener("alpine:init", () => {
             var bungaHutang = document.getElementsByClassName("bungaHutang");
             var minBayar = document.getElementsByClassName("minBayar");
             for (let i = 0; i < namaHutang.length; i++) {
-                let temp = "";
                 if (namaHutang[i].value === "") {
                     this.alert.push("nama hutang tidak boleh kosong ");
+                } else {
+                    debtTitle.push(namaHutang[i].value);
                 }
                 if (jmlHutang[i].value === "") {
                     this.alert.push("jumlah hutang tidak boleh kosong ");
+                } else {
+                    debtAmount.push(parseInt(jmlHutang[i].value));
                 }
                 if (waktuBayar[i].value === "") {
-                    temp += "waktu bayar tidak boleh kosong ";
+                    this.alert.push("waktu bayar tidak boleh kosong ");
+                } else {
+                    datePayment.push(waktuBayar[i].value);
                 }
                 if (bungaHutang[i].value === "") {
                     this.alert.push("bunga hutang tidak boleh kosong ");
+                } else {
+                    debtInterest.push(parseInt(bungaHutang[i].value));
                 }
                 if (minBayar[i].value === "") {
                     this.alert.push("minmal bayar hutang tidak boleh kosong ");
+                } else {
+                    monthlyInstallments.push(parseInt(minBayar[i].value));
                 }
-                if (temp !== "") {
+                if (this.alert !== "") {
                     document.getElementById(`alert${i}`).innerHTML = this.alert;
                 } else {
-                    // alert.push(temp);
                 }
-                debtTitle.push(namaHutang[i].value);
-                debtAmount.push(parseInt(jmlHutang[i].value));
-                datePayment.push(waktuBayar[i].value);
-                debtInterest.push(parseInt(bungaHutang[i].value));
-                monthlyInstallments.push(parseInt(minBayar[i].value));
             }
 
-            for (let i = 0; i < this.alert.length; i++) {
-                if (this.alert[i] !== "") {
-                    // document.getElementById(`alert${i}`).innerHTML =
-                    //     this.alert[i];
-                    stop = true;
-                } else {
-                    // document.getElementById(`alert${i}`).innerHTML = "";
-                }
-            }
-            this.isLoading = false;
-            if (stop) {
-                return;
-            }
+            // for (let i = 0; i < this.alert.length; i++) {
+            //     if (this.alert[i] !== "") {
+            //         // document.getElementById(`alert${i}`).innerHTML =
+            //         //     this.alert[i];
+            //         stop = true;
+            //     } else {
+            //         // document.getElementById(`alert${i}`).innerHTML = "";
+            //     }
+            // }
+            // this.isLoading = false;
+            // if (stop) {
+            //     return;
+            // }
             const form = {
                 debtTitle: debtTitle,
                 debtAmount: debtAmount,
@@ -114,8 +118,11 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-                .then((response) => response.json())
-                .then((data) => {
+                .then(async (response) => {
+                    this.statusCode = response.status;
+                    return response.json();
+                })
+                .then(async (data) => {
                     if (data.status == true) {
                         this.showMinierrrorAlert = false;
                         this.hasil = data.data;
@@ -138,10 +145,14 @@ document.addEventListener("alpine:init", () => {
 
                         this.calculated = !this.calculated;
                     }
-                    if (data.status == false) {
+                    if (this.statusCode == 400) {
                         this.messages = data.message;
+                        this.showErrorAlert = true;
                         this.validation = data.error;
-                        this.showMinierrrorAlert = true;
+                    }
+                    if (this.statusCode == 500) {
+                        this.messages = data.message;
+                        this.showMiniErrorAlert = true;
                     }
                     this.isLoading = false;
                     this.messages = data.message;

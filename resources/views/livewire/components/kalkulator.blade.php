@@ -1,6 +1,6 @@
 <div x-data="$store.create">
     {{-- start error alert --}}
-    <template x-if="showErrorAlert">
+    {{-- <template x-if="showErrorAlert"> --}}
         <div x-show="showErrorAlert"
             x-transition:enter="transition -translate-y-10 ease-out duration-300"
             x-transition:enter-start="opacity-0 -translate-y-10"
@@ -12,15 +12,18 @@
             <div class="flex items-center" >
                 <svg aria-hidden="true" class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
                 <span class="sr-only">Info</span>
-                <h3 class="text-lg font-medium hutangName">Request Filed!!</h3>
+                <h3 class="text-lg font-medium">Request Filed!!</h3>
             </div>
             <div class="mt-2 mb-4 text-sm">
-                <ul class="mt-1.5 ml-4 list-disc list-inside">
-                    <li x-text="validation.debtTitle ?? validation.debtTitle"></li>
-                    <li x-text="validation.debtAmount ?? validation.debtAmount"></li>
-                    <li x-text="validation.debtInterest ?? validation.debtInterest"></li>
-                    <li x-text="validation.datePayment ?? validation.datePayment"></li>
-                    <li x-text="validation.monthlyInstallments ?? validation.monthlyInstallments"></li>
+                <ul class="mt-1.5 ml-4 list-disc list-inside" x-show="validation">
+                    <li x-show="validation.debtTitle" x-text="validation.debtTitle"></li>
+                    <li x-show="validation.debtAmount" x-text="validation.debtAmount"></li>
+                    <li x-show="validation.debtInterest" x-text="validation.debtInterest"></li>
+                    <li x-show="validation.datePayment" x-text="validation.datePayment"></li>
+                    <li x-show="validation.monthlyInstallments" x-text="validation.monthlyInstallments"></li>
+                </ul>
+                <ul class="mt-1.5 ml-4 list-disc list-inside" x-show="messages">
+                    <li x-show="messages" x-text="messages"></li>
                 </ul>
             </div>
             <div class="flex justify-end">
@@ -29,37 +32,33 @@
                 </button>
             </div>
         </div>
-    </template>
+    {{-- </template> --}}
     {{-- end error alert --}}
 
-    {{-- start error alert --}}
-        <div x-show="showMinierrrorAlert"
-            x-transition:enter="transition -translate-y-10 ease-out duration-300"
-            x-transition:enter-start="opacity-0 -translate-y-10"
-            x-transition:enter-end="-translate-y-0 opacity-100"
-            x-transition:leave="transition -translate-y-10 ease-in duration-300"
-            x-transition:leave-start="opacity-100 -translate-y-10"
-            x-transition:leave-end="-translate-y-10 opacity-0"
-            class="absolute shadow-2xl z-30 w-[700px] right-1/2 left-1/4 -top-5 p-4 mb-4 text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800" role="alert">
-            <div class="flex items-center" >
-                <svg aria-hidden="true" class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
-                <span class="sr-only">Info</span>
-                <h3 class="text-lg font-medium hutangName">Request Filed!!</h3>
-            </div>
-            <div class="mt-2 mb-4 text-sm">
-                <ul class="mt-1.5 ml-4 list-disc list-inside">
-                    <template x-for="message in messages">
-                        <li x-text="message"></li>
-                    </template>
-                </ul>
-            </div>
-            <div class="flex justify-end">
-                <button x-on:click="showMinierrrorAlert = false" class="text-red-800 bg-transparent border border-red-900 hover:bg-red-900 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xs px-3 py-1.5 text-center dark:hover:bg-red-400 dark:border-red-400 dark:text-red-400 dark:hover:text-white dark:focus:ring-red-800" data-dismiss-target="#alert-additional-content-2" aria-label="Close">
-                    close
-                </button>
+    {{-- start mini error alert --}}
+    <div x-show="showMiniErrorAlert"
+        x-transition:enter="transition -translate-y-10 ease-out duration-300"
+        x-transition:enter-start="opacity-0 -translate-y-10"
+        x-transition:enter-end="-translate-y-0 opacity-100"
+        x-transition:leave="transition -translate-y-10 ease-in duration-300"
+        x-transition:leave-start="opacity-100 -translate-y-10"
+        x-transition:leave-end="-translate-y-10 opacity-0"
+        class="flex justify-between items-center absolute z-30 left-[35%] right-[50%] -top-5 shadow-xl w-96 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+        <div class="flex items-center">
+            <svg aria-hidden="true" class="flex-shrink-0 inline w-10 h-10 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+            <span class="sr-only">Info</span>
+            <div class="flex flex-col">
+                <span class="text-xl font-medium">Request Filed!!</span>
+                <span>Harap isi data dengan benar</span>
             </div>
         </div>
-    {{-- end error alert --}}
+        <button x-on:click="showMiniErrorAlert = false">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+    </div>
+    {{-- end mini error alert --}}
 
     <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 lg:mb-8 drop-shadow-md">Kalkulator Hutang</h1>
     <template x-if="calculated">
@@ -167,9 +166,9 @@
                 after:-scale-x-100 after:rounded-full after:content-['+'] after:align-middle after:text-center">
                     Tambahkan Hutang
                 </button>
-                <button x-on:click="hitung()" x-bind:class="isLoading ?? 'cursor-not-allowed'" class="px-5 text-white shadow drop-shadow-lg cursor-pointer
+                <button x-on:click="hitung()" class="px-5 text-white shadow drop-shadow-lg cursor-pointer
                 select-none active:translate-y-1 active:[box-shadow:0_0px_0_0_#f2f2f2,0_0px_0_0_#b7b7b7] active:border-b-[0px] rounded-xl
-                [box-shadow:0_1px_0_0_#f2f2f2,0_3px_0_0_#b7b7b7] bg-myblue py-2 md:h-14 lg:h-14 lg:w-44 transition-all duration-200" x-bind:disabled="isLoading ? true : false">
+                [box-shadow:0_1px_0_0_#f2f2f2,0_3px_0_0_#b7b7b7] bg-myblue py-2 md:h-14 lg:h-14 lg:w-44 transition-all duration-200">
 
                     <p x-text="!isLoading ? 'Calculate': 'Loading'"></p>
 
