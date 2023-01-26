@@ -9,13 +9,14 @@
             <div x-show="!open" class="ml-2 mr-4 text-xl font-bold" x-text="namaHutang"></div>
                 <span class="group-hover:bg-myorange"> Edit</span></button>
 		</div>
-        <p :id="`alert${index}`"></p>
+        <p class="nama"></p>
     </div>
     <div class="flex flex-row items-center justify-between w-full px-3 py-4 border-b-2 group">
         <div class="flex justify-center w-12 mr-2">
             <i class="fa-regular fa-calendar-xmark"></i>
         </div>
         <x-date-picker/>
+
     </div>
     <div class="flex items-center justify-between w-full px-3 py-4 border-b-2 group">
         <div class="flex justify-center w-12 mr-2">
@@ -29,6 +30,7 @@
             peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5
             peer-focus:scale-75 peer-focus:text-myblue">Jumlah Hutang <span class="text-xs text-green-600">($)</span>
             </label>
+            <div class="jml"></div>
             <div class="absolute right-0 w-10/12 mr-4 text-right truncate" x-money.en-US.USD.decimal="jmlHutang"></div>
         </div>
 
@@ -49,6 +51,8 @@
             <div class="absolute right-0 w-10/12 mr-4 text-right truncate" x-text="bungaHutang?bungaHutang + ' %': ''"></div>
         </div>
     </div>
+        {{-- alert --}}
+        <div class="bunga"></div>
     <div class="flex flex-row items-center justify-between w-full px-3 py-4 group">
         <div class="flex justify-center w-12 mr-2">
             <i class="fa-solid fa-hand-holding-dollar"></i>
@@ -61,6 +65,7 @@
             peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:w-full
             peer-focus:scale-75 peer-focus:text-myblue">Pembayaran minimum perbulan <span class="text-xs text-green-600">($)</span>
             </label>
+            <div class="min"></div>
             <div class="absolute right-0 w-10/12 mr-4 text-right truncate" x-money.en-US.USD.decimal="minBayar"></div>
         </div>
     </div>
