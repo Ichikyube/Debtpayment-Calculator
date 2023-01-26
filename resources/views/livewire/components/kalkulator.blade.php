@@ -72,9 +72,36 @@
         <div  x-id="['list-item']"
             class="flex snap-y snap-mandatory flex-col items-center px-4 md:w-full lg:w-1/2 overflow-y-scroll scroll-smooth rounded-xl overflow-x-hidden order-last md:order-first lg:order-first h-[420px] touch-auto hilanginscroll">
             <!-- Form Kalkulator -->
-            <template x-for="(post,index) in posts" :key="index">
+            <template x-if="posts >  1">
+                <button type="button" class="px-3 py-2 text-white bg-gray-800 border-r border-gray-100 rounded-l-md hover:bg-red-700 hover:text-white">
+                    <div class="flex flex-row align-middle">
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </div>
+                </button>
+                <button type="button" class="px-3 py-2 text-white bg-gray-800 border-l border-gray-200 rounded-r-md hover:bg-red-700 hover:text-white">
+                    <div class="flex flex-row align-middle">
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </div>
+                </button>
+            </template>
+            <div class="navigation"  x-data="navigationControls()" x-init="() => { dispatcher = $dispatch }">
+                <button @click="next">
+                Next
+                </button>
+                <button @click="previous">
+                Previous
+                </button>
+            </div>
+
+            <template x-for="(post,index) in posts" :key="index" class="slides"
+            x-data="slidesContainer()"
+            x-init="() => { init(); }"
+            @update-slide-index.window="goToSlide($event.detail.slideIndex)"
+            @go-next-slide.window="nextSlide"
+            @go-previous-slide.window="previousSlide">
                 <livewire:debt-calc />
             </template>
+
             <div class="h-screen">
                 <div class="bg-[#F7D3C2] w-11/12 mx-4 snap-start snap-always block md:hidden lg:hidden h-fit md:ml-4 lg:ml-4 rounded-md lg:rounded-[15px] shadow-sm hover:shadow-lg mb-8 transition-shadow duration-300 ease-in-out">
                     <div class="flex flex-row px-5 py-5 align-middle border-b-2">
