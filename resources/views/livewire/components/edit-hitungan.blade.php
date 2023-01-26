@@ -39,28 +39,33 @@
             <!-- Form Kalkulator -->
             <template x-for="index in posts">
                 <div class="bg-[#F7D3C2] snap-start snap-always mx-4 mb-8 w-11/12 lg:w-full lg:max-w-full rounded-md lg:rounded-[15px] shadow-sm hover:shadow-xl transition-shadow duration-300 ease-in-out"
-                    x-data="{namaHutang:ambilData.detail[index-1].debtTitle, waktuBayar:ambilData.detail[index-1].datePayment, jmlHutang:ambilData.detail[index-1].debtAmount,
-                        bungaHutang:ambilData.detail[index-1].debtInterest, minBayar:ambilData.detail[index-1].monthlyInstallments,
-                        monthlySalary:ambilData.monthlySalary, extraSalary:ambilData.extraSalary}">
+                    x-data="{
+                            namaHutang:ambilData.detail[index-1].debtTitle,
+                            waktuBayar:ambilData.detail[index-1].datePayment,
+                            jmlHutang:ambilData.detail[index-1].debtAmount,
+                            bungaHutang:ambilData.detail[index-1].debtInterest,
+                            minBayar:ambilData.detail[index-1].monthlyInstallments,
+                            monthlySalary:ambilData.monthlySalary,
+                            extraSalary:ambilData.extraSalary}">
                     <div class="flex flex-row px-5 py-5 align-middle border-b-2 tooltip">
                         <input x-model="namaHutang" class="namaHutang ml-5 text-xl font-bold border-0 appearance-none text-blueGray-700 outline-none
                         placeholder:!bg-transparent bg-transparent focus:border-none focus:outline-none
                         focus-visible:ring-0" type="text">
                         <div class="nama"></div>
-                        
+
                     </div>
                     <div class="flex flex-row items-center justify-between w-full px-3 py-4 border-b-2 group tooltip">
                         <div class="flex justify-center w-12 mr-2">
                             <i class="fa-regular fa-calendar-xmark"></i>
                         </div>
-                        <x-date-picker/>
+                        <x-date-picker />
                     </div>
                     <div class="flex items-center justify-between w-full px-3 py-4 border-b-2 group tooltip">
                         <div class="flex justify-center w-12 mr-2">
                             <i class="fa-solid fa-coins"></i>
                         </div>
                         <div class="relative flex items-center justify-between w-full">
-                            <input x-model="jmlHutang" :id="$id('id')" class="jmlHutang text-white/10 bg-transparent focus:text-transparent form-input z-10 peer block w-full appearance-none px-3 pt-2
+                            <input x-model="jmlHutang" :id="$id('id')" class="jmlHutang bg-transparent focus:text-black/30 text-transparent form-input z-10 peer block w-full appearance-none px-3 pt-2
                             placeholder:!bg-transparent transition duration-150 truncate ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none border-0 text-left outline-none
                             focus-visible:ring-0" type="number" min="0" max="" step="100" placeholder=" ">
                             <label class="absolute top-0 origin-[0] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
@@ -77,7 +82,7 @@
                             <i class="fa-solid fa-percent"></i>
                         </div>
                         <div class="relative flex items-center justify-between w-full">
-                            <input x-model="bungaHutang" class="bungaHutang text-white/10 bg-transparent focus:text-transparent form-input z-10 peer block w-full appearance-none px-3 pt-2
+                            <input x-model="bungaHutang" class="bungaHutang bg-transparent focus:text-black/30 text-transparent form-input z-10 peer block w-full appearance-none px-3 pt-2
                             placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none border-0 text-left outline-none
                             focus-visible:ring-0" x-mask="99" placeholder=" ">
                             <label class="absolute truncate top-0 origin-[0] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
@@ -94,7 +99,7 @@
                             <i class="fa-solid fa-hand-holding-dollar"></i>
                         </div>
                         <div class="relative flex items-center justify-between w-full">
-                            <input x-model="minBayar" class="minBayar text-white/10 bg-transparent focus:text-transparent form-input z-10 peer block w-full appearance-none px-3 pt-2
+                            <input x-model="minBayar" class="minBayar bg-transparent focus:text-black/30 text-transparent form-input z-10 peer block w-full appearance-none px-3 pt-2
                             placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none border-0 text-left outline-none
                             focus-visible:ring-0" required type="number" min="10" step="100" placeholder=" ">
                             <label class="absolute break-words text-ellipsis top-0 origin-[0] max-w-[80%] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
@@ -126,7 +131,7 @@
                                     peer-focus:text-myblue peer-focus:dark:text-blue-500">Pendapatan perbulan <span class="text-xs text-green-600">($)</span></label>
                                 </div>
                             </div>
-                            
+
                             <div class="mr-4 text-right" x-money.en-US.USD.decimal="ambilData.monthlySalary"></div>
                         </div>
 
