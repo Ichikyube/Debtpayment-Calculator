@@ -1,6 +1,6 @@
 <div  x-id="['index']" x-bind:id="index ? 'hutang'+ index : ''" class="bg-[#F7D3C2] snap-start snap-always mx-4 mb-8 w-11/12 lg:w-full lg:max-w-full rounded-md lg:rounded-[15px]
     shadow-sm hover:shadow-xl transition-shadow duration-300 ease-in-out"  x-data="{namaHutang:`Hutang ${index+1}`,waktuBayar:'', jmlHutang:'', bungaHutang:'', minBayar:'', monthlySalary:''}">
-    <div x-data="{ open : false }" class="flex flex-row w-full px-5 py-5 align-middle border-b-2">
+    <div x-data="{ open : false }" class="flex flex-row w-full px-5 py-5 align-middle border-b-2 tooltip">
         <div  class="flex items-center justify-between">
 
             <input x-show="open"  x-model="namaHutang" :id="$id('id')" class="w-full ml-5 text-xl font-bold border-0 rounded-md namaHutang form-input focus-visible:ring-0" type="text">
@@ -18,7 +18,7 @@
         <x-date-picker/>
 
     </div>
-    <div class="flex items-center justify-between w-full px-3 py-4 border-b-2 group">
+    <div class="flex items-center justify-between w-full px-3 py-4 border-b-2 group tooltip">
         <div class="flex justify-center w-12 mr-2">
             <i class="fa-solid fa-coins"></i>
         </div>
@@ -36,7 +36,7 @@
 
     </div>
 
-    <div class="flex flex-row items-center justify-between w-full px-3 py-4 border-b-2 group">
+    <div class="flex flex-row items-center justify-between w-full px-3 py-4 border-b-2 group tooltip">
         <div class="flex justify-center w-12 mr-2">
             <i class="fa-solid fa-percent"></i>
         </div>
@@ -48,12 +48,12 @@
             peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5
             peer-focus:scale-75 peer-focus:text-myblue">Suku Bunga Hutang <span class="text-xs text-green-600">(%)</span>
             </label>
+            {{-- alert --}}
+            <div class="bunga"></div>
             <div class="absolute right-0 w-10/12 mr-4 text-right truncate" x-text="bungaHutang?bungaHutang + ' %': ''"></div>
         </div>
     </div>
-        {{-- alert --}}
-        <div class="bunga"></div>
-    <div class="flex flex-row items-center justify-between w-full px-3 py-4 group">
+    <div class="flex flex-row items-center justify-between w-full px-3 py-4 group tooltip">
         <div class="flex justify-center w-12 mr-2">
             <i class="fa-solid fa-hand-holding-dollar"></i>
         </div>
