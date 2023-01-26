@@ -44,7 +44,7 @@
                     <div class="flex flex-row px-5 py-5 align-middle border-b-2">
                         <input x-model="namaHutang" class="namaHutang ml-5 text-xl font-bold border-0 appearance-none text-blueGray-700 outline-none
                         placeholder:!bg-transparent bg-transparent focus:border-none focus:outline-none
-                        focus-visible:ring-0" type="text">
+                        focus-visible:ring-0" type="text" >                        
                         <p class="nama"></p>
                     </div>
                     <div class="flex flex-row items-center justify-between w-full px-3 py-4 border-b-2">

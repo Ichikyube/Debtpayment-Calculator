@@ -44,7 +44,7 @@ document.addEventListener("alpine:init", () => {
             this.posts.splice(index, 1);
         },
         async hitung() {
-            this.isLoading = true;
+            // this.isLoading = true;
             var stop = false;
             var debtTitle = [];
             var debtAmount = [];
@@ -57,35 +57,42 @@ document.addEventListener("alpine:init", () => {
             var bungaHutang = document.getElementsByClassName("bungaHutang");
             var minBayar = document.getElementsByClassName("minBayar");
             for (let i = 0; i < namaHutang.length; i++) {
-                if (namaHutang[i].value === "") {
-                    this.alert.push("nama hutang tidak boleh kosong ");
-                } else {
-                    debtTitle.push(namaHutang[i].value);
+                if (namaHutang[i].value === "") {                    
+                    document.getElementsByClassName("nama")[i].innerHTML = "nama hutang tidak boleh kosong";
+                    stop = true;
+                }else{
+                    document.getElementsByClassName("nama")[i].innerHTML = "";
                 }
                 if (jmlHutang[i].value === "") {
-                    this.alert.push("jumlah hutang tidak boleh kosong ");
-                } else {
-                    debtAmount.push(parseInt(jmlHutang[i].value));
-                }
-                if (waktuBayar[i].value === "") {
-                    this.alert.push("waktu bayar tidak boleh kosong ");
-                } else {
-                    datePayment.push(waktuBayar[i].value);
+                    document.getElementsByClassName("jml")[i].innerHTML = "nama hutang tidak boleh kosong";
+                    stop = true;
+                }else{
+                    document.getElementsByClassName("jml")[i].innerHTML = "";
                 }
                 if (bungaHutang[i].value === "") {
-                    this.alert.push("bunga hutang tidak boleh kosong ");
-                } else {
-                    debtInterest.push(parseInt(bungaHutang[i].value));
+                    document.getElementsByClassName("bunga")[i].innerHTML = "bunga hutang tidak boleh kosong";
+                    stop = true;
+                }else{
+                    document.getElementsByClassName("bunga")[i].innerHTML = "";
+                }
+                if (waktuBayar[i].value === "") {
+                    document.getElementsByClassName("waktu")[i].innerHTML = "tanggal hutang tidak boleh kosong";
+                    stop = true;
+                }else{
+                    document.getElementsByClassName("waktu")[i].innerHTML = "";
                 }
                 if (minBayar[i].value === "") {
-                    this.alert.push("minmal bayar hutang tidak boleh kosong ");
-                } else {
-                    monthlyInstallments.push(parseInt(minBayar[i].value));
+                    document.getElementsByClassName("min")[i].innerHTML = "tanggal hutang tidak boleh kosong";
+                    stop = true;
+                }else{
+                    document.getElementsByClassName("min")[i].innerHTML = "";
                 }
-                if (this.alert !== "") {
-                    document.getElementById(`alert${i}`).innerHTML = this.alert;
-                } else {
-                }
+
+                debtTitle.push(namaHutang[i].value);
+                debtAmount.push(jmlHutang[i].value);
+                datePayment.push(waktuBayar[i].value);
+                debtInterest.push(bungaHutang[i].value);
+                monthlyInstallments.push(minBayar[i].value);
             }
 
             // for (let i = 0; i < this.alert.length; i++) {
@@ -101,6 +108,9 @@ document.addEventListener("alpine:init", () => {
             // if (stop) {
             //     return;
             // }
+            if (stop) {
+                return;
+            }
             const form = {
                 debtTitle: debtTitle,
                 debtAmount: debtAmount,
@@ -110,6 +120,7 @@ document.addEventListener("alpine:init", () => {
                 monthlySalary: this.monthlySalary,
                 extraSalary: this.extraSalary,
             };
+           
             await fetch("http://127.0.0.1:8000/api/hitung", {
                 method: "POST",
                 body: JSON.stringify(form),
@@ -156,7 +167,8 @@ document.addEventListener("alpine:init", () => {
                     }
                     this.isLoading = false;
                     this.messages = data.message;
-                    this.notif = true;
+                    // this.notif = true;
+                    this.showNotif();
                 });
         },
         async charts(pendapatan, pembayaran) {
@@ -422,9 +434,8 @@ document.addEventListener("alpine:init", () => {
             var extraSalary =
                 document.getElementsByClassName("extraSalary")[0].value;
 
-            for (let i = 0; i < namaHutang.length; i++) {
-                let temp = "";
-                if (namaHutang[i].value === "") {
+            for (let i = 0; i < namaHutang.length; i++) {                
+                if (namaHutang[i].value === "") {                    
                     document.getElementsByClassName("nama")[i].innerHTML = "nama hutang tidak boleh kosong";
                     stop = true;
                 }else{
@@ -437,7 +448,7 @@ document.addEventListener("alpine:init", () => {
                     document.getElementsByClassName("jml")[i].innerHTML = "";
                 }
                 if (bungaHutang[i].value === "") {
-                    document.getElementsByClassName("bunga")[i].innerHTML = "";
+                    document.getElementsByClassName("bunga")[i].innerHTML = "bunga hutang tidak boleh kosong";
                     stop = true;
                 }else{
                     document.getElementsByClassName("bunga")[i].innerHTML = "";

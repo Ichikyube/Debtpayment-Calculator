@@ -7,7 +7,7 @@
             <button type="button" class="px-4 py-2 font-medium rounded btn bg-white/10 hover:bg-gray-300"
             @click="open = !open">Edit</button>
 		</div>
-        <p :id="`alert${index}`"></p>
+        <p class="nama"></p>
     </div>
     <div class="flex flex-row items-center justify-between w-full px-3 py-4 border-b-2">
         <div class="flex flex-row items-center">
@@ -23,6 +23,8 @@
                 peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Tanggal Pembayaran Selanjutnya</label>
             </div>
         </div>
+        {{-- alert --}}
+        <div class="waktu"></div>
         <div class="mr-4 text-right"  x-text="waktuBayar?new Date(waktuBayar).toLocaleDateString('default', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' }):''"></div>
     </div>
     <div class="flex items-center justify-between w-full px-3 py-4 border-b-2">
@@ -40,6 +42,7 @@
                 </label>
             </div>
         </div>
+        <div class="jml"></div>
         <div class="mr-4 text-right" x-money.en-US.USD.decimal="jmlHutang"></div>
     </div>
 
@@ -58,6 +61,8 @@
                 </label>
             </div>
         </div>
+          {{-- alert --}}
+          <div class="bunga"></div>
         <div class="mr-4 text-right w-fit" x-text="bungaHutang?bungaHutang + ' %': ''"></div>
     </div>
     <div class="flex flex-row items-center justify-between w-full px-3 py-4">
@@ -75,6 +80,7 @@
                 </label>
             </div>
         </div>
+        <div class="min"></div>
         <div class="mr-4 text-right" x-money.en-US.USD.decimal="minBayar"></div>
     </div>
     <template x-if="index>0">
