@@ -27,7 +27,7 @@
                 close
             </button>
         </div>
-      </div>
+    </div>
     {{-- end error alert --}}
 
     {{-- start success alert --}}

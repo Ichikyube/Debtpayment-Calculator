@@ -3,6 +3,7 @@ let timer;
 document.addEventListener("alpine:init", () => {
     Alpine.store("create", () => ({
         posts: [0],
+        alert: [],
         profile: null,
         calculated: false,
         dateNormal: "",
@@ -17,6 +18,7 @@ document.addEventListener("alpine:init", () => {
         messages: null,
         isLoading: false,
         idDebt: 0,
+        showErrorAlert: false,
         showNotif() {
             if (this.notif) return;
             this.notif = true;
@@ -41,7 +43,6 @@ document.addEventListener("alpine:init", () => {
         },
         async hitung() {
             this.isLoading = true;
-            var alert = [];
             var stop = false;
             var debtTitle = [];
             var debtAmount = [];
@@ -56,26 +57,24 @@ document.addEventListener("alpine:init", () => {
             for (let i = 0; i < namaHutang.length; i++) {
                 let temp = "";
                 if (namaHutang[i].value === "") {
-                    temp += "nama hutang, ";
+                    this.alert.push("nama hutang tidak boleh kosong ");
                 }
                 if (jmlHutang[i].value === "") {
-                    temp += "jumlah hutang, ";
+                    this.alert.push("jumlah hutang tidak boleh kosong ");
                 }
                 if (waktuBayar[i].value === "") {
-                    temp += "waktu bayar, ";
+                    temp += "waktu bayar tidak boleh kosong ";
                 }
                 if (bungaHutang[i].value === "") {
-                    temp += "bunga hutang, ";
+                    this.alert.push("bunga hutang tidak boleh kosong ");
                 }
                 if (minBayar[i].value === "") {
-                    temp += "minmal bayar hutang ";
+                    this.alert.push("minmal bayar hutang tidak boleh kosong ");
                 }
                 if (temp !== "") {
-                    temp += "tidak boleh kosong";
-                    alert.push(temp);
-                    // document.getElementById(`alert${i}`).innerHTML = alert + 'tidak boleh kosong'
+                    document.getElementById(`alert${i}`).innerHTML = this.alert;
                 } else {
-                    alert.push(temp);
+                    // alert.push(temp);
                 }
                 debtTitle.push(namaHutang[i].value);
                 debtAmount.push(parseInt(jmlHutang[i].value));
@@ -84,12 +83,13 @@ document.addEventListener("alpine:init", () => {
                 monthlyInstallments.push(parseInt(minBayar[i].value));
             }
 
-            for (let i = 0; i < alert.length; i++) {
-                if (alert[i] !== "") {
-                    document.getElementById(`alert${i}`).innerHTML = alert[i];
+            for (let i = 0; i < this.alert.length; i++) {
+                if (this.alert[i] !== "") {
+                    // document.getElementById(`alert${i}`).innerHTML =
+                    //     this.alert[i];
                     stop = true;
                 } else {
-                    document.getElementById(`alert${i}`).innerHTML = "";
+                    // document.getElementById(`alert${i}`).innerHTML = "";
                 }
             }
             this.isLoading = false;
@@ -221,21 +221,18 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-            .then( response =>  response.json())
-            .then(data => {
-                if (data.status == true) {
-                    localStorage.setItem("tab", "listHitungan");
-                    localStorage.setItem("mssg", data.message);
-                }
-                if (data.status == false) {
-                    this.validation = data.error;
-                }
-                swal(data.message);
-                this.showNotif();
-
-
-            });
-
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.status == true) {
+                        localStorage.setItem("tab", "listHitungan");
+                        localStorage.setItem("mssg", data.message);
+                    }
+                    if (data.status == false) {
+                        this.validation = data.error;
+                    }
+                    swal(data.message);
+                    this.showNotif();
+                });
         },
         async deleted() {
             fetch("http://127.0.0.1:8000/api/debt/delete/" + this.idDebt, {
@@ -282,6 +279,16 @@ document.addEventListener("alpine:init", () => {
             tgl = day + " " + mount + " " + year;
             return tgl;
         },
+        pembanding(params) {
+            var date = new Date(params);
+            var day = date.getDate();
+
+            var mount = date.getMonth() + 1;
+
+            var year = date.getFullYear();
+            tgl = day + "-" + mount + "-" + year;
+            return tgl;
+        },
         formatTgl(params) {
             var date = new Date(params);
             var mount = date.toLocaleString("default", {
@@ -300,13 +307,13 @@ document.addEventListener("alpine:init", () => {
     }));
 
     Alpine.store("getData", () => ({
-        namaHutang:null,
-        waktuBayar:null,
-        jmlHutang:null,
-        bungaHutang:null,
-        minBayar:null,
-        monthlySalary:null,
-        extraSalary:null,
+        namaHutang: null,
+        waktuBayar: null,
+        jmlHutang: null,
+        bungaHutang: null,
+        minBayar: null,
+        monthlySalary: null,
+        extraSalary: null,
         calculated: true,
         messages: null,
         monthlySalary: null,
@@ -492,7 +499,7 @@ document.addEventListener("alpine:init", () => {
                     }
                     this.isLoading = false;
                     this.messages = data.message;
-                    this.notif = true;
+                    this.showNotif();
                 });
         },
     }));
