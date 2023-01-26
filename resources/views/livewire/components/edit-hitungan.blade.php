@@ -89,7 +89,7 @@
                             <div class="relative flex items-center justify-between w-fit">
                                 <input x-model="bungaHutang" class="bungaHutang text-white/30 focus:text-black form-input z-10 peer bg-white/10 block
                                 w-full appearance-none pt-5  border-0 text-left outline-none placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom
-                                sm:text-sm sm:leading-1 focus:border-none focus:outline-none focus-visible:ring-0" x-mask="100" placeholder=" ">
+                                sm:text-sm sm:leading-1 focus:border-none focus:outline-none focus-visible:ring-0" x-mask="99" placeholder=" ">
                                 <label class="absolute top-3 truncate origin-[index-1] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
                                 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-4
                                 peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Suku Bunga Hutang <span class="text-xs text-green-600">(%)</span>
