@@ -21,6 +21,17 @@ document.addEventListener("alpine:init", () => {
                     this.user = data;
                 });
         },
+        formatTglFull(params) {
+            var date = new Date(params);
+            var day = date.getDate();
+
+            var mount = date.toLocaleString("default", {
+                month: "long",
+            });
+            var year = date.getFullYear();
+            tgl = day + " " + mount + " " + year;
+            return tgl;
+        },
         insertUpdate(name, email, gender, tempat_lahir, tgl_lahir, alamat) {
             this.update = {
                 name: name,
@@ -63,5 +74,13 @@ document.addEventListener("alpine:init", () => {
                 });
             this.userData();
         },
+        setClear() {
+            setInterval(() => {
+                this.showSuccessAlert = false;
+            }, 5000);
+            setInterval(() => {
+                this.showErrorAlert = false;
+            }, 7000);
+        }
     }));
 });

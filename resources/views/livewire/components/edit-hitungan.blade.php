@@ -1,4 +1,5 @@
 <div x-data="$store.getData">
+    <h1 class="my-4 ml-8 text-3xl font-bold truncate lg:my-0 lg:mb-8 drop-shadow-md">Kalkulator Hutang</h1>
 
     {{-- start error alert --}}
     <div x-show="showMinierrrorAlert"
@@ -34,92 +35,75 @@
     </template>
 
     <div x-show="calculated" class="relative flex flex-col md:flex-row lg:flex-row justify-evenly stretch">
-        <div class="flex snap-y snap-mandatory flex-col items-center px-4 lg:w-1/2 overflow-y-scroll scroll-smooth rounded-xl overflow-x-hidden order-last md:order-first lg:order-first h-[450px] touch-auto hilanginscroll">
+        <div class="flex snap-y snap-mandatory flex-col items-center px-4 lg:w-1/2 overflow-y-scroll scroll-smooth rounded-xl overflow-x-hidden order-last md:order-first lg:order-first h-[425px] touch-auto hilanginscroll">
             <!-- Form Kalkulator -->
             <template x-for="index in posts">
                 <div class="bg-[#F7D3C2] snap-start snap-always mx-4 mb-8 w-11/12 lg:w-full lg:max-w-full rounded-md lg:rounded-[15px] shadow-sm hover:shadow-xl transition-shadow duration-300 ease-in-out"
                     x-data="{namaHutang:ambilData.detail[index-1].debtTitle, waktuBayar:ambilData.detail[index-1].datePayment, jmlHutang:ambilData.detail[index-1].debtAmount,
                         bungaHutang:ambilData.detail[index-1].debtInterest, minBayar:ambilData.detail[index-1].monthlyInstallments,
                         monthlySalary:ambilData.monthlySalary, extraSalary:ambilData.extraSalary}">
-                    <div class="flex flex-row px-5 py-5 align-middle border-b-2">
+                    <div class="flex flex-row px-5 py-5 align-middle border-b-2 tooltip">
                         <input x-model="namaHutang" class="namaHutang ml-5 text-xl font-bold border-0 appearance-none text-blueGray-700 outline-none
                         placeholder:!bg-transparent bg-transparent focus:border-none focus:outline-none
-                        focus-visible:ring-0" type="text" >                        
-                        <p class="nama"></p>
+                        focus-visible:ring-0" type="text">
+                        <div class="nama"></div>
+                        
                     </div>
-                    <div class="flex flex-row items-center justify-between w-full px-3 py-4 border-b-2">
-                        <div class="flex flex-row items-center">
-                            <div class="flex justify-center w-12 mr-2">
-                                <i class="fa-regular fa-calendar-xmark"></i>
-                            </div>
-                            <div class="relative flex items-center justify-between w-fit">
-                                <input x-model="waktuBayar"  class="waktuBayar form-input z-10 peer bg-white/10 text-white/30 focus:text-dark block w-full appearance-none px-3 pt-5  border-0 text-left outline-none
-                                placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none
-                                focus-visible:ring-0" type="date" placeholder=" ">
-                                <label class="absolute top-3 origin-[index-1] break-words sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
-                                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-4
-                                peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Tanggal Pembayaran Selanjutnya</label>
-                            </div>
+                    <div class="flex flex-row items-center justify-between w-full px-3 py-4 border-b-2 group tooltip">
+                        <div class="flex justify-center w-12 mr-2">
+                            <i class="fa-regular fa-calendar-xmark"></i>
                         </div>
-                        {{-- alert --}}
-                        <div class="waktu"></div>
-                        <div class="mr-4 text-right"  x-text="new Date(waktuBayar).toLocaleDateString('default', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })"></div>
+                        <x-date-picker/>
                     </div>
-                    <div class="flex items-center justify-between w-full px-3 py-4 border-b-2">
-                        <div class="flex flex-row items-center">
-                            <div class="flex justify-center w-12 mr-2">
-                                <i class="fa-solid fa-coins"></i>
-                            </div>
-                            <div class="relative flex items-center justify-between w-fit">
-                                <input x-model="jmlHutang" class="jmlHutang text-white/30 focus:text-black form-input z-10 peer bg-white/10 block w-full appearance-none px-3 pt-5  border-0 text-left outline-none
-                                placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none
-                                focus-visible:ring-0" type="number" min="0" max="" step="100" placeholder=" ">
-                                <label class="absolute top-3 origin-[index-1]  break-word sm:w-max md:w-max lg:w-max -translate-y-4 scale-100 transform text-sm text-dark duration-300
-                                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-125 peer-focus:left-0 peer-focus:-translate-y-4
-                                peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Jumlah Hutang <span class="text-xs text-green-600">($)</span>
-                                </label>
-                            </div>
+                    <div class="flex items-center justify-between w-full px-3 py-4 border-b-2 group tooltip">
+                        <div class="flex justify-center w-12 mr-2">
+                            <i class="fa-solid fa-coins"></i>
                         </div>
-                        <div class="jml"></div>
-                        <div class="mr-4 text-right" x-money.en-US.USD.decimal="jmlHutang"></div>
+                        <div class="relative flex items-center justify-between w-full">
+                            <input x-model="jmlHutang" :id="$id('id')" class="jmlHutang text-white/10 bg-transparent focus:text-transparent form-input z-10 peer block w-full appearance-none px-3 pt-2
+                            placeholder:!bg-transparent transition duration-150 truncate ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none border-0 text-left outline-none
+                            focus-visible:ring-0" type="number" min="0" max="" step="100" placeholder=" ">
+                            <label class="absolute top-0 origin-[0] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
+                            peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5
+                            peer-focus:scale-75 peer-focus:text-myblue">Jumlah Hutang <span class="text-xs text-green-600">($)</span>
+                            </label>
+                            <div class="jml"></div>
+                            <div class="absolute right-0 w-10/12 mr-4 text-right truncate" x-money.en-US.USD.decimal="jmlHutang"></div>
+                        </div>
                     </div>
 
-                    <div class="flex flex-row items-center justify-between w-full px-3 py-4 border-b-2">
-                        <div class="flex flex-row items-center w-1/2">
-                            <div class="flex justify-center w-12 mr-2">
-                                <i class="fa-solid fa-percent"></i>
-                            </div>
-                            <div class="relative flex items-center justify-between w-fit">
-                                <input x-model="bungaHutang" class="bungaHutang text-white/30 focus:text-black form-input z-10 peer bg-white/10 block
-                                w-full appearance-none pt-5  border-0 text-left outline-none placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom
-                                sm:text-sm sm:leading-1 focus:border-none focus:outline-none focus-visible:ring-0" x-mask="99" placeholder=" ">
-                                <label class="absolute top-3 truncate origin-[index-1] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
-                                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-4
-                                peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Suku Bunga Hutang <span class="text-xs text-green-600">(%)</span>
-                                </label>
-                            </div>
+                    <div class="flex flex-row items-center justify-between w-full px-3 py-4 border-b-2 group tooltip">
+                        <div class="flex justify-center w-12 mr-2">
+                            <i class="fa-solid fa-percent"></i>
                         </div>
-                        {{-- alert --}}
-                        <div class="bunga"></div>
-                        <div class="mr-4 text-right w-fit" x-text="bungaHutang?bungaHutang + ' %': ''"></div>
+                        <div class="relative flex items-center justify-between w-full">
+                            <input x-model="bungaHutang" class="bungaHutang text-white/10 bg-transparent focus:text-transparent form-input z-10 peer block w-full appearance-none px-3 pt-2
+                            placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none border-0 text-left outline-none
+                            focus-visible:ring-0" x-mask="99" placeholder=" ">
+                            <label class="absolute truncate top-0 origin-[0] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
+                            peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5
+                            peer-focus:scale-75 peer-focus:text-myblue">Suku Bunga Hutang <span class="text-xs text-green-600">(%)</span>
+                            </label>
+                            {{-- alert --}}
+                            <div class="bunga"></div>
+                            <div class="absolute right-0 w-10/12 mr-4 text-right truncate" x-text="bungaHutang?bungaHutang + ' %': ''"></div>
+                        </div>
                     </div>
-                    <div class="flex flex-row items-center justify-between w-full px-3 py-4">
-                        <div class="flex flex-row items-center">
-                            <div class="flex justify-center w-12 mr-2">
-                                <i class="fa-solid fa-hand-holding-dollar"></i>
-                            </div>
-                            <div class="relative flex items-center justify-between w-fit group">
-                                <input x-model="minBayar" class="minBayar form-input align-text-bottom z-10 pt-5  peer bg-white/10 block w-full appearance-none px-3 border-0
-                                text-left outline-none placeholder:!bg-transparent  text-white/30 focus:text-black transition duration-150 ease-in-out sm:text-sm sm:leading-1 focus:border-none
-                                focus:outline-none focus-visible:ring-0" required type="number" min="10" step="100" placeholder=" ">
-                                <label class="absolute top-3 origin-[index-1] break-word w-44  lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
-                                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-4 text-ellipsis
-                                peer-focus:scale-75 peer-focus:text-myblue break-words peer-focus:dark:text-blue-500">Pembayaran minimum perbulan <span class="text-xs text-green-600">($)</span>
-                                </label>
-                            </div>
+                    <div class="flex flex-row items-center justify-between w-full px-3 py-4 group tooltip">
+                        <div class="flex justify-center w-12 mr-2">
+                            <i class="fa-solid fa-hand-holding-dollar"></i>
                         </div>
-                        <div class="min"></div>
-                        <div class="mr-4 text-right" x-money.en-US.USD.decimal="minBayar"></div>
+                        <div class="relative flex items-center justify-between w-full">
+                            <input x-model="minBayar" class="minBayar text-white/10 bg-transparent focus:text-transparent form-input z-10 peer block w-full appearance-none px-3 pt-2
+                            placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none border-0 text-left outline-none
+                            focus-visible:ring-0" required type="number" min="10" step="100" placeholder=" ">
+                            <label class="absolute break-words text-ellipsis top-0 origin-[0] max-w-[80%] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
+                            peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:w-full
+                            peer-focus:scale-75 peer-focus:text-myblue">Pembayaran minimum perbulan <span class="text-xs text-green-600">($)</span>
+                            </label>
+                            <div class="min"></div>
+                            <div class="absolute right-0 w-10/12 mr-4 text-right truncate" x-money.en-US.USD.decimal="minBayar"></div>
+                        </div>
                     </div>
                 </div>
             </template>

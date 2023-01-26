@@ -36,9 +36,13 @@
                 Estimasi Lunas</div>
                 <div class="items-center justify-center block sm:flex md:block lg:flex">
                     <template x-if="formatTgl(hasil.hasil.snowballCalculator) < formatTgl(hasil.hasil.normalCalculator)">
-                    <div class="mt-2 text-center sm:m-8 md:m-0 md:mt-4 md:mb-8 lg:m-5">
-                        <div class="inline-flex items-center">
+                    <div class="mt-2 text-center sm:m-8 md:m-0 md:mt-4 md:mb-8 lg:m-5 tooltip">
+                        <div class="inline-flex items-center ">
                             <span class="text-3xl font-semibold text-[#2A7C97]" x-text="dateSnowball"></span>
+                            <div class="bottom">
+                                <p>Proses pelunasan metode snowball yaitu ketika hutang terkecil lunas, pembayaran minimum perbulan hutang tersebut dialokasikan ke hutang terkecil selanjutnya.</p>
+                                <i></i>
+                            </div>
                         </div>
                         <span class="block mt-2 text-sm text-gray-600">Metode Snowball</span>
                     </div>

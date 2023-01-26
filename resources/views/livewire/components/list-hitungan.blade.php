@@ -18,7 +18,7 @@
         </div>
     </template>
 
-    <div class="flex flex-col px-4 overflow-y-scroll h-[443px] touch-auto hilanginscroll">
+    <div class="flex flex-col px-4 overflow-y-scroll h-[430px] touch-auto hilanginscroll">
         <!-- Looping List Hutang -->
         <template x-for="data in list">
             <div  x-data="{ open: false, delete1: false}" class="bg-[#F7D3C2] py-[24px] lg:px-[45px] px-5 rounded-[15px] mb-5 shadow-sm hover:shadow-md transition-shadow duration-300 ease-in-out">
@@ -65,6 +65,7 @@
                                         <p x-text="formatUang(detail.debtAmount)"></p>
                                     </div>
 
+                                    <!-- Tooltip -->
                                     <div class="bottom">
                                         <p>Pembayaran tanggal <span class="font-bold" x-text="formatTglAja(detail.datePayment)"></span> setiap bulannya</p>
                                         <i></i>
@@ -73,6 +74,7 @@
                             </div>
                         </template>
                     </div>
+                    <!-- End List Detail Hutang -->
 
                     <!-- Chart Hutang -->
                     <div class="flex justify-center w-1/2 h-60">
