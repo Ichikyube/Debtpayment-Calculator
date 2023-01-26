@@ -18,6 +18,7 @@ document.addEventListener("alpine:init", () => {
         messages: null,
         isLoading: false,
         idDebt: 0,
+        showMinierrrorAlert: false,
         showErrorAlert: false,
         showNotif() {
             if (this.notif) return;
@@ -116,6 +117,7 @@ document.addEventListener("alpine:init", () => {
                 .then((response) => response.json())
                 .then((data) => {
                     if (data.status == true) {
+                        this.showMinierrrorAlert = false;
                         this.hasil = data.data;
 
                         var date = new Date(data.data.hasil.normalCalculator);
@@ -139,6 +141,7 @@ document.addEventListener("alpine:init", () => {
                     if (data.status == false) {
                         this.messages = data.message;
                         this.validation = data.error;
+                        this.showMinierrrorAlert = true;
                     }
                     this.isLoading = false;
                     this.messages = data.message;
@@ -318,6 +321,7 @@ document.addEventListener("alpine:init", () => {
         messages: null,
         monthlySalary: null,
         extraSalary: null,
+        showMinierrrorAlert: false,
         // ambilData: [],
         async ubah(id) {
             fetch("http://127.0.0.1:8000/api/debt/" + id, {
@@ -472,6 +476,7 @@ document.addEventListener("alpine:init", () => {
                 .then((response) => response.json())
                 .then((data) => {
                     if (data.status == true) {
+                        this.showMinierrrorAlert = false;
                         this.hasil = data.data;
 
                         var date = new Date(data.data.hasil.normalCalculator);
@@ -496,6 +501,7 @@ document.addEventListener("alpine:init", () => {
                     if (data.status == false) {
                         this.messages = data.message;
                         this.validation = data.error;
+                        this.showMinierrrorAlert = true;
                     }
                     this.isLoading = false;
                     this.messages = data.message;
