@@ -405,7 +405,6 @@ document.addEventListener("alpine:init", () => {
                 });
         },
         async hitungedit(id) {
-            console.log(id);
             var alert = [];
             var stop = false;
             var debtTitle = [];
@@ -426,34 +425,45 @@ document.addEventListener("alpine:init", () => {
             for (let i = 0; i < namaHutang.length; i++) {
                 let temp = "";
                 if (namaHutang[i].value === "") {
-                    temp += "nama hutang, ";
+                    document.getElementsByClassName("nama")[i].innerHTML = "nama hutang tidak boleh kosong";
+                    stop = true;
+                }else{
+                    document.getElementsByClassName("nama")[i].innerHTML = "";
                 }
                 if (jmlHutang[i].value === "") {
-                    temp += "jumlah hutang, ";
+                    document.getElementsByClassName("jml")[i].innerHTML = "nama hutang tidak boleh kosong";
+                    stop = true;
+                }else{
+                    document.getElementsByClassName("jml")[i].innerHTML = "";
                 }
                 if (bungaHutang[i].value === "") {
-                    temp += "bunga hutang, ";
+                    document.getElementsByClassName("bunga")[i].innerHTML = "";
+                    stop = true;
+                }else{
+                    document.getElementsByClassName("bunga")[i].innerHTML = "";
                 }
                 if (waktuBayar[i].value === "") {
-                    temp += "waktu bayar, ";
+                    document.getElementsByClassName("waktu")[i].innerHTML = "tanggal hutang tidak boleh kosong";
+                    stop = true;
+                }else{
+                    document.getElementsByClassName("waktu")[i].innerHTML = "";
                 }
                 if (minBayar[i].value === "") {
-                    temp += "minmal bayar hutang ";
+                    document.getElementsByClassName("min")[i].innerHTML = "tanggal hutang tidak boleh kosong";
+                    stop = true;
+                }else{
+                    document.getElementsByClassName("min")[i].innerHTML = "";
                 }
-                if (temp !== "") {
-                    temp += "tidak boleh kosong";
-                    alert.push(temp);
-                    // document.getElementById(`alert${i}`).innerHTML = alert + 'tidak boleh kosong'
-                } else {
-                    alert.push(temp);
-                }
+                
 
                 debtTitle.push(namaHutang[i].value);
                 debtAmount.push(jmlHutang[i].value);
                 datePayment.push(waktuBayar[i].value);
                 debtInterest.push(bungaHutang[i].value);
                 monthlyInstallments.push(minBayar[i].value);
+                
             }
+           
 
             // for (let i = 0; i < alert.length; i++) {
             //     if (alert[i] !== "") {
@@ -464,9 +474,9 @@ document.addEventListener("alpine:init", () => {
             //     }
             // }
 
-            // if (stop) {
-            //     return;
-            // }
+            if (stop) {
+                return;
+            }
 
             const form = {
                 debtTitle: debtTitle,
