@@ -1,4 +1,4 @@
-<div x-init="[getNoOfDays(), initDate(waktuBayar) ]" x-cloak   class="relative z-50 flex items-center justify-between w-full group">
+<div x-init="[getNoOfDays(), initDate() ]" x-cloak   class="relative z-50 flex items-center justify-between w-full group">
     <input type="hidden" name="date"  :value="datepickerValue" class="hidden waktuBayar" placeholder=" " >
     <input type="date" x-on:click="initDate(datepickerValue), showDatepicker = !showDatepicker" x-model="datepickerValue"
         x-on:keydown.escape="showDatepicker = false"

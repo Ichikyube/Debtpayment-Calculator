@@ -49,6 +49,14 @@ document.addEventListener("alpine:init", () => {
         showMiniErrorAlert: false,
         showErrorAlert: false,
         statusCode: 0,
+        showDatepicker: false,
+        datepickerValue:"",
+        selectedDate: "",
+        dateFormat: "YYYY-MM-DD",
+        month: "",
+        year: "",
+        no_of_days: [],
+        blankdays: [],
         showNotif() {
             if (this.notif) return;
             this.notif = true;
@@ -86,31 +94,31 @@ document.addEventListener("alpine:init", () => {
             var minBayar = document.getElementsByClassName("minBayar");
             for (let i = 0; i < namaHutang.length; i++) {
                 if (namaHutang[i].value === "") {
-                    document.getElementsByClassName("nama")[i].innerHTML = `<div class="bottom2">nama hutang tidak boleh kosong<i></i></div>`;
+                    document.getElementsByClassName("nama")[i].innerHTML = "nama hutang tidak boleh kosong";
                     stop = true;
                 }else{
                     document.getElementsByClassName("nama")[i].innerHTML = "";
                 }
                 if (jmlHutang[i].value === "") {
-                    document.getElementsByClassName("jml")[i].innerHTML = `<div class="bottom2">jumlah hutang tidak boleh kosong<i></i></div>`;
+                    document.getElementsByClassName("jml")[i].innerHTML = "nama hutang tidak boleh kosong";
                     stop = true;
                 }else{
                     document.getElementsByClassName("jml")[i].innerHTML = "";
                 }
                 if (bungaHutang[i].value === "") {
-                    document.getElementsByClassName("bunga")[i].innerHTML = `<div class="bottom2">bunga hutang tidak boleh kosong<i></i></div>`;
+                    document.getElementsByClassName("bunga")[i].innerHTML = "bunga hutang tidak boleh kosong";
                     stop = true;
                 }else{
                     document.getElementsByClassName("bunga")[i].innerHTML = "";
                 }
                 if (waktuBayar[i].value === "") {
-                    document.getElementsByClassName("waktu")[i].innerHTML = `<div class="bottom2">tanggal bayar tidak boleh kosong<i></i></div>`;
+                    document.getElementsByClassName("waktu")[i].innerHTML = "tanggal hutang tidak boleh kosong";
                     stop = true;
                 }else{
                     document.getElementsByClassName("waktu")[i].innerHTML = "";
                 }
                 if (minBayar[i].value === "") {
-                    document.getElementsByClassName("min")[i].innerHTML = `<div class="bottom2">Min bayar tidak boleh kosong<i></i></div>`;
+                    document.getElementsByClassName("min")[i].innerHTML = "tanggal hutang tidak boleh kosong";
                     stop = true;
                 }else{
                     document.getElementsByClassName("min")[i].innerHTML = "";
@@ -201,6 +209,7 @@ document.addEventListener("alpine:init", () => {
         },
         async charts(pendapatan, pembayaran) {
             const ctx = document.getElementById("hasilChart");
+
             new Chart(ctx, {
                 type: "doughnut",
                 data: {
@@ -234,7 +243,7 @@ document.addEventListener("alpine:init", () => {
                 .then(async (data) => {
                     if (data.success == true) {
                         this.list = await data.data;
-                        if(this.list.length == 0) swal("Tidak ditemukan perhitungan.  Silahkan melakukan perhitungan terlebih dahulu!",{icon: "warning"})
+                        if(this.list.length == 0) swal("Tidak ditemukan perhitungan.  Silahkan melakukan perhitungan terlebih dahulu!")
                     }
                     if (data.status == false) {
                         this.validation = data.error;
@@ -284,7 +293,7 @@ document.addEventListener("alpine:init", () => {
                     if (data.status == false) {
                         this.validation = data.error;
                     }
-                    swal(data.message,{icon: "success"});
+                    swal(data.message);
                     this.showNotif();
                 });
         },
@@ -357,231 +366,6 @@ document.addEventListener("alpine:init", () => {
             for (let i = 0; i < params.length; i++) {
                 this.title.push(params[0].debtTitle);
             }
-        }
-    }));
-
-    Alpine.store("getData", () => ({
-        namaHutang: null,
-        waktuBayar: null,
-        jmlHutang: null,
-        bungaHutang: null,
-        minBayar: null,
-        monthlySalary: null,
-        extraSalary: null,
-        calculated: true,
-        messages: null,
-        monthlySalary: null,
-        extraSalary: null,
-        showMinierrrorAlert: false,
-        showDatepicker: false,
-        datepickerValue:"",
-        selectedDate: "",
-        dateFormat: "YYYY-MM-DD",
-        month: "",
-        year: "",
-        no_of_days: [],
-        blankdays: [],
-        // ambilData: [],
-        async ubah(id) {
-            await fetch("http://127.0.0.1:8000/api/debt/" + id, {
-                method: "GET",
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                    "Content-type": "application/json; charset=UTF-8",
-                },
-                cache: "reload"
-            })
-                .then((response) => response.json())
-                .then((data) => {
-                    if (data.status == true) {
-                        this.ambilData = data.data;
-                        this.posts = data.data.detail;
-                        console.log(this.posts)
-                    }
-                    if (data.status == false) {
-                        this.validation = data.error;
-                    }
-                    // this.messages = data.message;
-                    this.showNotif();
-
-                });
-
-        },
-        async editData(id) {
-            var form = {
-                debtTitle: [],
-                debtAmount: [],
-                datePayment: [],
-                debtInterest: [],
-                monthlyInstallments: [],
-
-                totalDebt: this.hasil.hasil.totalDebt,
-                totalMinPayment: this.hasil.hasil.totalMinPayment,
-                monthlySalary: this.hasil.hasil.monthlySalary,
-                extraSalary: this.hasil.hasil.extraSalary,
-                normalCalculator: this.hasil.hasil.normalCalculator,
-                snowballCalculator: this.hasil.hasil.snowballCalculator,
-            };
-
-            for (let i = 0; i < this.hasil.hutang.length; i++) {
-                form.debtTitle.push(this.hasil.hutang[i].debtTitle);
-                form.debtAmount.push(this.hasil.hutang[i].debtAmount);
-                form.datePayment.push(this.hasil.hutang[i].datePayment);
-                form.debtInterest.push(this.hasil.hutang[i].debtInterest);
-                form.monthlyInstallments.push(
-                    this.hasil.hutang[i].monthlyInstallments
-                );
-            }
-            this.calculated = true;
-            await fetch("http://127.0.0.1:8000/api/debt/update/" + id, {
-                method: "POST",
-                body: JSON.stringify(form),
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                    "Content-type": "application/json; charset=UTF-8",
-                },
-                cache: "reload"
-            })
-                .then((response) => response.json())
-                .then((data) => {
-                    if (data.status == true) {
-                        this.calculated = !this.calculated;
-                        localStorage.setItem("tab", "listHitungan");
-                        this.listData();
-                    }
-                    if (data.status == false) {
-                        this.validation = data.error;
-                    }
-                    this.messages = data.message;
-                    this.showNotif();
-                });
-        },
-        async hitungedit(id) {
-            var alert = [];
-            var stop = false;
-            var debtTitle = [];
-            var debtAmount = [];
-            var datePayment = [];
-            var debtInterest = [];
-            var monthlyInstallments = [];
-            var namaHutang = document.getElementsByClassName("namaHutang");
-            var jmlHutang = document.getElementsByClassName("jmlHutang");
-            var bungaHutang = document.getElementsByClassName("bungaHutang");
-            var waktuBayar = document.getElementsByClassName("waktuBayar");
-            var minBayar = document.getElementsByClassName("minBayar");
-            var monthlySalary =
-                document.getElementsByClassName("monthlySalary")[0].value;
-            var extraSalary =
-                document.getElementsByClassName("extraSalary")[0].value;
-
-            for (let i = 0; i < namaHutang.length; i++) {
-                let temp = "";
-                if (namaHutang[i].value === "") {
-                    document.getElementsByClassName("nama")[i].innerHTML = `<div class="bottom2">nama hutang tidak boleh kosong<i></i></div>`;
-                    stop = true;
-                }else{
-                    document.getElementsByClassName("nama")[i].innerHTML = "";
-                }
-                if (jmlHutang[i].value === "") {
-                    document.getElementsByClassName("jml")[i].innerHTML = `<div class="bottom2">Jumlah hutang tidak boleh kosong<i></i></div>`;
-                    stop = true;
-                }else{
-                    document.getElementsByClassName("jml")[i].innerHTML = "";
-                }
-                if (bungaHutang[i].value === "") {
-                    document.getElementsByClassName("bunga")[i].innerHTML = `<div class="bottom2">bunga hutang tidak boleh kosong<i></i></div>`;
-                    stop = true;
-                }else{
-                    document.getElementsByClassName("bunga")[i].innerHTML = "";
-                }
-                if (waktuBayar[i].value === "") {
-                    document.getElementsByClassName("waktu")[i].innerHTML = `<div class="bottom2">Tanggal Pembayaran tidak boleh kosong<i></i></div>`;
-                    stop = true;
-                }else{
-                    document.getElementsByClassName("waktu")[i].innerHTML = "";
-                }
-                if (minBayar[i].value === "") {
-                    document.getElementsByClassName("min")[i].innerHTML = `<div class="bottom2">Min Bayar tidak boleh kosong<i></i></div>`;
-                    stop = true;
-                }else{
-                    document.getElementsByClassName("min")[i].innerHTML = "";
-                }
-
-
-                debtTitle.push(namaHutang[i].value);
-                debtAmount.push(jmlHutang[i].value);
-                datePayment.push(waktuBayar[i].value);
-                debtInterest.push(bungaHutang[i].value);
-                monthlyInstallments.push(minBayar[i].value);
-
-            }
-
-
-            // for (let i = 0; i < alert.length; i++) {
-            //     if (alert[i] !== "") {
-            //         document.getElementById(`alert${i}`).innerHTML = alert[i];
-            //         stop = true;
-            //     } else {
-            //         document.getElementById(`alert${i}`).innerHTML = "";
-            //     }
-            // }
-
-            if (stop) {
-                return;
-            }
-
-            const form = {
-                debtTitle: debtTitle,
-                debtAmount: debtAmount,
-                debtInterest: debtInterest,
-                datePayment: datePayment,
-                monthlyInstallments: monthlyInstallments,
-                monthlySalary: parseInt(monthlySalary),
-                extraSalary: parseInt(extraSalary),
-            };
-            await fetch("http://127.0.0.1:8000/api/hitung", {
-                method: "POST",
-                body: JSON.stringify(form),
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                    "Content-type": "application/json; charset=UTF-8",
-                },
-                cache: "reload"
-            })
-                .then((response) => response.json())
-                .then((data) => {
-                    if (data.status == true) {
-                        this.showMinierrrorAlert = false;
-                        this.hasil = data.data;
-
-                        var date = new Date(data.data.hasil.normalCalculator);
-                        var mount = date.toLocaleString("default", {
-                            month: "long",
-                        });
-                        var year = date.getFullYear();
-                        this.dateNormal = mount + ", " + year;
-
-                        var date2 = new Date(
-                            data.data.hasil.snowballCalculator
-                        );
-                        var mount = date2.toLocaleString("default", {
-                            month: "long",
-                        });
-                        var year = date2.getFullYear();
-                        this.dateSnowball = mount + ", " + year;
-
-                        this.id = id;
-                        this.calculated = !this.calculated;
-                    }
-                    if (data.status == false) {
-                        this.messages = data.message;
-                        this.validation = data.error;
-                        this.showMinierrrorAlert = true;
-                    }
-                    this.isLoading = false;
-                    this.messages = data.message;
-                    this.showNotif();
-                });
         },
         initDate(newDate) {
             let today;
@@ -672,6 +456,221 @@ document.addEventListener("alpine:init", () => {
             }
             this.blankdays = blankdaysArray;
             this.no_of_days = daysArray;
+        },
+    }));
+
+    Alpine.store("getData", () => ({
+        namaHutang: null,
+        waktuBayar: null,
+        jmlHutang: null,
+        bungaHutang: null,
+        minBayar: null,
+        monthlySalary: null,
+        extraSalary: null,
+        calculated: true,
+        messages: null,
+        monthlySalary: null,
+        extraSalary: null,
+        showMinierrrorAlert: false,
+        // ambilData: [],
+        async ubah(id) {
+            fetch("http://127.0.0.1:8000/api/debt/" + id, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    "Content-type": "application/json; charset=UTF-8",
+                },
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.status == true) {
+                        this.ambilData = data.data;
+                        this.posts = data.data.detail;
+                        // console.log( this.posts)
+                    }
+                    if (data.status == false) {
+                        this.validation = data.error;
+                    }
+                    // this.messages = data.message;
+                    this.showNotif();
+                });
+        },
+        async editData(id) {
+            var form = {
+                debtTitle: [],
+                debtAmount: [],
+                datePayment: [],
+                debtInterest: [],
+                monthlyInstallments: [],
+
+                totalDebt: this.hasil.hasil.totalDebt,
+                totalMinPayment: this.hasil.hasil.totalMinPayment,
+                monthlySalary: this.hasil.hasil.monthlySalary,
+                extraSalary: this.hasil.hasil.extraSalary,
+                normalCalculator: this.hasil.hasil.normalCalculator,
+                snowballCalculator: this.hasil.hasil.snowballCalculator,
+            };
+
+            for (let i = 0; i < this.hasil.hutang.length; i++) {
+                form.debtTitle.push(this.hasil.hutang[i].debtTitle);
+                form.debtAmount.push(this.hasil.hutang[i].debtAmount);
+                form.datePayment.push(this.hasil.hutang[i].datePayment);
+                form.debtInterest.push(this.hasil.hutang[i].debtInterest);
+                form.monthlyInstallments.push(
+                    this.hasil.hutang[i].monthlyInstallments
+                );
+            }
+            this.calculated = true;
+            fetch("http://127.0.0.1:8000/api/debt/update/" + id, {
+                method: "POST",
+                body: JSON.stringify(form),
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    "Content-type": "application/json; charset=UTF-8",
+                },
+            })
+                .then(async (response) => await response.json())
+                .then(async (data) => {
+                    if (data.status == true) {
+                        this.calculated = !this.calculated;
+                        localStorage.setItem("tab", "listHitungan");
+                       await this.listData();
+                       if (id) {
+                        window.location.reload();
+                    }
+                    }
+                    if (data.status == false) {
+                        this.validation = data.error;
+                    }
+                    this.messages = data.message;
+                    this.showNotif();
+                });
+
+        },
+        async hitungedit(id) {
+            var alert = [];
+            var stop = false;
+            var debtTitle = [];
+            var debtAmount = [];
+            var datePayment = [];
+            var debtInterest = [];
+            var monthlyInstallments = [];
+            var namaHutang = document.getElementsByClassName("namaHutang");
+            var jmlHutang = document.getElementsByClassName("jmlHutang");
+            var bungaHutang = document.getElementsByClassName("bungaHutang");
+            var waktuBayar = document.getElementsByClassName("waktuBayar");
+            var minBayar = document.getElementsByClassName("minBayar");
+            var monthlySalary =
+                document.getElementsByClassName("monthlySalary")[0].value;
+            var extraSalary =
+                document.getElementsByClassName("extraSalary")[0].value;
+
+            for (let i = 0; i < namaHutang.length; i++) {
+                if (namaHutang[i].value === "") {
+                    document.getElementsByClassName("nama")[i].innerHTML = "nama hutang tidak boleh kosong";
+                    stop = true;
+                }else{
+                    document.getElementsByClassName("nama")[i].innerHTML = "";
+                }
+                if (jmlHutang[i].value === "") {
+                    document.getElementsByClassName("jml")[i].innerHTML = "nama hutang tidak boleh kosong";
+                    stop = true;
+                }else{
+                    document.getElementsByClassName("jml")[i].innerHTML = "";
+                }
+                if (bungaHutang[i].value === "") {
+                    document.getElementsByClassName("bunga")[i].innerHTML = "bunga hutang tidak boleh kosong";
+                    stop = true;
+                }else{
+                    document.getElementsByClassName("bunga")[i].innerHTML = "";
+                }
+                if (waktuBayar[i].value === "") {
+                    document.getElementsByClassName("waktu")[i].innerHTML = "tanggal hutang tidak boleh kosong";
+                    stop = true;
+                }else{
+                    document.getElementsByClassName("waktu")[i].innerHTML = "";
+                }
+                if (minBayar[i].value === "") {
+                    document.getElementsByClassName("min")[i].innerHTML = "tanggal hutang tidak boleh kosong";
+                    stop = true;
+                }else{
+                    document.getElementsByClassName("min")[i].innerHTML = "";
+                }
+
+
+                debtTitle.push(namaHutang[i].value);
+                debtAmount.push(jmlHutang[i].value);
+                datePayment.push(waktuBayar[i].value);
+                debtInterest.push(bungaHutang[i].value);
+                monthlyInstallments.push(minBayar[i].value);
+
+            }
+
+
+            // for (let i = 0; i < alert.length; i++) {
+            //     if (alert[i] !== "") {
+            //         document.getElementById(`alert${i}`).innerHTML = alert[i];
+            //         stop = true;
+            //     } else {
+            //         document.getElementById(`alert${i}`).innerHTML = "";
+            //     }
+            // }
+
+            if (stop) {
+                return;
+            }
+
+            const form = {
+                debtTitle: debtTitle,
+                debtAmount: debtAmount,
+                debtInterest: debtInterest,
+                datePayment: datePayment,
+                monthlyInstallments: monthlyInstallments,
+                monthlySalary: parseInt(monthlySalary),
+                extraSalary: parseInt(extraSalary),
+            };
+            await fetch("http://127.0.0.1:8000/api/hitung", {
+                method: "POST",
+                body: JSON.stringify(form),
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    "Content-type": "application/json; charset=UTF-8",
+                },
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.status == true) {
+                        this.showMinierrrorAlert = false;
+                        this.hasil = data.data;
+
+                        var date = new Date(data.data.hasil.normalCalculator);
+                        var mount = date.toLocaleString("default", {
+                            month: "long",
+                        });
+                        var year = date.getFullYear();
+                        this.dateNormal = mount + ", " + year;
+
+                        var date2 = new Date(
+                            data.data.hasil.snowballCalculator
+                        );
+                        var mount = date2.toLocaleString("default", {
+                            month: "long",
+                        });
+                        var year = date2.getFullYear();
+                        this.dateSnowball = mount + ", " + year;
+
+                        this.id = id;
+                        this.calculated = !this.calculated;
+                    }
+                    if (data.status == false) {
+                        this.messages = data.message;
+                        this.validation = data.error;
+                        this.showMinierrrorAlert = true;
+                    }
+                    this.isLoading = false;
+                    this.messages = data.message;
+                    this.showNotif();
+                });
         },
     }));
 });
