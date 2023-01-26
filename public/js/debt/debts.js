@@ -58,29 +58,29 @@ document.addEventListener("alpine:init", () => {
                 let temp = "";
                 if (namaHutang[i].value === "") {
                     this.alert.push("nama hutang tidak boleh kosong ");
-                    debtTitle.push(namaHutang[i].value);
                 }
                 if (jmlHutang[i].value === "") {
                     this.alert.push("jumlah hutang tidak boleh kosong ");
-                    debtAmount.push(parseInt(jmlHutang[i].value));
                 }
                 if (waktuBayar[i].value === "") {
                     temp += "waktu bayar tidak boleh kosong ";
-                    datePayment.push(waktuBayar[i].value);
                 }
                 if (bungaHutang[i].value === "") {
                     this.alert.push("bunga hutang tidak boleh kosong ");
-                    debtInterest.push(parseInt(bungaHutang[i].value));
                 }
                 if (minBayar[i].value === "") {
                     this.alert.push("minmal bayar hutang tidak boleh kosong ");
-                    monthlyInstallments.push(parseInt(minBayar[i].value));
                 }
                 if (temp !== "") {
                     document.getElementById(`alert${i}`).innerHTML = this.alert;
                 } else {
                     // alert.push(temp);
                 }
+                debtTitle.push(namaHutang[i].value);
+                debtAmount.push(parseInt(jmlHutang[i].value));
+                datePayment.push(waktuBayar[i].value);
+                debtInterest.push(parseInt(bungaHutang[i].value));
+                monthlyInstallments.push(parseInt(minBayar[i].value));
             }
 
             for (let i = 0; i < this.alert.length; i++) {
