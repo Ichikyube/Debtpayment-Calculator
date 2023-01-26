@@ -39,6 +39,7 @@ document.addEventListener("alpine:init", () => {
                 tgl_lahir: this.update.tgl_lahir,
                 alamat: this.update.alamat,
             };
+            this.showForm = false;
             await fetch("http://127.0.0.1:8000/api/user-profile", {
                 method: "POST",
                 body: JSON.stringify(formData),

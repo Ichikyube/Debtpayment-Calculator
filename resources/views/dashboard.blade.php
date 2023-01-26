@@ -43,7 +43,7 @@
         </div>
 
 
-        <div class="mt-4 lg:mt-0 md:px-4 bg-white stretch
+        <div class="mt-4 lg:mt-0 md:px-4 bg-white stretch border-spacing-12 border-4 border-sky-200/20
                     shadow pt-0 h-[560px] lg:w-[97%] transform
                     rounded-md lg:rounded-xl px-0 lg:p-10 py-10">
             <template x-if="tab == 'kalkulator'" x-data="$store.create" x-cloak

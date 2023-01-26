@@ -1,8 +1,7 @@
 <div x-data="$store.create">
     <div class="flex">
         <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 lg:mb-8 drop-shadow-md">Kalkulator Hutang</h1>
-
-        <button x-show="messages" type="button" x-on:click="closeNotif" id="alert-4" class="absolute justify-self-end right-3 top-3 flex items-center space-x-2 z-50 rounded-md bg-green-500 px-4 w-fit h-6 text-white transition hover:bg-green-600" role="alert" x-transition.duration.300ms>
+        <button x-show="messages" type="button" x-on:click="closeNotif" id="alert-4" class="absolute z-50 flex items-center h-6 px-4 space-x-2 text-white transition bg-green-500 rounded-md justify-self-end right-3 top-3 w-fit hover:bg-green-600" role="alert" x-transition.duration.300ms>
             <svg aria-hidden="true" class="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
             <span class="sr-only">Info</span>
             {{-- pesan notifikasi --}}
@@ -11,6 +10,9 @@
     </div>
     <template x-if="calculated">
         @livewire('components.hasil-hitungan')
+        <svg class="w-6 h-6 animate-bounce motion-safe:animate-spin">
+            <!-- ... -->
+        </svg>
     </template>
 
     <div x-show="!calculated" class="relative flex flex-col md:flex-row lg:flex-row justify-evenly stretch">
@@ -114,9 +116,9 @@
                 <button x-on:click="hitung()" x-bind:class="isLoading ?? 'cursor-not-allowed'" class="px-5 text-white shadow drop-shadow-lg cursor-pointer
                 select-none active:translate-y-1 active:[box-shadow:0_0px_0_0_#f2f2f2,0_0px_0_0_#b7b7b7] active:border-b-[0px] rounded-xl
                 [box-shadow:0_1px_0_0_#f2f2f2,0_3px_0_0_#b7b7b7] bg-myblue py-2 md:h-14 lg:h-14 lg:w-44 transition-all duration-200" x-bind:disabled="isLoading ? true : false">
-                
+
                     <p x-text="!isLoading ? 'Calculate': 'Loading'"></p>
-            
+
                 </button>
             </div>
         </div>

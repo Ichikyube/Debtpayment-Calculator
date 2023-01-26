@@ -44,6 +44,22 @@ document.addEventListener("alpine:init", () => {
         error: [],
         validation: [],
         status: "",
+        showNotif() {
+            if (this.notif) return;
+            this.notif = true;
+            // reset time to 0 second
+            clearTimeout(timer);
+
+            // auto close toast after 5 seconds
+            timer = setTimeout(() => {
+                this.closeNotif();
+            }, 5000);
+        },
+        closeNotif() {
+            this.notif = false;
+            this.messages = null;
+            localStorage.removeItem("mssg");
+        },
         async getMessages() {
             this.messages = localStorage.getItem("messages");
             localStorage.removeItem("messages");

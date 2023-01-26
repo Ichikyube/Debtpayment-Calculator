@@ -1,9 +1,12 @@
 <div  x-id="['index']" x-bind:id="index ? 'hutang'+ index : ''" class="bg-[#F7D3C2] snap-start snap-always mx-4 mb-8 w-11/12 lg:w-full lg:max-w-full rounded-md lg:rounded-[15px]
     shadow-sm hover:shadow-xl transition-shadow duration-300 ease-in-out"  x-data="{namaHutang:`Hutang ${index+1}`,waktuBayar:'', jmlHutang:'', bungaHutang:'', minBayar:'', monthlySalary:''}">
-    <div class="flex flex-row px-5 py-5 align-middle border-b-2">
-        <input x-model="namaHutang" :id="$id('id')" class="namaHutang form-input ml-5 text-xl font-bold border-0 appearance-none text-blueGray-700 outline-none
-        placeholder:!bg-transparent bg-transparent focus:border-none focus:outline-none
-        focus-visible:ring-0" type="text">
+    <div x-data="{ open : false }" class="flex flex-row w-full px-5 py-5 align-middle border-b-2">
+        <div  class="flex items-center justify-between">
+			<div x-show="!open" class="ml-2 mr-4 text-xl font-bold " x-text="namaHutang"></div>
+            <input x-show="open"  x-model="namaHutang" :id="$id('id')" class="w-full ml-5 text-xl font-bold border-0 namaHutang form-input focus-visible:ring-0" type="text">
+            <button type="button" class="px-4 py-2 font-medium rounded btn bg-white/10 hover:bg-gray-300"
+            @click="open = !open">Edit</button>
+		</div>
         <p :id="`alert${index}`"></p>
     </div>
     <div class="flex flex-row items-center justify-between w-full px-3 py-4 border-b-2">
@@ -11,12 +14,12 @@
             <div class="flex justify-center w-12 mr-2">
                 <i class="fa-regular fa-calendar-xmark"></i>
             </div>
-            <div class="relative tanggalPembayaran flex items-center justify-between w-fit">
-                <input type="date" x-model="waktuBayar" class="waktuBayar form-input z-10 peer bg-white/10 text-white/30 focus:text-dark block w-full appearance-none px-3 pt-5  border-0 text-left outline-none
+            <div class="relative flex items-center justify-between tanggalPembayaran w-fit">
+                <input type="date" x-model="waktuBayar" class="waktuBayar leading-none  form-input z-10 peer bg-white/10 text-white/30 focus:text-dark block w-full appearance-none px-3 pt-5  border-0 text-left outline-none
                 placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none
                 focus-visible:ring-0" type="date" placeholder=" " >
-                <label class="absolute top-3 origin-[0] break-words sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
-                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-4
+                <label class="absolute top-5 origin-[0] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
+                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-10
                 peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Tanggal Pembayaran Selanjutnya</label>
             </div>
         </div>

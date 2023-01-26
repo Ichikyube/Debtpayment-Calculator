@@ -43,7 +43,7 @@ body{
 }
 
 .tooltip .bottom {
-    
+
     top:40px;
     left:50%;
     transform:translate(-50%, 0);
@@ -83,4 +83,14 @@ body{
     transform:translate(-50%,50%) rotate(45deg);
     background-color:#111111;
     border:1px solid #111111;box-shadow:0 1px 8px #EEEEEE;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: #38bdf8;
+    opacity: 0.5;
+    display: block;
+    background: url('../img/calendar-due.svg') no-repeat;
+    width: 20px;
+    height: 20px;
+    border-width: thin;
 }
