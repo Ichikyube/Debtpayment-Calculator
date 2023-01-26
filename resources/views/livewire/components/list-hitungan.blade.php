@@ -133,7 +133,7 @@
 
                     <div class="flex justify-between w-full lg:w-6/12">
                         <div class="flex items-end gap-2 lg:gap-10 lg:pl-10">
-                            <template x-if="formatTgl(data.snowball_calculator) < formatTgl(data.normal_calculator)">
+                            <template x-if="data.snowball_calculator < data.normal_calculator">
                                 <div>
                                     <p class="">Snowball</p>
                                     <p class="text-xl font-bold text-myyellow" x-text="formatTgl(data.snowball_calculator)"></p>

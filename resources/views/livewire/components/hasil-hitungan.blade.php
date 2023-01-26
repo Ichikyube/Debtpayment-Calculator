@@ -2,7 +2,7 @@
     <div class="flex">
         <!-- List Hutang -->
         <div class="w-1/2 overflow-scroll h-80 hilanginscroll">
-            <!-- Looping Tambahan Form Hutang -->
+            <!-- Looping Detail Hutang -->
             <template x-for="data in hasil.hutang">
                 <div class="flex gap-2 mt-7 tooltip">
                     <div>
@@ -35,16 +35,16 @@
                 class="p-8 pb-0 text-lg font-medium tracking-wide text-center text-green-500 uppercase border-gray-200">
                 Estimasi Lunas</div>
                 <div class="items-center justify-center block sm:flex md:block lg:flex">
-                    <template x-if="formatTgl(hasil.hasil.snowballCalculator) < formatTgl(hasil.hasil.normalCalculator)">
+                    <template x-if="hasil.hasil.snowballCalculator < hasil.hasil.normalCalculator">
                     <div class="mt-2 text-center sm:m-8 md:m-0 md:mt-4 md:mb-8 lg:m-5 tooltip">
                         <div class="inline-flex items-center ">
                             <span class="text-3xl font-semibold text-[#2A7C97]" x-text="dateSnowball"></span>
-                            <div class="bottom">
-                                <p>Proses pelunasan metode snowball yaitu ketika hutang terkecil lunas, pembayaran minimum perbulan hutang tersebut dialokasikan ke hutang terkecil selanjutnya.</p>
-                                <i></i>
-                            </div>
                         </div>
                         <span class="block mt-2 text-sm text-gray-600">Metode Snowball</span>
+                        <div class="top">
+                            <p>ketika hutang terkecil lunas, pembayaran minimum perbulan hutang tersebut dialokasikan ke hutang terkecil selanjutnya.</p>
+                            <i></i>
+                        </div>
                     </div>
                     </template>
                     <div class="mt-2 text-center sm:m-8 md:m-0 md:mt-4 md:mb-8 lg:m-5">
