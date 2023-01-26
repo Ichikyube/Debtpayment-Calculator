@@ -1,7 +1,7 @@
 <div id="hilanginscroll" x-data="{modelOpen: false}" x-init="await listData" x-cloak>
-    <div class="flex relative w-full justify-between">
+    <div class="relative flex justify-between w-full">
         <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 drop-shadow-md">List Hitungan</h1>
-        <button x-show="messages" type="button" x-on:click="closeNotif" id="alert-4" class="absolute justify-self-end right-0 top-0 flex items-center space-x-2 z-50 rounded-md bg-green-500 px-4 w-fit h-6 text-white transition hover:bg-green-600"
+        <button x-show="messages" type="button" x-on:click="closeNotif" id="alert-4" class="absolute top-0 right-0 z-50 flex items-center h-6 px-4 space-x-2 text-white transition bg-green-500 rounded-md justify-self-end w-fit hover:bg-green-600"
             role="alert" x-transition.duration.300ms>
             <svg aria-hidden="true" class="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
             <span class="sr-only">Info</span>
@@ -41,13 +41,13 @@
                 x-transition:leave="transition ease-in duration-300"
                 x-transition:leave-start="opacity-100 scale-100"
                 x-transition:leave-end="opacity-0 scale-90"
-                class="flex flex-wrap">
+                class="flex flex-col flex-wrap lg:flex-row">
 
                     <!-- List Detail Hutang -->
-                    <div class="w-1/2 my-5 h-[250px] overflow-scroll hilanginscroll">
+                    <div class="lg:w-1/2 my-5 lg:h-[250px] overflow-scroll hilanginscroll">
 
                         <template x-for="detail in data.debt_details">
-                            <div class="flex gap-2 mt-3 hover:shadow-sm p-1 w-full tooltip">
+                            <div class="flex w-full gap-2 p-1 mt-3 hover:shadow-sm tooltip">
                                 <div>
                                     <div class="flex items-center px-3 py-2 text-white bg-[#2A7C97] rounded-lg" x-text="detail.debtInterest+'%'">
                                     </div>
@@ -66,7 +66,7 @@
                                     </div>
 
                                     <!-- Tooltip -->
-                                    <div class="bottom">
+                                    <div class="top">
                                         <p>Pembayaran tanggal <span class="font-bold" x-text="formatTglAja(detail.datePayment)"></span> setiap bulannya</p>
                                         <i></i>
                                     </div>
@@ -77,7 +77,7 @@
                     <!-- End List Detail Hutang -->
 
                     <!-- Chart Hutang -->
-                    <div class="flex justify-center w-1/2 h-60">
+                    <div class="flex justify-center w-full lg:w-1/2 h-fit lg:h-60">
                         <canvas width="300px" x-bind:id="'myChart'+data.id"></canvas>
                         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                         <script>
@@ -105,8 +105,8 @@
                 </div>
 
                 <!-- Bottom Content -->
-                <div class="flex flex-wrap lg:flex-nowrap justify-between break-words">
-                    <div class="flex gap-5 mt-5 lg:gap-16 lg:w-6/12">
+                <div class="flex flex-wrap justify-between break-words lg:flex-nowrap">
+                    <div class="flex w-full gap-5 mt-5 lg:gap-16 lg:w-6/12">
                         <div>
                             <p class="text-sm break-all">Pendapatan</p>
                             <p class="text-lg font-bold text-gray-700" x-text="formatUang(data.monthly_salary)">

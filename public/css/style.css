@@ -35,7 +35,6 @@ body{
     background-color: transparent;
 }
 
-
 .tooltip {
     display:inline-block;
     position:relative;
@@ -122,22 +121,31 @@ body{
     background-color:#111111;
     border:1px solid #111111;box-shadow:0 1px 8px #EEEEEE;
 }
+.tooltip {
+    display:inline-block;
+    position:relative;
+    border-bottom:1px dotted #666;
+    text-align:left;
+}
+
+.tooltip p {margin:12px 0;}
 
 .tooltip .top {
-    width: 300px;
-    top:-20px;
-    left:50%;
-    transform:translate(-50%, -100%);
+    min-width:200px;
+    max-width:400px;
+    top:60%;
+    left:35%;
+    transform:translate(-30%,-100%);
     padding:10px 20px;
-    color:#FFFFFF;
-    background-color:#111111;
+    color:#ffffff;
+    background-color:#009cdc;
     font-weight:normal;
-    font-size:13px;
+    font-size:14px;
     border-radius:8px;
     position:absolute;
     z-index:99999999;
     box-sizing:border-box;
-    border:1px solid transparent;box-shadow:0 1px 8px transparent;
+    box-shadow:0 1px 8px rgba(0,0,0,0.5);
     display:none;
 }
 
@@ -148,23 +156,25 @@ body{
 .tooltip .top i {
     position:absolute;
     top:100%;
-    left:50%;
-    margin-left:-12px;
-    width:24px;
-    height:12px;
+    left:30%;
+    margin-left:-15px;
+    width:30px;
+    height:15px;
     overflow:hidden;
 }
 
 .tooltip .top i::after {
     content:'';
     position:absolute;
-    width:12px;
-    height:12px;
+    width:15px;
+    height:15px;
     left:50%;
     transform:translate(-50%,-50%) rotate(45deg);
-    background-color:#111111;
-    border:1px solid transparent;box-shadow:0 1px 8px transparent;
+    background-color:#009cdc;
+    box-shadow:0 1px 8px rgba(0,0,0,0.5);
 }
+
+
 
 input[type="date"]::-webkit-calendar-picker-indicator {
     color: #38bdf8;
