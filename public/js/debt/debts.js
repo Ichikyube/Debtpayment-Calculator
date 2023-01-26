@@ -58,31 +58,31 @@ document.addEventListener("alpine:init", () => {
             var minBayar = document.getElementsByClassName("minBayar");
             for (let i = 0; i < namaHutang.length; i++) {
                 if (namaHutang[i].value === "") {                    
-                    document.getElementsByClassName("nama")[i].innerHTML = `<div class="bottom2">nama hutang tidak boleh kosong<i></i></div>`;
+                    document.getElementsByClassName("nama")[i].innerHTML = "nama hutang tidak boleh kosong";
                     stop = true;
                 }else{
                     document.getElementsByClassName("nama")[i].innerHTML = "";
                 }
                 if (jmlHutang[i].value === "") {
-                    document.getElementsByClassName("jml")[i].innerHTML = `<div class="bottom2">jumlah hutang tidak boleh kosong<i></i></div>`;
+                    document.getElementsByClassName("jml")[i].innerHTML = "nama hutang tidak boleh kosong";
                     stop = true;
                 }else{
                     document.getElementsByClassName("jml")[i].innerHTML = "";
                 }
                 if (bungaHutang[i].value === "") {
-                    document.getElementsByClassName("bunga")[i].innerHTML = `<div class="bottom2">bunga hutang tidak boleh kosong<i></i></div>`;
+                    document.getElementsByClassName("bunga")[i].innerHTML = "bunga hutang tidak boleh kosong";
                     stop = true;
                 }else{
                     document.getElementsByClassName("bunga")[i].innerHTML = "";
                 }
                 if (waktuBayar[i].value === "") {
-                    document.getElementsByClassName("waktu")[i].innerHTML = `<div class="bottom2">tanggal bayar tidak boleh kosong<i></i></div>`;
+                    document.getElementsByClassName("waktu")[i].innerHTML = "tanggal hutang tidak boleh kosong";
                     stop = true;
                 }else{
                     document.getElementsByClassName("waktu")[i].innerHTML = "";
                 }
                 if (minBayar[i].value === "") {
-                    document.getElementsByClassName("min")[i].innerHTML = `<div class="bottom2">Min bayar tidak boleh kosong<i></i></div>`;
+                    document.getElementsByClassName("min")[i].innerHTML = "tanggal hutang tidak boleh kosong";
                     stop = true;
                 }else{
                     document.getElementsByClassName("min")[i].innerHTML = "";
@@ -173,6 +173,7 @@ document.addEventListener("alpine:init", () => {
         },
         async charts(pendapatan, pembayaran) {
             const ctx = document.getElementById("hasilChart");
+
             new Chart(ctx, {
                 type: "doughnut",
                 data: {
@@ -206,7 +207,7 @@ document.addEventListener("alpine:init", () => {
                 .then(async (data) => {
                     if (data.success == true) {
                         this.list = await data.data;
-                        if(this.list.length == 0) swal("Tidak ditemukan perhitungan.  Silahkan melakukan perhitungan terlebih dahulu!",{icon: "warning"})
+                        if(this.list.length == 0) swal("Tidak ditemukan perhitungan.  Silahkan melakukan perhitungan terlebih dahulu!")
                     }
                     if (data.status == false) {
                         this.validation = data.error;
@@ -256,7 +257,7 @@ document.addEventListener("alpine:init", () => {
                     if (data.status == false) {
                         this.validation = data.error;
                     }
-                    swal(data.message,{icon: "success"});
+                    swal(data.message);
                     this.showNotif();
                 });
         },
@@ -401,12 +402,15 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-                .then((response) => response.json())
-                .then((data) => {
+                .then(async (response) => await response.json())
+                .then(async (data) => {
                     if (data.status == true) {
                         this.calculated = !this.calculated;
                         localStorage.setItem("tab", "listHitungan");
-                        this.listData();
+                       await this.listData();
+                       if (id) {
+                        window.location.reload();
+                    }
                     }
                     if (data.status == false) {
                         this.validation = data.error;
@@ -414,6 +418,7 @@ document.addEventListener("alpine:init", () => {
                     this.messages = data.message;
                     this.showNotif();
                 });
+              
         },
         async hitungedit(id) {
             var alert = [];
@@ -433,34 +438,33 @@ document.addEventListener("alpine:init", () => {
             var extraSalary =
                 document.getElementsByClassName("extraSalary")[0].value;
 
-            for (let i = 0; i < namaHutang.length; i++) {
-                let temp = "";
-                if (namaHutang[i].value === "") {
-                    document.getElementsByClassName("nama")[i].innerHTML = `<div class="bottom2">nama hutang tidak boleh kosong<i></i></div>`;
+            for (let i = 0; i < namaHutang.length; i++) {                
+                if (namaHutang[i].value === "") {                    
+                    document.getElementsByClassName("nama")[i].innerHTML = "nama hutang tidak boleh kosong";
                     stop = true;
                 }else{
                     document.getElementsByClassName("nama")[i].innerHTML = "";
                 }
                 if (jmlHutang[i].value === "") {
-                    document.getElementsByClassName("jml")[i].innerHTML = `<div class="bottom2">Jumlah hutang tidak boleh kosong<i></i></div>`;
+                    document.getElementsByClassName("jml")[i].innerHTML = "nama hutang tidak boleh kosong";
                     stop = true;
                 }else{
                     document.getElementsByClassName("jml")[i].innerHTML = "";
                 }
                 if (bungaHutang[i].value === "") {
-                    document.getElementsByClassName("bunga")[i].innerHTML = `<div class="bottom2">bunga hutang tidak boleh kosong<i></i></div>`;
+                    document.getElementsByClassName("bunga")[i].innerHTML = "bunga hutang tidak boleh kosong";
                     stop = true;
                 }else{
                     document.getElementsByClassName("bunga")[i].innerHTML = "";
                 }
                 if (waktuBayar[i].value === "") {
-                    document.getElementsByClassName("waktu")[i].innerHTML = `<div class="bottom2">Tanggal Pembayaran tidak boleh kosong<i></i></div>`;
+                    document.getElementsByClassName("waktu")[i].innerHTML = "tanggal hutang tidak boleh kosong";
                     stop = true;
                 }else{
                     document.getElementsByClassName("waktu")[i].innerHTML = "";
                 }
                 if (minBayar[i].value === "") {
-                    document.getElementsByClassName("min")[i].innerHTML = `<div class="bottom2">Min Bayar tidak boleh kosong<i></i></div>`;
+                    document.getElementsByClassName("min")[i].innerHTML = "tanggal hutang tidak boleh kosong";
                     stop = true;
                 }else{
                     document.getElementsByClassName("min")[i].innerHTML = "";
