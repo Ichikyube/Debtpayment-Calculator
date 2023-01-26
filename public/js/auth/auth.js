@@ -105,6 +105,7 @@ document.addEventListener("alpine:init", () => {
     }));
 
     Alpine.store("logout", () => ({
+        showWarningAlert: false,
         async logout() {
             await fetch("http://127.0.0.1:8000/api/logout", {
                 method: "GET",

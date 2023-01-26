@@ -29,11 +29,11 @@
                         Nama
                     </label>
 
-                    <div class="mt-1 rounded-md shadow-sm">
+                    <div class="mt-1 rounded-md">
                         <input x-model="name"  name="name" id="name" type="text" required autofocus :class="validation.name !== undefined ? 'text-red-900':''" class="form-input appearance-none block w-full px-3 py-2 border-0 border-b border-b-black border-b-solid outline-none placeholder:!bg-transparent bg-transparent
-                        transition duration-150 ease-in-out sm:text-sm sm:leading-5 text-black focus:border-[#FDC32F] sm:leading-5 focus:outline-none focus-visible:ring-0"/>
+                        transition duration-150 ease-in-out sm:text-sm  text-black focus:border-[#FDC32F] sm:leading-5 focus:outline-none focus-visible:ring-0" x-bind:class="validation.name != null ? 'border-b-red-600' : ''">
                     </div>
-                    <p class="text-xs" x-text="validation.name"></p>
+                    <p class="text-xs text-red-500" x-text="validation.name"></p>
                 </div>
 
                 <div class="mt-6">
@@ -41,11 +41,11 @@
                         Email
                     </label>
 
-                    <div class="mt-1 rounded-md shadow-sm">
+                    <div class="mt-1 rounded-md">
                         <input x-model="email"  name="email" id="email" required :class="validation.email !== undefined ? 'text-red-900':''" class="form-input appearance-none block w-full px-3 py-2 border-0 border-b border-b-black border-b-solid outline-none placeholder:!bg-transparent bg-transparent
-                        transition duration-150 ease-in-out sm:text-sm sm:leading-5 text-black focus:border-[#FDC32F] focus:outline-none focus-visible:ring-0"/>
+                        transition duration-150 ease-in-out sm:text-sm sm:leading-5 text-black focus:border-[#FDC32F] focus:outline-none focus-visible:ring-0" x-bind:class="validation.email != null ? 'border-b-red-600' : ''">
                     </div>
-                    <p class="text-xs" x-text="validation.email"></p>
+                    <p class="text-xs text-red-500" x-text="validation.email"></p>
                 </div>
 
                 <div class="mt-6">
@@ -53,11 +53,11 @@
                         Password
                     </label>
 
-                    <div class="mt-1 rounded-md shadow-sm ">
+                    <div class="mt-1 rounded-md ">
                         <input x-model="password" type="password" name="password" id="password" required :class="validation.password !== undefined ? 'text-red-900':''" class="form-input appearance-none block w-full px-3 py-2 border-0 border-b border-b-black border-b-solid outline-none placeholder:!bg-transparent bg-transparent
-                        transition duration-150 ease-in-out text-black sm:text-sm sm:leading-5 focus:border-[#FDC32F] focus:outline-none focus-visible:ring-0 @error('password') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror" />
+                        transition duration-150 ease-in-out text-black sm:text-sm sm:leading-5 focus:border-[#FDC32F] focus:outline-none focus-visible:ring-0 @error('password') border-red-300 placeholder-red-300  focus:ring-red @enderror" x-bind:class="validation.password != null ? 'border-b-red-600' : ''">
                     </div>
-                    <p class="text-xs" x-text="validation.password"></p>
+                    <p class="text-xs text-red-500" x-text="validation.password"></p>
                 </div>
 
                 <div class="mt-6">
@@ -65,11 +65,11 @@
                         Confirm Password
                     </label>
 
-                    <div class="mt-1 rounded-md shadow-sm">
+                    <div class="mt-1 rounded-md">
                         <input x-model="passwordConfirmation" id="password_confirmation" type="password" required class="form-input appearance-none block w-full px-3 py-2 border-0 border-b border-b-black border-b-solid outline-none placeholder:!bg-transparent bg-transparent
-                        transition duration-150 ease-in-out sm:text-sm text-black sm:leading-5 focus:border-[#FDC32F] focus:outline-none focus-visible:ring-0" />
+                        transition duration-150 ease-in-out sm:text-sm text-black sm:leading-5 focus:border-[#FDC32F] focus:outline-none focus-visible:ring-0" x-bind:class="validation.password_confirmation != null ? 'border-b-red-600' : ''">
                     </div>
-                    <p class="text-xs tracking-tight" x-text="validation.password_confirmation"></p>
+                    <p class="text-xs text-red-500" x-text="validation.password_confirmation"></p>
                 </div>
 
                 <div class="mt-6">

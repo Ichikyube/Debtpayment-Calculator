@@ -47,23 +47,20 @@
 
                                 <div class="mt-1 rounded-md">
                                     <input x-model="email" type="email" name="email" id="email" required autofocus
-                                        class="form-input w-full appearance-none block px-3 py-2 border-0 border-b border-b-2 border-b-black border-b-solid outline-none placeholder:!bg-transparent bg-transparent
-                            transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-[#FDC32F] focus:outline-none focus-visible:ring-0  placeholder=" you@example.com" />
-                                    <br />
-                                    <p class="text-xs tracking-tight text-black" x-text="validation.email"></p>
+                                        class="appearance-none form-input border-0 border-b border-b-black border-b-solid outline-none w-full placeholder:!bg-transparent bg-transparent block px-3 py-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-[#FDC32F] focus:outline-none focus-visible:ring-0" x-bind:class="validation.email != null ? 'border-b-red-600' : ''" placeholder=" you@example.com">
+                                    <p class="mt-0 text-xs tracking-tight text-red-500" x-text="validation.email"></p>
                                 </div>
                             </div>
+                            <br>
 
                             <div class="">
                                 <label for="password" class="block text-sm font-medium tracking-tight text-black">
                                     Password
                                 </label>
 
-                                <div class="mt-1 rounded-md shadow-sm">
-                                    <input x-model="password" type="password" name="password" id="password" required class="appearance-none form-input border-0 border-b border-b-black
-                            border-b-solid outline-none w-full placeholder:!bg-transparent bg-transparent block px-3 py-2 transition duration-150 ease-in-out sm:text-sm
-                            sm:leading-5 focus:border-[#FDC32F] focus:outline-none focus-visible:ring-0" />
-                                    <p class="text-xs tracking-tight text-black" x-text="validation.password"></p>
+                                <div class="mt-1 rounded-md">
+                                    <input x-model="password" type="password" name="password" id="password" required class="appearance-none form-input border-0 border-b border-b-black border-b-solid outline-none w-full placeholder:!bg-transparent bg-transparent block px-3 py-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-[#FDC32F] focus:outline-none focus-visible:ring-0" x-bind:class="validation.password != null ? 'border-b-red-600' : ''">
+                                    <p class="text-xs tracking-tight text-red-500" x-text="validation.password"></p>
                                 </div>
                             </div>
 
