@@ -95,14 +95,16 @@ document.addEventListener("alpine:init", () => {
                     // response success == false (gagal Login)
                     if (this.status == false) {
                         this.error = data;
-                        localStorage.setItem("messages", data.message);
-                        this.validation = data.error;
+                        if (data.message) {
+                            localStorage.setItem("messages", data.message);                            
+                        }
+                        this.validation = data.error;                        
                         this.getMessages();
                     }
                     // response seccess = true (Login Berhasil)
                     if (this.status == true) {
                         localStorage.setItem("token", data.access_token);
-
+                        
                         window.location.replace(
                             "http://127.0.0.1:8001/dashboard"
                         );
@@ -124,6 +126,7 @@ document.addEventListener("alpine:init", () => {
             })
                 .then((response) => response.json())
                 .then((data) => {
+                    localStorage.setItem("messages", "Anda Berhasil Log Out");
                     localStorage.removeItem("token");
                     localStorage.removeItem("tab");
                     window.location.replace("http://127.0.0.1:8001/login");
