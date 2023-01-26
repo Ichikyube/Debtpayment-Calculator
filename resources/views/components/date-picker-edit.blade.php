@@ -6,8 +6,8 @@
         placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none
         focus-visible:ring-0"
         placeholder="Select date" />
-    <label class="absolute top-5 -z-10 origin-[0] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
-    peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-10 w-40 break-words text-ellipsis
+    <label class="absolute leading-loose peer-focus:leading-none  top-2 -z-10 origin-[0] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
+    peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 w-40 break-words text-ellipsis
     peer-focus:scale-75 peer-focus:text-myblue">Tanggal Pembayaran Selanjutnya <i class="fa-solid fa-calendar-day"></i></label>
     {{-- alert --}}
     <div class="waktu"></div>
