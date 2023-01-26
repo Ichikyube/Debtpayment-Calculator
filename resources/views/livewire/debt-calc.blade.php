@@ -11,7 +11,7 @@
 		</div>
         <p class="nama"></p>
     </div>
-    <div class="flex flex-row items-center justify-between w-full px-3 py-4 border-b-2 group">
+    <div class="flex flex-row items-center justify-between w-full px-3 py-4 border-b-2 group tooltip">
         <div class="flex justify-center w-12 mr-2">
             <i class="fa-regular fa-calendar-xmark"></i>
         </div>
