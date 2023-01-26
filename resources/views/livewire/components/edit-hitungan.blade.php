@@ -1,6 +1,6 @@
 <div x-data="$store.getData">
     <h1 class="my-4 ml-8 text-3xl font-bold truncate lg:my-0 lg:mb-8 drop-shadow-md">Kalkulator Hutang</h1>
-    <template x-if="isLoading && list == 0">
+    <template x-if="isLoading">
         <div class="flex flex-col items-center justify-center w-full h-full min-h-[300px] align-center mx-auto bg-white">
             <span class="block w-6 h-6 text-center whitespace-normal border-4 rounded-full border-t-blue-300 animate-spin"></span>
             loading...
@@ -28,7 +28,7 @@
             </ul>
         </div>
         <div class="flex justify-end">
-            <button x-on:click="showMinierrrorAlert = false" class="text-red-800 bg-transparent border border-red-900 hover:bg-red-900 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xs px-3 py-1.5 text-center dark:hover:bg-red-400 dark:border-red-400 dark:text-red-400 dark:hover:text-white dark:focus:ring-red-800" data-dismiss-target="#alert-additional-content-2" aria-label="Close">
+            <button x-on:click="showMinierrrorAlert = false" class="text-red-800 bg-transparent border border-red-900 hover:bg-red-900 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xs px-3 py-1.5 text-center dark:hover:bg-red-400 dark:border-red-400 dark:text-red-400 dark:hover:text-white dark:focus:ring-red-800">
                 close
             </button>
         </div>

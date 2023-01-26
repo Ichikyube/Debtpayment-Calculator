@@ -2,12 +2,12 @@
     <input type="hidden" name="date"  :value="datepickerValue" class="hidden waktuBayar" placeholder=" " >
     <input type="date" x-on:click="initDate(datepickerValue), showDatepicker = !showDatepicker" x-model="datepickerValue"
         x-on:keydown.escape="showDatepicker = false"
-        class="leading-none mix-blend-multiply  form-input z-50 peer bg-white/10 text-white/30 focus:text-dark block w-full appearance-none px-3 border-0 text-left outline-none
+        class="leading-none mix-blend-multiply form-input z-50 peer bg-transparent text-transparent focus:text-dark block w-full appearance-none px-3 border-0 text-left outline-none
         placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none
         focus-visible:ring-0"
         placeholder="Select date" />
-    <label class="absolute top-5 -z-10 origin-[0] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
-    peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-10 w-40 break-words text-ellipsis
+    <label class="absolute leading-loose peer-focus:leading-none top-2 -z-10 origin-[0] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
+    peer-placeholder-shown:translate-y-4  peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 w-40 break-words text-ellipsis
     peer-focus:scale-75 peer-focus:text-myblue">Tanggal Pembayaran Selanjutnya <i class="fa-solid fa-calendar-day"></i></label>
     {{-- alert --}}
     <div class="waktu"></div>
@@ -64,7 +64,7 @@
             <template x-for="(date, dateIndex) in no_of_days" :key="dateIndex">
                 <div style="width: 14.28%" class="px-1 mb-1">
                     <div @click="getDateValue(date)" x-text="date"
-                        class="text-sm leading-none leading-loose text-center transition duration-100 ease-in-out rounded-full cursor-pointer"
+                        class="text-sm leading-loose text-center transition duration-100 ease-in-out rounded-full cursor-pointer"
                         :class="{
             'bg-indigo-200': isToday(date) == true,
             'text-gray-600 hover:bg-indigo-200': isToday(date) == false && isSelectedDate(date) == false,

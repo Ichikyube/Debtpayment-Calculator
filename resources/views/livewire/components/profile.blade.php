@@ -24,7 +24,7 @@
                 </ul>
             </div>
             <div class="flex justify-end">
-                <button x-on:click="showErrorAlert = false" class="text-red-800 bg-transparent border border-red-900 hover:bg-red-900 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xs px-3 py-1.5 text-center dark:hover:bg-red-400 dark:border-red-400 dark:text-red-400 dark:hover:text-white dark:focus:ring-red-800" data-dismiss-target="#alert-additional-content-2" aria-label="Close">
+                <button x-on:click="showErrorAlert = false" class="text-red-800 bg-transparent border border-red-900 hover:bg-red-900 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xs px-3 py-1.5 text-center dark:hover:bg-red-400 dark:border-red-400 dark:text-red-400 dark:hover:text-white dark:focus:ring-red-800">
                     close
                 </button>
             </div>
@@ -44,7 +44,7 @@
                 <svg aria-hidden="true" class="flex-shrink-0 inline w-10 h-10 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
                 <span class="sr-only">Info</span>
                 <div class="flex flex-col">
-                    <span class="text-xl font-medium">Success</span>
+                    <span class="text-lg font-medium">Success</span>
                     <span x-text="message"></span>
                 </div>
             </div>
@@ -133,10 +133,10 @@
                         <input x-model="update.name" id="fullname" maxlength="20" type="text" class="w-1/2 form-input peer text-white/30 focus:text-black z-10 align-text-bottom text-left
                         bg-white/10 block appearance-none px-3 border-0 pb-0 outline-none placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-1
                         focus:border-none focus:outline-none focus-visible:ring-0">
-                        <label for="fullname" class="absolute top-3 origin-[0] break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-xl
+                        <label for="fullname" class="absolute top-3 origin-[0] break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-lg
                         bg-main text-dark duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0
                         peer-focus:-translate-y-5 peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Nama Lengkap</label>
-                        <div class="w-full text-xl font-bold text-center text-zinc-900 lr-4" x-text="update.name"></div>
+                        <div class="w-full text-lg font-bold text-center text-zinc-900 lr-4" x-text="update.name"></div>
                     </div>
                 </div>
             </div>
@@ -154,10 +154,10 @@
                             <option class="text-xs">Laki-Laki</option>
                             <option class="text-xs">Perempuan</option>
                         </select>
-                        <label for="gender" class="absolute top-3 origin-[0] break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-xl
+                        <label for="gender" class="absolute top-3 origin-[0] break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-lg
                         bg-main text-dark duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0
                         peer-focus:-translate-y-5 peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Jenis Kelamin</label>
-                        <i class="w-full text-xl font-bold text-center text-zinc-900 lr-4" x-bind:class="update.gender == 'Laki-Laki'? 'fa-solid fa-mars' : update.gender == 'Perempuan'? 'fa-solid fa-venus': ' '"></i>
+                        <i class="w-full text-lg font-bold text-center text-zinc-900 lr-4" x-bind:class="update.gender == 'Laki-Laki'? 'fa-solid fa-mars' : update.gender == 'Perempuan'? 'fa-solid fa-venus': ' '"></i>
                     </div>
                 </div>
             </div>
@@ -169,10 +169,10 @@
                     <input x-model="update.tempat_lahir" type="text" maxlength="20" class="w-1/2 form-input peer pt-5 text-white/30 focus:text-black z-10 align-text-bottom text-left bg-white/10 block
                     appearance-none px-3 border-0 outline-none pb-0 placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-1
                     focus:border-none focus:outline-none focus-visible:ring-0">
-                    <label class="absolute top-3 origin-[0] break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-xl
+                    <label class="absolute top-3 origin-[0] break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-lg
                     bg-main text-dark duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0
                     peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Tempat Lahir</label>
-                    <div class="w-full text-xl font-bold text-center text-zinc-900 lr-4" x-text="update.tempat_lahir"></div>
+                    <div class="w-full text-lg font-bold text-center text-zinc-900 lr-4" x-text="update.tempat_lahir"></div>
                 </div>
             </div>
             <div class="flex flex-row items-center px-4 border-b-2">
@@ -183,24 +183,24 @@
                     <input x-model="update.tgl_lahir" type="date" class="w-1/2 form-input peer text-white/30 focus:text-black z-10 align-text-bottom text-left bg-white/10 block
                         appearance-none px-3 border-0 outline-none pb-0 placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-1
                         focus:border-none focus:outline-none focus-visible:ring-0">
-                    <label class="absolute top-3 origin-[0] break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-xl
+                    <label class="absolute top-3 origin-[0] break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-lg
                       bg-main text-dark duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0
                         peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Tanggal Lahir</label>
-                    <div class="w-full text-xl font-bold text-center break-words text-zinc-900 lr-4"  x-text="new Date(update.tgl_lahir).toLocaleDateString('default', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })"></div>
+                    <div class="w-full text-lg font-bold text-center break-words text-zinc-900 lr-4"  x-text="new Date(update.tgl_lahir).toLocaleDateString('default', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })"></div>
                 </div>
             </div>
-            <div class="flex flex-row items-center px-4 border-b-2 h-max">
-                <div class="flex justify-center w-12 mr-2">
+            <div class="flex flex-row items-start px-4 border-b-2 h-max">
+                <div class="flex justify-center w-12 mt-4 mr-2">
                     <i class="fa-solid fa-map"></i>
                 </div>
-                <div class="relative flex items-center justify-between w-full py-2">
+                <div class="relative flex items-start justify-between w-full py-2">
                     <input x-model="update.alamat"  maxlength="80" type="text" class="w-4/12 form-input peer text-white/30 focus:text-black z-10 align-text-bottom text-left bg-white/10 block
                     appearance-none px-3 border-0 outline-none pb-0 placeholder:!bg-transparent sm:text-sm sm:leading-1
                     focus:border-none focus:outline-none focus-visible:ring-0">
-                    <label class="absolute top-3 origin-[0] break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-xl
+                    <label class="absolute top-3 origin-[0] break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-lg
                     bg-main text-dark duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0
                       peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Alamat</label>
-                      <div class="w-7/12 mr-5 text-xl font-bold text-center break-words text-zinc-900 lr-4" x-text="update.alamat"></div>
+                      <div class="w-7/12 mr-5 text-lg font-bold text-center break-words text-zinc-900 lr-4" x-text="update.alamat"></div>
                     </div>
 
             </div>

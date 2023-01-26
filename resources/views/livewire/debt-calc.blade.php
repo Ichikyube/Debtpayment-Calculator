@@ -2,7 +2,6 @@
     shadow-sm hover:shadow-xl transition-shadow duration-300 ease-in-out"  x-data="{namaHutang:`Hutang ${index+1}`,waktuBayar:'', jmlHutang:'', bungaHutang:'', minBayar:'', monthlySalary:''}">
       <div x-data="{ open : false }" class="flex flex-row w-full px-5 py-5 align-middle border-b-2 tooltip">
         <div  class="flex items-center justify-between">
-
             <input x-show="open"  x-model="namaHutang" :id="$id('id')" class="w-full ml-5 text-xl font-bold border-0 rounded-md namaHutang form-input focus-visible:ring-0" type="text">
             <button type="button" class="flex px-4 py-2 font-mediumgroup" x-bind:class="open? 'bg-myorange rounded-md -ml-16': ''"
             @click="open = !open">
@@ -23,7 +22,7 @@
             <i class="fa-solid fa-coins"></i>
         </div>
         <div class="relative flex items-center justify-between w-full">
-            <input x-model="jmlHutang" :id="$id('id')" class="jmlHutang  focus:text-black/30 text-transparent  bg-transparent form-input z-10 peer block w-full appearance-none px-3 pt-2
+            <input x-model="jmlHutang" :id="$id('id')" class="jmlHutang  focus:text-black/30 text-transparent bg-transparent form-input z-10 peer block w-full appearance-none px-3 pt-2
             placeholder:!bg-transparent transition duration-150 truncate ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none border-0 text-left outline-none
             focus-visible:ring-0" type="number" min="0" max="" step="100" placeholder=" ">
             <label class="absolute top-0 origin-[0] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
@@ -54,14 +53,15 @@
         </div>
     </div>
     <div class="flex flex-row items-center justify-between w-full px-3 py-4 group tooltip">
-
+        <div class="flex justify-center w-12 mr-2">
+            <i class="fa-solid fa-hand-holding-dollar"></i>
         </div>
         <div class="relative flex items-center justify-between w-full">
             <input x-model="minBayar" class="minBayar bg-transparent focus:text-black/30 text-transparent  form-input z-10 peer block w-full appearance-none px-3 pt-2
             placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none border-0 text-left outline-none
             focus-visible:ring-0" required type="number" min="10" step="100" placeholder=" ">
-            <label class="absolute break-words text-ellipsis top-0 origin-[0] max-w-[80%] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
-            peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:w-full
+            <label class="absolute break-words text-ellipsis -top-3 origin-[0] max-w-[80%] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
+            peer-placeholder-shown:translate-y-0 leading-loose peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-1 peer-focus:w-full peer-focus:leading-none
             peer-focus:scale-75 peer-focus:text-myblue">Pembayaran minimum perbulan <span class="text-xs text-green-600">($)</span>
             </label>
             <div class="min"></div>

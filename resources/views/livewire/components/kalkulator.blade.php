@@ -63,43 +63,23 @@
     <h1 class="my-4 ml-8 text-3xl font-bold truncate lg:my-0 lg:mb-8 drop-shadow-md">Kalkulator Hutang</h1>
     <template x-if="calculated">
         @livewire('components.hasil-hitungan')
-        <svg class="w-6 h-6 animate-bounce motion-safe:animate-spin">
-            <!-- ... -->
-        </svg>
     </template>
 
     <div x-show="!calculated" class="relative flex flex-col md:flex-row lg:flex-row justify-evenly stretch">
-        <div  x-id="['list-item']"
-            class="flex snap-y snap-mandatory flex-col items-center px-4 md:w-full lg:w-1/2 overflow-y-scroll scroll-smooth rounded-xl overflow-x-hidden order-last md:order-first lg:order-first h-[420px] touch-auto hilanginscroll">
+        <div class="flex snap-y snap-mandatory flex-col items-center px-4 md:w-full lg:w-1/2 overflow-y-scroll scroll-smooth rounded-xl overflow-x-hidden order-last md:order-first lg:order-first h-[420px] touch-auto hilanginscroll">
             <!-- Form Kalkulator -->
-            <template x-if="posts >  1">
-                <button type="button" class="px-3 py-2 text-white bg-gray-800 border-r border-gray-100 rounded-l-md hover:bg-red-700 hover:text-white">
-                    <div class="flex flex-row align-middle">
-                        <i class="fa-solid fa-arrow-up"></i>
-                    </div>
-                </button>
-                <button type="button" class="px-3 py-2 text-white bg-gray-800 border-l border-gray-200 rounded-r-md hover:bg-red-700 hover:text-white">
-                    <div class="flex flex-row align-middle">
+            <template x-for="(post,index) in posts" :key="index" class="slides" >
+                <livewire:debt-calc />
+            </template>
+
+            <template x-if="posts.length >  1">
+                <button type="button" class="absolute bottom-0 px-3 text-black rounded-r-md hover:text-myblue">
+                    <div class="flex flex-row w-6 h-6 align-middle motion-safe:animate-bounce">
                         <i class="fa-solid fa-arrow-down"></i>
                     </div>
                 </button>
             </template>
-            <div class="navigation"  x-data="navigationControls()" x-init="() => { dispatcher = $dispatch }">
-                <button @click="next">
-                Next
-                </button>
-                <button @click="previous">
-                Previous
-                </button>
-            </div>
 
-            <template x-for="(post,index) in posts" :key="index" class="slides"
-            x-data="slidesContainer()"
-            @update-slide-index.window="goToSlide($event.detail.slideIndex)"
-            @go-next-slide.window="nextSlide"
-            @go-previous-slide.window="previousSlide">
-                <livewire:debt-calc />
-            </template>
 
             <div class="h-screen">
                 <div class="bg-[#F7D3C2] w-11/12 mx-4 snap-start snap-always block md:hidden lg:hidden h-fit md:ml-4 lg:ml-4 rounded-md lg:rounded-[15px] shadow-sm hover:shadow-lg mb-8 transition-shadow duration-300 ease-in-out">
@@ -188,11 +168,10 @@
                 select-none active:translate-y-1 active:[box-shadow:0_0px_0_0_#f2f2f2,0_0px_0_0_#b7b7b7] active:border-b-[0px] rounded-xl
                 [box-shadow:0_1px_0_0_#f2f2f2,0_3px_0_0_#b7b7b7] bg-myblue py-2 md:h-14 lg:h-14 lg:w-44 transition-all duration-200">
 
-                    <p x-text="!isLoading ? 'Calculate': 'Loading'"></p>
+                   Calculate
 
                 </button>
             </div>
         </div>
-
     </div>
 </div>
