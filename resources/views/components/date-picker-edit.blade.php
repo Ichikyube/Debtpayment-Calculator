@@ -1,6 +1,6 @@
 <div x-init="[getNoOfDays(), initDate(waktuBayar) ]" x-cloak   class="relative z-50 flex items-center justify-between w-full group">
-    <input type="hidden" name="date"  :value="datepickerValue" class="hidden waktuBayar" placeholder=" " >
-    <input type="date" x-on:click="initDate(datepickerValue), showDatepicker = !showDatepicker" x-model="datepickerValue"
+    <input type="hidden" name="date"  :value="waktuBayar" class="hidden waktuBayar" placeholder=" " >
+    <input type="date" x-on:click="initDate(waktuBayar), showDatepicker = !showDatepicker" x-model="waktuBayar"
         x-on:keydown.escape="showDatepicker = false"
         class="leading-none mix-blend-multiply  form-input z-50 peer bg-white/10 text-white/30 focus:text-dark block w-full appearance-none px-3 border-0 text-left outline-none
         placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none
@@ -11,7 +11,7 @@
     peer-focus:scale-75 peer-focus:text-myblue">Tanggal Pembayaran Selanjutnya </label>
     {{-- alert --}}
     <div class="waktu"></div>
-    <div class="absolute right-0 w-10/12 mr-4 text-right truncate"  x-text="new Date(datepickerValue).toLocaleDateString('default', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })"></div>
+    <div class="absolute right-0 w-10/12 mr-4 text-right truncate"  x-text="new Date(waktuBayar).toLocaleDateString('default', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })"></div>
     <div class="absolute top-0 left-0 p-4 mt-12 bg-white rounded-lg shadow" style="width: 17rem"
         x-show.transition="showDatepicker" @click.away = "showDatepicker = false">
         <div class="flex items-center justify-between mb-2">

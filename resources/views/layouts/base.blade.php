@@ -15,7 +15,7 @@
 
         <!-- Custom CSS -->
         <link rel="stylesheet" href="{{ url(asset('css/style.css')) }}">
-        <link rel="stylesheet" href="{{ asset('build/assets/app-12e7c4ac.css') }}">
+        {{-- <link rel="stylesheet" href="{{ asset('build/assets/app-12e7c4ac.css') }}"> --}}
         <script src="https://kit.fontawesome.com/c12c059ff2.js" crossorigin="anonymous"></script>
         @livewireStyles
 
@@ -23,9 +23,9 @@
         <script src="{{asset('js/auth/auth.js')}}"></script>
         <script src="{{ asset('js/flowbite.min.js') }}"></script>
         <script src="{{asset('js/users/profile.js')}}"></script>
-        <script defer src="{{ asset('build/assets/app-d95ce6e5.js') }}"></script>
+        {{-- <script defer src="{{ asset('build/assets/app-d95ce6e5.js') }}"></script> --}}
 
-        {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
+        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>

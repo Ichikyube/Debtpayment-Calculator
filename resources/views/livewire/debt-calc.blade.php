@@ -14,7 +14,7 @@
         <div class="flex justify-center w-12 mr-2">
             <i class="fa-regular fa-calendar-xmark"></i>
         </div>
-        <x-date-picker/>
+        @livewire('date-picker')
 
     </div>
     <div class="flex items-center justify-between w-full px-3 py-4 border-b-2 group tooltip">

@@ -51,7 +51,7 @@ document.addEventListener("alpine:init", () => {
         showErrorAlert: false,
         statusCode: 0,
         showDatepicker: false,
-        datepickerValue:"",
+        waktuBayar:"",
         selectedDate: "",
         dateFormat: "YYYY-MM-DD",
         month: "",
@@ -387,7 +387,7 @@ document.addEventListener("alpine:init", () => {
             }
             this.month = today.getMonth();
             this.year = today.getFullYear();
-            this.datepickerValue = this.formatDateForDisplay(
+            this.waktuBayar = this.formatDateForDisplay(
                 today
             );
         },
@@ -417,7 +417,7 @@ document.addEventListener("alpine:init", () => {
         },
         isSelectedDate(date) {
             const d = new Date(this.year, this.month, date);
-            return this.datepickerValue ===
+            return this.waktuBayar ===
                 this.formatDateForDisplay(d) ?
                 true :
                 false;
@@ -435,7 +435,7 @@ document.addEventListener("alpine:init", () => {
                 this.month,
                 date
             );
-            this.datepickerValue = this.formatDateForDisplay(
+            this.waktuBayar = this.formatDateForDisplay(
                 selectedDate
             );
             // this.$refs.date.value = selectedDate.getFullYear() + "-" + ('0' + formattedMonthInNumber).slice(-2) + "-" + ('0' + selectedDate.getDate()).slice(-2);
