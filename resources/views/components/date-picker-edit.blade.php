@@ -1,4 +1,12 @@
-<div x-init="[getNoOfDays(), initDate(waktuBayar) ]" x-cloak   class="relative z-50 flex items-center justify-between w-full group">
+<div x-data="{
+    showDatepicker: false,
+    waktuBayar:'',
+    selectedDate: '',
+    dateFormat: 'YYYY-MM-DD',
+    month: '',
+    year: '',
+    no_of_days: [],
+    blankdays: []}" x-init="[getNoOfDays(), initDate(waktuBayar) ]" x-cloak   class="relative z-50 flex items-center justify-between w-full group">
     <input type="hidden" name="date"  :value="waktuBayar" class="hidden waktuBayar" placeholder=" " >
     <input type="date" x-on:click="initDate(waktuBayar), showDatepicker = !showDatepicker" x-model="waktuBayar"
         x-on:keydown.escape="showDatepicker = false"

@@ -50,14 +50,6 @@ document.addEventListener("alpine:init", () => {
         showMiniErrorAlert: false,
         showErrorAlert: false,
         statusCode: 0,
-        showDatepicker: false,
-        waktuBayar:"",
-        selectedDate: "",
-        dateFormat: "YYYY-MM-DD",
-        month: "",
-        year: "",
-        no_of_days: [],
-        blankdays: [],
         showNotif() {
             // reset time to 0 second
             clearTimeout(timer);
