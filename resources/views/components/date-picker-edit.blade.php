@@ -1,6 +1,5 @@
 <div x-data="{
     showDatepicker: false,
-    waktuBayar:'',
     selectedDate: '',
     dateFormat: 'YYYY-MM-DD',
     month: '',
