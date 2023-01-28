@@ -154,6 +154,9 @@ document.addEventListener("alpine:init", () => {
                 if (this.statusCode == 400) {
                     this.messages = data.message;
                     this.showErrorAlert = true;
+                    setTimeout(() => {
+                        this.showErrorAlert = false;
+                    }, 4700);
                     this.validation = data.error;
                 }
                 if (this.statusCode == 500) {
@@ -704,6 +707,9 @@ document.addEventListener("alpine:init", () => {
                     this.messages = data.message;
                     this.validation = data.error;
                     this.showMinierrrorAlert = true;
+                    setTimeout(() => {
+                        this.showMinierrrorAlert = false;
+                    }, 4500);
                 }
                 this.isLoading = false;
                 this.messages = data.message;
