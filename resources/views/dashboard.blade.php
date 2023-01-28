@@ -20,7 +20,7 @@
                 <li><button type="button"
                         x-on:click.prevent=" tab = 'kalkulator', localStorage.setItem('tab', 'kalkulator')"
                         class="text-4xl text-dark lg:text-white"><i
-                            x-bind:class="tab == 'kalkulator' || tab == 'editHitungan' ? 'text-myyellow drop-shadow-3xl' : 'text-gray-400 drop-shadow-md'"
+                            x-bind:class="tab == 'kalkulator' || tab == 'edit-hitungan' ? 'text-myyellow drop-shadow-3xl' : 'text-gray-400 drop-shadow-md'"
                             class="fa-solid fa-qrcode"></i></button>
                 </li>
                 <li><button type="button" x-bind:disabled="!list"
