@@ -14,7 +14,7 @@
                 <span class="sr-only">Info</span>
                 <h3 class="text-lg font-medium">Request Failed!!</h3>
             </div>
-            <div class="mt-2 mb-4 text-sm">
+            <div class="mt-2 mb-4 text-md">
                 <ul class="mt-1.5 ml-4 list-disc list-inside" x-show="validation">
                     <li x-show="validation.debtTitle" x-text="validation.debtTitle"></li>
                     <li x-show="validation.debtAmount" x-text="validation.debtAmount"></li>
@@ -45,7 +45,7 @@
         x-transition:leave="transition -translate-y-10 ease-in duration-300"
         x-transition:leave-start="opacity-100 -translate-y-10"
         x-transition:leave-end="-translate-y-10 opacity-0"
-        class="flex justify-between items-center absolute z-30 left-[35%] right-[50%] -top-5 shadow-xl w-96 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+        class="flex justify-between items-center absolute z-30 left-[35%] right-[50%] -top-5 shadow-xl w-96 p-4 mb-4 text-md text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
         <div class="flex items-center">
             <svg aria-hidden="true" class="flex-shrink-0 inline w-10 h-10 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
             <span class="sr-only">Info</span>
@@ -94,35 +94,26 @@
                     </div>
                     <div class="flex flex-row flex-wrap lg:flex-col">
                         <div class="flex items-center justify-between px-3 py-4 text-center border-b-2">
-                            <div class="flex flex-row items-center">
-                                <div class="flex justify-center w-6 mr-2">
-                                    <i class="fa-solid fa-circle-dollar-to-slot"></i>
-                                </div>
-                                <div class="relative flex items-center w-fit">
-                                    <input x-model="monthlySalary" id="monthlySalary" class="form-input align-text-bottom z-10 pt-5 peer bg-white/10 block w-full appearance-none px-3 border-0 text-left outline-none
-                                    placeholder:!bg-transparent transition duration-150 ease-in-out  text-white/30 focus:text-black sm:text-sm sm:leading-1 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder=" ">
-                                    <label for="monthlySalary" class="absolute top-3 origin-[0]  break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-sm text-dark duration-300
-                                    peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75
-                                    peer-focus:text-myblue peer-focus:dark:text-blue-500">Pendapatan perbulan <span class="text-xs text-green-600">($)</span></label>
-                                </div>
+                            <div class="flex justify-center w-6 mr-2">
+                                <i class="fa-solid fa-circle-dollar-to-slot"></i>
                             </div>
-                            <div class="mr-4 text-right" x-money.en-US.USD.decimal="monthlySalary"></div>
+                            <div class="relative flex items-center w-fit">
+                                <input x-model="monthlySalary" id="monthlySalary" class="text-transparent bg-transparent focus:text-black/30 form-input z-10 peer block w-full appearance-none px-3 pt-5 placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom text-md leading-1 focus:border-none focus:outline-none border-0 text-left outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder=" ">
+                                <label for="monthlySalary" class="absolute break-words text-ellipsis top-2 origin-[0] max-w-[85%] w-max -translate-y-4 scale-80 transform text-md text-dark duration-300 peer-placeholder-shown:-top-2 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-7 peer-focus:w-full peer-focus:scale-75 peer-focus:text-myblue">Pendapatan perbulan <span class="text-xs text-green-600">($)</span></label>
+                                <div class="mr-4 font-bold text-right" x-money.en-US.USD.decimal="monthlySalary"></div>
+                            </div>
                         </div>
 
-                        <div class="flex items-center justify-between px-3 py-4 text-center border-b-2">
-                            <div class="flex flex-row items-center">
-                                <div class="flex justify-center w-6 mr-2">
-                                    <i class="fa-solid fa-money-bill-1-wave"></i>
-                                </div>
-                                <div class="relative flex items-center w-fit">
-                                    <input x-model="extraSalary" class="form-input peer text-white/30 focus:text-black z-10 pt-5 align-text-bottom text-left bg-white/10 block w-full appearance-none px-3 border-0 outline-none
-                                    placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-1 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder=" ">
-                                    <label for="extraSalary" class="absolute top-3 origin-[0]  break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-sm text-dark duration-300
-                                    peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75
-                                    peer-focus:text-myblue peer-focus:dark:text-blue-500">Pembayaran Extra Perbulan <span class="text-xs text-green-600">($)</span></label>
-                                </div>
+                        <div class="flex items-center justify-between px-3 py-4 text-center">
+                            <div class="flex justify-center w-6 mr-2">
+                                <i class="fa-solid fa-money-bill-1-wave"></i>
                             </div>
-                            <div class="mr-4 text-right" x-money.en-US.USD.decimal="extraSalary"></div>
+                            <div class="relative flex items-center w-fit">
+                                <input x-model="extraSalary" class="form-input peer text-transparent focus:text-black/30 z-10 pt-5 align-text-bottom text-left bg-transparent block w-full appearance-none px-3 border-0 outline-none
+                                placeholder:!bg-transparent transition duration-150 ease-in-out text-md leading-1 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder=" ">
+                                <label for="extraSalary" class="absolute break-words leading-none text-ellipsis top-2 origin-[0] max-w-[80%] w-max -translate-y-4 scale-80 transform text-md text-left text-dark duration-300 peer-placeholder-shown:-top-2 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-7 peer-focus:w-full peer-focus:scale-75 peer-focus:text-myblue">Pembayaran Extra Perbulan <span class="text-xs text-green-600">($)</span></label>
+                                <div class="mr-4 font-bold text-right" x-money.en-US.USD.decimal="extraSalary"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -134,36 +125,36 @@
                     <h6 class="ml-5 text-xl font-bold text-blueGray-700">Tambahan</h6>
                 </div>
                 <div class="flex flex-row flex-wrap lg:flex-col">
-                    <div class="flex flex-row items-center justify-between w-full px-3 py-4 group">
+                    <div class="flex flex-row items-center border-b-2 justify-between w-full px-3 py-4 group">
 
                         <div class="flex justify-center w-12 mr-2">
                             <i class="fa-solid fa-circle-dollar-to-slot"></i>
                         </div>
                         <div class="relative flex items-center justify-between w-full">
-                            <input x-model="monthlySalary" id="monthlySalary" class="text-white/10 bg-transparent focus:text-black/30 form-input z-10 peer block w-full appearance-none px-3 pt-2 placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none border-0 text-left outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder=" ">
-                            <label class="absolute break-words text-ellipsis top-0 origin-[0] max-w-[80%] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:w-full peer-focus:scale-75 peer-focus:text-myblue">Pendapatan perbulan <span class="text-xs text-green-600">($)</span></label>
+                            <input x-model="monthlySalary" id="monthlySalary" class="text-white/10 bg-transparent focus:text-black/30 form-input z-10 peer block w-full appearance-none px-3 pt-2 placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-md sm:leading-1 focus:border-none focus:outline-none border-0 text-left outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder=" ">
+                            <label class="absolute break-words text-ellipsis top-2 origin-[0] max-w-[80%] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-md text-dark duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-8 peer-focus:w-full peer-focus:scale-75 peer-focus:text-myblue">Pendapatan perbulan <span class="text-xs text-green-600">($)</span></label>
                         </div>
 
-                        <div class="absolute right-0 w-10/12 mr-4 text-right truncate" x-money.en-US.USD.decimal="monthlySalary"></div>
+                        <div class="absolute font-bold right-0 w-10/12 mr-4 text-right truncate" x-money.en-US.USD.decimal="monthlySalary"></div>
                     </div>
 
-                    <div class="flex flex-row items-center justify-between w-full px-3 py-4 group">
+                    <div class="flex flex-row items-center  justify-between w-full px-3 py-4 group">
                         <div class="flex justify-center w-12 mr-2">
                             <i class="fa-solid fa-money-bill-1-wave"></i>
                         </div>
                         <div class="relative flex items-center justify-between w-full">
-                            <input x-model="extraSalary" class="text-white/10 bg-transparent focus:text-black/30 form-input z-10 peer block w-full appearance-none px-3 pt-2 placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none border-0 text-left outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder=" ">
-                            <label class="absolute break-words text-ellipsis top-0 origin-[0] max-w-[80%] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:w-full peer-focus:scale-75 peer-focus:text-myblue">Pembayaran Extra Perbulan <span class="text-xs text-green-600">($)</span></label>
+                            <input x-model="extraSalary" class="text-white/10 bg-transparent focus:text-black/30 form-input z-10 peer block w-full appearance-none px-3 pt-2 placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-md sm:leading-1 focus:border-none focus:outline-none border-0 text-left outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder=" ">
+                            <label class="absolute break-words text-ellipsis top-2 leading-none origin-[0] max-w-[80%] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-md text-dark duration-300 peer-placeholder-shown:-top-2 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-8 peer-focus:w-full peer-focus:scale-75 peer-focus:text-myblue">Pembayaran Extra Perbulan <span class="text-xs text-green-600">($)</span></label>
                         </div>
-                        <div class="absolute right-0 w-10/12 mr-4 text-right truncate" x-money.en-US.USD.decimal="extraSalary"></div>
+                        <div class="absolute font-bold right-0 w-10/12 mr-4 text-right truncate" x-money.en-US.USD.decimal="extraSalary"></div>
                     </div>
 
                 </div>
 
             </div>
             <div x-show="!calculated" class="flex flex-row items-center justify-between order-first mx-auto mb-2 text-center align-middle sm:w-10/12 lg:ml-9 md:mt-6 md:w-11/12 lg:w-11/12 md:order-last lg:order-last md:flex-row lg:mt-10 md:justify-evenly lg:justify-evenly">
-                <button type="button" x-on:click.lazy="addDebt" class="text-sm py-0 md:py-2 after:top-3 md:after:top-8 lg:after:top-4 lg:py-4 px-4 w-36 lg:w-auto
-                bg-white text-red-500 font-bold rounded-[15px] drop-shadow-lg cursor-pointer select-none active:translate-y-1
+                <button type="button" x-on:click.lazy="addDebt" class="text-md py-0 md:py-2 after:top-3 leading-snug md:after:top-8 lg:after:top-4 lg:py-4 px-4 w-36 lg:w-auto
+                bg-white/50 text-red-500 font-bold rounded-[15px] drop-shadow-lg cursor-pointer select-none active:translate-y-1
                 active:[box-shadow:0_0px_0_0_#f2f2f2,0_0px_0_0_#b7b7b7] active:border-b-[0px] transition-all duration-500 mr-4 md:mr-6
                 lg:mr-11 ease-in-out hover:bg-red-400 hover:text-white [box-shadow:0_1px_0_0_#f2f2f2,0_3px_0_0_#b7b7b7] after:w-6 after:h-6
                 after:bg-red-500 after:text-white after:font-cursive after:font-extrabold after:absolute after:-right-3

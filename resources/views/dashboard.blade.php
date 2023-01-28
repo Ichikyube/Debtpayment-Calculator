@@ -17,22 +17,34 @@
         <div class="flex justify-between w-full align-middle lg:w-20 lg:flex-col">
             <a href="" class="mx-3 text-4xl text-white w-fit"><img src="/img/far.png" alt="png" class="w-12"></a>
             <ul class="flex flex-row w-full h-full px-4 justify-evenly lg:flex-col">
-                <li><button type="button"
+                <li><button type="button" data-tooltip-target="tooltip-right" data-tooltip-placement="right"
                         x-on:click.prevent=" tab = 'kalkulator', localStorage.setItem('tab', 'kalkulator')"
                         class="text-4xl text-dark lg:text-white"><i
                             x-bind:class="tab == 'kalkulator' || tab == 'editHitungan' ? 'text-myyellow drop-shadow-3xl' : 'text-gray-400 drop-shadow-md'"
                             class="fa-solid fa-qrcode"></i></button>
+                            <div  id="tooltip-right" role="tooltip" class="tooltip absolute z-10 inline-block text-zinc-900 border-myblue/10 border-4 font-medium shadow-sm bg-white py-1 px-3 text-sm rounded-lg opacity-0 invisible" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(918px, 449px, 0px);">
+                                kalkulator
+                                <div class="tooltip-arrow" data-popper-arrow="" style="position: absolute; top: 0px; transform: translate3d(0px, 28px, 0px);"></div>
+                            </div>
                 </li>
-                <li><button type="button" x-bind:disabled="!list"
+                <li><button type="button" x-bind:disabled="list.length == 0" data-tooltip-target="tooltip-right2" data-tooltip-placement="right"
                         x-on:click.prevent=" tab = 'listHitungan', localStorage.setItem('tab', 'listHitungan')"
                         class="text-4xl text-dark lg:text-white "><i
                             x-bind:class="tab == 'listHitungan' ? 'text-myyellow drop-shadow-3xl' : 'text-gray-400 drop-shadow-md'"
                             class="fa-solid fa-money-bill"></i></button>
+                        <div  id="tooltip-right2" role="tooltip" class="tooltip absolute z-10 inline-block text-zinc-900 border-myblue/10 border-4 font-medium shadow-sm bg-white py-1 px-3 text-sm rounded-lg opacity-0 invisible" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(918px, 449px, 0px);">
+                            List Hitungan
+                            <div class="tooltip-arrow" data-popper-arrow="" style="position: absolute; top: 0px; transform: translate3d(0px, 28px, 0px);"></div>
+                        </div>
                 </li>
-                <li><button type="button" x-on:click.prevent=" tab = 'profile', localStorage.setItem('tab', 'profile')"
+                <li><button type="button" x-on:click.prevent=" tab = 'profile', localStorage.setItem('tab', 'profile')" data-tooltip-target="tooltip-right3" data-tooltip-placement="right"
                         class="text-4xl text-dark lg:text-white"><i
                             x-bind:class="tab == 'profile' ? 'text-myyellow drop-shadow-3xl' : 'text-gray-400 drop-shadow-md'"
                             class="fa-regular fa-user"></i></button>
+                            <div  id="tooltip-right3" role="tooltip" class="tooltip absolute z-10 inline-block text-zinc-900 border-myblue/10 border-4 font-medium shadow-sm bg-white py-1 px-3 text-sm rounded-lg opacity-0 invisible" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(918px, 449px, 0px);">
+                                Profile
+                                <div class="tooltip-arrow" data-popper-arrow="" style="position: absolute; top: 0px; transform: translate3d(0px, 28px, 0px);"></div>
+                            </div>
                 </li>
             </ul>
             <div class="px-4" x-data="$store.logout">

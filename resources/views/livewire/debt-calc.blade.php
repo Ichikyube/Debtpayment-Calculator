@@ -23,14 +23,14 @@
         </div>
         <div class="relative flex items-center justify-between w-full">
             <input x-model="jmlHutang" :id="$id('id')" class="jmlHutang  focus:text-black/30 text-transparent bg-transparent form-input z-10 peer block w-full appearance-none px-3 pt-2
-            placeholder:!bg-transparent transition duration-150 truncate ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none border-0 text-left outline-none
+            placeholder:!bg-transparent transition duration-150 truncate ease-in-out align-text-bottom sm:text-md sm:leading-1 focus:border-none focus:outline-none border-0 text-left outline-none
             focus-visible:ring-0" type="number" min="0" max="" step="100" placeholder=" ">
-            <label class="absolute top-0 origin-[0] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
+            <label class="absolute top-0 origin-[0] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-md text-dark duration-300
             peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5
             peer-focus:scale-75 peer-focus:text-myblue">Jumlah Hutang <span class="text-xs text-green-600">($)</span>
             </label>
             <div class="jml"></div>
-            <div class="absolute right-0 w-10/12 mr-4 text-right truncate" x-money.en-US.USD.decimal="jmlHutang"></div>
+            <div class="absolute font-bold right-0 w-10/12 mr-4 text-right truncate" x-money.en-US.USD.decimal="jmlHutang"></div>
         </div>
 
     </div>
@@ -41,15 +41,15 @@
         </div>
         <div class="relative flex items-center justify-between w-full">
             <input x-model="bungaHutang" class="bungaHutang bg-transparent focus:text-black/30 text-transparent  form-input z-10 peer block w-full appearance-none px-3 pt-2
-            placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none border-0 text-left outline-none
+            placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-md sm:leading-1 focus:border-none focus:outline-none border-0 text-left outline-none
             focus-visible:ring-0" x-mask="99" placeholder=" ">
-            <label class="absolute truncate top-0 origin-[0] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
+            <label class="absolute truncate top-0 origin-[0] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-md text-dark duration-300
             peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5
             peer-focus:scale-75 peer-focus:text-myblue">Suku Bunga Hutang <span class="text-xs text-green-600">(%)</span>
             </label>
             {{-- alert --}}
             <div class="bunga"></div>
-            <div class="absolute right-0 w-10/12 mr-4 text-right truncate" x-text="bungaHutang?bungaHutang + ' %': ''"></div>
+            <div class="absolute font-bold right-0 w-10/12 mr-4 text-right truncate" x-text="bungaHutang?bungaHutang + ' %': ''"></div>
         </div>
     </div>
     <div class="flex flex-row items-center justify-between w-full px-3 py-4 group tooltip">
@@ -58,19 +58,19 @@
         </div>
         <div class="relative flex items-center justify-between w-full">
             <input x-model="minBayar" class="minBayar bg-transparent focus:text-black/30 text-transparent  form-input z-10 peer block w-full appearance-none px-3 pt-2
-            placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none border-0 text-left outline-none
+            placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-md sm:leading-2 focus:border-none focus:outline-none border-0 text-left outline-none
             focus-visible:ring-0" required type="number" min="10" step="100" placeholder=" ">
-            <label class="absolute break-words text-ellipsis -top-3 origin-[0] max-w-[80%] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
-            peer-placeholder-shown:translate-y-0 leading-loose peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-1 peer-focus:w-full peer-focus:leading-none
+            <label class="absolute break-words text-ellipsis -top-0 lg:-top-5 md:-top-5 origin-[0] max-w-[85%] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-md text-dark duration-300
+            peer-placeholder-shown:translate-y-0 peer-placeholder-shown:-top-1 leading-none peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-4 peer-focus:w-full peer-focus:leading-none
             peer-focus:scale-75 peer-focus:text-myblue">Pembayaran minimum perbulan <span class="text-xs text-green-600">($)</span>
             </label>
             <div class="min"></div>
-            <div class="absolute right-0 w-10/12 mr-4 text-right truncate" x-money.en-US.USD.decimal="minBayar"></div>
+            <div class="absolute font-bold right-0 w-10/12 mr-4 text-right truncate" x-money.en-US.USD.decimal="minBayar"></div>
         </div>
     </div>
     <template x-if="index>0">
     <div class="flex items-center justify-between py-3 text-center">
-        <button @click="removeDebt(index)" class="ml-4 text-sm font-bold text-red-500 px-7">
+        <button @click="removeDebt(index)" class="ml-4 text-md font-bold text-red-500 px-7">
             Cancel
         </button>
     </div>
