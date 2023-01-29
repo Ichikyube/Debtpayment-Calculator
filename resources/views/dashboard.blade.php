@@ -20,7 +20,7 @@
                 <li><button type="button" data-tooltip-target="tooltip-right" data-tooltip-placement="right"
                         x-on:click.prevent=" tab = 'kalkulator', localStorage.setItem('tab', 'kalkulator')"
                         class="text-4xl text-dark lg:text-white"><i
-                            x-bind:class="tab == 'kalkulator' || tab == 'editHitungan' ? 'text-myyellow drop-shadow-3xl' : 'text-gray-400 drop-shadow-md'"
+                            x-bind:class="tab == 'kalkulator' || tab == 'edit-hitungan' ? 'text-myyellow drop-shadow-3xl' : 'text-gray-400 drop-shadow-md'"
                             class="fa-solid fa-qrcode"></i></button>
                             <div  id="tooltip-right" role="tooltip" class="tooltip absolute z-10 inline-block text-zinc-900 border-myblue/10 border-4 font-medium shadow-sm bg-white py-1 px-3 text-sm rounded-lg opacity-0 invisible" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(918px, 449px, 0px);">
                                 kalkulator

@@ -26,7 +26,7 @@
                 <div class="flex justify-between">
                     <p class="inline-block text-xl font-semibold text-gray-800 truncate w-96">
                         <template x-for="detail in data.debt_details">
-                            <span x-text="data.debt_details.length == 1 ? `${detail.debtTitle}` : `${detail.debtTitle}, `"></span>
+                            <span x-text="data.debt_details.length == 1 ? `${detail.debt_name}` : `${detail.debt_name}, `"></span>
                         </template>
                     </p>
                     <button x-on:click="open = !open" @click="chart(data.id,data.monthly_salary,data.total_min_payment)" type="button" class="text-2xl text-right"><i class="fa-solid fa-chevron-down"></i></button>
@@ -49,25 +49,25 @@
                         <template x-for="detail in data.debt_details">
                             <div class="flex w-full gap-2 p-1 mt-3 hover:shadow-sm tooltip">
                                 <div>
-                                    <div class="flex items-center px-3 py-2 text-white bg-[#2A7C97] rounded-lg" x-text="detail.debtInterest+'%'">
+                                    <div class="flex items-center px-3 py-2 text-white bg-[#2A7C97] rounded-lg" x-text="detail.interest_rate+'%'">
                                     </div>
-                                    <p class="text-center mt-[8px]" x-text="formatUang(detail.monthlyInstallments)"></p>
+                                    <p class="text-center mt-[8px]" x-text="formatUang(detail.monthly_payment)"></p>
                                 </div>
                                 <div class="w-full">
                                     <div class="flex justify-between py-2">
-                                        <p class="mb-2" x-text="detail.debtTitle"></p>
-                                        <p class="mb-2" x-text="formatTglFull(detail.datePayment)"></p>
+                                        <p class="mb-2" x-text="detail.debt_name"></p>
+                                        <p class="mb-2" x-text="formatTglFull(detail.payment_date)"></p>
                                     </div>
-                                    <div class="flex items-center gap-2" x-data="{persen: detail.monthlyInstallments/detail.debtAmount*100}">
+                                    <div class="flex items-center gap-2" x-data="{persen: detail.monthly_payment/detail.debt_amount*100}">
                                         <div class="w-full bg-gray-100 rounded-full h-2.5 dark:bg-gray-700">
                                             <div class="bg-[#2A7C97] h-2.5 rounded-full" x-bind:style="'width: '+persen+'%'"></div>
                                         </div>
-                                        <p x-text="formatUang(detail.debtAmount)"></p>
+                                        <p x-text="formatUang(detail.debt_amount)"></p>
                                     </div>
 
                                     <!-- Tooltip -->
                                     <div class="top">
-                                        <p>Pembayaran tanggal <span class="font-bold" x-text="formatTglAja(detail.datePayment)"></span> setiap bulannya</p>
+                                        <p>Pembayaran tanggal <span class="font-bold" x-text="formatTglAja(detail.payment_date)"></span> setiap bulannya</p>
                                         <i></i>
                                     </div>
                                 </div>
@@ -133,18 +133,18 @@
 
                     <div class="flex justify-between w-full lg:w-6/12">
                         <div class="flex items-end gap-2 lg:gap-10 lg:pl-10">
-                            <template x-if="data.snowball_calculator < data.normal_calculator">
+                            <template x-if="data.snowball_method < data.normal_method">
                                 <div>
                                     <p class="">Snowball</p>
-                                    <p class="text-xl font-bold text-myyellow" x-text="formatTgl(data.snowball_calculator)"></p>
+                                    <p class="text-xl font-bold text-myyellow" x-text="formatTgl(data.snowball_method)"></p>
                                 </div>
                             </template>
                             <div>
                                 <p>Tanpa Snowball</p>
-                                <p class="text-xl font-bold text-gray-700" x-text="formatTgl(data.normal_calculator)"></p>
+                                <p class="text-xl font-bold text-gray-700" x-text="formatTgl(data.normal_method)"></p>
                             </div>
                         </div>
-                        <div x-data="$store.getData" class="flex flex-col items-end gap-2 lg:flex-row">
+                        <div x-data="$store.edit" class="flex flex-col items-end gap-2 lg:flex-row">
                             <!-- Buton Edit -->
                             <button x-on:click.prevent="ubah(data.id), tab = 'edit-hitungan', localStorage.setItem('tab', 'edit-hitungan')" class="text-xl bg-[#2A7C97] px-1 text-[#F7D3C2] rounded shadow"><i class="fa-solid fa-pen-to-square"></i></button>
 

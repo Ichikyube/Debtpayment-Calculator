@@ -9,7 +9,7 @@ document.addEventListener("alpine:init", () => {
         showSuccessAlert: false,
         showErrorAlert: false,
         async userData() {
-            await fetch("http://127.0.0.1:8000/api/user", {
+            await fetch("http://localhost:8000/api/user", {
                 method: "GET",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8",
@@ -51,7 +51,7 @@ document.addEventListener("alpine:init", () => {
                 alamat: this.update.alamat,
             };
             this.showForm = false;
-            await fetch("http://127.0.0.1:8000/api/user-profile", {
+            await fetch("http://localhost:8000/api/user-profile", {
                 method: "POST",
                 body: JSON.stringify(formData),
                 headers: {

@@ -1,4 +1,4 @@
-<div x-data="$store.getData">
+<div x-data="$store.edit">
     <h1 class="my-4 ml-8 text-3xl font-bold truncate lg:my-0 lg:mb-8 drop-shadow-md">Kalkulator Hutang</h1>
     <template x-if="isLoading">
         <div class="flex flex-col items-center justify-center w-full h-full min-h-[300px] align-center mx-auto bg-white">
@@ -45,13 +45,13 @@
                 <template x-for="(debt, index) in posts">
                     <div class="bg-[#F7D3C2] snap-start snap-always mx-4 mb-8 w-11/12 lg:w-full lg:max-w-full rounded-md lg:rounded-[15px] shadow-sm hover:shadow-xl transition-shadow duration-300 ease-in-out"
                         x-data="{
-                            namaHutang:debt.debtTitle,
-                            waktuBayar:debt.datePayment,
-                            jmlHutang:debt.debtAmount,
-                            bungaHutang:debt.debtInterest,
-                            minBayar:debt.monthlyInstallments,
-                            monthlySalary:ambilData.monthlySalary,
-                            extraSalary:ambilData.extraSalary
+                            namaHutang:debt.debt_name,
+                            waktuBayar:debt.payment_date,
+                            jmlHutang:debt.debt_amount,
+                            bungaHutang:debt.interest_rate,
+                            minBayar:debt.monthly_payment,
+                            monthlySalary:ambilData.monthly_salary,
+                            extraPayment:ambilData.extra_payment
                             }">
                         <div class="flex flex-row px-5 py-5 align-middle border-b-2 tooltip">
                             <div  class="flex items-center justify-between">
@@ -134,7 +134,7 @@
                                         <i class="fa-solid fa-circle-dollar-to-slot"></i>
                                     </div>
                                     <div class="relative flex items-center w-fit">
-                                        <input x-model="ambilData.monthlySalary" id="monthlySalary" class="form-input monthlySalary align-text-bottom z-10 pt-5 peer bg-white/10 block w-full appearance-none px-3 border-0 text-left outline-none
+                                        <input x-model="ambilData.monthly_salary" id="monthlySalary" class="form-input monthlySalary align-text-bottom z-10 pt-5 peer bg-white/10 block w-full appearance-none px-3 border-0 text-left outline-none
                                         placeholder:!bg-transparent transition duration-150 ease-in-out text-white/30 focus:text-black/30 sm:text-sm sm:leading-1 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder=" ">
                                         <label for="monthlySalary" class="absolute top-3 origin-[0] break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-sm text-dark duration-300
                                         peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75
@@ -142,7 +142,7 @@
                                     </div>
                                 </div>
 
-                                <div class="mr-4 text-right" x-money.en-US.USD.decimal="ambilData.monthlySalary"></div>
+                                <div class="mr-4 text-right" x-money.en-US.USD.decimal="ambilData.monthly_salary"></div>
                             </div>
 
                             <div class="flex items-center justify-between px-3 py-4 text-center">
@@ -151,14 +151,14 @@
                                         <i class="fa-solid fa-money-bill-1-wave"></i>
                                     </div>
                                     <div class="relative flex items-center w-fit">
-                                        <input x-model="ambilData.extraSalary" class="form-input peer extraSalary text-white/30 focus:text-black z-10 pt-5 align-text-bottom text-left bg-white/10 block w-full appearance-none px-3 border-0 outline-none
+                                        <input x-model="ambilData.extra_payment" class="form-input peer extraPayment text-white/30 focus:text-black z-10 pt-5 align-text-bottom text-left bg-white/10 block w-full appearance-none px-3 border-0 outline-none
                                         placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-1 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder=" ">
-                                        <label for="extraSalary" class="absolute top-3 origin-[0]  break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-sm text-dark duration-300
+                                        <label for="extraPayment" class="absolute top-3 origin-[0]  break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-sm text-dark duration-300
                                         peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75
                                         peer-focus:text-myblue peer-focus:dark:text-blue-500">Pembayaran Extra Perbulan <span class="text-xs text-green-600">($)</span></label>
                                     </div>
                                 </div>
-                                <div class="mr-4 text-right" x-money.en-US.USD.decimal="ambilData.extraSalary"></div>
+                                <div class="mr-4 text-right" x-money.en-US.USD.decimal="ambilData.extra_payment"></div>
                             </div>
                         </div>
                     </div>
@@ -175,11 +175,11 @@
                                 <i class="fa-solid fa-circle-dollar-to-slot"></i>
                             </div>
                             <div class="relative flex items-center justify-between w-full">
-                                <input x-model="ambilData.monthlySalary" id="monthlySalary" class="form-input peer bg-transparent extraSalary text-white/30 focus:text-black/30 z-10 pt-5 align-text-bottom text-left block w-full appearance-none px-3 border-0 outline-none placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-1 focus:border-none focus:outline-none focus-visible:ring-0"
+                                <input x-model="ambilData.monthly_salary" id="monthlySalary" class="form-input peer bg-transparent extraPayment text-white/30 focus:text-black/30 z-10 pt-5 align-text-bottom text-left block w-full appearance-none px-3 border-0 outline-none placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-1 focus:border-none focus:outline-none focus-visible:ring-0"
                                 type="number" min="0" step="100" placeholder=" ">
                                 <label class="absolute break-words text-ellipsis top-0 origin-[0] max-w-[80%] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:w-full peer-focus:scale-75 peer-focus:text-myblue">Pendapatan perbulan <span class="text-xs text-green-600">($)</span></label>
                             </div>
-                            <div class="absolute right-0 w-10/12 mr-4 text-right truncate" x-money.en-US.USD.decimal="ambilData.monthlySalary"></div>
+                            <div class="absolute right-0 w-10/12 mr-4 text-right truncate" x-money.en-US.USD.decimal="ambilData.monthly_salary"></div>
                         </div>
 
                         <div class="flex flex-row items-center justify-between w-full px-3 py-4 group">
@@ -188,14 +188,14 @@
                                 <i class="fa-solid fa-money-bill-1-wave"></i>
                             </div>
                             <div class="relative flex items-center justify-between w-full">
-                                <input x-model="ambilData.extraSalary" class="form-input bg-transparent peer extraSalary text-white/30 focus:text-black/30 z-10 pt-5 align-text-bottom text-left block w-full appearance-none px-3 border-0 outline-none
+                                <input x-model="ambilData.extra_payment" class="form-input bg-transparent peer extraPayment text-white/30 focus:text-black/30 z-10 pt-5 align-text-bottom text-left block w-full appearance-none px-3 border-0 outline-none
                                     placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-1 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder=" ">
-                                <label for="extraSalary" class="absolute top-3 truncate origin-[0] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
+                                <label for="extraPayment" class="absolute top-3 truncate origin-[0] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
                                     peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-4
                                     peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Pembayaran Extra Perbulan <span class="text-xs text-green-600">($)</span></label>
                             </div>
 
-                            <div class="absolute right-0 w-10/12 mr-4 text-right truncate" x-money.en-US.USD.decimal="ambilData.extraSalary"></div>
+                            <div class="absolute right-0 w-10/12 mr-4 text-right truncate" x-money.en-US.USD.decimal="ambilData.extra_payment"></div>
                         </div>
 
                     </div>
