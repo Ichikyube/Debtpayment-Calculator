@@ -8,7 +8,9 @@ document.addEventListener("alpine:init", () => {
         showForm: false,
         showSuccessAlert: false,
         showErrorAlert: false,
+        isLoading: false,
         async userData() {
+            this.isLoading = true;
             await fetch("http://localhost:8000/api/user", {
                 method: "GET",
                 headers: {
@@ -19,6 +21,7 @@ document.addEventListener("alpine:init", () => {
                 .then((response) => response.json())
                 .then((data) => {
                     this.user = data;
+                    this.isLoading = false;
                 });
         },
         formatTglFull(params) {

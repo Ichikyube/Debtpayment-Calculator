@@ -1,23 +1,18 @@
-<div id="hilanginscroll" x-data="{modelOpen: false}" x-init="await listData" x-cloak>
+<div id="hilanginscroll" x-data="{modelOpen: false}" x-init="[listData()]" x-cloak>
     <div class="relative flex justify-between w-full">
-        <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 drop-shadow-md">List Hitungan</h1>
-        <button x-show="messages" type="button" x-on:click="closeNotif" id="alert-4" class="absolute top-0 right-0 z-50 flex items-center h-6 px-4 space-x-2 text-white transition bg-green-500 rounded-md justify-self-end w-fit hover:bg-green-600"
-            role="alert" x-transition.duration.300ms>
-            <svg aria-hidden="true" class="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
-            <span class="sr-only">Info</span>
-            {{-- pesan notifikasi --}}
-
-            <div class="ml-3 text-sm font-medium" x-text="messages"></div>
-        </button>
+        <h1 class="my-4 ml-8 text-3xl font-bold lg:my-0 drop-shadow-md">Calculated List</h1>
     </div>
     <br>
-    <template x-if="isLoading && list == 0">
-        <div class="flex flex-col items-center justify-center w-full h-full min-h-[300px] align-center mx-auto bg-white">
-            <span class="block w-6 h-6 text-center whitespace-normal border-4 rounded-full border-t-blue-300 animate-spin"></span>
-            loading...
-        </div>
-    </template>
-
+    <!-- loading animation -->
+    <x-loading />
+    <!-- notification -->
+    <button x-show="messages" x-init="timeNotif" type="button" x-on:click="closeNotif" id="alert-4" class="absolute top-0 right-0 z-50 flex items-center h-6 px-4 space-x-2 text-white transition bg-green-500 rounded-md justify-self-end w-fit hover:bg-green-600"
+    role="alert" x-transition.duration.300ms>
+    <svg aria-hidden="true" class="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+    <span class="sr-only">Info</span>
+    {{-- pesan notifikasi --}}
+    <div class="ml-3 text-sm font-medium" x-text="messages"></div>
+</button>
     <div class="flex flex-col px-4 overflow-y-scroll h-[430px] touch-auto hilanginscroll">
         <!-- Looping List Hutang -->
         <template x-for="data in list">
@@ -108,26 +103,22 @@
                 <div class="flex flex-wrap justify-between break-words lg:flex-nowrap">
                     <div class="flex w-full gap-5 mt-5 lg:gap-16 lg:w-6/12">
                         <div>
-                            <p class="text-sm break-all">Pendapatan</p>
+                            <p class="text-sm break-all">Monthly Income</p>
                             <p class="text-lg font-bold text-gray-700" x-text="formatUang(data.monthly_salary)">
                             </p>
                         </div>
                         <div>
-                            <p class="text-sm break-all">Total Hutang</p>
+                            <p class="text-sm break-all">Debt Total</p>
                             <p class="text-lg font-bold text-gray-700" x-text="formatUang(data.total_debt)">
                             </p>
                         </div>
                         <div>
-                            <p class="text-sm break-all">Pembayaran</p>
-                            <p class="text-lg font-bold text-gray-700" x-text="formatUang(data.total_min_payment)">
-                                $250
-                            </p>
+                            <p class="text-sm break-all">Payment</p>
+                            <p class="text-lg font-bold text-gray-700" x-text="formatUang(data.total_min_payment)"></p>
                         </div>
                         <div>
                             <p class="text-sm break-all">Extra</p>
-                            <p class="text-lg font-bold text-gray-700" x-text="formatUang(data.extra_salary)">
-                                $250
-                            </p>
+                            <p class="text-lg font-bold text-gray-700" x-text="formatUang(data.extra_salary)"></p>
                         </div>
                     </div>
 
@@ -140,7 +131,7 @@
                                 </div>
                             </template>
                             <div>
-                                <p>Tanpa Snowball</p>
+                                <p>Without Snowball</p>
                                 <p class="text-xl font-bold text-gray-700" x-text="formatTgl(data.normal_method)"></p>
                             </div>
                         </div>

@@ -167,11 +167,104 @@ body{
     box-shadow:0 1px 8px rgba(0,0,0,0.5);
 }
 
+[data-tooltip] {
+  position: relative;
+  cursor: pointer;
+}
+[data-tooltip]:before,
+[data-tooltip]:after {
+  line-height: 1;
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+  font-weight: 500;
+  pointer-events: none;
+  position: absolute;
+  box-sizing: border-box;
+  display: none;
+  opacity: 0;
+}
+[data-tooltip]:before {
+  content: "";
+  border: 5px solid transparent;
+  z-index: 100;
+}
+[data-tooltip]:after {
+  content: attr(data-tooltip);
+  text-align: center;
+  min-width: 3em;
+  max-width: 21em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 6px 8px;
+  border-radius: 7px;
+  background: #FFFFFF;
+  border-width: 4px;
+  border-color: #e0f2fe;
+  box-shadow: 0 6px 9px 0 rgb(0 0 0 / 0.05);
+  color: #18181b;
+  z-index: 99;
+}
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  display: block;
+  opacity: 1;
+}
+[data-tooltip]:not([data-flow])::before,
+[data-tooltip][data-flow="top"]::before {
+  bottom: 100%;
+  border-bottom-width: 0;
+  border-radius: 0.125rem;
+  border-top-color: #e0f2fe;
+}
+[data-tooltip]:not([data-flow])::after,
+[data-tooltip][data-flow="top"]::after {
+  bottom: calc(100% + 5px);
+}
+[data-tooltip]:not([data-flow])::before, [tooltip]:not([data-flow])::after,
+[data-tooltip][data-flow="top"]::before,
+[data-tooltip][data-flow="top"]::after {
+  left: 50%;
+  -webkit-transform: translate(-50%, -4px);
+          transform: translate(-50%, -4px);
+}
+[data-tooltip][data-flow="bottom"]::before {
+  top: 100%;
+  border-top-width: 0;
+  border-radius: 0.125rem;
+  border-bottom-color: #e0f2fe;
+}
+[data-tooltip][data-flow="bottom"]::after {
+  top: calc(100% + 5px);
+
+}
+[data-tooltip][data-flow="bottom"]::before, [data-tooltip][data-flow="bottom"]::after {
+  left: 50%;
+  -webkit-transform: translate(-50%, -1px);
+          transform: translate(-50%, -1px);
+}
+[data-tooltip][data-flow="right"]::before {
+  top: 50%;
+  border-left-width: 0;
+  border-right-color: #e0f2fe;
+  z-index: 1000;
+  border-radius: 0.125rem;
+  right: calc(0em - 5px);
+  -webkit-transform: translate(1px, -50%);
+          transform: translate(1px, -50%);
+}
+[data-tooltip][data-flow="right"]::after {
+  top: 50%;
+  left: calc(100% + 5px);
+  -webkit-transform: translate(1px, -50%);
+          transform: translate(1px, -50%);
+}
+[data-tooltip=""]::after, [data-tooltip=""]::before {
+  display: none !important;
+}
 
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-    color: #38bdf8;
-    opacity: 0.5;
     display: block;
     background: none;
     width: 20px;

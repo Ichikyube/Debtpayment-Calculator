@@ -1,12 +1,4 @@
-<div x-data="{
-    showDatepicker: false,
-    waktuBayar:'',
-    selectedDate: '',
-    dateFormat: 'YYYY-MM-DD',
-    month: '',
-    year: '',
-    no_of_days: [],
-    blankdays: []}" x-init="[getNoOfDays(), initDate() ]" x-cloak x-id="['date-input']"  class="relative z-50 flex items-center justify-between w-full group">
+<div {{ $attributes }} x-cloak x-id="['date-input']"  class="relative z-50 flex items-center justify-between w-full group">
     <input type="hidden" name="date"  :id="$id('date-input')" :value="waktuBayar" class="hidden waktuBayar" placeholder=" " >
     <input type="date" x-on:click="initDate(waktuBayar), showDatepicker = !showDatepicker" x-model="waktuBayar"
         x-on:keydown.escape="showDatepicker = false"
@@ -14,12 +6,12 @@
         placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none
         focus-visible:ring-0"
         placeholder="Select date" />
-    <label :for="$id('date-input')" class="absolute leading-loose peer-focus:leading-none top-2 -z-10 origin-[0] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
+    <label :for="$id('date-input')" class="absolute leading-loose peer-focus:leading-none top-2 -z-10 origin-[0] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-md font-semibold text-green-800 duration-300
     peer-placeholder-shown:translate-y-4  peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 w-40 break-words text-ellipsis
-    peer-focus:scale-75 peer-focus:text-myblue">Tanggal Pembayaran Selanjutnya</label>
+    peer-focus:scale-75 peer-focus:text-myblue">Next Monthly Payment </label>
     {{-- alert --}}
     <div class="waktu"></div>
-    <div class="absolute right-0 w-10/12 mr-4 text-right truncate group-focus-within:text-transparent" x-text="new Date(waktuBayar).toLocaleDateString('default', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })"></div>
+    <div class="absolute right-0 inline-block w-10/12 mr-4 font-bold text-right truncate align-text-bottom group-focus-within:text-transparent" x-text="new Date(waktuBayar).toLocaleDateString('default', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })"></div>
     <div :id="$id('date-input')" class="absolute top-0 left-0 p-4 mt-12 bg-white rounded-lg shadow" style="width: 17rem"
         x-show.transition="showDatepicker" @click.away = "showDatepicker = false">
         <div class="flex items-center justify-between mb-2">

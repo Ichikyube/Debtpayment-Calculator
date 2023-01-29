@@ -21,7 +21,7 @@
 
         <script src="{{ asset('js/debt/debts.js') }}"></script>
         <script src="{{asset('js/auth/auth.js')}}"></script>
-        <script src="{{ asset('js/flowbite.min.js') }}"></script>
+        <script defer src="{{ asset('js/flowbite.min.js') }}"></script>
         <script src="{{asset('js/users/profile.js')}}"></script>
         {{-- <script defer src="{{ asset('build/assets/app-d95ce6e5.js') }}"></script> --}}
 

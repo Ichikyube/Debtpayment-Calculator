@@ -1,11 +1,7 @@
 <div x-data="$store.edit">
-    <h1 class="my-4 ml-8 text-3xl font-bold truncate lg:my-0 lg:mb-8 drop-shadow-md">Kalkulator Hutang</h1>
-    <template x-if="isLoading">
-        <div class="flex flex-col items-center justify-center w-full h-full min-h-[300px] align-center mx-auto bg-white">
-            <span class="block w-6 h-6 text-center whitespace-normal border-4 rounded-full border-t-blue-300 animate-spin"></span>
-            loading...
-        </div>
-    </template>
+    <h1 class="my-4 ml-8 text-3xl font-bold truncate lg:my-0 lg:mb-8 drop-shadow-md">Edit Debt </h1>
+    <!-- loading animation -->
+    <x-loading />
     {{-- start error alert --}}
     <div x-show="showMinierrrorAlert"
         x-transition:enter="transition -translate-y-10 ease-out duration-300"
@@ -27,6 +23,7 @@
                 </template>
             </ul>
         </div>
+
         <div class="flex justify-end">
             <button x-on:click="showMinierrrorAlert = false" class="text-red-800 bg-transparent border border-red-900 hover:bg-red-900 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xs px-3 py-1.5 text-center dark:hover:bg-red-400 dark:border-red-400 dark:text-red-400 dark:hover:text-white dark:focus:ring-red-800">
                 close
@@ -35,97 +32,43 @@
     </div>
     {{-- end error alert --}}
 
+    <!-- show the new calculated result -->
     <template x-if="!calculated">
         @livewire('views.hasil-edit')
     </template>
+    <!-- edit calculator view -->
     <template x-if="!isLoading">
         <div x-show="calculated" class="relative flex flex-col md:flex-row lg:flex-row justify-evenly stretch">
             <div class="flex snap-y snap-mandatory flex-col items-center px-4 lg:w-1/2 overflow-y-scroll scroll-smooth rounded-xl overflow-x-hidden order-last md:order-first lg:order-first h-[425px] touch-auto hilanginscroll">
                 <!-- Form Kalkulator -->
                 <template x-for="(debt, index) in posts">
-                    <div class="bg-[#F7D3C2] snap-start snap-always mx-4 mb-8 w-11/12 lg:w-full lg:max-w-full rounded-md lg:rounded-[15px] shadow-sm hover:shadow-xl transition-shadow duration-300 ease-in-out"
-                        x-data="{
-                            namaHutang:debt.debt_name,
-                            waktuBayar:debt.payment_date,
-                            jmlHutang:debt.debt_amount,
-                            bungaHutang:debt.interest_rate,
-                            minBayar:debt.monthly_payment,
-                            monthlySalary:ambilData.monthly_salary,
-                            extraPayment:ambilData.extra_payment
-                            }">
-                        <div class="flex flex-row px-5 py-5 align-middle border-b-2 tooltip">
-                            <div  class="flex items-center justify-between">
-                                <input x-show="open"  x-model="namaHutang" :id="$id('id')" class="w-full ml-5 text-xl font-bold border-0 rounded-md namaHutang form-input focus-visible:ring-0" type="text">
-                                <button type="button" class="flex px-4 py-2 font-medium group" x-bind:class="open? 'bg-myorange rounded-md -ml-12': ''"
-                                @click="open = !open">
-                                <div x-show="!open" class="ml-2 mr-4 text-xl font-bold" x-text="namaHutang"></div>
-                                    <span class="group-hover:text-red-500"><i class="fa-solid fa-pen-to-square"></i></span></button>
-                            </div>
-                            <div class="nama"></div>
+                    <x-debt-card x-data="{
+                        namaHutang:debt.debt_name,
+                        waktuBayar:debt.payment_date,
+                        jmlHutang:debt.debt_amount,
+                        bungaHutang:debt.interest_rate,
+                        minBayar:debt.monthly_payment,
+                        monthlySalary:ambilData.monthly_salary,
+                        extraPayment:ambilData.extra_payment
+                        }" date='$date'>
+                            <x-slot name="date">
+                                <x-date-picker x-data="{
+                                    showDatepicker: false,
+                                    selectedDate: '',
+                                    dateFormat: 'YYYY-MM-DD',
+                                    month: '',
+                                    year: '',
+                                    no_of_days: [],
+                                    blankdays: []}" x-init="[getNoOfDays(), initDate(waktuBayar) ]"></x-date-picker>
+                            </x-slot>
+                         </x-debt-card>
 
-                        </div>
-                        <div class="flex flex-row items-center justify-between w-full px-3 py-4 border-b-2 group tooltip">
-                            <div class="flex justify-center w-12 mr-2">
-                                <i class="fa-regular fa-calendar-xmark"></i>
-                            </div>
-                            <x-date-picker-edit />
-                        </div>
-                        <div class="flex items-center justify-between w-full px-3 py-4 border-b-2 group tooltip">
-                            <div class="flex justify-center w-12 mr-2">
-                                <i class="fa-solid fa-coins"></i>
-                            </div>
-                            <div class="relative flex items-center justify-between w-full">
-                                <input x-model="jmlHutang" :id="$id('id')" class="jmlHutang bg-transparent focus:text-black/30 text-transparent form-input z-10 peer block w-full appearance-none px-3 pt-2
-                                placeholder:!bg-transparent transition duration-150 truncate ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none border-0 text-left outline-none
-                                focus-visible:ring-0" type="number" min="0" max="" step="100" placeholder=" ">
-                                <label class="absolute top-0 origin-[0] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
-                                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5
-                                peer-focus:scale-75 peer-focus:text-myblue">Jumlah Hutang <span class="text-xs text-green-600">($)</span>
-                                </label>
-                                <div class="jml"></div>
-                                <div class="absolute right-0 w-10/12 mr-4 text-right truncate" x-money.en-US.USD.decimal="jmlHutang"></div>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-row items-center justify-between w-full px-3 py-4 border-b-2 group tooltip">
-                            <div class="flex justify-center w-12 mr-2">
-                                <i class="fa-solid fa-percent"></i>
-                            </div>
-                            <div class="relative flex items-center justify-between w-full">
-                                <input x-model="bungaHutang" class="bungaHutang bg-transparent focus:text-black/30 text-transparent form-input z-10 peer block w-full appearance-none px-3 pt-2
-                                placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none border-0 text-left outline-none
-                                focus-visible:ring-0" x-mask="99" placeholder=" ">
-                                <label class="absolute truncate top-0 origin-[0] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
-                                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5
-                                peer-focus:scale-75 peer-focus:text-myblue">Suku Bunga Hutang <span class="text-xs text-green-600">(%)</span>
-                                </label>
-                                {{-- alert --}}
-                                <div class="bunga"></div>
-                                <div class="absolute right-0 w-10/12 mr-4 text-right truncate" x-text="bungaHutang?bungaHutang + ' %': ''"></div>
-                            </div>
-                        </div>
-                        <div class="flex flex-row items-center justify-between w-full px-3 py-4 group tooltip">
-                            <div class="flex justify-center w-12 mr-2">
-                                <i class="fa-solid fa-hand-holding-dollar"></i>
-                            </div>
-                            <div class="relative flex items-center justify-between w-full">
-                                <input x-model="minBayar" class="minBayar bg-transparent focus:text-black/30 text-transparent form-input z-10 peer block w-full appearance-none px-3 pt-2
-                                placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none border-0 text-left outline-none
-                                focus-visible:ring-0" required type="number" min="10" step="100" placeholder=" ">
-                                <label class="absolute break-words text-ellipsis top-0 origin-[0] max-w-[80%] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
-                                peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:w-full
-                                peer-focus:scale-75 peer-focus:text-myblue">Pembayaran minimum perbulan <span class="text-xs text-green-600">($)</span>
-                                </label>
-                                <div class="min"></div>
-                                <div class="absolute right-0 w-10/12 mr-4 text-right truncate" x-money.en-US.USD.decimal="minBayar"></div>
-                            </div>
-                        </div>
-                    </div>
                 </template>
+                <!-- Additional options for mobile view -->
                 <div class="h-screen">
                     <div class="bg-[#F7D3C2] w-11/12 mx-4 snap-start snap-always block md:hidden lg:hidden h-fit md:ml-4 lg:ml-4 rounded-md lg:rounded-[15px] shadow-sm hover:shadow-lg mb-8 transition-shadow duration-300 ease-in-out">
                         <div class="flex flex-row px-5 py-5 align-middle border-b-2">
-                            <h6 class="ml-5 text-xl font-bold text-blueGray-700">Tambahan</h6>
+                            <h6 class="ml-5 text-xl font-bold text-blueGray-700">Additional</h6>
                         </div>
                         <div class="flex flex-row flex-wrap lg:flex-col">
                             <div class="flex items-center justify-between px-3 py-4 text-center">
@@ -138,10 +81,9 @@
                                         placeholder:!bg-transparent transition duration-150 ease-in-out text-white/30 focus:text-black/30 sm:text-sm sm:leading-1 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder=" ">
                                         <label for="monthlySalary" class="absolute top-3 origin-[0] break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-sm text-dark duration-300
                                         peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75
-                                        peer-focus:text-myblue peer-focus:dark:text-blue-500">Pendapatan perbulan <span class="text-xs text-green-600">($)</span></label>
+                                        peer-focus:text-myblue peer-focus:dark:text-blue-500">Monthly Income <span class="text-xs text-green-600">($)</span></label>
                                     </div>
                                 </div>
-
                                 <div class="mr-4 text-right" x-money.en-US.USD.decimal="ambilData.monthly_salary"></div>
                             </div>
 
@@ -155,7 +97,7 @@
                                         placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-1 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder=" ">
                                         <label for="extraPayment" class="absolute top-3 origin-[0]  break-word sm:w-max md:w-max lg:w-max -translate-y-6 scale-75 transform text-sm text-dark duration-300
                                         peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75
-                                        peer-focus:text-myblue peer-focus:dark:text-blue-500">Pembayaran Extra Perbulan <span class="text-xs text-green-600">($)</span></label>
+                                        peer-focus:text-myblue peer-focus:dark:text-blue-500">Extra Monthly Payment <span class="text-xs text-green-600">($)</span></label>
                                     </div>
                                 </div>
                                 <div class="mr-4 text-right" x-money.en-US.USD.decimal="ambilData.extra_payment"></div>
@@ -164,10 +106,11 @@
                     </div>
                 </div>
             </div>
+            <!-- right side view is for Additional options for desktop view -->
             <div class="flex flex-col items-center order-last w-1/2 mb-2 align-middle lg:items-end md:order-last lg:order-last">
                 <div class="bg-[#F7D3C2] w-11/12 hidden md:block lg:block h-fit md:ml-4 lg:ml-4 rounded-md lg:rounded-[15px] shadow-sm hover:shadow-md transition-shadow duration-300 ease-in-out">
                     <div class="flex flex-row px-5 py-5 align-middle border-b-2">
-                        <h6 class="ml-5 text-xl font-bold text-blueGray-700">Tambahan</h6>
+                        <h6 class="ml-5 text-xl font-bold text-blueGray-700">Additional</h6>
                     </div>
                     <div class="flex flex-row flex-wrap lg:flex-col">
                         <div class="flex items-center justify-between w-full px-3 py-4 text-center">
@@ -177,7 +120,7 @@
                             <div class="relative flex items-center justify-between w-full">
                                 <input x-model="ambilData.monthly_salary" id="monthlySalary" class="form-input peer bg-transparent extraPayment text-white/30 focus:text-black/30 z-10 pt-5 align-text-bottom text-left block w-full appearance-none px-3 border-0 outline-none placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-1 focus:border-none focus:outline-none focus-visible:ring-0"
                                 type="number" min="0" step="100" placeholder=" ">
-                                <label class="absolute break-words text-ellipsis top-0 origin-[0] max-w-[80%] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:w-full peer-focus:scale-75 peer-focus:text-myblue">Pendapatan perbulan <span class="text-xs text-green-600">($)</span></label>
+                                <label class="absolute break-words text-ellipsis top-0 origin-[0] max-w-[80%] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:w-full peer-focus:scale-75 peer-focus:text-myblue">Monthly Income <span class="text-xs text-green-600">($)</span></label>
                             </div>
                             <div class="absolute right-0 w-10/12 mr-4 text-right truncate" x-money.en-US.USD.decimal="ambilData.monthly_salary"></div>
                         </div>
@@ -192,15 +135,13 @@
                                     placeholder:!bg-transparent transition duration-150 ease-in-out sm:text-sm sm:leading-1 focus:border-none focus:outline-none focus-visible:ring-0" type="number" min="0" step="100" placeholder=" ">
                                 <label for="extraPayment" class="absolute top-3 truncate origin-[0] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-sm text-dark duration-300
                                     peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-4
-                                    peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Pembayaran Extra Perbulan <span class="text-xs text-green-600">($)</span></label>
+                                    peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Extra Monthly Payment <span class="text-xs text-green-600">($)</span></label>
                             </div>
-
                             <div class="absolute right-0 w-10/12 mr-4 text-right truncate" x-money.en-US.USD.decimal="ambilData.extra_payment"></div>
                         </div>
-
                     </div>
-
                 </div>
+                <!-- button section for calculate -->
                 <div x-show="calculated" class="flex flex-row items-center justify-between order-first mx-auto mb-2 text-center align-middle ml-9 md:mt-6 w-80 md:w-11/12 lg:w-11/12 md:order-last lg:order-last md:flex-row lg:mt-10 md:justify-evenly lg:justify-evenly">
                     {{-- <button type="button" x-on:click.lazy="posts++" class="text-sm py-0 md:py-2 after:top-3 md:after:top-8 lg:after:top-4 lg:py-5 px-7 w-36 lg:w-auto
                     bg-white text-red-500 font-bold rounded-[15px] drop-shadow-lg cursor-pointer select-none active:translate-y-1
@@ -215,7 +156,6 @@
                     [box-shadow:0_1px_0_0_#f2f2f2,0_3px_0_0_#b7b7b7] bg-myblue py-2 md:h-14 lg:h-14 lg:w-44 transition-all duration-200">Calculate</button>
                 </div>
             </div>
-
         </div>
     </template>
 </div>

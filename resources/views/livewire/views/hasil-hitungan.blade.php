@@ -25,24 +25,27 @@
                     </div>
 
                     <div class="bottom">
-                        <p>Pembayaran tanggal <span class="font-bold" x-text="formatTglAja(data.payment_date)"></span> setiap bulannya</p>
+                        <p>Payment Date <span class="font-bold" x-text="formatTglAja(data.payment_date)"></span> each month</p>
                         <i></i>
                     </div>
                 </div>
             </template>
+            <template x-if="hasil.hutang.length > 2">
+                <x-scroll-arrow >There's still more </x-scroll-arrow>
+            </template>
             <div class="">
                 <div
                 class="p-8 pb-0 text-lg font-medium tracking-wide text-center text-green-500 uppercase border-gray-200">
-                Estimasi Lunas</div>
+                Debt Paid Off</div>
                 <div class="items-center justify-center block sm:flex md:block lg:flex">
                     <template x-if="hasil.hasil.snowball_method < hasil.hasil.normal_method">
                     <div class="mt-2 text-center sm:m-8 md:m-0 md:mt-4 md:mb-8 lg:m-5 tooltip">
                         <div class="inline-flex items-center">
                             <span class="text-3xl font-semibold text-[#2A7C97]" x-text="formatTgl(hasil.hasil.snowball_method)"></span>
                         </div>
-                        <span class="block mt-2 text-sm text-gray-600">Metode Snowball</span>
+                        <span class="block mt-2 text-sm text-gray-600">Snowball Method</span>
                         <div class="top">
-                            <p>ketika hutang terkecil lunas, pembayaran minimum perbulan hutang tersebut dialokasikan ke hutang terkecil selanjutnya.</p>
+                            <p>When the smallest debt is paid off, the minimum monthly payment of that debt is allocated to the next smallest debt.</p>
                             <i></i>
                         </div>
                     </div>
@@ -51,7 +54,7 @@
                         <div class="inline-flex items-center">
                             <span class="text-3xl font-medium" x-text="formatTgl(hasil.hasil.normal_method)"></span>
                         </div>
-                        <span class="block mt-2 text-sm text-gray-600">Metode biasa</span>
+                        <span class="block mt-2 text-sm text-gray-600">Normal Method</span>
                     </div>
                 </div>
             </div>
@@ -60,11 +63,11 @@
         <div class="flex flex-col items-center w-1/2 -z-10">
             <div class="flex justify-between w-full px-16">
                 <div>
-                    Pendapatan<br>
+                    Income<br>
                     <span class="font-semibold" x-text="formatUang(hasil.hasil.monthly_salary)"></span>
                 </div>
                 <div class="text-end">
-                    Total Min Bayar <br>
+                    Total Min Payment <br>
                     <span class="font-semibold" x-text="formatUang(hasil.hasil.total_min_payment)"></span>
 
                 </div>
@@ -76,17 +79,17 @@
             <div class="flex justify-between w-full px-16">
                 <div>
                     <span class="font-semibold" x-text="formatUang(hasil.hasil.extra_payment)"></span><br>
-                    Pembayaran Extra
+                    Extra Payment
                 </div>
                 <div class="text-end">
                     <span class="font-semibold" x-text="formatUang(hasil.hasil.debt_total)"></span><br>
-                    Total Hutang
+                    Debt Amount
                 </div>
             </div>
         </div>
     </div>
     <div class="flex justify-end  mt-5 mr-[50px]">
-        <button x-on:click="calculated = !calculated" class="self-end my-2 text-xl font-bold mr-7">Kembali</button>
+        <button x-on:click="calculated = !calculated" class="self-end my-2 text-xl font-bold mr-7">Back</button>
         <button x-on:click="tambahData, tab = 'listHitungan'" class="self-end px-4 py-2 text-white bg-[#2A7C97] rounded-xl"><span class="inline-block text-center align-top">Simpan</span></button>
     </div>
 </div>

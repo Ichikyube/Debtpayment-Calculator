@@ -27,12 +27,12 @@
             </div>
 
             <p class="mt-2 text-sm text-gray-500 ">
-                Apakah Anda yakin ingin menghapus data ini?
+                Are you sure want to erase this data?
             </p>
             <div class="flex justify-center gap-8 mt-12">
-                <button x-on:click="deleted, modelOpen = !modelOpen" class="px-5 py-2 text-white bg-red-600 rounded-xl">Ya</a>
+                <button x-on:click="deleted, modelOpen = !modelOpen" class="px-5 py-2 text-white bg-red-600 rounded-xl">Yes</a>
                 <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
-                    Tidak
+                    No
                     </svg>
                 </button>
             </div>

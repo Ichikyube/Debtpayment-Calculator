@@ -5,51 +5,43 @@
     let token = localStorage.getItem('token');
 
     if (token == null) {
-        localStorage.setItem ('messages', 'Harap Login terlebih dahulu')
+        localStorage.setItem ('messages', 'Please Login first')
         window.location.replace("/login");
     }
 </script>
 <script src="{{asset('js/auth/auth.js')}}"></script>
-
-<div x-data="{ loading: true, tab: localStorage.getItem('tab') }"  class="relative w-full p-4 align-middle"  x-init="loading = false">
+<div x-data="{ loading: true, side: window.innerWidth > 992? true:false, tab: localStorage.getItem('tab') }"  class="relative w-full p-4 align-middle"  x-init="loading = false">
     <!-- Sidebar -->
     <div x-data="$store.create" class="flex flex-col w-full align-middle lg:flex-row" x-cloak x-show="!loading">
         <div class="flex justify-between w-full align-middle lg:w-20 lg:flex-col">
+
+            <!-- Logo Far Capital -->
             <a href="" class="mx-3 text-4xl text-white w-fit"><img src="/img/far.png" alt="png" class="w-12"></a>
-            <ul class="flex flex-row w-full h-full px-4 justify-evenly lg:flex-col">
-                <li><button type="button" data-tooltip-target="tooltip-right" data-tooltip-placement="right"
+
+            <!-- Navigation icons -->
+            <ul x-on:resize.window.debounce="side = (window.innerWidth > 992) ? true : false" class="flex flex-row items-center w-full h-full px-4 justify-evenly lg:flex-col">
+                <li><button type="button" data-tooltip="Calculator" :data-flow="side?'right':'bottom'"
                         x-on:click.prevent=" tab = 'kalkulator', localStorage.setItem('tab', 'kalkulator')"
-                        class="text-4xl text-dark lg:text-white"><i
+                        class="text-4xl text-center text-dark lg:text-white"><i
                             x-bind:class="tab == 'kalkulator' || tab == 'edit-hitungan' ? 'text-myyellow drop-shadow-3xl' : 'text-gray-400 drop-shadow-md'"
                             class="fa-solid fa-qrcode"></i></button>
-                            <div  id="tooltip-right" role="tooltip" class="tooltip absolute z-10 inline-block text-zinc-900 border-myblue/10 border-4 font-medium shadow-sm bg-white py-1 px-3 text-sm rounded-lg opacity-0 invisible" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(918px, 449px, 0px);">
-                                kalkulator
-                                <div class="tooltip-arrow" data-popper-arrow="" style="position: absolute; top: 0px; transform: translate3d(0px, 28px, 0px);"></div>
-                            </div>
                 </li>
-                <li><button type="button" x-bind:disabled="list.length == 0" data-tooltip-target="tooltip-right2" data-tooltip-placement="right"
+                <li><button type="button"  data-tooltip="Calculated List" :data-flow="side?'right':'bottom'"
                         x-on:click.prevent=" tab = 'listHitungan', localStorage.setItem('tab', 'listHitungan')"
-                        class="text-4xl text-dark lg:text-white "><i
+                        class="text-4xl text-center text-dark lg:text-white"><i
                             x-bind:class="tab == 'listHitungan' ? 'text-myyellow drop-shadow-3xl' : 'text-gray-400 drop-shadow-md'"
                             class="fa-solid fa-money-bill"></i></button>
-                        <div  id="tooltip-right2" role="tooltip" class="tooltip absolute z-10 inline-block text-zinc-900 border-myblue/10 border-4 font-medium shadow-sm bg-white py-1 px-3 text-sm rounded-lg opacity-0 invisible" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(918px, 449px, 0px);">
-                            List Hitungan
-                            <div class="tooltip-arrow" data-popper-arrow="" style="position: absolute; top: 0px; transform: translate3d(0px, 28px, 0px);"></div>
-                        </div>
                 </li>
-                <li><button type="button" x-on:click.prevent=" tab = 'profile', localStorage.setItem('tab', 'profile')" data-tooltip-target="tooltip-right3" data-tooltip-placement="right"
-                        class="text-4xl text-dark lg:text-white"><i
+                <li><button type="button" x-on:click.prevent=" tab = 'profile', localStorage.setItem('tab', 'profile')" data-tooltip="Calculated List" :data-flow="side?'right':'bottom'"
+                        class="text-4xl text-center text-dark"><i
                             x-bind:class="tab == 'profile' ? 'text-myyellow drop-shadow-3xl' : 'text-gray-400 drop-shadow-md'"
                             class="fa-regular fa-user"></i></button>
-                            <div  id="tooltip-right3" role="tooltip" class="tooltip absolute z-10 inline-block text-zinc-900 border-myblue/10 border-4 font-medium shadow-sm bg-white py-1 px-3 text-sm rounded-lg opacity-0 invisible" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(918px, 449px, 0px);">
-                                Profile
-                                <div class="tooltip-arrow" data-popper-arrow="" style="position: absolute; top: 0px; transform: translate3d(0px, 28px, 0px);"></div>
-                            </div>
                 </li>
             </ul>
-            <div class="px-4" x-data="$store.logout">
+            <!-- Log Out -->
+            <div class="self-center px-4" x-data="$store.logout">
                 <button x-on:click="showWarningAlert = true"
-                    class="text-4xl text-dark lg:text-white">
+                    class="text-4xl text-center text-gray-400 hover:text-white">
                     <i class="fa-solid fa-right-from-bracket drop-shadow-md"></i></button>
 
                 {{-- start alert modal warning --}}
@@ -78,9 +70,9 @@
                                         </svg>
                                     </div>
                                 </div>
-                                <h2 class="py-4 text-xl font-bold ">Apakah anda yakin mau logout?!!</h3>
+                                <h2 class="py-4 text-xl font-bold ">Are you sure want to logout?!!</h3>
                                 <p class="px-8 text-sm text-gray-500">
-                                    klik tombol ya jika ingin logout
+                                    click 'Yes' button if you want to logout
                                 </p>
                             </div>
                         <!--footer-->
@@ -89,7 +81,7 @@
                                     Cancel
                                 </button>
                                 <button x-on:click="logout" class="px-5 py-2 mb-2 text-sm font-medium tracking-wider text-white bg-red-500 border border-red-500 rounded-full shadow-sm md:mb-0 hover:shadow-lg hover:bg-red-600">
-                                    ya
+                                    Yes
                                 </button>
                             </div>
                         </div>
@@ -100,6 +92,7 @@
             </div>
         </div>
 
+        <!-- Display View -->
         <div class="mt-4 lg:mt-0 md:px-4 bg-white stretch border-spacing-12 border-4 border-sky-200/20
                     shadow pt-0 h-[540px] lg:w-[97%] transform
                     rounded-md lg:rounded-xl px-0 lg:p-10 py-10">
@@ -107,26 +100,23 @@
                 x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90"
                 x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-300"
                 x-transition:leave-start="opacity-100 scale-100"
-                x-transition:leave-end="opacity-0 scale-90">@livewire('components.kalkulator')</template>
+                x-transition:leave-end="opacity-0 scale-90">@livewire('views.kalkulator')</template>
             <template x-if="tab == 'edit-hitungan'" x-cloak x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
                 x-transition:leave="transition ease-in duration-300"
                 x-transition:leave-start="opacity-100 scale-100"
-                x-transition:leave-end="opacity-0 scale-90">@livewire('components.edit-hitungan')</template>
+                x-transition:leave-end="opacity-0 scale-90">@livewire('views.edit-hitungan')</template>
             <template x-if="tab == 'listHitungan'" x-cloak x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
                 x-transition:leave="transition ease-in duration-300"
                 x-transition:leave-start="opacity-100 scale-100"
-                x-transition:leave-end="opacity-0 scale-90">@livewire('components.list-hitungan')</template>
+                x-transition:leave-end="opacity-0 scale-90">@livewire('views.list-hitungan')</template>
             <template x-if="tab == 'profile'" x-cloak x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
                 x-transition:leave="transition ease-in duration-300"
                 x-transition:leave-start="opacity-100 scale-100"
-                x-transition:leave-end="opacity-0 scale-90">@livewire('components.profile')</template>
+                x-transition:leave-end="opacity-0 scale-90">@livewire('views.profile')</template>
         </div>
     </div>
 </div>
-
-
-
-    @endsection
+@endsection

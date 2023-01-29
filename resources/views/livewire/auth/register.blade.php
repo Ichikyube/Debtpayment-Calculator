@@ -10,23 +10,20 @@
     <script src="{{asset('js/auth/auth.js')}}"></script>
 
     <div x-data="$store.register" class="bg-white items-center px-5  py-7 sm:w-[500px] mx-auto rounded-[15px] shadow-2xl" >
-        <div class="sm:mx-auto text-dark w-full">
+        <div class="w-full sm:mx-auto text-dark">
             <a href="{{ route('home') }}">
                 <div class="flex justify-center w-20 mx-auto mt-5"><x-logo/></div>
                 <h2 class=" text-[24px] md:text-[40px] leading-[70.12px] font-semibold text-center text-black tracking-tight">
                     Register
                 </h2>
             </a>
-
-                
-
         </div>
 
-        <div class="sm:mx-auto sm:w-full sm:max-w-md px-[20px] mt-5"  >
-            <div class="px-4">                
+        <form @submit.prevent="submited()" class="sm:mx-auto sm:w-full sm:max-w-md px-[20px] mt-5">
+            <div class="px-4">
                 <div>
                     <label for="name" class="block text-sm font-medium leading-5 text-black">
-                        Nama
+                        Name
                     </label>
 
                     <div class="mt-1 rounded-md">
@@ -61,7 +58,7 @@
                 </div>
 
                 <div class="mt-6">
-                    <label for="password_confirmation" class="block text-black text-sm font-medium leading-5">
+                    <label for="password_confirmation" class="block text-sm font-medium leading-5 text-black">
                         Confirm Password
                     </label>
 
@@ -71,20 +68,19 @@
                     </div>
                     <p class="text-xs text-red-500" x-text="validation.password_confirmation"></p>
                 </div>
-
                 <div class="mt-6">
                     <span class="block w-full rounded-md shadow-sm bg-[#2A7C97]">
-                        <button x-on:click="submited()" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-[#2A7C97] hover:bg-[#FDC32F] hover:text-black focus:outline-none focus:border-main focus:ring-indigo active:bg-white">
+                        <button type="submit" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-[#2A7C97] hover:bg-[#FDC32F] hover:text-black focus:outline-none focus:border-main focus:ring-indigo active:bg-white">
                             Register
                         </button>
                     </span>
                 </div>
-                <p class="mt-2 text-sm leading-5 text-center text-gray-600 max-w tracking-tight">
-                    Sudah memiliki akun? <a href="{{ route('login') }}" class="no-underline text-blue-500 font-medium transition duration-150 ease-in-out hover:text-indigo-500 focus:outline-none focus:underline">
+                <p class="mt-2 text-sm leading-5 tracking-tight text-center text-gray-600 max-w">
+                    Already own account? <a href="{{ route('login') }}" class="font-medium text-blue-500 no-underline transition duration-150 ease-in-out hover:text-indigo-500 focus:outline-none focus:underline">
                          Sign in
                     </a>
                 </p>
             </div>
-        </div>
+        </form>
     </div>
 </x-app-layout>

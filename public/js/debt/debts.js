@@ -29,7 +29,6 @@ const MONTH_SHORT_NAMES = [
 ];
 const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-
 document.addEventListener("alpine:init", () => {
     Alpine.store("create", () => ({
         posts: [0],
@@ -112,7 +111,7 @@ document.addEventListener("alpine:init", () => {
                 monthlyPayment.push(minBayar[i].value);
             }
 
-            // check value if any null value then stop it 
+            // check value if any null value then stop it
             if (stop) {
                 return;
             }
@@ -165,10 +164,10 @@ document.addEventListener("alpine:init", () => {
                 }
                 this.isLoading = false;
                 this.messages = data.message;
-                this.showNotif();
+                this.timeNotif();
             });
         },
-        tambahData() {
+        async tambahData() {
             var form = {
                 // initiate variable debt detail
                 debt_name: [],
@@ -198,9 +197,10 @@ document.addEventListener("alpine:init", () => {
             }
 
             this.calculated = true;
-
+            this.isLoading = true;
+            this.messages = null;
             // fetching data to create new debt with sending form variable using post method
-            fetch("http://localhost:8000/api/debt/create", {
+            await fetch("http://localhost:8000/api/debt/create", {
                 method: "POST",
                 body: JSON.stringify(form),
                 headers: {
@@ -208,17 +208,18 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-            .then((response) => response.json())
-            .then((data) => {
+            .then(async(response) => await response.json())
+            .then(async(data) => {
                 if (data.status == true) {
                     localStorage.setItem("tab", "listHitungan");
-                    localStorage.setItem("mssg", data.message);
+                    swal(data.message);
+                    this.isLoading = false;
+                    this.timeNotif();
                 }
                 if (data.status == false) {
                     this.validation = data.error;
                 }
-                swal(data.message);
-                this.showNotif();
+
             });
         },
         async listData() {
@@ -240,9 +241,12 @@ document.addEventListener("alpine:init", () => {
             .then(async (data) => {
                 if (data.success == true) {
                     this.list = await data.data;
-
                     // set sweet alert if debt not found
-                    if(this.list.length == 0) swal("Tidak ditemukan perhitungan.  Silahkan melakukan perhitungan terlebih dahulu!")
+                    if(this.list.length == 0) {
+                        swal("Hello, You have to make the calculation first to see something appear in this page!")
+                        this.tab = 'kalkulator';
+                        localStorage.setItem('tab', 'kalkulator');
+                    }
                 }
                 if (data.status == false) {
                     this.validation = data.error;
@@ -269,11 +273,15 @@ document.addEventListener("alpine:init", () => {
                     this.validation = data.error;
                 }
                 this.messages = data.message;
-                this.showNotif();
+                this.timeNotif();
             });
             this.listData();
         },
-        showNotif() {
+        /*
+        ** Show / Close
+        ** Notification
+        */
+        timeNotif() {
             // reset time to 0 second
             clearTimeout(timer);
 
@@ -283,10 +291,12 @@ document.addEventListener("alpine:init", () => {
             }, 5000);
         },
         closeNotif() {
-            this.notif = false;
             this.messages = null;
-            localStorage.removeItem("mssg");
         },
+        /*
+        ** Add / Cancel Debt card button
+        **
+        */
         addDebt() {
             this.postAdded = true;
             this.posts.push("");
@@ -302,6 +312,10 @@ document.addEventListener("alpine:init", () => {
         removeDebt(index) {
             this.posts.splice(index, 1);
         },
+        /*
+        ** Display Chart
+        **
+        */
         async charts(pendapatan, pembayaran) {
             const ctx = document.getElementById("hasilChart");
 
@@ -323,6 +337,10 @@ document.addEventListener("alpine:init", () => {
                 },
             });
         },
+        /*
+        ** Display format
+        **
+        */
         formatUang(params) {
             var data = Number(params);
             let USDollar = new Intl.NumberFormat("en-US", {
@@ -366,12 +384,18 @@ document.addEventListener("alpine:init", () => {
             tgl = mount + ", " + year;
             return tgl;
         },
+        /*
+        ** ???
+        */
         title: [],
         textTitile(params) {
             for (let i = 0; i < params.length; i++) {
                 this.title.push(params[0].debtTitle);
             }
         },
+        /*
+        ** Date Picker
+        */
         initDate(newDate) {
             let today;
             if (newDate) {
@@ -462,41 +486,6 @@ document.addEventListener("alpine:init", () => {
             this.blankdays = blankdaysArray;
             this.no_of_days = daysArray;
         },
-        dispatcher: null,
-        next() {
-            this.dispatch("next");
-        },
-        previous() {
-            this.dispatch("previous");
-        },
-        dispatch(direction) {
-            this.dispatcher(`go-${direction}-slide`);
-        },
-        nextSlide() {
-            const idx = this.getCurSlideIndex();
-            if (idx !== -1 && idx + 1 < this.slides.length) {
-                this.goToSlide(idx + 1);
-            }
-        },
-        previousSlide() {
-            const idx = this.getCurSlideIndex();
-            if (idx !== -1 && idx - 1 >= 0) {
-                this.goToSlide(idx - 1);
-            }
-        },
-        goToSlide(index) {
-            const nextSlide = this.slides[index];
-            if (nextSlide) {
-                this.slides.forEach((slide) => slide.classList.remove("active"));
-                nextSlide.scrollIntoView({ behavior: "smooth" });
-                nextSlide.classList.add("active");
-            }
-        },
-        getCurSlideIndex() {
-            return this.slides.findIndex((slide) =>
-                slide.classList.contains("active")
-            );
-        },
     }));
 
     Alpine.store("edit", () => ({
@@ -537,8 +526,8 @@ document.addEventListener("alpine:init", () => {
                     // if fetching failed send message error
                     this.validation = data.error;
                 }
-                // this.messages = data.message;
-                this.showNotif();
+                this.messages = data.message;
+                this.timeNotif();
             });
         },
         async editData(id) {
@@ -598,7 +587,7 @@ document.addEventListener("alpine:init", () => {
 
                 // send message if have
                 this.messages = data.message;
-                this.showNotif();
+                this.timeNotif();
             });
         },
         async hitungedit(id) {
@@ -713,7 +702,7 @@ document.addEventListener("alpine:init", () => {
                 }
                 this.isLoading = false;
                 this.messages = data.message;
-                this.showNotif();
+                this.timeNotif();
             });
         },
     }));

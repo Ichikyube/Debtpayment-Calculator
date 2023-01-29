@@ -4,8 +4,9 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class datePickerEdit extends Component
+class debtCard extends Component
 {
+    public $date;
     /**
      * Create a new component instance.
      *
@@ -23,6 +24,6 @@ class datePickerEdit extends Component
      */
     public function render()
     {
-        return view('components.date-picker-edit');
+        return view('components.debt-card');
     }
 }
