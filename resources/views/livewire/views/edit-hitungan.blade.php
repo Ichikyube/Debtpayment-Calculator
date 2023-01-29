@@ -36,7 +36,7 @@
     {{-- end error alert --}}
 
     <template x-if="!calculated">
-        @livewire('components.hasil-edit')
+        @livewire('views.hasil-edit')
     </template>
     <template x-if="!isLoading">
         <div x-show="calculated" class="relative flex flex-col md:flex-row lg:flex-row justify-evenly stretch">

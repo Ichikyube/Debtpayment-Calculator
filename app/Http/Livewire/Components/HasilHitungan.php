@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Components;
+namespace App\Http\Livewire\Views;
 
 use Livewire\Component;
 
@@ -8,6 +8,6 @@ class HasilHitungan extends Component
 {
     public function render()
     {
-        return view('livewire.components.hasil-hitungan');
+        return view('livewire.views.hasil-hitungan');
     }
 }

@@ -64,7 +64,7 @@
 
     <h1 class="my-4 ml-8 text-3xl font-bold truncate lg:my-0 lg:mb-8 drop-shadow-md">Kalkulator Hutang</h1>
     <template x-if="calculated">
-        @livewire('components.hasil-hitungan')
+        @livewire('views.hasil-hitungan')
     </template>
 
     <div x-show="!calculated" class="relative flex flex-col md:flex-row lg:flex-row justify-evenly stretch">
@@ -159,7 +159,9 @@
                 lg:mr-11 ease-in-out hover:bg-red-400 hover:text-white [box-shadow:0_1px_0_0_#f2f2f2,0_3px_0_0_#b7b7b7] after:w-6 after:h-6
                 after:bg-red-500 after:text-white after:font-cursive after:font-extrabold after:absolute after:-right-3
                 after:-scale-x-100 after:rounded-full after:content-['+'] after:align-middle after:text-center">
+
                     Tambahkan Hutang
+
                 </button>
                 <button x-on:click="hitung()" class="px-5 text-white shadow drop-shadow-lg cursor-pointer
                 select-none active:translate-y-1 active:[box-shadow:0_0px_0_0_#f2f2f2,0_0px_0_0_#b7b7b7] active:border-b-[0px] rounded-xl

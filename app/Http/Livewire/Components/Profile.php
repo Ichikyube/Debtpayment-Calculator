@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Components;
+namespace App\Http\Livewire\Views;
 
 use Livewire\Component;
 
@@ -8,6 +8,6 @@ class Profile extends Component
 {
     public function render()
     {
-        return view('livewire.components.profile');
+        return view('livewire.views.profile');
     }
 }
