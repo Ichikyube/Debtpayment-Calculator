@@ -15,7 +15,7 @@ document.addEventListener("alpine:init", () => {
                 password_confirmation: this.passwordConfirmation,
             };
 
-            await fetch("http://localhost:8000/api/register", {
+            await fetch("https://debt-repayment-be.fly.dev/api/register", {
                 method: "POST",
                 body: JSON.stringify(form),
                 headers: {
@@ -54,7 +54,7 @@ document.addEventListener("alpine:init", () => {
             localStorage.removeItem("messages");
         },
         async getData() {
-            await fetch("http://localhost:8000/api/user", {
+            await fetch("https://debt-repayment-be.fly.dev/api/user", {
                 method: "GET",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8",
@@ -71,7 +71,7 @@ document.addEventListener("alpine:init", () => {
                 email: this.email,
                 password: this.password,
             };
-            await fetch("http://localhost:8000/api/login", {
+            await fetch("https://debt-repayment-be.fly.dev/api/login", {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
@@ -107,7 +107,7 @@ document.addEventListener("alpine:init", () => {
     Alpine.store("logout", () => ({
         showWarningAlert: false,
         async logout() {
-            await fetch("http://localhost:8000/api/logout", {
+            await fetch("https://debt-repayment-be.fly.dev/api/logout", {
                 method: "GET",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8",

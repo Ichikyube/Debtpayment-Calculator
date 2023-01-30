@@ -129,7 +129,7 @@ document.addEventListener("alpine:init", () => {
             };
 
             // fetching to calculate debt with sending form variable using post method
-            await fetch("http://localhost:8000/api/debt/hitung", {
+            await fetch("https://debt-repayment-be.fly.dev/api/debt/hitung", {
                 method: "POST",
                 body: JSON.stringify(form),
                 headers: {
@@ -201,7 +201,7 @@ document.addEventListener("alpine:init", () => {
             this.isLoading = true;
             this.messages = null;
             // fetching data to create new debt with sending form variable using post method
-            await fetch("http://localhost:8000/api/debt/create", {
+            await fetch("https://debt-repayment-be.fly.dev/api/debt/create", {
                 method: "POST",
                 body: JSON.stringify(form),
                 headers: {
@@ -231,7 +231,7 @@ document.addEventListener("alpine:init", () => {
             this.calculated = true;
 
             // fetching data to get debt list
-            await fetch("http://localhost:8000/api/debt/list", {
+            await fetch("https://debt-repayment-be.fly.dev/api/debt/list", {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -244,9 +244,11 @@ document.addEventListener("alpine:init", () => {
                     this.list = await data.data;
                     // set sweet alert if debt not found
                     if(this.list.length == 0) {
-                        swal("Hello, You have to make the calculation first to see something appear in this page!")
-                        this.tab = 'kalkulator';
-                        localStorage.setItem('tab', 'kalkulator');
+                        swal("Hello, You have to make the calculation first to see something appear in this page!").then(function() {
+                            this.tab = 'kalkulator';
+                            localStorage.setItem('tab', 'kalkulator');
+                        });
+
                     }
                 }
                 if (data.status == false) {
@@ -258,7 +260,7 @@ document.addEventListener("alpine:init", () => {
         async deleted() {
 
             // fetching data to delete debt when have equal id
-            fetch("http://localhost:8000/api/debt/delete/" + this.idDebt, {
+            fetch("https://debt-repayment-be.fly.dev/api/debt/delete/" + this.idDebt, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -519,7 +521,7 @@ document.addEventListener("alpine:init", () => {
             localStorage.setItem("tab", "editHitungan");
 
             // fetching debt with id
-            await fetch("http://localhost:8000/api/debt/show/" + id, {
+            await fetch("https://debt-repayment-be.fly.dev/api/debt/show/" + id, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -574,7 +576,7 @@ document.addEventListener("alpine:init", () => {
             this.isLoading = true;
 
             // fetching and sending form with post request
-            fetch("http://localhost:8000/api/debt/update/" + id, {
+            fetch("https://debt-repayment-be.fly.dev/api/debt/update/" + id, {
                 method: "POST",
                 body: JSON.stringify(form),
                 headers: {
@@ -683,7 +685,7 @@ document.addEventListener("alpine:init", () => {
             };
 
             // fetching and sending form with post request
-            await fetch("http://localhost:8000/api/debt/hitung", {
+            await fetch("https://debt-repayment-be.fly.dev/api/debt/hitung", {
                 method: "POST",
                 body: JSON.stringify(form),
                 headers: {
