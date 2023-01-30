@@ -62,7 +62,7 @@
 
                                     <!-- Tooltip -->
                                     <div class="top">
-                                        <p>Pembayaran tanggal <span class="font-bold" x-text="formatTglAja(detail.payment_date)"></span> setiap bulannya</p>
+                                        <p>Date Payment <span class="font-bold" x-text="formatTglAja(detail.payment_date)"></span> each month</p>
                                         <i></i>
                                     </div>
                                 </div>
@@ -101,7 +101,7 @@
 
                 <!-- Bottom Content -->
                 <div class="flex flex-wrap justify-between break-words lg:flex-nowrap">
-                    <div class="flex w-full gap-5 mt-5 lg:gap-16 lg:w-6/12">
+                    <div class="flex flex-col w-full gap-5 mt-5 md:flex-flow lg:flex-row lg:gap-16 lg:w-6/12">
                         <div>
                             <p class="text-sm break-all">Monthly Income</p>
                             <p class="text-lg font-bold text-gray-700" x-text="formatUang(data.monthly_salary)">
