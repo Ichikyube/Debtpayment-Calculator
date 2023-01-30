@@ -116,7 +116,7 @@ document.addEventListener("alpine:init", () => {
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    localStorage.setItem("messages", "Anda Berhasil Log Out");
+                    localStorage.setItem("messages", "You have successfully Log Out");
                     localStorage.removeItem("token");
                     localStorage.removeItem("tab");
                     window.location.replace("http://localhost:8001/login");
