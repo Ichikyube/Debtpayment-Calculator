@@ -90,7 +90,7 @@
     </div>
     <div class="flex justify-end  mt-5 mr-[50px]">
         <button x-on:click="calculated = !calculated" class="self-end my-2 text-xl font-bold mr-7">Back</button>
-        <button x-on:click="tab = 'listHitungan', editData(id)" class="self-end px-4 py-2 text-white bg-[#2A7C97] rounded-xl"><span class="inline-block text-center align-top">Save</span></button>
+        <button x-on:click="tab = 'listHitungan', editData(ambilData.id)" class="self-end px-4 py-2 text-white bg-[#2A7C97] rounded-xl"><span class="inline-block text-center align-top">Save</span></button>
     </div>
 </div>
 
