@@ -39,7 +39,7 @@ document.addEventListener("alpine:init", () => {
         dateNormal: "",
         dateSnowball: "",
         monthlySalary: 0,
-        extraSalary: 0,
+        extraPayment: 0,
         notif: false,
         hasil: [],
         list: [],
@@ -125,7 +125,7 @@ document.addEventListener("alpine:init", () => {
                 payment_date: paymentDate,
                 monthly_payment: monthlyPayment,
                 monthly_salary: this.monthlySalary,
-                extra_payment: this.extraSalary,
+                extra_payment: this.extraPayment,
             };
 
             // fetching to calculate debt with sending form variable using post method
@@ -507,11 +507,11 @@ document.addEventListener("alpine:init", () => {
         bungaHutang: null,
         minBayar: null,
         monthlySalary: null,
-        extraSalary: null,
+        extraPayment: null,
         calculated: true,
         messages: null,
         monthlySalary: null,
-        extraSalary: null,
+        extraPayment: null,
         showMinierrrorAlert: false,
         // ambilData: [],
         async ubah(id) {

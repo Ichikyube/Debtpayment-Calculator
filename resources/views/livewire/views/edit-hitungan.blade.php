@@ -38,19 +38,21 @@
     </template>
     <!-- edit calculator view -->
     <template x-if="!isLoading">
-        <div x-show="calculated" class="relative flex flex-col md:flex-row lg:flex-row justify-evenly stretch">
+        <div x-show="calculated" class="relative flex flex-col md:flex-row lg:flex-row justify-evenly stretch"
+             x-data="{
+                id:ambilData.id,
+                monthlySalary:ambilData.monthly_salary,
+                extraPayment:ambilData.extra_payment}" >
             <div class="flex snap-y snap-mandatory flex-col items-center px-4 lg:w-1/2 overflow-y-scroll scroll-smooth rounded-xl overflow-x-hidden order-last md:order-first lg:order-first h-[425px] touch-auto hilanginscroll">
                 <!-- Form Kalkulator -->
+
                 <template x-for="(debt, index) in posts">
                     <x-debt-card x-data="{
                         namaHutang:debt.debt_name,
                         waktuBayar:debt.payment_date,
                         jmlHutang:debt.debt_amount,
                         bungaHutang:debt.interest_rate,
-                        minBayar:debt.monthly_payment,
-                        monthlySalary:ambilData.monthly_salary,
-                        extraPayment:ambilData.extra_payment
-                        }" date='$date'>
+                        minBayar:debt.monthly_payment}" date='$date'>
                             <x-slot name="date">
                                 <x-date-picker x-data="{
                                     showDatepicker: false,
@@ -65,14 +67,13 @@
 
                 </template>
                 <!-- Additional options for mobile view -->
-                <x-addition-card-sm/>
+                <x-addition-card-sm monthlySalary="monthlySalary" extraPayment="extraPayment"/>
             </div>
             <!-- right side view is for Additional options for desktop view -->
             <div class="flex flex-col items-center order-last w-1/2 mb-2 align-middle lg:items-end md:order-last lg:order-last">
-                <x-addition-card />
+                <x-addition-card monthlySalary="monthlySalary" extraPayment="extraPayment" />
                 <!-- button section for calculate -->
-                <div x-show="calculated" class="flex flex-row items-center justify-between order-first mx-auto mb-2 text-center align-middle ml-9 md:mt-6 w-80 md:w-11/12
-                    lg:w-11/12 md:order-last lg:order-last md:flex-row lg:mt-10 md:justify-evenly lg:justify-evenly">
+                <div x-show="calculated" class="flex flex-row items-center justify-between order-first mx-auto mb-2 text-center align-middle ml-9 md:mt-6 w-80 md:w-11/12 lg:w-11/12 md:order-last lg:order-last md:flex-row lg:mt-10 md:justify-evenly lg:justify-evenly">
                     {{-- <button type="button" x-on:click.lazy="posts++" class="text-sm py-0 md:py-2 after:top-3 md:after:top-8 lg:after:top-4 lg:py-5 px-7 w-36 lg:w-auto
                     bg-white text-red-500 font-bold rounded-[15px] drop-shadow-lg cursor-pointer select-none active:translate-y-1
                     active:[box-shadow:0_0px_0_0_#f2f2f2,0_0px_0_0_#b7b7b7] active:border-b-[0px] transition-all duration-500 mr-4 md:mr-6
