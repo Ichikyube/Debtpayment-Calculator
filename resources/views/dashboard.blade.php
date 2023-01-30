@@ -32,7 +32,7 @@
                             x-bind:class="tab == 'listHitungan' ? 'text-myyellow drop-shadow-3xl' : 'text-gray-400 drop-shadow-md'"
                             class="fa-solid fa-money-bill"></i></button>
                 </li>
-                <li><button type="button" x-on:click.prevent=" tab = 'profile', localStorage.setItem('tab', 'profile')" data-tooltip="Calculated List" :data-flow="side?'right':'bottom'"
+                <li><button type="button" x-on:click.prevent=" tab = 'profile', localStorage.setItem('tab', 'profile')" data-tooltip="Profile" :data-flow="side?'right':'bottom'"
                         class="text-4xl text-center text-dark"><i
                             x-bind:class="tab == 'profile' ? 'text-myyellow drop-shadow-3xl' : 'text-gray-400 drop-shadow-md'"
                             class="fa-regular fa-user"></i></button>
