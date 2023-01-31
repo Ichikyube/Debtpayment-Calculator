@@ -15,7 +15,7 @@ document.addEventListener("alpine:init", () => {
                 password_confirmation: this.passwordConfirmation,
             };
 
-            await fetch("https://debt-repayment-be.fly.dev/api/register", {
+            await fetch("http://127.0.0.1:8000/api/register", {
                 method: "POST",
                 body: JSON.stringify(form),
                 headers: {
@@ -26,7 +26,7 @@ document.addEventListener("alpine:init", () => {
                 .then((data) => {
                     if (data.success == true) {
                         localStorage.setItem("messages", data.message);
-                        window.location.replace("http://localhost:8001/login");
+                        window.location.replace("http://127.0.0.1:8001/login");
                     }
                     if (data.success == false) {
                         this.validation = data.error;
@@ -54,7 +54,7 @@ document.addEventListener("alpine:init", () => {
             localStorage.removeItem("messages");
         },
         async getData() {
-            await fetch("https://debt-repayment-be.fly.dev/api/user", {
+            await fetch("http://127.0.0.1:8000/api/user", {
                 method: "GET",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8",
@@ -71,7 +71,7 @@ document.addEventListener("alpine:init", () => {
                 email: this.email,
                 password: this.password,
             };
-            await fetch("https://debt-repayment-be.fly.dev/api/login", {
+            await fetch("http://127.0.0.1:8000/api/login", {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
@@ -95,7 +95,7 @@ document.addEventListener("alpine:init", () => {
                         localStorage.setItem("token", data.access_token);
 
                         window.location.replace(
-                            "http://localhost:8001/dashboard"
+                            "http://127.0.0.1:8001/dashboard"
                         );
                         localStorage.setItem("tab", "kalkulator");
                         // this.getData();
@@ -107,7 +107,7 @@ document.addEventListener("alpine:init", () => {
     Alpine.store("logout", () => ({
         showWarningAlert: false,
         async logout() {
-            await fetch("https://debt-repayment-be.fly.dev/api/logout", {
+            await fetch("http://127.0.0.1:8000/api/logout", {
                 method: "GET",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8",
@@ -119,7 +119,7 @@ document.addEventListener("alpine:init", () => {
                     localStorage.setItem("messages", "You have successfully Log Out");
                     localStorage.removeItem("token");
                     localStorage.removeItem("tab");
-                    window.location.replace("http://localhost:8001/login");
+                    window.location.replace("http://127.0.0.1:8001/login");
                 });
         },
     }));

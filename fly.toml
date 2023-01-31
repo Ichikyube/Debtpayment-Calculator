@@ -1,6 +1,6 @@
-# fly.toml file generated for debtrepayment on 2023-01-27T13:28:16+07:00
+# fly.toml file generated for debt-repayment on 2023-01-31T03:38:35+07:00
 
-app = "debtrepayment"
+app = "debt-repayment"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
@@ -8,7 +8,7 @@ processes = []
 [build]
   [build.args]
     NODE_VERSION = "14"
-    PHP_VERSION = "8.0"
+    PHP_VERSION = "8.1"
 
 [env]
   APP_ENV = "production"

@@ -129,7 +129,7 @@ document.addEventListener("alpine:init", () => {
             };
 
             // fetching to calculate debt with sending form variable using post method
-            await fetch("https://debt-repayment-be.fly.dev/api/debt/hitung", {
+            await fetch("http://127.0.0.1:8000/api/debt/hitung", {
                 method: "POST",
                 body: JSON.stringify(form),
                 headers: {
@@ -201,7 +201,7 @@ document.addEventListener("alpine:init", () => {
             this.isLoading = true;
             this.messages = null;
             // fetching data to create new debt with sending form variable using post method
-            await fetch("https://debt-repayment-be.fly.dev/api/debt/create", {
+            await fetch("http://127.0.0.1:8000/api/debt/create", {
                 method: "POST",
                 body: JSON.stringify(form),
                 headers: {
@@ -210,12 +210,13 @@ document.addEventListener("alpine:init", () => {
                 },
             })
             .then(async(response) => await response.json())
-            .then(async(data) => {
+            .then( (data) => {
                 if (data.status == true) {
-                    localStorage.setItem("tab", "listHitungan");
                     swal(data.message);
+                    localStorage.setItem("tab", "listHitungan");
                     this.isLoading = false;
                     this.timeNotif();
+
                 }
                 if (data.status == false) {
                     this.validation = data.error;
@@ -226,12 +227,10 @@ document.addEventListener("alpine:init", () => {
         async listData() {
             // set list to null before get data
             this.list = [];
-
             this.isLoading = true;
             this.calculated = true;
-
             // fetching data to get debt list
-            await fetch("https://debt-repayment-be.fly.dev/api/debt/list", {
+            await fetch("http://127.0.0.1:8000/api/debt/list", {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -239,15 +238,19 @@ document.addEventListener("alpine:init", () => {
                 },
             })
             .then(async (response) => await response.json())
-            .then(async (data) => {
+            .then( (data) => {
                 if (data.success == true) {
-                    this.list = await data.data;
+                    this.list =  data.data;
                     // set sweet alert if debt not found
                     if(this.list.length == 0) {
-                        swal("Hello, You have to make the calculation first to see something appear in this page!").then(function() {
+                        swal("No Calculation", "You have to make the calculation first to see something appear in this page!", "info");
+                        this.closeNotif();
+                        clearTimeout(timer);
+                        timer = setTimeout(() => {
                             this.tab = 'kalkulator';
                             localStorage.setItem('tab', 'kalkulator');
-                        });
+                        }, 100);
+
 
                     }
                 }
@@ -260,7 +263,7 @@ document.addEventListener("alpine:init", () => {
         async deleted() {
 
             // fetching data to delete debt when have equal id
-            fetch("https://debt-repayment-be.fly.dev/api/debt/delete/" + this.idDebt, {
+            fetch("http://127.0.0.1:8000/api/debt/delete/" + this.idDebt, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -521,7 +524,7 @@ document.addEventListener("alpine:init", () => {
             localStorage.setItem("tab", "editHitungan");
 
             // fetching debt with id
-            await fetch("https://debt-repayment-be.fly.dev/api/debt/show/" + id, {
+            await fetch("http://127.0.0.1:8000/api/debt/show/" + id, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -576,7 +579,7 @@ document.addEventListener("alpine:init", () => {
             this.isLoading = true;
 
             // fetching and sending form with post request
-            fetch("https://debt-repayment-be.fly.dev/api/debt/update/" + id, {
+            fetch("http://127.0.0.1:8000/api/debt/update/" + id, {
                 method: "POST",
                 body: JSON.stringify(form),
                 headers: {
@@ -685,7 +688,7 @@ document.addEventListener("alpine:init", () => {
             };
 
             // fetching and sending form with post request
-            await fetch("https://debt-repayment-be.fly.dev/api/debt/hitung", {
+            await fetch("http://127.0.0.1:8000/api/debt/hitung", {
                 method: "POST",
                 body: JSON.stringify(form),
                 headers: {

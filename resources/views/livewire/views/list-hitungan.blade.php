@@ -8,12 +8,12 @@
     <!-- notification -->
     <button x-show="messages" x-init="timeNotif" type="button" x-on:click="closeNotif" id="alert-4" class="absolute top-0 right-0 z-50 flex items-center h-6 px-4 space-x-2 text-white transition bg-green-500 rounded-md justify-self-end w-fit hover:bg-green-600"
     role="alert" x-transition.duration.300ms>
-    <svg aria-hidden="true" class="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
-    <span class="sr-only">Info</span>
-    {{-- pesan notifikasi --}}
-    <div class="ml-3 text-sm font-medium" x-text="messages"></div>
-</button>
-    <div class="flex flex-col px-4 overflow-y-scroll h-[430px] touch-auto hilanginscroll">
+        <svg aria-hidden="true" class="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+        <span class="sr-only">Info</span>
+        {{-- pesan notifikasi --}}
+        <div class="ml-3 text-sm font-medium" x-text="messages"></div>
+    </button>
+    <div x-show="!loading" class="flex flex-col px-4 overflow-y-scroll h-[430px] touch-auto hilanginscroll">
         <!-- Looping List Hutang -->
         <template x-for="data in list">
             <div  x-data="{ open: false, delete1: false}" class="bg-[#F7D3C2] py-[24px] lg:px-[45px] px-5 rounded-[15px] mb-5 shadow-sm hover:shadow-md transition-shadow duration-300 ease-in-out">
@@ -101,29 +101,29 @@
 
                 <!-- Bottom Content -->
                 <div class="flex flex-wrap justify-between break-words lg:flex-nowrap">
-                    <div class="flex flex-col w-full gap-5 mt-5 md:flex-flow lg:flex-row lg:gap-16 lg:w-6/12">
+                    <div class="flex flex-col flex-wrap w-full mt-2 border-b-2 border-dashed lg:border-b-0 sm:flex-row md:flex-row lg:flex-row justify-evenly lg:w-6/12">
                         <div>
-                            <p class="text-sm break-all">Monthly Income</p>
+                            <p class="text-sm break-words">Monthly Income</p>
                             <p class="text-lg font-bold text-gray-700" x-text="formatUang(data.monthly_salary)">
                             </p>
                         </div>
                         <div>
-                            <p class="text-sm break-all">Debt Total</p>
+                            <p class="text-sm break-words">Debt Total</p>
                             <p class="text-lg font-bold text-gray-700" x-text="formatUang(data.total_debt)">
                             </p>
                         </div>
                         <div>
-                            <p class="text-sm break-all">Payment</p>
+                            <p class="text-sm break-words">Payment</p>
                             <p class="text-lg font-bold text-gray-700" x-text="formatUang(data.total_min_payment)"></p>
                         </div>
                         <div>
-                            <p class="text-sm break-all">Extra</p>
+                            <p class="text-sm break-words">Extra</p>
                             <p class="text-lg font-bold text-gray-700" x-text="formatUang(data.extra_salary)"></p>
                         </div>
                     </div>
 
-                    <div class="flex justify-between w-full lg:w-6/12">
-                        <div class="flex items-end gap-2 lg:gap-10 lg:pl-10">
+                    <div class="flex justify-between w-full gap-8">
+                        <div class="flex flex-wrap items-end justify-center w-10/12 gap-6 lg:gap-10 lg:pl-10">
                             <template x-if="data.snowball_method < data.normal_method">
                                 <div>
                                     <p class="">Snowball</p>
@@ -135,7 +135,7 @@
                                 <p class="text-xl font-bold text-gray-700" x-text="formatTgl(data.normal_method)"></p>
                             </div>
                         </div>
-                        <div x-data="$store.edit" class="flex flex-col items-end gap-2 lg:flex-row">
+                        <div class="flex flex-row"><div x-data="$store.edit" class="flex flex-col items-end gap-2 w-fit md:flex-row lg:flex-row">
                             <!-- Buton Edit -->
                             <button x-on:click.prevent="ubah(data.id), tab = 'edit-hitungan', localStorage.setItem('tab', 'edit-hitungan')" class="text-xl bg-[#2A7C97] px-1 text-[#F7D3C2] rounded shadow"><i class="fa-solid fa-pen-to-square"></i></button>
 
@@ -147,8 +147,9 @@
 
 
                             </div>
-                        </div>
+                        </div></div>
                     </div>
+
                 </div>
             </div>
         </template>
