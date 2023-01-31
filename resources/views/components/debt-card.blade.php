@@ -9,7 +9,7 @@
             <div x-show="!editTitle" class="ml-2 mr-4 text-xl font-bold" x-text="namaHutang"></div>
                 <span class="group-hover:text-red-500"><i class="fa-solid fa-pen-to-square"></i></span></button>
 		</div>
-        <p class="nama"></p><!-- validation -->
+        <p class="bg-red-600 nama"></p><!-- validation -->
     </div>
     <!-- Due Date -->
     <div class="flex flex-row items-center justify-between w-full px-3 py-4 border-b-2 group tooltip">
@@ -29,9 +29,9 @@
             focus-visible:ring-0" type="number" min="0" max="" step="100" placeholder=" ">
             <label class="absolute top-0 origin-[0] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-md font-semibold text-green-800 duration-300
             peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5
-            peer-focus:scale-75 peer-focus:text-myblue">Debt Amount <span class="text-xs text-green-600">($)</span>
+            peer-focus:scale-75 peer-focus:text-lime-600">Debt Amount <span class="text-xs text-green-600">($)</span>
             </label>
-            <div class="jml"></div><!-- validation -->
+            <div class="bg-red-600 jml"></div><!-- validation -->
             <div x-show="jmlHutang" class="absolute right-0 w-10/12 mr-4 font-bold text-right truncate" x-money.en-US.USD.decimal="jmlHutang"></div>
         </div>
 
@@ -47,7 +47,7 @@
             focus-visible:ring-0" x-mask="99" placeholder=" ">
             <label class="absolute truncate top-0 origin-[0] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-md font-semibold text-green-800 duration-300
             peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5
-            peer-focus:scale-75 peer-focus:text-myblue">Debt Interest Rate <span class="text-xs text-green-600">(%)</span>
+            peer-focus:scale-75 peer-focus:text-lime-600">Debt Interest Rate <span class="text-xs text-green-600">(%)</span>
             </label>
             {{-- alert --}}
             <div class="bunga"></div><!-- validation -->
@@ -65,7 +65,7 @@
             focus-visible:ring-0" required type="number" min="10" step="100" placeholder=" ">
             <label class="absolute truncate top-0 origin-[0] w-[90%] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-md font-semibold text-green-800 duration-300
             peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:w-[100%]
-            peer-focus:scale-75 peer-focus:text-myblue">Monthly Minimum Payment <span class="text-xs text-green-600">($)</span>
+            peer-focus:scale-75 peer-focus:text-lime-600">Monthly Minimum Payment <span class="text-xs text-green-600">($)</span>
             </label>
             <div class="min"></div><!-- validation -->
             <div x-show="minBayar" class="absolute right-0 w-10/12 mr-4 font-bold text-right truncate" x-money.en-US.USD.decimal="minBayar"></div>

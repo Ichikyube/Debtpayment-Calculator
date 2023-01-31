@@ -1,6 +1,25 @@
-<div {{ $attributes }} x-cloak x-id="['date-input']"  class="relative z-50 flex items-center justify-between w-full group">
+@props([
+    'selectedDate' => '',
+    'dateFormat'=> 'YYYY-MM-DD'
+])
+
+<div x-data="{
+    showDatepicker: false,
+    selectedDate: '',
+    dateFormat: '{{$dateFormat}}',
+    month: '',
+    year: '',
+    day: '',
+    minYear: new Date().getFullYear(),
+    minMonth: new Date().getMonth(),
+    minDate: new Date().getDate(),
+    today:'',
+    no_of_days: [],
+    blankdays: []
+    }" x-init="[getNoOfDays(), initDate(), today = minYear + '-' + minMonth + '-' + minDate ]" x-cloak x-id="['date-input']"  class="relative z-50 flex items-center justify-between w-full group">
     <input type="hidden" name="date"  :id="$id('date-input')" :value="waktuBayar" class="hidden waktuBayar" placeholder=" " >
-    <input type="date" x-on:click="initDate(waktuBayar), showDatepicker = !showDatepicker" x-model="waktuBayar"
+    <div x-text="console.log(today)"></div>
+    <input type="date" min="today" x-on:click="initDate(waktuBayar), showDatepicker = !showDatepicker" x-model="waktuBayar"
         x-on:keydown.escape="showDatepicker = false"
         class="leading-none mix-blend-multiply form-input z-50 peer bg-transparent text-transparent focus:text-dark block w-full appearance-none px-3 border-0 text-left outline-none
         placeholder:!bg-transparent transition duration-150 ease-in-out align-text-bottom sm:text-sm sm:leading-1 focus:border-none focus:outline-none
@@ -8,7 +27,7 @@
         placeholder="Select date" />
     <label :for="$id('date-input')" class="absolute leading-loose peer-focus:leading-none top-2 -z-10 origin-[0] sm:w-max md:w-max lg:w-max -translate-y-4 scale-80 transform text-md font-semibold text-green-800 duration-300
     peer-placeholder-shown:translate-y-4  peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 w-40 break-words text-ellipsis
-    peer-focus:scale-75 peer-focus:text-myblue">Next Monthly Payment </label>
+    peer-focus:scale-75 peer-focus:text-lime-600">Next Monthly Payment </label>
     {{-- alert --}}
     <div class="waktu"></div>
     <div class="absolute right-0 inline-block w-10/12 mr-4 font-bold text-right truncate align-text-bottom group-focus-within:text-transparent" x-text="new Date(waktuBayar).toLocaleDateString('default', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })"></div>
@@ -23,9 +42,17 @@
                 <button type="button"
                     class="inline-flex p-1 transition duration-100 ease-in-out rounded-full cursor-pointer focus:outline-none focus:shadow-outline hover:bg-gray-100"
                     @click="if (month == 0) {
+                                month = 12;
+                                if(year>minYear){
                                     year--;
-                                    month = 12;
-                                } month--; getNoOfDays()">
+                                }
+                            }
+                            month--;
+                            if (year == minYear && month < (minMonth)) {
+                                month = minMonth;
+                                if(day>minDate)  day--;
+                            }
+                            getNoOfDays()">
                     <svg class="inline-flex w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

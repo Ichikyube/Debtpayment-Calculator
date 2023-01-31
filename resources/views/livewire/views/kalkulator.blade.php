@@ -87,15 +87,7 @@
                         monthlySalary:''
                     }">
                     <x-slot name="date">
-                        <x-date-picker x-data="{
-                            showDatepicker: false,
-                            waktuBayar:'',
-                            selectedDate: '',
-                            dateFormat: 'YYYY-MM-DD',
-                            month: '',
-                            year: '',
-                            no_of_days: [],
-                            blankdays: []}" x-init="[getNoOfDays(), initDate() ]"></x-date-picker>
+                        <x-date-picker></x-date-picker>
                     </x-slot>
                     <!-- if this card is displayed more than once, cancel button will appear -->
                     <template x-if="index>0">

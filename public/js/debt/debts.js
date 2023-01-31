@@ -73,31 +73,31 @@ document.addEventListener("alpine:init", () => {
 
                 // check value form
                 if (namaHutang[i].value === "") {
-                    document.getElementsByClassName("nama")[i].innerHTML = `<div class="bottom2">Debt name cannot be empty<i></i></div>`;
+                    document.getElementsByClassName("nama")[i].innerHTML = `<div class="bottom2 bg-red-600">Debt name cannot be empty<i></i></div>`;
                     stop = true;
                 }else{
                     document.getElementsByClassName("nama")[i].innerHTML = "";
                 }
                 if (jmlHutang[i].value === "") {
-                    document.getElementsByClassName("jml")[i].innerHTML = `<div class="bottom2">Debt amount cannot be empty<i></i></div>`;
+                    document.getElementsByClassName("jml")[i].innerHTML = `<div class="bottom2 bg-red-600">Debt amount cannot be empty<i></i></div>`;
                     stop = true;
                 }else{
                     document.getElementsByClassName("jml")[i].innerHTML = "";
                 }
                 if (bungaHutang[i].value === "") {
-                    document.getElementsByClassName("bunga")[i].innerHTML = `<div class="bottom2">Debt interest cannot be empty<i></i></div>`;
+                    document.getElementsByClassName("bunga")[i].innerHTML = `<div class="bottom2 bg-red-600">Debt interest cannot be empty<i></i></div>`;
                     stop = true;
                 }else{
                     document.getElementsByClassName("bunga")[i].innerHTML = "";
                 }
                 if (waktuBayar[i].value === "") {
-                    document.getElementsByClassName("waktu")[i].innerHTML = `<div class="bottom2">Payment date cannot be empty<i></i></div>`;
+                    document.getElementsByClassName("waktu")[i].innerHTML = `<div class="bottom2 bg-red-600">Payment date cannot be empty<i></i></div>`;
                     stop = true;
                 }else{
                     document.getElementsByClassName("waktu")[i].innerHTML = "";
                 }
                 if (minBayar[i].value === "") {
-                    document.getElementsByClassName("min")[i].innerHTML = `<div class="bottom2">Min payment cannot be empty<i></i></div>`;
+                    document.getElementsByClassName("min")[i].innerHTML = `<div class="bottom2 bg-red-600">Min payment cannot be empty<i></i></div>`;
                     stop = true;
                 }else{
                     document.getElementsByClassName("min")[i].innerHTML = "";
@@ -168,7 +168,7 @@ document.addEventListener("alpine:init", () => {
                 this.timeNotif();
             });
         },
-        async tambahData() {
+        tambahData() {
             var form = {
                 // initiate variable debt detail
                 debt_name: [],
@@ -201,7 +201,7 @@ document.addEventListener("alpine:init", () => {
             this.isLoading = true;
             this.messages = null;
             // fetching data to create new debt with sending form variable using post method
-            await fetch("http://127.0.0.1:8000/api/debt/create", {
+            fetch("http://127.0.0.1:8000/api/debt/create", {
                 method: "POST",
                 body: JSON.stringify(form),
                 headers: {
@@ -209,10 +209,11 @@ document.addEventListener("alpine:init", () => {
                     "Content-type": "application/json; charset=UTF-8",
                 },
             })
-            .then(async(response) => await response.json())
+            .then((response) => response.json())
             .then( (data) => {
                 if (data.status == true) {
-                    swal(data.message);
+                    this.messages = data.message;
+                    swal("Saved", data.message,"success");
                     localStorage.setItem("tab", "listHitungan");
                     this.isLoading = false;
                     this.timeNotif();
@@ -400,15 +401,6 @@ document.addEventListener("alpine:init", () => {
             var year = date.getFullYear();
             tgl = mount + ", " + year;
             return tgl;
-        },
-        /*
-        ** ???
-        */
-        title: [],
-        textTitile(params) {
-            for (let i = 0; i < params.length; i++) {
-                this.title.push(params[0].debtTitle);
-            }
         },
         /*
         ** Date Picker

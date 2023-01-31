@@ -46,7 +46,7 @@ body{
     left:50%;
     transform:translate(-50%, 0);
     padding:10px 20px;
-    color:#FFFFFF;
+    color:#e0f2fe;
     background-color:#111111;
     font-weight:normal;
     font-size:13px;
@@ -82,20 +82,22 @@ body{
 }
 
 .tooltip .bottom2 {
-    top:40px;
-    left:50%;
+    top:0%;
+    left:70%;
     transform:translate(-50%, 0);
     padding:10px 20px;
-    color:#FFFFFF;
-    background-color:#111111;
+    color:#e0f2fe;
+    background-color:#e11d48;
     font-weight:normal;
     font-size:13px;
     border-radius:8px;
     position:absolute;
     z-index:99999999;
     box-sizing:border-box;
-    border:1px solid #111111;box-shadow:0 1px 8px #EEEEEE;
+    border:1px solid #e0f2fe;box-shadow:0 1px 8px #EEEEEE;
     visibility:visible; opacity:1; transition:opacity 0.8s;
+    width: max-content;
+    box-shadow:0 1px 4px rgba(0,0,0,0.5);
 }
 .tooltip .bottom2:focus {
     visibility:hidden; opacity:1;
@@ -105,11 +107,11 @@ body{
 }
 .tooltip .bottom2 i {
     position:absolute;
-    bottom:100%;
+    top:100%;
     left:50%;
-    margin-left:-10px;
-    width:20px;
-    height:10px;
+    margin-left:-15px;
+    width:30px;
+    height:15px;
     overflow:hidden;
 }
 .tooltip .bottom2 i::after {
@@ -118,9 +120,10 @@ body{
     width:10px;
     height:10px;
     left:50%;
-    transform:translate(-50%,50%) rotate(45deg);
-    background-color:#111111;
-    border:1px solid #111111;box-shadow:0 1px 8px #EEEEEE;
+    transform:translate(-50%,-50%) rotate(45deg);
+    background-color:#e0f2fe;
+    border:1px solid #e0f2fe;box-shadow:0 1px 8px #EEEEEE;
+    box-shadow:0 1px 4px rgba(0,0,0,0.5);
 }
 
 .tooltip .top {
@@ -130,7 +133,7 @@ body{
     left:35%;
     transform:translate(-30%,-100%);
     padding:10px 20px;
-    color:#ffffff;
+    color:#e0f2fe;
     background-color:#009cdc;
     font-weight:normal;
     font-size:14px;
@@ -198,7 +201,7 @@ body{
   text-overflow: ellipsis;
   padding: 6px 8px;
   border-radius: 7px;
-  background: #FFFFFF;
+  background: #e0f2fe;
   border-width: 4px;
   border-color: #e0f2fe;
   box-shadow: 0 6px 9px 0 rgb(0 0 0 / 0.05);
