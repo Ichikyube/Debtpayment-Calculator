@@ -388,7 +388,7 @@ document.addEventListener("alpine:init", () => {
             var day = date.getDate();
 
             var mount = date.getMonth() + 1;
-
+argetDate
             var year = date.getFullYear();
             tgl = day + "-" + mount + "-" + year;
             return tgl;
@@ -418,7 +418,7 @@ document.addEventListener("alpine:init", () => {
             }
             this.month = today.getMonth();
             this.year = today.getFullYear();
-            this.waktuBayar = this.formatDateForDisplay(
+            this.targetDate = this.formatDateForDisplay(
                 today
             );
         },
@@ -448,7 +448,7 @@ document.addEventListener("alpine:init", () => {
         },
         isSelectedDate(date) {
             const d = new Date(this.year, this.month, date);
-            return this.waktuBayar ===
+            return this.targetDate ===
                 this.formatDateForDisplay(d) ?
                 true :
                 false;
@@ -466,7 +466,7 @@ document.addEventListener("alpine:init", () => {
                 this.month,
                 date
             );
-            this.waktuBayar = this.formatDateForDisplay(
+            this.targetDate = this.formatDateForDisplay(
                 selectedDate
             );
             // this.$refs.date.value = selectedDate.getFullYear() + "-" + ('0' + formattedMonthInNumber).slice(-2) + "-" + ('0' + selectedDate.getDate()).slice(-2);

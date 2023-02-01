@@ -54,14 +54,7 @@
                         bungaHutang:debt.interest_rate,
                         minBayar:debt.monthly_payment}" date='$date'>
                             <x-slot name="date">
-                                <x-date-picker x-data="{
-                                    showDatepicker: false,
-                                    selectedDate: '',
-                                    dateFormat: 'YYYY-MM-DD',
-                                    month: '',
-                                    year: '',
-                                    no_of_days: [],
-                                    blankdays: []}" x-init="[getNoOfDays(), initDate(waktuBayar) ]"></x-date-picker>
+                                <x-date-picker ddate="waktuBayar"></x-date-picker>
                             </x-slot>
                          </x-debt-card>
 

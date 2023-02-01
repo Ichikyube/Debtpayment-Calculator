@@ -1,5 +1,5 @@
 <div x-show="showForm" class="bg-[#F7D3C2] overflow-y-auto w-full h-full md:w-2/3 lg:w-2/5 min-h-min md:h-96 lg:h-5/6
-    md:static lg:absolute lg:right-28 md:mt-0 lg:-mt-11 absolute mt-0 top-0 lg:top-[20%] rounded-b-md md:rounded-xl
+    md:static lg:absolute lg:right-28 md:mt-0 lg:-mt-11 mt-0 top-0 lg:top-[20%] rounded-b-md md:rounded-xl
     lg:rounded-xl drop-shadow-md static hilanginscroll"
     x-transition:enter="transition ease-out duration-1000"
     x-transition:enter-start="opacity-0 transform scale-90"
@@ -92,6 +92,7 @@
                 bg-main text-dark duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0
                 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-myblue peer-focus:dark:text-blue-500">Date of Birth</label>
             <div class="w-full text-lg font-bold text-center break-words text-zinc-900 lr-4"  x-text="new Date(update.tgl_lahir).toLocaleDateString('default', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })"></div>
+            {{-- <x-birthDate-picker ddate="update.tgl_lahir"/> --}}
         </div>
     </div>
     <div class="flex flex-row items-start px-4 h-max">
